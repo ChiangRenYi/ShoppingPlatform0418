@@ -176,6 +176,10 @@ public class loginActivity extends Activity {
 
 
     void testOriginalUsez() {
-        Log.d("test","測試用原本的使用者上傳程式!!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        Log.d("test","測試");
+    }
+
+    void testOriginalUse123z() {
+        Log.d("test","測試");
     }
 }
