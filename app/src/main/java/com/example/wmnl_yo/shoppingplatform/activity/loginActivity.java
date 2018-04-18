@@ -170,7 +170,12 @@ public class loginActivity extends Activity {
 
     }
 
-    void testOriginalUserTese() {
+    void testOriginalUsercxtrzteztz() {
+        Log.d("test","測試用原本的使用者上傳程式!!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    }
+
+
+    void testOriginalUsez() {
         Log.d("test","測試用原本的使用者上傳程式!!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 }
