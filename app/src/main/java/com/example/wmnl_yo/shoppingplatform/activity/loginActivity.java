@@ -170,7 +170,7 @@ public class loginActivity extends Activity {
 
     }
 
-    void testNewUsertest() {
+    void testNewUserUser() {
         Log.d("test","測試用另一個使用者上傳程式");
     }
 }
