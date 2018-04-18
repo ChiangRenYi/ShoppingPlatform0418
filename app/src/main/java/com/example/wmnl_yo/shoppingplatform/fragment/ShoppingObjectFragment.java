@@ -2,8 +2,11 @@ package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -18,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +35,10 @@ import com.example.wmnl_yo.shoppingplatform.database.GetShoppingMallSeleteKindse
 import com.example.wmnl_yo.shoppingplatform.database.GetShoppingMallSeleteName;
 import com.example.wmnl_yo.shoppingplatform.object.ShoppingMallObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 import cn.carbswang.android.numberpickerview.library.NumberPickerView;
@@ -295,6 +303,22 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
         mListener = null;
     }
 
+    //photo
+    private static Bitmap getBitmapFromURL(String imageUrl) {
+        try {
+            URL url = new URL(imageUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap bitmap = BitmapFactory.decodeStream(input);
+            return bitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         return false;
@@ -321,11 +345,13 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
             public LinearLayout ll;
             public TextView Shoppingmall_name, Shoppingmall_price, Shoppingmall_amount;
             public ShoppingMallObject.ShoppingMallObjectItem mItem;
+            public ImageView Shoppingmall_photo;
 
 
             public ViewHolder(View v) {
                 super(v);
                 ll = (LinearLayout) v.findViewById(R.id.spmall_ll);
+                Shoppingmall_photo = (ImageView)v.findViewById(R.id.shoppingmall_photo);
                 Shoppingmall_name = (TextView) v.findViewById(R.id.shoppingmall_name);
                 Shoppingmall_price = (TextView) v.findViewById(R.id.shoppingmall_price);
                 Shoppingmall_amount = (TextView) v.findViewById(R.id.shoppingmall_amount);
@@ -362,7 +388,7 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
 
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, final int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.ll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -374,6 +400,22 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
                 }
             });
             holder.mItem = mshoppingmallList.get(position);
+            new AsyncTask<String, Void, Bitmap>()
+            {
+                @Override
+                protected Bitmap doInBackground(String... params)
+                {
+                    String url = "http://163.13.128.77:8080/20180417-v/ParentChildMuseum/CourseIntroductionRegistrations/CourseIntroductionRegistration/static/GDpicture/"+mshoppingmallList.get(position).Shoppingmall_photo;
+                    return getBitmapFromURL(url);
+                }
+
+                @Override
+                protected void onPostExecute(Bitmap result)
+                {
+                    holder.Shoppingmall_photo.setImageBitmap (result);
+                    super.onPostExecute(result);
+                }
+            }.execute("圖片連結網址路徑");
             holder.Shoppingmall_name.setText(mshoppingmallList.get(position).Shoppingmall_name);
             holder.Shoppingmall_price.setText(mshoppingmallList.get(position).Shoppingmall_price);
             if(Integer.valueOf(mshoppingmallList.get(position).Shoppingmall_amount) <= 5)

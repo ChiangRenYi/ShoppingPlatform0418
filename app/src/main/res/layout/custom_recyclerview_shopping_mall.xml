@@ -16,32 +16,32 @@
         android:weightSum="10">
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/shoppingmall_photo"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:gravity="center"
             android:scaleType="fitCenter"
-            android:padding="@dimen/_6sdp"
+            android:layout_margin="@dimen/_12sdp"
             app:srcCompat="@android:drawable/ic_menu_report_image" />
 
         <TableLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="6">
+            android:layout_weight="7">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="5"
+                android:weightSum="6"
                 android:paddingTop="@dimen/_10sdp">
 
                 <TextView
                     android:id="@+id/textView32"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.7"
+                    android:layout_weight="2.3"
                     android:text="商品名："
                     android:textAlignment="textEnd"
                     android:textColor="@android:color/black"
@@ -54,20 +54,20 @@
                     android:text="gp"
                     android:textSize="@dimen/_12sdp"
                     android:textColor="@android:color/black"
-                    android:layout_weight="3.3"/>
+                    android:layout_weight="3.7"/>
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="5"
+                android:weightSum="6"
                 android:paddingTop="@dimen/_5sdp">
 
                 <TextView
                     android:id="@+id/textView30"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.7"
+                    android:layout_weight="2.3"
                     android:text="價錢："
                     android:textAlignment="textEnd"
                     android:textColor="@android:color/black"
@@ -80,20 +80,20 @@
                     android:text="商品名："
                     android:textSize="@dimen/_12sdp"
                     android:textColor="@android:color/black"
-                    android:layout_weight="3.3"/>
+                    android:layout_weight="3.7"/>
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="5"
+                android:weightSum="6"
                 android:paddingTop="@dimen/_5sdp">
 
                 <TextView
                     android:id="@+id/textView33"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.7"
+                    android:layout_weight="2.3"
                     android:text="數量："
                     android:textAlignment="textEnd"
                     android:textColor="@android:color/black"
@@ -106,7 +106,7 @@
                     android:text="55"
                     android:textSize="@dimen/_12sdp"
                     android:textColor="@android:color/black"
-                    android:layout_weight="3.3"/>
+                    android:layout_weight="3.7"/>
             </TableRow>
 
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -139,22 +140,22 @@ public class ShoppingObjectDetailFragment extends Fragment implements View.OnTou
 
         final ImageView imgTeacherPhoto = (ImageView)headerView.findViewById(R.id.photo);
 
-//        new AsyncTask<String, Void, Bitmap>()
-//        {
-//            @Override
-//            protected Bitmap doInBackground(String... params)
-//            {
-//                String url = "http://163.13.128.77:8080/20171205-11v/ParentChildMuseum/CourseIntroductionRegistrations/CourseIntroductionRegistration/static/"+courseRecordObject.rPicture;
-//                return getBitmapFromURL(url);
-//            }
-//
-//            @Override
-//            protected void onPostExecute(Bitmap result)
-//            {
-//                imgTeacherPhoto.setImageBitmap (result);
-//                super.onPostExecute(result);
-//            }
-//        }.execute("圖片連結網址路徑");
+        new AsyncTask<String, Void, Bitmap>()
+        {
+            @Override
+            protected Bitmap doInBackground(String... params)
+            {
+                String url = "http://163.13.128.77:8080/20180417-v/ParentChildMuseum/CourseIntroductionRegistrations/CourseIntroductionRegistration/static/GDpicture/"+shoppingObject.Shoppingmall_photo;
+                return getBitmapFromURL(url);
+            }
+
+            @Override
+            protected void onPostExecute(Bitmap result)
+            {
+                imgTeacherPhoto.setImageBitmap (result);
+                super.onPostExecute(result);
+            }
+        }.execute("圖片連結網址路徑");
         Button btnCourseCancel = (Button)footerView.findViewById(R.id.btnOrderSearch);
         Log.e("55125",tmp[0]);
         btnCourseCancel.setText("加入購物車");
