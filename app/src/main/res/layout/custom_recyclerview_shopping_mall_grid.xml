@@ -20,9 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_100sdp"
             android:layout_gravity="center"
+            android:layout_margin="@dimen/_10sdp"
             android:gravity="center"
             android:scaleType="fitCenter"
-            android:layout_margin="@dimen/_10sdp"
             app:srcCompat="@android:drawable/ic_menu_report_image" />
 
         <TableLayout
