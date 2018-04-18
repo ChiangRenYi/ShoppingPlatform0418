@@ -54,6 +54,9 @@ import com.example.wmnl_yo.shoppingplatform.fragment.OrderManageFragment;
 import com.example.wmnl_yo.shoppingplatform.fragment.OrderResultFragment;
 import com.example.wmnl_yo.shoppingplatform.fragment.RollCallDetailFragment;
 import com.example.wmnl_yo.shoppingplatform.fragment.RollCallFragment;
+import com.example.wmnl_yo.shoppingplatform.fragment.SatisfacationChildFragment;
+import com.example.wmnl_yo.shoppingplatform.fragment.SatisfacationQuestionnaireFragment;
+import com.example.wmnl_yo.shoppingplatform.fragment.SatisfactionSurveyFragment;
 import com.example.wmnl_yo.shoppingplatform.fragment.ShoppingCarATMFragment;
 import com.example.wmnl_yo.shoppingplatform.fragment.ShoppingCarDetailFragment;
 import com.example.wmnl_yo.shoppingplatform.fragment.ShoppingFinialFragment;
@@ -92,7 +95,9 @@ public class MainActivity extends AppCompatActivity implements
         CategoryFragment.OnFragmentInteractionListener,
         AnnouncementDetailFragment.OnFragmentInteractionListener,
         ShoppingListFragment.OnFragmentInteractionListener,ShoppingPaymentFragment.OnFragmentInteractionListener,ShoppingFinialFragment.OnFragmentInteractionListener,ShoppingCarATMFragment.OnFragmentInteractionListener,
-        ShoppingCarDetailFragment.OnFragmentInteractionListener,ShoppingObjectFragment.OnFragmentInteractionListener,ShoppingObjectDetailFragment.OnFragmentInteractionListener{
+        ShoppingCarDetailFragment.OnFragmentInteractionListener,ShoppingObjectFragment.OnFragmentInteractionListener,ShoppingObjectDetailFragment.OnFragmentInteractionListener,SatisfactionSurveyFragment.OnFragmentInteractionListener,
+        SatisfacationChildFragment.OnFragmentInteractionListener,
+        SatisfacationQuestionnaireFragment.OnFragmentInteractionListener {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
