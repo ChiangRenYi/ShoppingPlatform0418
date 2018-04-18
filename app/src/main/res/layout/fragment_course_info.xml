@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efedf2">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/edittext_style">
+
+            <TextView
+                android:text="課程"
+                android:textSize="@dimen/_12sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:layout_margin="@dimen/_6sdp"
+                android:textColor="#000000" />
+
+            <TextView
+                android:text=""
+                android:textSize="@dimen/_12sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:layout_margin="@dimen/_6sdp"
+                android:textColor="#000000"
+                android:gravity="left" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/edittext_style">
+
+            <TextView
+                android:text="類別"
+                android:textSize="@dimen/_12sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView5"
+                android:layout_margin="@dimen/_6sdp"
+                android:textColor="#000000"
+                android:gravity="left|right"/>
+
+            <TextView
+                android:text=""
+                android:textSize="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:textColor="#000000"
+                android:layout_margin="@dimen/_6sdp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:gravity="center"
+            android:background="@drawable/edittext_style">
+
+            <TextView
+                android:text="教師"
+                android:textSize="@dimen/_12sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView8"
+                android:layout_margin="@dimen/_6sdp"
+                android:textColor="#000000"
+                android:gravity="left|right"/>
+
+            <TextView
+                android:text=""
+                android:textSize="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView9"
+                android:textColor="#000000"
+                android:layout_margin="@dimen/_6sdp" />
+
+        </TableRow>
+
+
+    </TableLayout>
+
+    <Button
+        android:text="確認"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_15sdp"
+        android:id="@+id/button"
+        android:background="#51cdf0"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

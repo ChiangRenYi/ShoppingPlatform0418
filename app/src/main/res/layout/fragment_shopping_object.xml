@@ -1,0 +1,118 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efedf2"
+    android:padding="@dimen/_10sdp"
+    tools:context="com.example.wmnl_yo.shoppingplatform.fragment.ShoppingObjectFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/shopping_object_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/_5sdp"
+            android:weightSum="10">
+
+            <EditText
+                android:id="@+id/shopping_object_search_edittext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6.5"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="search..."
+                android:textColorHint="@android:color/darker_gray"
+                android:textColor="@android:color/black" />
+
+            <Button
+                android:id="@+id/shopping_object_search_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:backgroundTint="#51cdf0"
+                android:text="搜尋" />
+            <Button
+                android:id="@+id/shopping_object_layout_button"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_37sdp"
+                android:layout_weight="1.5"
+                android:background="@drawable/grid"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/shopping_object_kind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/shopping_object_search"
+            android:paddingTop="@dimen/_5sdp"
+            android:weightSum="6">
+
+            <TextView
+                android:id="@+id/shopping_object_kind_t1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="種類："
+                android:textSize="@dimen/_14sdp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/shopping_object_kind_t2"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="請選擇"
+                android:textSize="@dimen/_14sdp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.25"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_chevron_right" />
+            <TextView
+                android:id="@+id/shopping_object_kindsecond_t2"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="請選擇"
+                android:textSize="@dimen/_14sdp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.25"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_chevron_right" />
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/sp_object_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/shopping_object_kind"
+            android:paddingTop="@dimen/_5sdp" />
+    </RelativeLayout>
+
+</FrameLayout>

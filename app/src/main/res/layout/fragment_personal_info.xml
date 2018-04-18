@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#efedf2"
+    android:padding="@dimen/_10sdp">
+
+
+    <ScrollView
+        android:id="@+id/personal_info_scroll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="horizontal|vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:id="@+id/layout_personal_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/unknown_user"
+                android:padding="@dimen/_10sdp"/>
+
+            <ImageView
+                android:id="@+id/ImageView_profile_pic"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_centerHorizontal="true"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@+id/ImageView_profile_pic"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true">
+
+
+                <RelativeLayout
+                    android:id="@+id/layout_set_kinship"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_set_kinship"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:text="設定親屬關係"
+                        android:textColor="#FF0000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_set_kinship"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignBottom="@+id/textView_set_kinship"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/textView_set_kinship"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:layout_marginRight="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_PI_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:text="姓名"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_PI_username"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請輸入名稱"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:selectAllOnFocus="true"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_PI_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_PI_gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:text="性別"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <TextView
+                        android:id="@+id/textView_PI_gender_show"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_PI_career"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:text="職業"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <TextView
+                        android:id="@+id/textView_PI_career_show"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="0.29"
+                        android:gravity="right"
+                        android:hint="請輸入職業"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:selectAllOnFocus="true"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_PI_nationality"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="left|right"
+                        android:text="國籍"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <TextView
+                        android:id="@+id/textView_PI_nationality_show"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:selectAllOnFocus="true"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_PI_ID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:text="身份證字號"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <TextView
+                        android:id="@+id/textView_PI_ID_show"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_PI_birthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="left|right"
+                        android:text="出生日期"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <TextView
+                        android:id="@+id/textView_PI_birthday_show"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請輸入出生年月日"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_PI_mail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="left|right"
+                        android:text="電子郵件"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_PI_mail"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請輸入電子郵件"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:inputType="textEmailAddress"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_mail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_PI_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="left|right"
+                        android:text="通訊地址"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_PI_address"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請輸入通訊地址"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_PI_contact_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="left|right"
+                        android:text="電話"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_PI_contact_phone"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請輸入聯絡電話"
+                        android:inputType="phone"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_PI_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="left|right"
+                        android:text="行動電話"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_PI_phone"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請輸入行動電話"
+                        android:inputType="phone"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_Cphone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+
+                </LinearLayout>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_70sdp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/Button_PI_ok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:background="#51cdf0"
+                android:text="確認"
+                android:textSize="@dimen/_15sdp" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

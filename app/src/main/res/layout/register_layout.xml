@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efedf2"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize">
+        <!--自定义toolbar的title 和subtitle -->
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:text="非會員登入"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_15sdp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <Button
+        android:id="@+id/Button_nonmember_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:background="#51cdf0"
+        android:text="確認"
+        android:textSize="@dimen/_15sdp" />
+
+    <ScrollView
+        android:id="@+id/layout_register_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:fillViewport="true"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="horizontal|vertical">
+
+        <LinearLayout
+            android:id="@+id/layout_register_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/editText_nonmember_account"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_alignLeft="@+id/editText2"
+                android:layout_alignStart="@+id/editText2"
+                android:layout_below="@+id/toolbar"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/edittext_style"
+                android:hint="名稱"
+                android:paddingLeft="@dimen/_5sdp"
+                android:paddingRight="@dimen/_5sdp"
+                android:selectAllOnFocus="true"
+                android:maxLines="1"
+                android:textColor="#000000"
+                android:textColorHint="#c9c9c9"
+                android:textSize="@dimen/_15sdp" />
+
+
+            <EditText
+                android:id="@+id/editText_nonmember_mail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_alignLeft="@+id/tableLayout"
+                android:layout_alignStart="@+id/tableLayout"
+                android:layout_below="@+id/toolbar"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/edittext_style"
+                android:hint="信箱"
+                android:paddingLeft="@dimen/_5sdp"
+                android:paddingRight="@dimen/_5sdp"
+                android:selectAllOnFocus="true"
+                android:maxLines="1"
+                android:textColor="#000000"
+                android:textColorHint="#c9c9c9"
+                android:textSize="@dimen/_15sdp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

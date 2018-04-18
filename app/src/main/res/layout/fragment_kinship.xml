@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efedf2"
+    android:clickable="true">
+
+    <TextView
+        android:text="親屬關係"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#c9c9c9"
+        android:textSize="@dimen/_15sdp"
+        android:id="@+id/textView_kinship_subtitle"
+        android:layout_marginBottom="@dimen/_10sdp"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:clickable="true"
+        android:src="@drawable/ic_add_black_24dp"
+        android:id="@+id/fab_add_child"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        app:backgroundTint="#51cdf0" />
+
+    <ScrollView
+        android:id="@+id/personal_info_scroll_layout"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:scrollbars="horizontal|vertical"
+        android:scrollbarStyle="outsideOverlay"
+        android:fillViewport="true"
+        android:layout_below="@+id/textView_kinship_subtitle"
+        android:layout_alignParentStart="true">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_kinship_child"
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_kinship_subtitle"
+            android:layout_alignParentStart="true" />
+
+    </ScrollView>
+
+
+</RelativeLayout>

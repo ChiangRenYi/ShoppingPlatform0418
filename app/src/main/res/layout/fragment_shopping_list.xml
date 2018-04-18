@@ -1,0 +1,142 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/flShoppping"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efedf2"
+    tools:context="com.example.wmnl_yo.shoppingplatform.fragment.ShoppingListFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/shadowshoppingcar"
+        android:paddingLeft="@dimen/_5sdp"
+        android:paddingRight="@dimen/_5sdp"
+        android:paddingTop="@dimen/_5sdp">
+
+        <LinearLayout
+            android:id="@+id/car_buttonup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_50sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/car_textView29"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:text="購物車"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="@dimen/_23sdp" />
+
+            <LinearLayout
+                android:id="@+id/list_kind"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_below="@id/car_textView29"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/car_object_kind_t1"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_23sdp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="結帳商品："
+                    android:textSize="@dimen/_14sdp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/car_object_kind_t2"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_23sdp"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="請選擇"
+                    android:textSize="@dimen/_11sdp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/black" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_23sdp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_chevron_right" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/car_waring"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_below="@+id/car_kind"
+                android:layout_gravity="center"
+                android:weightSum="10"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:textSize="@dimen/_9sdp">
+
+                <TextView
+                    android:id="@+id/car_worinhtext"
+                    android:layout_width="0dp"
+                    android:layout_weight="8.5"
+                    android:layout_height="@dimen/_28sdp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="商品與課程分開結帳，課程依親子館分別結帳\n課程數量只能為'1'"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="@dimen/_9sdp" />
+
+                <ImageButton
+                    android:id="@+id/dataredo"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="@dimen/_20sdp"
+                    android:scaleType="fitCenter"
+                    android:background="#00000000"
+                    android:src="@drawable/redo"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/car_imageView14"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20sdp"
+
+                android:layout_below="@+id/car_waring"
+                android:background="@drawable/line" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/car_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/car_check"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_80sdp"
+            android:layout_marginRight="@dimen/_80sdp"
+            android:backgroundTint="#51cdf0"
+            android:text="確認訂單" />
+    </RelativeLayout>
+
+</FrameLayout>

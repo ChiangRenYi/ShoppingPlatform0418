@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efedf2"
+    tools:context="com.example.wmnl_yo.shoppingplatform.fragment.OrderManageFragment">
+
+
+
+
+    <ListView
+        android:id="@+id/lOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_20sdp"/>
+
+    <Button
+        android:id="@+id/btnOrderSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/orderScan"
+        android:backgroundTint="#51cdf0"
+        android:layout_alignParentBottom="true"
+        android:textColor="@android:color/white"/>
+
+
+
+</RelativeLayout>

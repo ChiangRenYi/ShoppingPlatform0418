@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#efedf2"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/r_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize">
+        <!--自定义toolbar的title 和subtitle -->
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:text="會員註冊"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_15sdp" />
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <ScrollView
+        android:id="@+id/personal_info_scroll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="horizontal|vertical"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/r_toolbar"
+        >
+
+        <RelativeLayout
+            android:id="@+id/layout_personal_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:orientation="vertical">
+
+
+                <!--<RelativeLayout-->
+                <!--android:id="@+id/layout_set_kinship"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/edittext_style"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/textView_set_kinship"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/_6sdp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="設定親屬關係"-->
+                <!--android:textColor="#FF0000"-->
+                <!--android:textSize="@dimen/_10sdp" />-->
+
+                <!--<ImageButton-->
+                <!--android:id="@+id/imageButton_set_kinship"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_alignBottom="@+id/textView_set_kinship"-->
+                <!--android:layout_alignParentEnd="true"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignTop="@+id/textView_set_kinship"-->
+                <!--android:layout_marginBottom="@dimen/_2sdp"-->
+                <!--android:layout_marginLeft="@dimen/_2sdp"-->
+                <!--android:layout_marginRight="@dimen/_2sdp"-->
+                <!--android:background="#ffffff"-->
+                <!--android:src="@drawable/ic_chevron_right_black_24dp" />-->
+
+                <!--</RelativeLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_register_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:text="帳號"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_register_account"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請輸入帳號"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:selectAllOnFocus="true"
+                        android:maxLines="1"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_register_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_register_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="left|right"
+                        android:text="姓名"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_register_username"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請輸入姓名"
+                        android:maxLines="1"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:selectAllOnFocus="true"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_register_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_register_gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_6sdp"
+                        android:layout_marginRight="@dimen/_6sdp"
+                        android:gravity="left|right"
+                        android:text="性別"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <Spinner
+                        android:id="@+id/spinner_register_gender"
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/imageButton_register_gender"
+                        android:layout_toStartOf="@+id/imageButton_register_gender"
+                        android:background="#ffffff" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_register_gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:layout_marginRight="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_register_career"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_6sdp"
+                        android:layout_marginRight="@dimen/_6sdp"
+                        android:gravity="left|right"
+                        android:text="職業"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <Spinner
+                        android:id="@+id/spinner_register_career"
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="52dp"
+                        android:layout_toStartOf="@+id/imageButton_register_career" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_register_career"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:layout_marginRight="@dimen/_2sdp"
+
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_register_nationality"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+
+                        android:layout_marginLeft="@dimen/_6sdp"
+                        android:layout_marginRight="@dimen/_6sdp"
+                        android:gravity="left|right"
+                        android:text="國籍"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <Spinner
+                        android:id="@+id/spinner_register_nationality"
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/imageButton_register_nationality" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_register_nationality"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:layout_marginRight="@dimen/_2sdp"
+
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/textView_register_ID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:text="身份證字號"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_register_ID"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請輸入身份證字號"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:maxLines="1"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_register_ID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_register_birthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="left|right"
+                        android:text="出生日期"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_register_birthday"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請雙擊點選出生年月日"
+                        android:inputType="date"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_register_birthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_register_mail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="left|right"
+                        android:text="電子郵件"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_register_mail"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請輸入電子郵件"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_register_mail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_register_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="left|right"
+                        android:text="通訊地址"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_register_address"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請輸入通訊地址"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_register_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_register_contact_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="left|right"
+                        android:text="電話"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_register_contact_phone"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請輸入聯絡電話"
+                        android:maxLines="1"
+                        android:inputType="phone"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_register_contact_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_register_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="left|right"
+                        android:maxLines="1"
+                        android:text="行動電話"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_register_phone"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請輸入行動電話"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:inputType="phone"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_register_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_register_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="left|right"
+                        android:text="密碼"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_register_password"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請設定密碼"
+                        android:maxLines="1"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:inputType="textPassword"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton__register_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_style"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_register_check_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="left|right"
+                        android:text="確認密碼"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editText_register_check_password"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="請再次輸入密碼"
+                        android:maxLines="1"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:inputType="textPassword"
+                        android:textColor="#000000"
+                        android:textColorHint="#c9c9c9"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_register_check_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#ffffff"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/register_Button_ok"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:background="#51cdf0"
+                android:text="確認"
+                android:textSize="@dimen/_15sdp"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

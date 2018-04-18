@@ -1,0 +1,274 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efedf2"
+    tools:context="com.example.wmnl_yo.shoppingplatform.fragment.ShoppingFinialFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/shadowshoppingcar"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        android:paddingTop="@dimen/_5sdp">
+
+        <TextView
+            android:id="@+id/sp_finial_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:paddingTop="@dimen/_5sdp"
+            android:background="@drawable/sp_finial_title"
+            android:text="統一超商專用條碼區"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_dark"
+            android:textSize="@dimen/_20sdp" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/sp_finial_title"
+            android:paddingLeft="@dimen/_6sdp"
+            android:paddingRight="@dimen/_6sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_50sdp"
+            android:paddingBottom="@dimen/_10sdp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/sp_finial_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:background="@drawable/sp_finial_person"
+                    android:orientation="vertical"
+                    >
+                    <LinearLayout
+                        android:id="@+id/sp_finial_person"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_25sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/sp_finial_t1"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_alignParentStart="true"
+                            android:layout_weight="0.3"
+                            android:paddingLeft="@dimen/_6sdp"
+                            android:paddingTop="@dimen/_4sdp"
+                            android:inputType="textMultiLine"
+                            android:text="繳款人："
+                            android:textColor="@android:color/background_dark"
+                            android:textSize="@dimen/_15sdp" />
+
+                        <TextView
+                            android:id="@+id/sp_finial_person_text"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_weight="0.7"
+                            android:textAlignment="textStart"
+                            android:textColor="@android:color/background_dark"
+                            android:textSize="@dimen/_15sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/sp_finial_money"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_25sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/sp_finial_t2"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_weight="0.4"
+                            android:inputType="textMultiLine"
+                            android:paddingLeft="@dimen/_6sdp"
+                            android:text="繳款金額："
+                            android:textColor="@android:color/background_dark"
+                            android:textSize="@dimen/_15sdp" />
+                        <TextView
+                            android:id="@+id/sp_finial_money_text"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_weight="0.7"
+                            android:textAlignment="textStart"
+                            android:textColor="@android:color/background_dark"
+                            android:textSize="@dimen/_15sdp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/atm_l"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@+id/sp_finial_second"
+                    android:layout_weight="7"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/_3sdp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="@dimen/_17sdp"
+                        android:text="訂單編號："
+                        android:textColor="@android:color/background_dark"
+                        />
+                    <TextView
+                        android:id="@+id/sp_code_number"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_17sdp"
+                        android:layout_weight="5"
+                        android:textColor="@android:color/background_dark"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/atm_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@+id/atm_l"
+                    android:layout_weight="7"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/_3sdp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="@dimen/_17sdp"
+                        android:text="繳費期限："
+                        android:textColor="@android:color/background_dark"
+                        />
+                    <TextView
+                        android:id="@+id/sp_code_date"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_17sdp"
+                        android:layout_weight="5"
+                        android:textColor="@android:color/background_dark"
+                        />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/sp_finial_code1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/atm_2"
+                    android:paddingLeft="@dimen/_6sdp"
+                    android:paddingRight="@dimen/_6sdp"
+                    android:paddingTop="@dimen/_7sdp"
+                    android:src="@drawable/btn_background" />
+
+                <TextView
+                    android:id="@+id/sp_finial_code_text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/sp_finial_code1"
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="@dimen/_6sdp"
+                    android:paddingRight="@dimen/_6sdp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="@dimen/_10sdp" />
+                <ImageView
+                    android:id="@+id/sp_finial_code2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/sp_finial_code_text1"
+                    android:paddingLeft="@dimen/_6sdp"
+                    android:paddingRight="@dimen/_6sdp"
+                    android:paddingTop="@dimen/_7sdp"
+                    android:src="@drawable/btn_background" />
+
+                <TextView
+                    android:id="@+id/sp_finial_code_text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/sp_finial_code2"
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="@dimen/_6sdp"
+                    android:paddingRight="@dimen/_6sdp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="@dimen/_10sdp" />
+                <ImageView
+                    android:id="@+id/sp_finial_code3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/sp_finial_code_text2"
+                    android:src="@drawable/btn_background"
+                    android:paddingLeft="@dimen/_6sdp"
+                    android:paddingRight="@dimen/_6sdp"
+                    android:paddingTop="@dimen/_7sdp"/>
+
+                <TextView
+                    android:id="@+id/sp_finial_code_text3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/sp_finial_code3"
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="@dimen/_6sdp"
+                    android:paddingRight="@dimen/_6sdp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="@dimen/_10sdp" />
+                <TextView
+                    android:id="@+id/editText4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:paddingLeft="@dimen/_6sdp"
+                    android:paddingRight="@dimen/_6sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:layout_below="@+id/sp_finial_code_text3"
+                    android:textColor="@android:color/background_dark"
+                    android:background="@color/colorspf"
+                    android:ems="10"
+                    android:text="繳款方式：\n
+1.新光銀行櫃台：持本繳款單至新光銀行櫃台辦理繳款。\n
+2.自動櫃員機：請於操作畫面選擇「繳費」功能，請依照畫面指示輸入：銀行代號「103」，再輸入轉入帳號：「9908426497554」及金額，透過跨行繳費者，須負擔手續費15元，持新光銀行金融卡至本行ATM進行繳費者，則無須負擔手續費；交易成功，請保留收據作為繳款憑證。\n
+3.金融機構匯款：請填寫匯款單，並載明收款行「臺灣新光商業銀行敦南分行」，戶名「新北市政府委託社團法人中華民國文教產業發展協會辦理三峽光明公共 托育中心(托嬰中心)」，匯款帳號「繳款帳號：9908426497554」，跨行匯款者，手續費負擔依各行庫規定收取，完成匯款手續後，請保留收據作為繳款憑證。\n
+4.便利商店繳款：可至全省各超商門市繳款「7-11、全家、OK、萊爾富」。\n
+公告事項：\n
+1.親愛的家長，為方便您繳交月費，特提供以下繳費方式：統一、全家、萊爾富及OK等，四大超商均可繳款，並請核對金額及保留繳款證明單，方便日後查(對)帳。\n
+2.每月5日前，托育中心會將繳款單交給家長，請於當月10日前繳交月費，如 您已繳款，請勿重覆繳納。\n
+3.月費（每個月1日至31日）9,000元，本月應退費金額將會在下一期月費中扣除。\n
+4.若有其他任何疑問，請洽托育中心。"
+                    android:inputType="textMultiLine"
+                     />
+            </RelativeLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/shopping_CODE_check"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_50sdp"
+            android:layout_marginRight="@dimen/_50sdp"
+            android:backgroundTint="#51cdf0"
+            android:text="確認完成，返回購物車" />
+
+
+    </RelativeLayout>
+
+    </FrameLayout>

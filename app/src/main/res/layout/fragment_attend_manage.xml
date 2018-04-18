@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efedf2"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/Button_attend_input"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:background="@drawable/custom_opinion_edit_text"
+            android:drawableLeft="@drawable/list_input"
+            android:padding="@dimen/_15sdp"
+            android:text="假單"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_20sdp" />
+
+        <!--<Button-->
+        <!--android:id="@+id/Button_attend_query"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/_100sdp"-->
+        <!--android:layout_marginBottom="@dimen/_20sdp"-->
+        <!--android:background="#51cdf0"-->
+        <!--android:drawableLeft="@drawable/list_query"-->
+        <!--android:text="假單查詢"-->
+        <!--android:textSize="@dimen/_20sdp" />-->
+
+        <Button
+            android:id="@+id/Button_attend_record"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:background="@drawable/custom_opinion_edit_text"
+            android:drawableLeft="@drawable/list_record"
+            android:padding="@dimen/_15sdp"
+            android:text="假單紀錄"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_20sdp" />
+    </LinearLayout>
+
+</LinearLayout>

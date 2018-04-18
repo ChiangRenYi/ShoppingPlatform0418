@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efedf2"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/Button_personal_info"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:background="@drawable/custom_opinion_edit_text"
+            android:drawableLeft="@drawable/user_info"
+            android:padding="@dimen/_15sdp"
+            android:text="個人資料"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_20sdp" />
+
+        <Button
+            android:id="@+id/Button_password_reset"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:background="@drawable/custom_opinion_edit_text"
+            android:drawableLeft="@drawable/change_password"
+            android:padding="@dimen/_15sdp"
+            android:text="更新密碼"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_20sdp" />
+    </LinearLayout>
+
+
+</LinearLayout>
