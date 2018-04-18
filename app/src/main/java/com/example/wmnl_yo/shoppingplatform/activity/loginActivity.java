@@ -170,7 +170,7 @@ public class loginActivity extends Activity {
 
     }
 
-    void testOriginalUserPush() {
+    void testOriginalUserTese() {
         Log.d("test","測試用原本的使用者上傳程式!!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 }
