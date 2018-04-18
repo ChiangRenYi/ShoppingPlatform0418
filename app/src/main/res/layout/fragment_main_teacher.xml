@@ -173,12 +173,45 @@
                     </LinearLayout>
 
 
+
+
+                    <LinearLayout
+                        android:id="@+id/layout_opinion_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/_2sdp">
+
+                        <ImageView
+                            android:id="@+id/imageView12"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="@dimen/_70sdp"
+                            android:layout_alignLeft="@+id/imageView8"
+                            android:layout_alignStart="@+id/imageView8"
+                            android:layout_below="@+id/imageView8"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingBottom="@dimen/_2sdp"
+                            app:srcCompat="@drawable/message" />
+
+                        <TextView
+                            android:id="@+id/textView21"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="互動訊息"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/layout_interactive_button"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:orientation="vertical"
+                        android:visibility="invisible"
                         android:paddingLeft="@dimen/_2sdp">
 
                         <ImageView
@@ -202,37 +235,6 @@
                             android:textSize="@dimen/_12sdp" />
 
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/layout_opinion_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:paddingLeft="@dimen/_2sdp">
-
-                        <ImageView
-                            android:id="@+id/imageView12"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="@dimen/_70sdp"
-                            android:layout_alignLeft="@+id/imageView8"
-                            android:layout_alignStart="@+id/imageView8"
-                            android:layout_below="@+id/imageView8"
-                            android:layout_gravity="center_horizontal"
-                            android:paddingBottom="@dimen/_2sdp"
-                            app:srcCompat="@drawable/b8" />
-
-                        <TextView
-                            android:id="@+id/textView21"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:text="意見交流"
-                            android:textColor="#000000"
-                            android:textSize="@dimen/_12sdp" />
-
-                    </LinearLayout>
-
 
                 </TableRow>
 

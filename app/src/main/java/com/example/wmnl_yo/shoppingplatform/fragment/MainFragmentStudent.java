@@ -16,7 +16,7 @@ import com.example.wmnl_yo.shoppingplatform.database.GetShoppingMallAll;
 
 public class MainFragmentStudent extends Fragment implements View.OnClickListener {
     private View view;
-    LinearLayout btnMemberService, btnCourseManage, btnBuilding,btnShoppingmall, btnOrderManage, btnAttendenceManage, btnHealthManage, btnInteractive, btnOpinion, btnChat;
+    LinearLayout btnMemberService, btnCourseManage, btnBuilding,btnShoppingmall, btnOrderManage, btnAttendenceManage, btnHealthManage, btnInteractive, btnOpinion, btnChat,btnSatisfaction;
     TextView tvName;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class MainFragmentStudent extends Fragment implements View.OnClickListene
         btnHealthManage = (LinearLayout) view.findViewById(R.id.layout_health_manage_button);
         btnInteractive = (LinearLayout) view.findViewById(R.id.layout_interactive_button);
         btnOpinion = (LinearLayout) view.findViewById(R.id.layout_opinion_button);
+        btnSatisfaction=(LinearLayout) view.findViewById(R.id.layout_satisfaction_button);
 
         btnMemberService.setOnClickListener(this);
         btnCourseManage.setOnClickListener(this);
@@ -46,6 +47,7 @@ public class MainFragmentStudent extends Fragment implements View.OnClickListene
         btnOpinion.setOnClickListener(this);
         btnBuilding.setOnClickListener(this);
         tvName.setText(Constants.ACCOUNT);
+        btnSatisfaction.setOnClickListener(this);
 
         return view;
     }
@@ -78,8 +80,9 @@ public class MainFragmentStudent extends Fragment implements View.OnClickListene
                 break;
 
             case R.id.layout_satisfaction_button:
-                fragmentClass = NoShitFragment.class;
+                fragmentClass = SatisfacationChildFragment.class;
                 break;
+
 
             case R.id.layout_interactive_button:
                 fragmentClass = SelectBuildingFragment.class;

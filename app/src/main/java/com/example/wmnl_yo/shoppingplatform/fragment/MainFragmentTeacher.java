@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
+import com.example.wmnl_yo.shoppingplatform.database.GetSelectMemberFragment;
 
 public class MainFragmentTeacher extends Fragment implements View.OnClickListener {
     private View view;
@@ -74,7 +75,7 @@ public class MainFragmentTeacher extends Fragment implements View.OnClickListene
                 break;
 
             case R.id.layout_opinion_button:
-                fragmentClass = NoShitFragment.class;
+                fragmentClass = SelectMemberFragment.class;
                 break;
 //
 //            case R.id.layout_chat_button:
