@@ -192,7 +192,21 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                     @Override
                     public void run() {
                         if (db_shoppinglist_kind == "請選擇") {
-                            Toast.makeText(getActivity(), "請先選擇結帳商品", Toast.LENGTH_SHORT).show();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                            builder.setPositiveButton("確認", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Log.i("Code2care ", "Yes button Clicked!");
+                                    dialog.dismiss();
+                                }
+                            });
+
+
+
+                            View dialoglayout = inflater.inflate(R.layout.shopping_list_alert, null);
+
+                            builder.setView(dialoglayout);
+                            builder.show();
                             goods = "";
                         } else {
                             String[] deletegoods = goods.split(",");
