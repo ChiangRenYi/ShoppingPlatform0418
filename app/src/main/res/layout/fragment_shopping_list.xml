@@ -66,9 +66,9 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="請選擇"
-                    android:textSize="@dimen/_11sdp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="@dimen/_11sdp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
