@@ -168,19 +168,17 @@ public class GetAbsentNoteEntryFragmentTeacherResult extends AsyncTask<String, V
                         break;
                 }
                 switch (absent_teacherInf[14]){
-                    case "0" :
-                        absent_teacher_astatus[j] = "審核中";
-                        absent_teacherInf[14] = "審核中";
-                        break;
-                    case "1" :
+                    case "-1" :
                         absent_teacher_astatus[j] = "不通過";
-                        absent_teacherInf[14] = "不通過";
+                        absent_teacherInf[15] = "不通過";
                         break;
-                    case "2" :
+                    case "4" :
                         absent_teacher_astatus[j] = "通過";
-                        absent_teacherInf[14] = "通過";
+                        absent_teacherInf[15] = "通過";
                         break;
                     default:
+                        absent_teacher_astatus[j] = "審核中";
+                        absent_teacherInf[15] = "審核中";
                         break;
                 }
                 dim.addItem(new AbsentNoteTeacherObject.AbsentNoteTeacherObjectItem(String.valueOf(i + 1),
