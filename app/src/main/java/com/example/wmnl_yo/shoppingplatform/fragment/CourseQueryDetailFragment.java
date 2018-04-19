@@ -228,6 +228,10 @@ public class CourseQueryDetailFragment extends Fragment implements View.OnTouchL
                                                             Toast.makeText(getActivity(),
                                                                     "請進會員資料勾選該親子館即可報名",Toast.LENGTH_SHORT).show();
                                                             break;
+                                                        case "alternate" :
+                                                            Toast.makeText(getActivity(),
+                                                                    CQDParentChild + "已報名候補", Toast.LENGTH_SHORT).show();
+                                                            break;
                                                         default:
                                                             break;
                                                     }
