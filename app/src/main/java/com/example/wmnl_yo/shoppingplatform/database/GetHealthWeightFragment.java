@@ -91,10 +91,41 @@ public class GetHealthWeightFragment extends AsyncTask<String, Void, String> {
                     Log.e("55125", "Error", e);
                 }
             }
-            Log.d("55125",result);
+//            Log.d("55125",result);
+//            int j = 0;
+//
+//            String[] healthWeight = result.split("<QQ>");
+//            String[] healthWeight_value = new String[healthWeight.length - 1];
+//            String[] healthWeight_date = new String[healthWeight.length - 1];
+//            String[] healthWeight_time = new String[healthWeight.length - 1];
+//
+//            HealthWeightObject.ITEMS.clear();
+//            HealthWeightObject dim = new HealthWeightObject();
+//            for (int i = 0; i < healthWeight.length - 1; i++) {
+//                String[] healthWeightInf = new String[5];
+//                healthWeightInf = healthWeight[i].split("@#");
+//                healthWeight_value[j] = healthWeightInf[1];
+//                healthWeight_date[j] = healthWeightInf[2];
+//                healthWeight_time[j] = healthWeightInf[3];
+//
+//                dim.addItem(new HealthWeightObject.HealthWeightObjectItem(R.drawable.ic_weight,
+//                        healthWeightInf[1],"Kg",healthWeightInf[2]+'('+healthWeightInf[3]+')'));
+//
+//                j++;
+//                Log.d("55125", healthWeightInf[1]+","+"Kg"+","+healthWeightInf[2]+'('+healthWeightInf[3]+')');
+//            }
+            return result;
+
+        }
+    }
+
+    protected void onPostExecute(String s) {
+
+        if(s != null){
+            Log.d("55125",s);
             int j = 0;
 
-            String[] healthWeight = result.split("<QQ>");
+            String[] healthWeight = s.split("<QQ>");
             String[] healthWeight_value = new String[healthWeight.length - 1];
             String[] healthWeight_date = new String[healthWeight.length - 1];
             String[] healthWeight_time = new String[healthWeight.length - 1];
@@ -114,12 +145,8 @@ public class GetHealthWeightFragment extends AsyncTask<String, Void, String> {
                 j++;
                 Log.d("55125", healthWeightInf[1]+","+"Kg"+","+healthWeightInf[2]+'('+healthWeightInf[3]+')');
             }
-            return result;
 
         }
-    }
-
-    protected void onPostExecute(String s) {
 
         Log.d("55125","notifyDataSetChanged");
         HealthWeightFragment.wAdapter.notifyDataSetChanged();

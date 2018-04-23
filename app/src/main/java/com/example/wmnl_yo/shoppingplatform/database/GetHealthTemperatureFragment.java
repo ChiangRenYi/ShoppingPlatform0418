@@ -92,10 +92,42 @@ public class GetHealthTemperatureFragment extends AsyncTask<String, Void, String
                     Log.e("55125", "Error", e);
                 }
             }
-            Log.d("55125",result);
+//            Log.d("55125",result);
+//            int j = 0;
+//
+//            String[] healthTemperature = result.split("<QQ>");
+//            String[] healthTemperature_value = new String[healthTemperature.length - 1];
+//            String[] healthTemperature_date = new String[healthTemperature.length - 1];
+//            String[] healthTemperature_time = new String[healthTemperature.length - 1];
+//
+//            HealthTemperatureObject.ITEMS.clear();
+//            HealthTemperatureObject dim = new HealthTemperatureObject();
+//
+//            for (int i = 0; i < healthTemperature.length - 1; i++) {
+//                String[] healthTemperatureInf = new String[5];
+//                healthTemperatureInf = healthTemperature[i].split("@#");
+//                healthTemperature_value[j] = healthTemperatureInf[1];
+//                healthTemperature_date[j] = healthTemperatureInf[2];
+//                healthTemperature_time[j] = healthTemperatureInf[3];
+//
+//                dim.addItem(new HealthTemperatureObject.HealthTemperatureObjectItem(R.drawable.ic_temperature,
+//                        healthTemperatureInf[1],"°C",healthTemperatureInf[2]+"("+healthTemperatureInf[3]+")"));
+//
+//                j++;
+//                Log.d("55125", healthTemperatureInf[1]+"°C"+","+healthTemperatureInf[2]+"("+healthTemperatureInf[3]+")");
+//            }
+            return result;
+
+        }
+    }
+
+    protected void onPostExecute(String s) {
+
+        if (s != null) {
+            Log.d("55125", s);
             int j = 0;
 
-            String[] healthTemperature = result.split("<QQ>");
+            String[] healthTemperature = s.split("<QQ>");
             String[] healthTemperature_value = new String[healthTemperature.length - 1];
             String[] healthTemperature_date = new String[healthTemperature.length - 1];
             String[] healthTemperature_time = new String[healthTemperature.length - 1];
@@ -111,18 +143,12 @@ public class GetHealthTemperatureFragment extends AsyncTask<String, Void, String
                 healthTemperature_time[j] = healthTemperatureInf[3];
 
                 dim.addItem(new HealthTemperatureObject.HealthTemperatureObjectItem(R.drawable.ic_temperature,
-                        healthTemperatureInf[1],"°C",healthTemperatureInf[2]+"("+healthTemperatureInf[3]+")"));
+                        healthTemperatureInf[1], "°C", healthTemperatureInf[2] + "(" + healthTemperatureInf[3] + ")"));
 
                 j++;
-                Log.d("55125", healthTemperatureInf[1]+"°C"+","+healthTemperatureInf[2]+"("+healthTemperatureInf[3]+")");
+                Log.d("55125", healthTemperatureInf[1] + "°C" + "," + healthTemperatureInf[2] + "(" + healthTemperatureInf[3] + ")");
             }
-            return result;
-
         }
-    }
-
-    protected void onPostExecute(String s) {
-
         Log.d("55125","notifyDataSetChanged");
         HealthTemperatureFragment.tAdapter.notifyDataSetChanged();
     }
