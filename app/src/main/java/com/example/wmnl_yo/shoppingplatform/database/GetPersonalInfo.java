@@ -119,7 +119,7 @@ public class GetPersonalInfo extends AsyncTask<String,Void,String>{
                 break;
 
             case "2":
-                career = "";
+                career = "教";
                 break;
 
             case "3":
