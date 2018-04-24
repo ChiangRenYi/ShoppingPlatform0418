@@ -152,6 +152,7 @@ public class PersonalInfoFragment extends Fragment {
 
                     Toast.makeText(getActivity(), "更新成功", Toast.LENGTH_SHORT).show();
 
+                    ((MainActivity) getContext()).replaceFragment(MemberServiceFragment.class, null);
 
                 }
             });

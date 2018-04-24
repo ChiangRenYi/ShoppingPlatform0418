@@ -58,6 +58,7 @@ public class MemberServiceFragment extends Fragment {
                             // Do something after 5s = 5000ms
                             preferences.edit().putString("PREFERENCE_NAME",PIname).commit();
                             preferences.edit().putString("PREFERENCE_GENDER",PIgender).commit();
+                            preferences.edit().putString("PREFERENCE_CAREER",PIcareer).commit();
                             preferences.edit().putString("PREFERENCE_NATIONALITY",PInationality).commit();
                             preferences.edit().putString("PREFERENCE_ID",PIID).commit();
                             preferences.edit().putString("PREFERENCE_BIRTHDAY",PIbirthday).commit();
@@ -65,7 +66,7 @@ public class MemberServiceFragment extends Fragment {
                             preferences.edit().putString("PREFERENCE_ADDRESS",PIaddress).commit();
                             preferences.edit().putString("PREFERENCE_CONTACT_PHONE",PIcontact_phone).commit();
                             preferences.edit().putString("PREFERENCE_PHONE",PIphone).commit();
-                            preferences.edit().putString("PREFERENCE_CAREER",PIcareer).commit();
+
                             ((MainActivity)getContext()).replaceFragment(PersonalInfoFragment.class, null);
                         }
                     }, 2000);

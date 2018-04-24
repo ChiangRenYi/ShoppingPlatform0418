@@ -7,15 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
 import com.example.wmnl_yo.shoppingplatform.database.GetSelectMemberFragment;
 
 public class MainFragmentTeacher extends Fragment implements View.OnClickListener {
     private View view;
-    LinearLayout btnMemberService, btnCourseManage, btnBuilding, btnOrderManage, btnAttendenceManage, btnCalendar, btnHealthManage, btnInteractive, btnOpinion, btnChat;
-
+    LinearLayout btnMemberService, btnCourseManage, btnBuilding, btnOrderManage, btnAttendenceManage, btnRollcall, btnHealthManage, btnInteractive, btnOpinion, btnChat;
+    TextView tvName;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -23,11 +25,12 @@ public class MainFragmentTeacher extends Fragment implements View.OnClickListene
             view = inflater.inflate(R.layout.fragment_main_teacher, container, false);
         }
 
+        tvName = (TextView)view.findViewById(R.id.textView25);
         btnMemberService = (LinearLayout) view.findViewById(R.id.layout_member_service_button);
         btnCourseManage = (LinearLayout) view.findViewById(R.id.layout_course_manage_button);
         btnBuilding = (LinearLayout) view.findViewById(R.id.layout_building_button);
         btnAttendenceManage = (LinearLayout) view.findViewById(R.id.layout_attendence_manage_button);
-        btnCalendar = (LinearLayout) view.findViewById(R.id.layout_calendar_button);
+        btnRollcall = (LinearLayout) view.findViewById(R.id.layout_course_rollcall);
         btnInteractive = (LinearLayout) view.findViewById(R.id.layout_interactive_button);
         btnOpinion = (LinearLayout) view.findViewById(R.id.layout_opinion_button);
 
@@ -35,9 +38,10 @@ public class MainFragmentTeacher extends Fragment implements View.OnClickListene
         btnCourseManage.setOnClickListener(this);
         btnBuilding.setOnClickListener(this);
         btnAttendenceManage.setOnClickListener(this);
-        btnCalendar.setOnClickListener(this);
+        btnRollcall.setOnClickListener(this);
         btnInteractive.setOnClickListener(this);
         btnOpinion.setOnClickListener(this);
+        tvName.setText(Constants.ACCOUNT);
 
         return view;
     }
@@ -66,8 +70,8 @@ public class MainFragmentTeacher extends Fragment implements View.OnClickListene
                 fragmentClass = AttendenceManageFragment.class;
                 break;
 
-            case R.id.layout_calendar_button:
-                fragmentClass = CalendarFragment.class;
+            case R.id.layout_course_rollcall:
+                fragmentClass = RollCallFragment.class;
                 break;
 
             case R.id.layout_interactive_button:

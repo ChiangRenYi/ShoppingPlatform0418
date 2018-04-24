@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -41,9 +42,9 @@ public class RollCallDetailFragment extends Fragment implements View.OnTouchList
     private ArrayList personIDList = new ArrayList();
     private RecyclerView mRecyclerView;
     private MyAdapter mAdapter;
-    private int courseNumber;
-    private String courseName;
+    private String courseName,courseNumber;
     private TextView tvCourseNumber, tvCourseName;
+    private SwitchCompat mSwitchCompat;
 
     public RollCallDetailFragment() {
         // Required empty public constructor
@@ -106,7 +107,7 @@ public class RollCallDetailFragment extends Fragment implements View.OnTouchList
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
                 layoutManager.getOrientation());
 
-        courseNumber = getArguments().getInt("courseNumber");
+        courseNumber = getArguments().getString("courseNumber");
         courseName = getArguments().getString("courseName");
         tvCourseNumber.setText("課程編號 : " + courseNumber);
         tvCourseName.setText("課程名稱 : " + courseName);
@@ -185,6 +186,11 @@ public class RollCallDetailFragment extends Fragment implements View.OnTouchList
         public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.custom_recyclerview_roll_call_detail, parent, false);
+
+            mSwitchCompat = (SwitchCompat)v.findViewById(R.id.RollCallSwitch);
+
+
+
             ViewHolder vh = new ViewHolder(v);
 
             return vh;
@@ -194,6 +200,19 @@ public class RollCallDetailFragment extends Fragment implements View.OnTouchList
         public void onBindViewHolder(ViewHolder holder, final int position) {
             holder.tvPersonID.setText(mPersonIDList.get(position).toString());
             holder.tvPersonName.setText(mPersonList.get(position).toString());
+
+            if(mPersonIDList.get(position).equals("1")){
+                studentLeave();
+
+            }
+        }
+
+
+        private void studentLeave(){
+            mSwitchCompat.setText("請假");
+            mSwitchCompat.setClickable(false);
+            mSwitchCompat.setChecked(false);
+
         }
 
         @Override

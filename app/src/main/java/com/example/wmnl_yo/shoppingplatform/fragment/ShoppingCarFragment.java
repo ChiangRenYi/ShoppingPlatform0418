@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.R;
+import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
 import com.example.wmnl_yo.shoppingplatform.activity.loginActivity;
 
 public class ShoppingCarFragment extends Fragment implements View.OnTouchListener{
@@ -29,7 +31,8 @@ public class ShoppingCarFragment extends Fragment implements View.OnTouchListene
         EmailText = (TextView)view.findViewById(R.id.tvEmail);
         NameText = (TextView)view.findViewById(R.id.tvName);
 
-        NameText.setText(Constants.ACCOUNT);
+        NameText.setText(MainActivity.account);
+        Log.d("123","123");
         EmailText.setText("歡迎");
 
         SignOutText.setOnClickListener(new View.OnClickListener() {

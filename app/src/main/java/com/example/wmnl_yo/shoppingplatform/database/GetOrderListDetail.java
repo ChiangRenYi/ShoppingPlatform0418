@@ -128,7 +128,7 @@ public class GetOrderListDetail extends AsyncTask<String,Void,String> {
                 OrderDetailFragment.orderDes = OrderDetailFragment.orderDes + orderlistQueryInf[2] +"\n" + "單價 :" + orderlistQueryInf[3] + "元   " + "數量:" + orderlistQueryInf[4] +  "個"+ "\n" +"----------------------------------" +"\n";
                 j++;
 
-                Log.d("55125", j + ":" + orderlistQueryInf[1] + "/" + orderlistQueryInf[2] + "/" + orderlistQueryInf[3]+ "/" + orderlistQueryInf[4]);
+                Log.d("55125-getdetail", j + ":" + orderlistQueryInf[1] + "/" + orderlistQueryInf[2] + "/" + orderlistQueryInf[3]+ "/" + orderlistQueryInf[4]);
             }
         }
 

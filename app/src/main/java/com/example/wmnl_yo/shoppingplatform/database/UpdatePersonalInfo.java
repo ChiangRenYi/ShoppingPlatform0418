@@ -93,12 +93,8 @@ public class UpdatePersonalInfo extends AsyncTask<String,Void,String>{
                     Log.e("55125", "Error", e);
                 }
             }
-            Log.e("55555",result);
-            Log.e("55886","顯示資料庫回傳結果");
-            String a = result.trim();
-            Log.e("55555~",a);
-            Log.e("55886","再次顯示回傳結果");
-            return a;
+
+            return result;
 
         }
     }
