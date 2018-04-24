@@ -30,7 +30,7 @@ public class MemberServiceFragment extends Fragment {
     public static String EMNO,EMjob,EMRdate,EMlicense,EMname,EMEname,EMbirthday,EMID,EMgender,EMcontact_phone,EMphone,EMnationality,EMmail,EMaddress,EMNaddress,EMeducation,EMhome,EMchildren,EMschool,EMdepartment,EM_Emer_people,EM_Emer_phone;
     private SharedPreferences preferences;
     private View view;
-    private Button btnPersonalInfo,btnPasswordReset;
+    private Button btnPersonalInfo,btnPasswordReset,btnCompetence;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if(view==null){
@@ -41,6 +41,7 @@ public class MemberServiceFragment extends Fragment {
         ((MainActivity) getActivity()).setSubTitle(" > 會員管理");
         btnPersonalInfo = (Button)view.findViewById(R.id.Button_personal_info);
         btnPasswordReset = (Button)view.findViewById(R.id.Button_password_reset);
+        btnCompetence = (Button)view.findViewById(R.id.Button_competence);
 
         btnPersonalInfo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -118,6 +119,15 @@ public class MemberServiceFragment extends Fragment {
             public void onClick(View v) {
 
                 ((MainActivity)getContext()).replaceFragment( PasswordResetFragment.class, null);
+
+            }
+        });
+
+        btnCompetence.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
 
             }
         });

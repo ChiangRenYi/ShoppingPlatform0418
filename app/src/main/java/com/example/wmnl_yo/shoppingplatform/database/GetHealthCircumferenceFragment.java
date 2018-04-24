@@ -94,10 +94,42 @@ public class GetHealthCircumferenceFragment extends AsyncTask<String, Void, Stri
                     Log.e("55125", "Error", e);
                 }
             }
-            Log.d("55125",result);
+//            Log.d("55125",result);
+//            int j = 0;
+//
+//            String[] healthCircumference = result.split("<QQ>");
+//            String[] healthCircumference_value = new String[healthCircumference.length - 1];
+//            String[] healthCircumference_date = new String[healthCircumference.length - 1];
+//            String[] healthCircumference_time = new String[healthCircumference.length - 1];
+//
+//            HealthCircumferenceObject.ITEMS.clear();
+//            HealthCircumferenceObject dim = new HealthCircumferenceObject();
+//
+//            for (int i = 0; i < healthCircumference.length - 1; i++) {
+//                String[] healthCircumferenceInf = new String[5];
+//                healthCircumferenceInf = healthCircumference[i].split("@#");
+//                healthCircumference_value[j] = healthCircumferenceInf[1];
+//                healthCircumference_date[j] = healthCircumferenceInf[2];
+//                healthCircumference_time[j] = healthCircumferenceInf[3];
+//
+//                dim.addItem(new HealthCircumferenceObject.HealthCircumferenceObjectItem(R.drawable.ic_circumference,
+//                        healthCircumferenceInf[1],"Cm",healthCircumferenceInf[2]+'('+healthCircumferenceInf[3]+")"));
+//
+//                j++;
+//                Log.d("55125", healthCircumferenceInf[1]+"Cm"+","+healthCircumferenceInf[2]+"("+healthCircumferenceInf[3]+")");
+//            }
+            return result;
+
+        }
+    }
+
+    protected void onPostExecute(String s) {
+
+        if (s != null){
+            Log.d("55125",s);
             int j = 0;
 
-            String[] healthCircumference = result.split("<QQ>");
+            String[] healthCircumference = s.split("<QQ>");
             String[] healthCircumference_value = new String[healthCircumference.length - 1];
             String[] healthCircumference_date = new String[healthCircumference.length - 1];
             String[] healthCircumference_time = new String[healthCircumference.length - 1];
@@ -118,13 +150,7 @@ public class GetHealthCircumferenceFragment extends AsyncTask<String, Void, Stri
                 j++;
                 Log.d("55125", healthCircumferenceInf[1]+"Cm"+","+healthCircumferenceInf[2]+"("+healthCircumferenceInf[3]+")");
             }
-            return result;
-
         }
-    }
-
-    protected void onPostExecute(String s) {
-
         Log.d("55125","notifyDataSetChanged");
         HealthCircumferenceFragment.cAdapter.notifyDataSetChanged();
     }

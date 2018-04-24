@@ -217,7 +217,7 @@ public class OrderResultFragment extends Fragment implements View.OnTouchListene
                     break;
 
                 case "1":
-                    payway = "條碼付款";
+                    payway = "超商付款";
                     break;
 
                 case "2":
@@ -251,12 +251,13 @@ public class OrderResultFragment extends Fragment implements View.OnTouchListene
                     bundle.putString("orderDate", OrderObjectList.get(position).orderDate);
                     bundle.putString("payway",OrderObjectList.get(position).paymentMethod);
                     switch (OrderObjectList.get(position).paymentMethod){
+
                         case "0":
                             s_payway = "ATM";
                             break;
 
                         case "1":
-                            s_payway = "條碼付款";
+                            s_payway = "超商付款";
                             break;
 
                         case "2":
@@ -268,6 +269,7 @@ public class OrderResultFragment extends Fragment implements View.OnTouchListene
                     }
 
                     switch (OrderObjectList.get(position).orderState){
+
                         case "0":
                             s_state = "未付款";
                             break;

@@ -89,10 +89,42 @@ public class GetHealthHeightFragment extends AsyncTask<String, Void, String> {
                     Log.e("55125", "Error", e);
                 }
             }
-            Log.d("55125",result);
+//            Log.d("55125",result);
+//            int j = 0;
+//
+//            String[] healthHeight = result.split("<QQ>");
+//            String[] healthHeight_value = new String[healthHeight.length - 1];
+//            String[] healthHeight_date = new String[healthHeight.length - 1];
+//            String[] healthHeight_time = new String[healthHeight.length - 1];
+//
+//            HealthHeightObject.ITEMS.clear();
+//            HealthHeightObject dim = new HealthHeightObject();
+//
+//            for (int i = 0; i < healthHeight.length - 1; i++) {
+//                String[] healthHeightInf = new String[5];
+//                healthHeightInf = healthHeight[i].split("@#");
+//                healthHeight_value[j] = healthHeightInf[1];
+//                healthHeight_date[j] = healthHeightInf[2];
+//                healthHeight_time[j] = healthHeightInf[3];
+//
+//                dim.addItem(new HealthHeightObject.HealthHeightObjectItem(R.drawable.ic_height,
+//                        healthHeightInf[1],"Cm",healthHeightInf[2]+"("+healthHeightInf[3]+")"));
+//
+//                j++;
+//                Log.d("55125", healthHeightInf[1]+","+"Cm"+","+healthHeightInf[2]+"("+healthHeightInf[3]+")");
+//            }
+            return result;
+
+        }
+    }
+
+    protected void onPostExecute(String s) {
+
+        if (s != null){
+            Log.d("55125",s);
             int j = 0;
 
-            String[] healthHeight = result.split("<QQ>");
+            String[] healthHeight = s.split("<QQ>");
             String[] healthHeight_value = new String[healthHeight.length - 1];
             String[] healthHeight_date = new String[healthHeight.length - 1];
             String[] healthHeight_time = new String[healthHeight.length - 1];
@@ -113,13 +145,7 @@ public class GetHealthHeightFragment extends AsyncTask<String, Void, String> {
                 j++;
                 Log.d("55125", healthHeightInf[1]+","+"Cm"+","+healthHeightInf[2]+"("+healthHeightInf[3]+")");
             }
-            return result;
-
         }
-    }
-
-    protected void onPostExecute(String s) {
-
         Log.d("55125","notifyDataSetChanged");
         HealthHeightFragment.hAdapter.notifyDataSetChanged();
     }
