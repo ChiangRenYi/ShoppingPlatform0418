@@ -127,6 +127,7 @@ public class MemberServiceFragment extends Fragment {
         btnCompetence.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getActivity(),"功能開發中",Toast.LENGTH_SHORT).show();
 
 
 

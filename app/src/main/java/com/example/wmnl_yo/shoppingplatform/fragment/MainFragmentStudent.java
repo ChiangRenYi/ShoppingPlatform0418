@@ -34,7 +34,7 @@ public class MainFragmentStudent extends Fragment implements View.OnClickListene
         btnAttendenceManage = (LinearLayout) view.findViewById(R.id.layout_attendence_manage_button);
         btnHealthManage = (LinearLayout) view.findViewById(R.id.layout_health_manage_button);
         btnInteractive = (LinearLayout) view.findViewById(R.id.layout_interactive_button);
-        btnOpinion = (LinearLayout) view.findViewById(R.id.layout_opinion_button);
+//        btnOpinion = (LinearLayout) view.findViewById(R.id.layout_opinion_button);
         btnSatisfaction=(LinearLayout) view.findViewById(R.id.layout_satisfaction_button);
 
         btnMemberService.setOnClickListener(this);
@@ -44,7 +44,7 @@ public class MainFragmentStudent extends Fragment implements View.OnClickListene
         btnAttendenceManage.setOnClickListener(this);
         btnHealthManage.setOnClickListener(this);
         btnInteractive.setOnClickListener(this);
-        btnOpinion.setOnClickListener(this);
+//        btnOpinion.setOnClickListener(this);
         btnBuilding.setOnClickListener(this);
         tvName.setText(Constants.ACCOUNT);
         btnSatisfaction.setOnClickListener(this);
