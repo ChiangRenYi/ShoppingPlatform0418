@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -13,7 +14,7 @@ import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.loginActivity;
 
-public class ShoppingCarFragment extends Fragment {
+public class ShoppingCarFragment extends Fragment implements View.OnTouchListener{
 
     private TextView SignOutText,EmailText,NameText;
 
@@ -45,5 +46,8 @@ public class ShoppingCarFragment extends Fragment {
         });
     }
 
-
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        return true;
+    }
 }

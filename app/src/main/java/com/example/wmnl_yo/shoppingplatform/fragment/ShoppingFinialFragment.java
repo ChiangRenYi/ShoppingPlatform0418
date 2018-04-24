@@ -214,10 +214,9 @@ public class ShoppingFinialFragment extends Fragment implements View.OnTouchList
     }
 
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        return false;
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        return true;
     }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

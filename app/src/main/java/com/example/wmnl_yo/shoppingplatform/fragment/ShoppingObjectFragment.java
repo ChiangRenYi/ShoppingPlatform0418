@@ -320,8 +320,8 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
     }
 
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        return false;
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        return true;
     }
 
     /**

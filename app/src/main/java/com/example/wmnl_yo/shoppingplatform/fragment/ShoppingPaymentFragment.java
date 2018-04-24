@@ -641,8 +641,8 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
     }
 
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        return false;
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        return true;
     }
 
     /**

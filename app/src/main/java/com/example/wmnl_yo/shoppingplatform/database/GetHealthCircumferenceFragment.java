@@ -8,9 +8,7 @@ import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.fragment.HealthCircumferenceFragment;
 import com.example.wmnl_yo.shoppingplatform.fragment.HealthManageFragment;
-import com.example.wmnl_yo.shoppingplatform.fragment.HealthWeightFragment;
 import com.example.wmnl_yo.shoppingplatform.object.HealthCircumferenceObject;
-import com.example.wmnl_yo.shoppingplatform.object.HealthWeightObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

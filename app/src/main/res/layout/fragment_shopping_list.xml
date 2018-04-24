@@ -4,7 +4,8 @@
     android:id="@+id/flShoppping"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#efedf2"
+    android:background="@drawable/car_b"
+    android:orientation="vertical"
     tools:context="com.example.wmnl_yo.shoppingplatform.fragment.ShoppingListFragment">
 
     <RelativeLayout

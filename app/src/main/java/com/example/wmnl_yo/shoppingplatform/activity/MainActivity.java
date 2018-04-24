@@ -465,11 +465,12 @@ public class MainActivity extends AppCompatActivity implements
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        if (fragobj != null)
+        if (fragobj != null) {
             fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.flShoppping, fragobj).commit();
-        else
-            fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.flShoppping, fragment).commit();
-    }
 
+        }else {
+            fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.flShoppping, fragment).commit();
+        }
+    }
 
 }
