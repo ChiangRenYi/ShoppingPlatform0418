@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#001aff</color>
     <color name="colorAccent">#DDDDDD</color>
     <color name="colorspf">#f2f2f2</color>
+    <color name="coloroff">#ff0000</color>
+    <color name="colorqian">#ff3333</color>
 </resources>

@@ -206,35 +206,35 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/layout_interactive_button"
+                        android:id="@+id/layout_course_rollcall"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:orientation="vertical"
-                        android:visibility="invisible"
                         android:paddingLeft="@dimen/_2sdp">
 
                         <ImageView
-                            android:id="@+id/imageView11"
+                            android:id="@+id/imageView2"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="@dimen/_70sdp"
-                            android:layout_alignTop="@+id/imageView9"
+                            android:layout_alignTop="@+id/imageView"
+                            android:layout_centerHorizontal="true"
                             android:layout_gravity="center_horizontal"
-                            android:layout_toEndOf="@+id/imageView2"
-                            android:layout_toRightOf="@+id/imageView2"
                             android:paddingBottom="@dimen/_2sdp"
-                            app:srcCompat="@drawable/b7" />
+                            app:srcCompat="@drawable/course_rollcall" />
 
                         <TextView
-                            android:id="@+id/textView20"
+                            android:id="@+id/textView15"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
-                            android:text="互動日誌"
+                            android:text="上課點名"
                             android:textColor="#000000"
                             android:textSize="@dimen/_12sdp" />
 
                     </LinearLayout>
+
+
 
                 </TableRow>
 
@@ -274,30 +274,31 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/layout_course_chat_button"
+                        android:id="@+id/layout_interactive_button"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:orientation="vertical"
-                        android:paddingLeft="@dimen/_2sdp"
-                        android:visibility="invisible">
+                        android:visibility="invisible"
+                        android:paddingLeft="@dimen/_2sdp">
 
                         <ImageView
-                            android:id="@+id/imageView2"
+                            android:id="@+id/imageView11"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="@dimen/_70sdp"
-                            android:layout_alignTop="@+id/imageView"
-                            android:layout_centerHorizontal="true"
+                            android:layout_alignTop="@+id/imageView9"
                             android:layout_gravity="center_horizontal"
+                            android:layout_toEndOf="@+id/imageView2"
+                            android:layout_toRightOf="@+id/imageView2"
                             android:paddingBottom="@dimen/_2sdp"
-                            app:srcCompat="@drawable/course_rollcall" />
+                            app:srcCompat="@drawable/b7" />
 
                         <TextView
-                            android:id="@+id/textView15"
+                            android:id="@+id/textView20"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
-                            android:text="上課點名"
+                            android:text="互動日誌"
                             android:textColor="#000000"
                             android:textSize="@dimen/_12sdp" />
 
