@@ -170,7 +170,7 @@ public class CourseQueryDetailFragment extends Fragment implements View.OnTouchL
             @Override
             protected Bitmap doInBackground(String... params)
             {
-                String url = "http://163.13.128.77:8080/20180417-v/ParentChildMuseum/CourseIntroductionRegistrations/CourseIntroductionRegistration/static/"+courseObject.mPicture;
+                String url = "http://163.13.128.77:8080/20180423-v1/ParentChildMuseum/CourseIntroductionRegistrations/CourseIntroductionRegistration/static/"+courseObject.mPicture;
                 return getBitmapFromURL(url);
             }
 

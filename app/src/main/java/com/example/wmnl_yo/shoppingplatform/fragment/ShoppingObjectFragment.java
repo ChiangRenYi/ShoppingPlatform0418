@@ -405,7 +405,7 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
                 @Override
                 protected Bitmap doInBackground(String... params)
                 {
-                    String url = "http://163.13.128.77:8080/20180417-v/ParentChildMuseum/CourseIntroductionRegistrations/CourseIntroductionRegistration/static/GDpicture/"+mshoppingmallList.get(position).Shoppingmall_photo;
+                    String url = "http://163.13.128.77:8080/20180423-v1/ParentChildMuseum/CourseIntroductionRegistrations/CourseIntroductionRegistration/static/"+mshoppingmallList.get(position).Shoppingmall_photo;
                     return getBitmapFromURL(url);
                 }
 

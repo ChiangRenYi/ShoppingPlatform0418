@@ -145,7 +145,7 @@ public class ShoppingObjectDetailFragment extends Fragment implements View.OnTou
             @Override
             protected Bitmap doInBackground(String... params)
             {
-                String url = "http://163.13.128.77:8080/20180417-v/ParentChildMuseum/CourseIntroductionRegistrations/CourseIntroductionRegistration/static/GDpicture/"+shoppingObject.Shoppingmall_photo;
+                String url = "http://163.13.128.77:8080/20180423-v1/ParentChildMuseum/CourseIntroductionRegistrations/CourseIntroductionRegistration/static/"+shoppingObject.Shoppingmall_photo;
                 return getBitmapFromURL(url);
             }
 
