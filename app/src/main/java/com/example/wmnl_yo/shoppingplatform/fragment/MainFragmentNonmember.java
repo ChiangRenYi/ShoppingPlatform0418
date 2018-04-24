@@ -7,14 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
 
 public class MainFragmentNonmember extends Fragment implements View.OnClickListener {
     private View view;
     LinearLayout btnMemberService, btnCourseManage, btnBuilding, btnOrderManage, btnAttendenceManage, btnCalendar, btnHealthManage, btnInteractive, btnOpinion, btnChat;
-
+    TextView tvName;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -32,6 +34,7 @@ public class MainFragmentNonmember extends Fragment implements View.OnClickListe
         btnInteractive = (LinearLayout) view.findViewById(R.id.layout_interactive_button);
         btnOpinion = (LinearLayout) view.findViewById(R.id.layout_opinion_button);
 //        btnChat = (LinearLayout) view.findViewById(R.id.layout_chat_button);
+        tvName = (TextView)view.findViewById(R.id.textView25);
 
         //btnMemberService.setOnClickListener(this);
         btnCourseManage.setOnClickListener(this);
@@ -43,6 +46,7 @@ public class MainFragmentNonmember extends Fragment implements View.OnClickListe
         btnOpinion.setOnClickListener(this);
 //        btnChat.setOnClickListener(this);
         btnBuilding.setOnClickListener(this);
+        tvName.setText(MainActivity.account);
 
         return view;
     }

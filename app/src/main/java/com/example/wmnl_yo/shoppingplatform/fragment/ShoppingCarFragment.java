@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.R;
+import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
 import com.example.wmnl_yo.shoppingplatform.activity.loginActivity;
 
 public class ShoppingCarFragment extends Fragment {
@@ -28,7 +29,7 @@ public class ShoppingCarFragment extends Fragment {
         EmailText = (TextView)view.findViewById(R.id.tvEmail);
         NameText = (TextView)view.findViewById(R.id.tvName);
 
-        NameText.setText(Constants.ACCOUNT);
+        NameText.setText(MainActivity.account);
         EmailText.setText("歡迎");
 
         SignOutText.setOnClickListener(new View.OnClickListener() {

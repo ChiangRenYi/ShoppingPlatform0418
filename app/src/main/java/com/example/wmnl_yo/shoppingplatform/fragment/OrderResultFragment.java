@@ -299,7 +299,7 @@ public class OrderResultFragment extends Fragment implements View.OnTouchListene
                         public void run() {
                             ((MainActivity) getContext()).replaceFragment(OrderDetailFragment.class, fragobj);
                         }
-                    }, 100);
+                    }, 1000);
 
 //                    ((MainActivity) getContext()).replaceFragment(OrderDetailFragment.class, fragobj);
                 }

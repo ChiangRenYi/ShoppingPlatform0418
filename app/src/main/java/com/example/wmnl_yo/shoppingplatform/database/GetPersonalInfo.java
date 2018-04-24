@@ -98,8 +98,9 @@ public class GetPersonalInfo extends AsyncTask<String,Void,String>{
     }
 
     protected void onPostExecute(String s) {
+        String career = "";
         String[] result = s.split("@#");
-        Log.d("55555",result[1]+result[2]+result[3]+result[4]+result[5]+result[6]+result[7]+result[8]+result[9]);
+        Log.d("55555",result[1]+result[2]+result[3]+result[4]+result[5]+result[6]+result[7]+result[8]+result[9]+result[10]);
 
         if(result[2].equals("0")){
             result[2] = "男";
@@ -107,15 +108,47 @@ public class GetPersonalInfo extends AsyncTask<String,Void,String>{
             result[2] = "女";
         }
 
+        switch (result[3]){
+
+            case "0":
+                career = "公";
+                break;
+
+            case "1":
+                career = "工";
+                break;
+
+            case "2":
+                career = "";
+                break;
+
+            case "3":
+                career = "軍/警";
+                break;
+
+            case "4":
+                career = "家管";
+                break;
+
+            case "5":
+                career = "商";
+                break;
+
+
+            default:
+                break;
+        }
+
         MemberServiceFragment.PIname = result[1];
         MemberServiceFragment.PIgender = result[2];
-        MemberServiceFragment.PInationality = result[3];
-        MemberServiceFragment.PIID = result[4];
-        MemberServiceFragment.PIbirthday = result[5];
-        MemberServiceFragment.PImail = result[6];
-        MemberServiceFragment.PIaddress = result[7];
-        MemberServiceFragment.PIcontact_phone = result[8];
-        MemberServiceFragment.PIphone = result[9];
+        MemberServiceFragment.PIcareer = career;
+        MemberServiceFragment.PInationality = result[4];
+        MemberServiceFragment.PIID = result[5];
+        MemberServiceFragment.PIbirthday = result[6];
+        MemberServiceFragment.PImail = result[7];
+        MemberServiceFragment.PIaddress = result[8];
+        MemberServiceFragment.PIcontact_phone = result[9];
+        MemberServiceFragment.PIphone = result[10];
 
         Log.e("DB55555", MemberServiceFragment.PIgender);
     }
