@@ -1,5 +1,6 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
@@ -192,22 +194,20 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                     @Override
                     public void run() {
                         if (db_shoppinglist_kind == "請選擇") {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            builder.setPositiveButton("確認", new DialogInterface.OnClickListener() {
+
+                            final Dialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                            alertDialog.show();
+                            alertDialog.setCanceledOnTouchOutside(false);
+                            Window window = alertDialog.getWindow();
+                            window.setContentView(R.layout.shopping_pushtext);
+                            Button btn_cancel=(Button) window.findViewById(R.id.btn_cancel);//确定按钮
+                            btn_cancel.setOnClickListener(new View.OnClickListener() {
                                 @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    Log.i("Code2care ", "Yes button Clicked!");
-                                    dialog.dismiss();
+                                public void onClick(View v) {
+                                    alertDialog.dismiss();
                                 }
                             });
 
-
-
-                            View dialoglayout = inflater.inflate(R.layout.shopping_list_alert, null);
-
-                            builder.setView(dialoglayout);
-                            builder.show();
-                            goods = "";
                         } else {
                             String[] deletegoods = goods.split(",");
                             int count = deletegoods.length;
