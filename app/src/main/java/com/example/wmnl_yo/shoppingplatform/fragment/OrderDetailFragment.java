@@ -3,6 +3,7 @@ package com.example.wmnl_yo.shoppingplatform.fragment;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -186,6 +187,16 @@ public class OrderDetailFragment extends Fragment implements View.OnTouchListene
         final Button btnCancelOrder = (Button) footerView.findViewById(R.id.btnCancelOrder);
 
         btnCancelOrder.setText("取消訂單");
+
+        if(orderState.equals("已付款")){
+            btnGoPay.setEnabled(false);
+            btnGoPay.getBackground().setColorFilter(0xFF888888,android.graphics.PorterDuff.Mode.MULTIPLY );
+            btnCancelOrder.getBackground().setColorFilter(0xFF888888,android.graphics.PorterDuff.Mode.MULTIPLY );
+            btnCancelOrder.setEnabled(false);
+        }else {
+            btnGoPay.setEnabled(true);
+            btnCancelOrder.setEnabled(true);
+        }
 
         btnGoPay.setOnClickListener(new View.OnClickListener() {
             @Override

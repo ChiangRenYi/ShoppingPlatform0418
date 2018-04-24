@@ -230,12 +230,13 @@ public class OrderResultFragment extends Fragment implements View.OnTouchListene
             switch (OrderObjectList.get(position).orderState){
                 case "0":
                     state = "未付款";
-                    holder.tvState.setTextColor(Color.parseColor("#FF0000"));
+//                    holder.tvState.setTextColor(Color.parseColor("#FF0000"));
                     break;
 
                 case "1":
                     state = "已付款";
                     break;
+
                 default:
                     break;
             }
@@ -299,22 +300,23 @@ public class OrderResultFragment extends Fragment implements View.OnTouchListene
                         public void run() {
                             ((MainActivity) getContext()).replaceFragment(OrderDetailFragment.class, fragobj);
                         }
-                    }, 1000);
+                    }, 300);
 
 //                    ((MainActivity) getContext()).replaceFragment(OrderDetailFragment.class, fragobj);
                 }
             });
-
-
-
-
-
 
             holder.tvDate.setText(OrderObjectList.get(position).orderDate);
             holder.tvNum.setText(String.format("%06d",Long.parseLong(OrderObjectList.get(position).businessNumber)));
             Log.d("55125-read",payway);
             holder.tvPayway.setText(payway);
             holder.tvState.setText(state);
+            if(state.equals("未付款")){
+                holder.tvState.setTextColor(Color.parseColor("#FF0000"));
+            }else{
+                holder.tvState.setTextColor(Color.parseColor("#000000"));
+
+            }
         }
 
 
