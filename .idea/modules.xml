@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ShoppingPlatform.iml" filepath="$PROJECT_DIR$/ShoppingPlatform.iml" />
       <module fileurl="file://C:\Users\WMNL-Jimmy\Desktop\github\ShoppingPlatform0418\ShoppingPlatform.iml" filepath="C:\Users\WMNL-Jimmy\Desktop\github\ShoppingPlatform0418\ShoppingPlatform.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ShoppingPlatform0418.iml" filepath="$PROJECT_DIR$/ShoppingPlatform0418.iml" />
-      <module fileurl="file://C:\Users\Sandy\Desktop\SP0413\ShoppingPlatform\ShoppingPlatform0418.iml" filepath="C:\Users\Sandy\Desktop\SP0413\ShoppingPlatform\ShoppingPlatform0418.iml" />
       <module fileurl="file://C:\Users\Sandy\Desktop\SP0413\ShoppingPlatform\.idea\ShoppingPlatform0418.iml" filepath="C:\Users\Sandy\Desktop\SP0413\ShoppingPlatform\.idea\ShoppingPlatform0418.iml" />
+      <module fileurl="file://C:\Users\Sandy\Desktop\SP0413\ShoppingPlatform\ShoppingPlatform0418.iml" filepath="C:\Users\Sandy\Desktop\SP0413\ShoppingPlatform\ShoppingPlatform0418.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
