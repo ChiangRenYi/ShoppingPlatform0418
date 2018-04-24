@@ -238,115 +238,115 @@
 
                 </TableRow>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <!--  <TableRow
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent">
 
-                    <LinearLayout
-                        android:id="@+id/layout_calendar_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:paddingLeft="@dimen/_2sdp"
-                        android:visibility="invisible">
+                     <LinearLayout
+                         android:id="@+id/layout_calendar_button"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:orientation="vertical"
+                         android:paddingLeft="@dimen/_2sdp"
+                         android:visibility="invisible">
 
-                        <ImageView
-                            android:id="@+id/imageView9"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="@dimen/_70sdp"
-                            android:layout_alignLeft="@+id/imageView2"
-                            android:layout_alignStart="@+id/imageView2"
-                            android:layout_alignTop="@+id/imageView8"
-                            android:layout_gravity="center_horizontal"
-                            android:paddingBottom="@dimen/_2sdp"
-                            app:srcCompat="@drawable/b5" />
+                         <ImageView
+                             android:id="@+id/imageView9"
+                             android:layout_width="@dimen/_70sdp"
+                             android:layout_height="@dimen/_70sdp"
+                             android:layout_alignLeft="@+id/imageView2"
+                             android:layout_alignStart="@+id/imageView2"
+                             android:layout_alignTop="@+id/imageView8"
+                             android:layout_gravity="center_horizontal"
+                             android:paddingBottom="@dimen/_2sdp"
+                             app:srcCompat="@drawable/b5" />
 
-                        <TextView
-                            android:id="@+id/textView18"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:text="行事曆"
-                            android:textColor="#000000"
-                            android:textSize="@dimen/_12sdp" />
+                         <TextView
+                             android:id="@+id/textView18"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:gravity="center_horizontal"
+                             android:text="行事曆"
+                             android:textColor="#000000"
+                             android:textSize="@dimen/_12sdp" />
 
-                    </LinearLayout>
+                     </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/layout_interactive_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:visibility="invisible"
-                        android:paddingLeft="@dimen/_2sdp">
+                     <LinearLayout
+                         android:id="@+id/layout_interactive_button"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:orientation="vertical"
+                         android:visibility="invisible"
+                         android:paddingLeft="@dimen/_2sdp">
 
-                        <ImageView
-                            android:id="@+id/imageView11"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="@dimen/_70sdp"
-                            android:layout_alignTop="@+id/imageView9"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_toEndOf="@+id/imageView2"
-                            android:layout_toRightOf="@+id/imageView2"
-                            android:paddingBottom="@dimen/_2sdp"
-                            app:srcCompat="@drawable/b7" />
+                         <ImageView
+                             android:id="@+id/imageView11"
+                             android:layout_width="@dimen/_70sdp"
+                             android:layout_height="@dimen/_70sdp"
+                             android:layout_alignTop="@+id/imageView9"
+                             android:layout_gravity="center_horizontal"
+                             android:layout_toEndOf="@+id/imageView2"
+                             android:layout_toRightOf="@+id/imageView2"
+                             android:paddingBottom="@dimen/_2sdp"
+                             app:srcCompat="@drawable/b7" />
 
-                        <TextView
-                            android:id="@+id/textView20"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:text="互動日誌"
-                            android:textColor="#000000"
-                            android:textSize="@dimen/_12sdp" />
+                         <TextView
+                             android:id="@+id/textView20"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:gravity="center_horizontal"
+                             android:text="互動日誌"
+                             android:textColor="#000000"
+                             android:textSize="@dimen/_12sdp" />
 
-                    </LinearLayout>
+                     </LinearLayout>
 
-                </TableRow>
+                 </TableRow>
+ -->
+             </TableLayout>
+         </ScrollView>
 
-            </TableLayout>
-        </ScrollView>
+         <RelativeLayout
+             android:id="@+id/user_info_layout"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_alignParentStart="true"
+             android:layout_alignParentTop="true">
 
-        <RelativeLayout
-            android:id="@+id/user_info_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true">
+             <ImageView
+                 android:id="@+id/imageView13"
+                 android:layout_width="@dimen/_100sdp"
+                 android:layout_height="@dimen/_100sdp"
+                 android:layout_alignParentLeft="true"
+                 android:layout_alignParentStart="true"
+                 android:layout_alignParentTop="true"
+                 android:padding="@dimen/_5sdp"
+                 app:srcCompat="@drawable/unknown_user" />
 
-            <ImageView
-                android:id="@+id/imageView13"
-                android:layout_width="@dimen/_100sdp"
-                android:layout_height="@dimen/_100sdp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:padding="@dimen/_5sdp"
-                app:srcCompat="@drawable/unknown_user" />
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_alignBottom="@+id/imageView13"
+                 android:layout_alignParentEnd="true"
+                 android:layout_alignParentRight="true"
+                 android:layout_toEndOf="@+id/imageView13"
+                 android:layout_toRightOf="@+id/imageView13"
+                 android:orientation="vertical"
+                 android:padding="@dimen/_15sdp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignBottom="@+id/imageView13"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_toEndOf="@+id/imageView13"
-                android:layout_toRightOf="@+id/imageView13"
-                android:orientation="vertical"
-                android:padding="@dimen/_15sdp">
+                 <TextView
+                     android:id="@+id/textView25"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:text="Gary"
+                     android:textColor="#000000"
+                     android:textSize="@dimen/_20sdp" />
 
-                <TextView
-                    android:id="@+id/textView25"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Gary"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/_20sdp" />
-
-                <!--<TextView-->
+                 <!--<TextView-->
                 <!--android:text="1歲10個月"-->
                 <!--android:paddingTop="@dimen/_10sdp"-->
                 <!--android:textColor="#c9c9c9"-->
