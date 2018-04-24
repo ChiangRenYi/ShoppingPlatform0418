@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class ShoppingCarFragment extends Fragment {
         NameText = (TextView)view.findViewById(R.id.tvName);
 
         NameText.setText(MainActivity.account);
+        Log.d("123","123");
         EmailText.setText("歡迎");
 
         SignOutText.setOnClickListener(new View.OnClickListener() {
