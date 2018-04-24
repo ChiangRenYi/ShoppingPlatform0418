@@ -145,432 +145,433 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
             public void onClick(View v) {
                 switch(payment_rg.getCheckedRadioButtonId()){
                     case R.id.payment_code:
-
                         bod_payment = "1";
-
-                    //codedate_str_6 15碼前6碼 3碼代碼 6V6 6V7 6V8
-                        Calendar date = Calendar.getInstance();
-                        date.add(Calendar.DAY_OF_MONTH, 7);
-                        SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyyMMdd");
-                        codedate_str_8 = bartDateFormat.format(date.getTime());
-                        String codemoney_str_3 = "";
-                        int codedate_int = Integer.valueOf(codedate_str_8) - 19110000;
-
-                        codedate_str_7 = String.valueOf(codedate_int);
-                        String codedate_str_6 = codedate_str_7.substring(codedate_str_7.length()-6,codedate_str_7.length());
-                        if(priceTotal_all <=20000){
-                            codemoney_str_3 = "6V6";
-                            code_1 = codedate_str_6+codemoney_str_3;
-                        }else if(20000 < priceTotal_all && priceTotal_all <=40000){
-                            codemoney_str_3 = "6V7";
-                            code_1 = codedate_str_6+codemoney_str_3;
-                        }else if(40000 < priceTotal_all){
-                            codemoney_str_3 = "6V8";
-                            code_1 = codedate_str_6+codemoney_str_3;
-                        }
-                        Insert_newbigorderlist insert_newbigorderlist = new Insert_newbigorderlist();
-                        insert_newbigorderlist.execute();
-                        final Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                bigorderlistnumber = String.format("%06d", Long.parseLong(bigorderlistnumber));
-                                String code2plus = "000900842"+bigorderlistnumber;
-                                int sum = 0;//將變數初始化
-                                char[] ch_array = code2plus.toCharArray();//將字串轉成字元陣列
-                                for(int i=0;i<ch_array.length;i++){
-                                    int c = ch_array[i]-'0';//將字元做計算轉int
-                                    sum+=c;//加總
-                                }
-                                sum = (sum*13)%11;
-                                if(sum == 10)
-                                    sum = 0;
-                                code_2 = "000900842"+bigorderlistnumber+String.valueOf(sum);
-                                String codedate_str_4 = codedate_str_7.substring(codedate_str_7.length()-6,codedate_str_7.length()-2);
-
-                                String checklittleseven_1 ="";
-                                String checklittleseven_2 = "";
-                                int odd=0 , even=0;
-                                code_3 = codedate_str_4+"00"+String.format("%09d", Long.parseLong(String.valueOf(priceTotal_all)));
-                                char[] code_1_str = code_1.toCharArray();
-                                char[] code_2_str = code_2.toCharArray();
-                                char[] code_3_str = code_3.toCharArray();//將字串轉成字元陣列
-                                int sum_code_1_odd=0;
-                                for(int i=0;i<code_1_str.length;i=i+2){
-                                    int c = code_1_str[i]-'0';//將字元做計算轉int
-                                    sum_code_1_odd += c;//加總
-                                }
-                                int sum_code_1_even=0;
-                                for(int i=1;i<code_1_str.length;i=i+2){
-                                    if (code_1_str[i] == 'v') {
-                                        sum_code_1_even = sum_code_1_even+5;
-                                    }else{
-                                    int c = code_1_str[i]-'0';//將字元做計算轉int
-                                    sum_code_1_even += c;}//加總
-                                }
-                                int sum_code_2_odd=0;
-                                for(int i=0;i<code_2_str.length;i=i+2){
-                                    int c = code_2_str[i]-'0';//將字元做計算轉int
-                                    sum_code_2_odd += c;//加總
-                                }
-                                int sum_code_2_even=0;
-                                for(int i=1;i<code_2_str.length;i=i+2){
-                                    int c = code_2_str[i]-'0';//將字元做計算轉int
-                                    sum_code_2_even += c;//加總
-                                }
-                                int sum_code_3_odd=0;
-                                for(int i=0;i<code_3_str.length;i=i+2){
-                                    int c = code_3_str[i]-'0';//將字元做計算轉int
-                                    sum_code_3_odd += c;//加總
-                                }
-                                int sum_code_3_even=0;
-                                for(int i=1;i<code_3_str.length;i=i+2){
-                                    int c = code_3_str[i]-'0';//將字元做計算轉int
-                                    sum_code_3_even += c;//加總
-                                }
-                                odd = (sum_code_1_odd+sum_code_2_odd+sum_code_3_odd)%11;
-                                if(odd == 0)
-                                    checklittleseven_1 = "A";
-                                else if(odd == 10)
-                                    checklittleseven_1 = "B";
-                                else if(odd !=10 && odd != 0)
-                                    checklittleseven_1 = String.valueOf(odd);
-                                even = (sum_code_1_even+sum_code_2_even+sum_code_3_even)%11;
-                                if(even == 0)
-                                    checklittleseven_2 = "X";
-                                else if(even == 10)
-                                    checklittleseven_2 = "Y";
-                                else if(even !=10 && odd != 0)
-                                    checklittleseven_2 = String.valueOf(even);
-                                code_3 = codedate_str_4+checklittleseven_1+checklittleseven_2+String.format("%09d", Long.parseLong(String.valueOf(priceTotal_all)));
-                                Log.d("55125",code_1);
-                                Log.d("55125",code_2);
-                                Log.d("55125",String.valueOf(sum_code_1_odd)+","+String.valueOf(sum_code_1_even)+","+String.valueOf(sum_code_2_odd)+","+String.valueOf(sum_code_2_even)+","+String.valueOf(sum_code_3_odd)+","+String.valueOf(sum_code_3_even));
-                                Log.d("55125",code_3);
-
-                                Update_bigorderlist update_bigorderlist = new Update_bigorderlist();
-                                update_bigorderlist.execute();
-                                Update_orderlist update_orderlist = new Update_orderlist();
-                                update_orderlist.execute();
-                                Handler handler1 = new Handler();
-                                handler1.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        switch (pay){
-                                            case "success":
-                                            {
-                                                Log.d("55125",shoppingcar_goodscount+","+shoppingcar_goodsnumber+","+shoppingcar_goodsprice);
-                                                ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingFinialFragment.class, null);
-                                                break;
-                                            }
-                                            case "fail":
-                                            {
-                                                Toast.makeText(getContext(),"請查看商品庫存量或課程剩餘人數",Toast.LENGTH_SHORT).show();
-                                                break;
-                                            }
-                                            default:
-                                                break;
-                                        }
-
-                                    }
-                                },600);
+                        if(priceTotal_all == 0){
+                            Toast.makeText(getContext(), "沒有需要下訂單的東西", Toast.LENGTH_SHORT).show();
+                        }else {
 
 
+                            //codedate_str_6 15碼前6碼 3碼代碼 6V6 6V7 6V8
+                            Calendar date = Calendar.getInstance();
+                            date.add(Calendar.DAY_OF_MONTH, 7);
+                            SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyyMMdd");
+                            codedate_str_8 = bartDateFormat.format(date.getTime());
+                            String codemoney_str_3 = "";
+                            int codedate_int = Integer.valueOf(codedate_str_8) - 19110000;
 
-
+                            codedate_str_7 = String.valueOf(codedate_int);
+                            String codedate_str_6 = codedate_str_7.substring(codedate_str_7.length() - 6, codedate_str_7.length());
+                            if (priceTotal_all <= 20000) {
+                                codemoney_str_3 = "6V6";
+                                code_1 = codedate_str_6 + codemoney_str_3;
+                            } else if (20000 < priceTotal_all && priceTotal_all <= 40000) {
+                                codemoney_str_3 = "6V7";
+                                code_1 = codedate_str_6 + codemoney_str_3;
+                            } else if (40000 < priceTotal_all) {
+                                codemoney_str_3 = "6V8";
+                                code_1 = codedate_str_6 + codemoney_str_3;
                             }
-                        },300);
+                            Insert_newbigorderlist insert_newbigorderlist = new Insert_newbigorderlist();
+                            insert_newbigorderlist.execute();
+                            final Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    bigorderlistnumber = String.format("%06d", Long.parseLong(bigorderlistnumber));
+                                    String code2plus = "000900842" + bigorderlistnumber;
+                                    int sum = 0;//將變數初始化
+                                    char[] ch_array = code2plus.toCharArray();//將字串轉成字元陣列
+                                    for (int i = 0; i < ch_array.length; i++) {
+                                        int c = ch_array[i] - '0';//將字元做計算轉int
+                                        sum += c;//加總
+                                    }
+                                    sum = (sum * 13) % 11;
+                                    if (sum == 10)
+                                        sum = 0;
+                                    code_2 = "000900842" + bigorderlistnumber + String.valueOf(sum);
+                                    String codedate_str_4 = codedate_str_7.substring(codedate_str_7.length() - 6, codedate_str_7.length() - 2);
+
+                                    String checklittleseven_1 = "";
+                                    String checklittleseven_2 = "";
+                                    int odd = 0, even = 0;
+                                    code_3 = codedate_str_4 + "00" + String.format("%09d", Long.parseLong(String.valueOf(priceTotal_all)));
+                                    char[] code_1_str = code_1.toCharArray();
+                                    char[] code_2_str = code_2.toCharArray();
+                                    char[] code_3_str = code_3.toCharArray();//將字串轉成字元陣列
+                                    int sum_code_1_odd = 0;
+                                    for (int i = 0; i < code_1_str.length; i = i + 2) {
+                                        int c = code_1_str[i] - '0';//將字元做計算轉int
+                                        sum_code_1_odd += c;//加總
+                                    }
+                                    int sum_code_1_even = 0;
+                                    for (int i = 1; i < code_1_str.length; i = i + 2) {
+                                        if (code_1_str[i] == 'v') {
+                                            sum_code_1_even = sum_code_1_even + 5;
+                                        } else {
+                                            int c = code_1_str[i] - '0';//將字元做計算轉int
+                                            sum_code_1_even += c;
+                                        }//加總
+                                    }
+                                    int sum_code_2_odd = 0;
+                                    for (int i = 0; i < code_2_str.length; i = i + 2) {
+                                        int c = code_2_str[i] - '0';//將字元做計算轉int
+                                        sum_code_2_odd += c;//加總
+                                    }
+                                    int sum_code_2_even = 0;
+                                    for (int i = 1; i < code_2_str.length; i = i + 2) {
+                                        int c = code_2_str[i] - '0';//將字元做計算轉int
+                                        sum_code_2_even += c;//加總
+                                    }
+                                    int sum_code_3_odd = 0;
+                                    for (int i = 0; i < code_3_str.length; i = i + 2) {
+                                        int c = code_3_str[i] - '0';//將字元做計算轉int
+                                        sum_code_3_odd += c;//加總
+                                    }
+                                    int sum_code_3_even = 0;
+                                    for (int i = 1; i < code_3_str.length; i = i + 2) {
+                                        int c = code_3_str[i] - '0';//將字元做計算轉int
+                                        sum_code_3_even += c;//加總
+                                    }
+                                    odd = (sum_code_1_odd + sum_code_2_odd + sum_code_3_odd) % 11;
+                                    if (odd == 0)
+                                        checklittleseven_1 = "A";
+                                    else if (odd == 10)
+                                        checklittleseven_1 = "B";
+                                    else if (odd != 10 && odd != 0)
+                                        checklittleseven_1 = String.valueOf(odd);
+                                    even = (sum_code_1_even + sum_code_2_even + sum_code_3_even) % 11;
+                                    if (even == 0)
+                                        checklittleseven_2 = "X";
+                                    else if (even == 10)
+                                        checklittleseven_2 = "Y";
+                                    else if (even != 10 && odd != 0)
+                                        checklittleseven_2 = String.valueOf(even);
+                                    code_3 = codedate_str_4 + checklittleseven_1 + checklittleseven_2 + String.format("%09d", Long.parseLong(String.valueOf(priceTotal_all)));
+                                    Log.d("55125", code_1);
+                                    Log.d("55125", code_2);
+                                    Log.d("55125", String.valueOf(sum_code_1_odd) + "," + String.valueOf(sum_code_1_even) + "," + String.valueOf(sum_code_2_odd) + "," + String.valueOf(sum_code_2_even) + "," + String.valueOf(sum_code_3_odd) + "," + String.valueOf(sum_code_3_even));
+                                    Log.d("55125", code_3);
+
+                                    Update_bigorderlist update_bigorderlist = new Update_bigorderlist();
+                                    update_bigorderlist.execute();
+                                    Update_orderlist update_orderlist = new Update_orderlist();
+                                    update_orderlist.execute();
+                                    Handler handler1 = new Handler();
+                                    handler1.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            switch (pay) {
+                                                case "success": {
+                                                    Log.d("55125", shoppingcar_goodscount + "," + shoppingcar_goodsnumber + "," + shoppingcar_goodsprice);
+                                                    ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingFinialFragment.class, null);
+                                                    break;
+                                                }
+                                                case "fail": {
+                                                    Toast.makeText(getContext(), "請查看商品庫存量或課程剩餘人數", Toast.LENGTH_SHORT).show();
+                                                    break;
+                                                }
+                                                default:
+                                                    break;
+                                            }
+
+                                        }
+                                    }, 600);
 
 
+                                }
+                            }, 300);
+
+                        }
 
                         break;
                     case R.id.payment_ATM:
 
                         bod_payment = "0";
+                        if(priceTotal_all == 0){
+                            Toast.makeText(getContext(), "沒有需要下訂單的東西", Toast.LENGTH_SHORT).show();
+                        }else {
+                            //codedate_str_6 15碼前6碼 3碼代碼 6V6 6V7 6V8
+                            Calendar date_1 = Calendar.getInstance();
+                            date_1.add(Calendar.DAY_OF_MONTH, 7);
+                            SimpleDateFormat bartDateFormat_1 = new SimpleDateFormat("yyyyMMdd");
+                            codedate_str_8 = bartDateFormat_1.format(date_1.getTime());
+                            String codemoney_str_3_1 = "";
+                            int codedate_int_1 = Integer.valueOf(codedate_str_8) - 19110000;
 
-                        //codedate_str_6 15碼前6碼 3碼代碼 6V6 6V7 6V8
-                        Calendar date_1 = Calendar.getInstance();
-                        date_1.add(Calendar.DAY_OF_MONTH, 7);
-                        SimpleDateFormat bartDateFormat_1 = new SimpleDateFormat("yyyyMMdd");
-                        codedate_str_8 = bartDateFormat_1.format(date_1.getTime());
-                        String codemoney_str_3_1 = "";
-                        int codedate_int_1 = Integer.valueOf(codedate_str_8) - 19110000;
-
-                        codedate_str_7 = String.valueOf(codedate_int_1);
-                        String codedate_str_6_1 = codedate_str_7.substring(codedate_str_7.length()-6,codedate_str_7.length());
-                        if(priceTotal_all <=20000){
-                            codemoney_str_3 = "6V6";
-                            code_1 = codedate_str_6_1+codemoney_str_3;
-                        }else if(20000 < priceTotal_all && priceTotal_all <=40000){
-                            codemoney_str_3 = "6V7";
-                            code_1 = codedate_str_6_1+codemoney_str_3;
-                        }else if(40000 < priceTotal_all){
-                            codemoney_str_3 = "6V8";
-                            code_1 = codedate_str_6_1+codemoney_str_3;
-                        }
-                        Insert_newbigorderlist insert_newbigorderlist_1 = new Insert_newbigorderlist();
-                        insert_newbigorderlist_1.execute();
-                        final Handler handler_1 = new Handler();
-                        handler_1.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                bigorderlistnumber = String.format("%06d", Long.parseLong(bigorderlistnumber));
-                                String code2plus = "000900842"+bigorderlistnumber;
-                                int sum = 0;//將變數初始化
-                                char[] ch_array = code2plus.toCharArray();//將字串轉成字元陣列
-                                for(int i=0;i<ch_array.length;i++){
-                                    int c = ch_array[i]-'0';//將字元做計算轉int
-                                    sum+=c;//加總
-                                }
-                                sum = (sum*13)%11;
-                                if(sum == 10)
-                                    sum = 0;
-                                code_2 = "000900842"+bigorderlistnumber+String.valueOf(sum);
-                                String codedate_str_4 = codedate_str_7.substring(codedate_str_7.length()-6,codedate_str_7.length()-2);
-
-                                String checklittleseven_1 ="";
-                                String checklittleseven_2 = "";
-                                int odd=0 , even=0;
-                                code_3 = codedate_str_4+"00"+String.format("%09d", Long.parseLong(String.valueOf(priceTotal_all)));
-                                char[] code_1_str = code_1.toCharArray();
-                                char[] code_2_str = code_2.toCharArray();
-                                char[] code_3_str = code_3.toCharArray();//將字串轉成字元陣列
-                                int sum_code_1_odd=0;
-                                for(int i=0;i<code_1_str.length;i=i+2){
-                                    int c = code_1_str[i]-'0';//將字元做計算轉int
-                                    sum_code_1_odd += c;//加總
-                                }
-                                int sum_code_1_even=0;
-                                for(int i=1;i<code_1_str.length;i=i+2){
-                                    if (code_1_str[i] == 'v') {
-                                        sum_code_1_even = sum_code_1_even+5;
-                                    }else{
-                                        int c = code_1_str[i]-'0';//將字元做計算轉int
-                                        sum_code_1_even += c;}//加總
-                                }
-                                int sum_code_2_odd=0;
-                                for(int i=0;i<code_2_str.length;i=i+2){
-                                    int c = code_2_str[i]-'0';//將字元做計算轉int
-                                    sum_code_2_odd += c;//加總
-                                }
-                                int sum_code_2_even=0;
-                                for(int i=1;i<code_2_str.length;i=i+2){
-                                    int c = code_2_str[i]-'0';//將字元做計算轉int
-                                    sum_code_2_even += c;//加總
-                                }
-                                int sum_code_3_odd=0;
-                                for(int i=0;i<code_3_str.length;i=i+2){
-                                    int c = code_3_str[i]-'0';//將字元做計算轉int
-                                    sum_code_3_odd += c;//加總
-                                }
-                                int sum_code_3_even=0;
-                                for(int i=1;i<code_3_str.length;i=i+2){
-                                    int c = code_3_str[i]-'0';//將字元做計算轉int
-                                    sum_code_3_even += c;//加總
-                                }
-                                odd = (sum_code_1_odd+sum_code_2_odd+sum_code_3_odd)%11;
-                                if(odd == 0)
-                                    checklittleseven_1 = "A";
-                                else if(odd == 10)
-                                    checklittleseven_1 = "B";
-                                else if(odd !=10 && odd != 0)
-                                    checklittleseven_1 = String.valueOf(odd);
-                                even = (sum_code_1_even+sum_code_2_even+sum_code_3_even)%11;
-                                if(even == 0)
-                                    checklittleseven_2 = "X";
-                                else if(even == 10)
-                                    checklittleseven_2 = "Y";
-                                else if(even !=10 && odd != 0)
-                                    checklittleseven_2 = String.valueOf(even);
-                                code_3 = codedate_str_4+checklittleseven_1+checklittleseven_2+String.format("%09d", Long.parseLong(String.valueOf(priceTotal_all)));
-                                Log.d("55125",code_1);
-                                Log.d("55125",code_2);
-                                Log.d("55125",String.valueOf(sum_code_1_odd)+","+String.valueOf(sum_code_1_even)+","+String.valueOf(sum_code_2_odd)+","+String.valueOf(sum_code_2_even)+","+String.valueOf(sum_code_3_odd)+","+String.valueOf(sum_code_3_even));
-                                Log.d("55125",code_3);
-
-                                Update_bigorderlist update_bigorderlist = new Update_bigorderlist();
-                                update_bigorderlist.execute();
-                                Update_orderlist update_orderlist = new Update_orderlist();
-                                update_orderlist.execute();
-                                Handler handler1 = new Handler();
-                                handler1.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-
-                                        switch (pay){
-                                            case "success":
-                                            {
-                                                Log.d("55125",shoppingcar_goodscount+","+shoppingcar_goodsnumber+","+shoppingcar_goodsprice);
-                                                ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingCarATMFragment.class, null);
-                                                break;
-                                            }
-                                            case "fail":
-                                            {
-                                                Toast.makeText(getContext(),"請查看商品庫存量或課程剩餘人數",Toast.LENGTH_SHORT).show();
-                                                break;
-                                            }
-                                            default:
-                                                break;
-                                        }
-                                    }
-                                },600);
-
-
-
-
+                            codedate_str_7 = String.valueOf(codedate_int_1);
+                            String codedate_str_6_1 = codedate_str_7.substring(codedate_str_7.length() - 6, codedate_str_7.length());
+                            if (priceTotal_all <= 20000) {
+                                codemoney_str_3_1 = "6V6";
+                                code_1 = codedate_str_6_1 + codemoney_str_3_1;
+                            } else if (20000 < priceTotal_all && priceTotal_all <= 40000) {
+                                codemoney_str_3_1 = "6V7";
+                                code_1 = codedate_str_6_1 + codemoney_str_3_1;
+                            } else if (40000 < priceTotal_all) {
+                                codemoney_str_3_1 = "6V8";
+                                code_1 = codedate_str_6_1 + codemoney_str_3_1;
                             }
-                        },300);
+                            Insert_newbigorderlist insert_newbigorderlist_1 = new Insert_newbigorderlist();
+                            insert_newbigorderlist_1.execute();
+                            final Handler handler_1 = new Handler();
+                            handler_1.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    bigorderlistnumber = String.format("%06d", Long.parseLong(bigorderlistnumber));
+                                    String code2plus = "000900842" + bigorderlistnumber;
+                                    int sum = 0;//將變數初始化
+                                    char[] ch_array = code2plus.toCharArray();//將字串轉成字元陣列
+                                    for (int i = 0; i < ch_array.length; i++) {
+                                        int c = ch_array[i] - '0';//將字元做計算轉int
+                                        sum += c;//加總
+                                    }
+                                    sum = (sum * 13) % 11;
+                                    if (sum == 10)
+                                        sum = 0;
+                                    code_2 = "000900842" + bigorderlistnumber + String.valueOf(sum);
+                                    String codedate_str_4 = codedate_str_7.substring(codedate_str_7.length() - 6, codedate_str_7.length() - 2);
 
+                                    String checklittleseven_1 = "";
+                                    String checklittleseven_2 = "";
+                                    int odd = 0, even = 0;
+                                    code_3 = codedate_str_4 + "00" + String.format("%09d", Long.parseLong(String.valueOf(priceTotal_all)));
+                                    char[] code_1_str = code_1.toCharArray();
+                                    char[] code_2_str = code_2.toCharArray();
+                                    char[] code_3_str = code_3.toCharArray();//將字串轉成字元陣列
+                                    int sum_code_1_odd = 0;
+                                    for (int i = 0; i < code_1_str.length; i = i + 2) {
+                                        int c = code_1_str[i] - '0';//將字元做計算轉int
+                                        sum_code_1_odd += c;//加總
+                                    }
+                                    int sum_code_1_even = 0;
+                                    for (int i = 1; i < code_1_str.length; i = i + 2) {
+                                        if (code_1_str[i] == 'v') {
+                                            sum_code_1_even = sum_code_1_even + 5;
+                                        } else {
+                                            int c = code_1_str[i] - '0';//將字元做計算轉int
+                                            sum_code_1_even += c;
+                                        }//加總
+                                    }
+                                    int sum_code_2_odd = 0;
+                                    for (int i = 0; i < code_2_str.length; i = i + 2) {
+                                        int c = code_2_str[i] - '0';//將字元做計算轉int
+                                        sum_code_2_odd += c;//加總
+                                    }
+                                    int sum_code_2_even = 0;
+                                    for (int i = 1; i < code_2_str.length; i = i + 2) {
+                                        int c = code_2_str[i] - '0';//將字元做計算轉int
+                                        sum_code_2_even += c;//加總
+                                    }
+                                    int sum_code_3_odd = 0;
+                                    for (int i = 0; i < code_3_str.length; i = i + 2) {
+                                        int c = code_3_str[i] - '0';//將字元做計算轉int
+                                        sum_code_3_odd += c;//加總
+                                    }
+                                    int sum_code_3_even = 0;
+                                    for (int i = 1; i < code_3_str.length; i = i + 2) {
+                                        int c = code_3_str[i] - '0';//將字元做計算轉int
+                                        sum_code_3_even += c;//加總
+                                    }
+                                    odd = (sum_code_1_odd + sum_code_2_odd + sum_code_3_odd) % 11;
+                                    if (odd == 0)
+                                        checklittleseven_1 = "A";
+                                    else if (odd == 10)
+                                        checklittleseven_1 = "B";
+                                    else if (odd != 10 && odd != 0)
+                                        checklittleseven_1 = String.valueOf(odd);
+                                    even = (sum_code_1_even + sum_code_2_even + sum_code_3_even) % 11;
+                                    if (even == 0)
+                                        checklittleseven_2 = "X";
+                                    else if (even == 10)
+                                        checklittleseven_2 = "Y";
+                                    else if (even != 10 && odd != 0)
+                                        checklittleseven_2 = String.valueOf(even);
+                                    code_3 = codedate_str_4 + checklittleseven_1 + checklittleseven_2 + String.format("%09d", Long.parseLong(String.valueOf(priceTotal_all)));
+                                    Log.d("55125", code_1);
+                                    Log.d("55125", code_2);
+                                    Log.d("55125", String.valueOf(sum_code_1_odd) + "," + String.valueOf(sum_code_1_even) + "," + String.valueOf(sum_code_2_odd) + "," + String.valueOf(sum_code_2_even) + "," + String.valueOf(sum_code_3_odd) + "," + String.valueOf(sum_code_3_even));
+                                    Log.d("55125", code_3);
+
+                                    Update_bigorderlist update_bigorderlist = new Update_bigorderlist();
+                                    update_bigorderlist.execute();
+                                    Update_orderlist update_orderlist = new Update_orderlist();
+                                    update_orderlist.execute();
+                                    Handler handler1 = new Handler();
+                                    handler1.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+
+                                            switch (pay) {
+                                                case "success": {
+                                                    Log.d("55125", shoppingcar_goodscount + "," + shoppingcar_goodsnumber + "," + shoppingcar_goodsprice);
+                                                    ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingCarATMFragment.class, null);
+                                                    break;
+                                                }
+                                                case "fail": {
+                                                    Toast.makeText(getContext(), "請查看商品庫存量或課程剩餘人數", Toast.LENGTH_SHORT).show();
+                                                    break;
+                                                }
+                                                default:
+                                                    break;
+                                            }
+                                        }
+                                    }, 600);
+
+
+                                }
+                            }, 300);
+                        }
                         break;
                     case R.id.payment_card:
 
                         bod_payment = "2";
+                        if(priceTotal_all == 0){
+                            Toast.makeText(getContext(), "沒有需要下訂單的東西", Toast.LENGTH_SHORT).show();
+                        }else {
+                            new AlertDialog.Builder(getActivity()).setTitle("確定使用信用卡結帳?")
+                                    .setMessage("請至網頁版使用信用卡結帳")
+                                    .setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Toast.makeText(getContext(), "請依選擇方式進行繳費", Toast.LENGTH_SHORT).show();
 
-                        new AlertDialog.Builder(getActivity()).setTitle("確定使用信用卡結帳?")
-                                .setMessage("請至網頁版使用信用卡結帳")
-                                .setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Toast.makeText(getContext(),"請依選擇方式進行繳費", Toast.LENGTH_SHORT).show();
+                                            //codedate_str_6 15碼前6碼 3碼代碼 6V6 6V7 6V8
+                                            Calendar date = Calendar.getInstance();
+                                            date.add(Calendar.DAY_OF_MONTH, 7);
+                                            SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyyMMdd");
+                                            codedate_str_8 = bartDateFormat.format(date.getTime());
+                                            String codemoney_str_3 = "";
+                                            int codedate_int = Integer.valueOf(codedate_str_8) - 19110000;
 
-                                        //codedate_str_6 15碼前6碼 3碼代碼 6V6 6V7 6V8
-                                        Calendar date = Calendar.getInstance();
-                                        date.add(Calendar.DAY_OF_MONTH, 7);
-                                        SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyyMMdd");
-                                        codedate_str_8 = bartDateFormat.format(date.getTime());
-                                        String codemoney_str_3 = "";
-                                        int codedate_int = Integer.valueOf(codedate_str_8) - 19110000;
-
-                                        codedate_str_7 = String.valueOf(codedate_int);
-                                        String codedate_str_6 = codedate_str_7.substring(codedate_str_7.length()-6,codedate_str_7.length());
-                                        if(priceTotal_all <=20000){
-                                            codemoney_str_3 = "6V6";
-                                            code_1 = codedate_str_6+codemoney_str_3;
-                                        }else if(20000 < priceTotal_all && priceTotal_all <=40000){
-                                            codemoney_str_3 = "6V7";
-                                            code_1 = codedate_str_6+codemoney_str_3;
-                                        }else if(40000 < priceTotal_all){
-                                            codemoney_str_3 = "6V8";
-                                            code_1 = codedate_str_6+codemoney_str_3;
-                                        }
-                                        Insert_newbigorderlist insert_newbigorderlist = new Insert_newbigorderlist();
-                                        insert_newbigorderlist.execute();
-                                        final Handler handler = new Handler();
-                                        handler.postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                bigorderlistnumber = String.format("%06d", Long.parseLong(bigorderlistnumber));
-                                                String code2plus = "000900842"+bigorderlistnumber;
-                                                int sum = 0;//將變數初始化
-                                                char[] ch_array = code2plus.toCharArray();//將字串轉成字元陣列
-                                                for(int i=0;i<ch_array.length;i++){
-                                                    int c = ch_array[i]-'0';//將字元做計算轉int
-                                                    sum+=c;//加總
-                                                }
-                                                sum = (sum*13)%11;
-                                                if(sum == 10)
-                                                    sum = 0;
-                                                code_2 = "000900842"+bigorderlistnumber+String.valueOf(sum);
-                                                String codedate_str_4 = codedate_str_7.substring(codedate_str_7.length()-6,codedate_str_7.length()-2);
-
-                                                String checklittleseven_1 ="";
-                                                String checklittleseven_2 = "";
-                                                int odd=0 , even=0;
-                                                code_3 = codedate_str_4+"00"+String.format("%09d", Long.parseLong(String.valueOf(priceTotal_all)));
-                                                char[] code_1_str = code_1.toCharArray();
-                                                char[] code_2_str = code_2.toCharArray();
-                                                char[] code_3_str = code_3.toCharArray();//將字串轉成字元陣列
-                                                int sum_code_1_odd=0;
-                                                for(int i=0;i<code_1_str.length;i=i+2){
-                                                    int c = code_1_str[i]-'0';//將字元做計算轉int
-                                                    sum_code_1_odd += c;//加總
-                                                }
-                                                int sum_code_1_even=0;
-                                                for(int i=1;i<code_1_str.length;i=i+2){
-                                                    if (code_1_str[i] == 'v') {
-                                                        sum_code_1_even = sum_code_1_even+5;
-                                                    }else{
-                                                        int c = code_1_str[i]-'0';//將字元做計算轉int
-                                                        sum_code_1_even += c;}//加總
-                                                }
-                                                int sum_code_2_odd=0;
-                                                for(int i=0;i<code_2_str.length;i=i+2){
-                                                    int c = code_2_str[i]-'0';//將字元做計算轉int
-                                                    sum_code_2_odd += c;//加總
-                                                }
-                                                int sum_code_2_even=0;
-                                                for(int i=1;i<code_2_str.length;i=i+2){
-                                                    int c = code_2_str[i]-'0';//將字元做計算轉int
-                                                    sum_code_2_even += c;//加總
-                                                }
-                                                int sum_code_3_odd=0;
-                                                for(int i=0;i<code_3_str.length;i=i+2){
-                                                    int c = code_3_str[i]-'0';//將字元做計算轉int
-                                                    sum_code_3_odd += c;//加總
-                                                }
-                                                int sum_code_3_even=0;
-                                                for(int i=1;i<code_3_str.length;i=i+2){
-                                                    int c = code_3_str[i]-'0';//將字元做計算轉int
-                                                    sum_code_3_even += c;//加總
-                                                }
-                                                odd = (sum_code_1_odd+sum_code_2_odd+sum_code_3_odd)%11;
-                                                if(odd == 0)
-                                                    checklittleseven_1 = "A";
-                                                else if(odd == 10)
-                                                    checklittleseven_1 = "B";
-                                                else if(odd !=10 && odd != 0)
-                                                    checklittleseven_1 = String.valueOf(odd);
-                                                even = (sum_code_1_even+sum_code_2_even+sum_code_3_even)%11;
-                                                if(even == 0)
-                                                    checklittleseven_2 = "X";
-                                                else if(even == 10)
-                                                    checklittleseven_2 = "Y";
-                                                else if(even !=10 && odd != 0)
-                                                    checklittleseven_2 = String.valueOf(even);
-                                                code_3 = codedate_str_4+checklittleseven_1+checklittleseven_2+String.format("%09d", Long.parseLong(String.valueOf(priceTotal_all)));
-                                                Log.d("55125",code_1);
-                                                Log.d("55125",code_2);
-                                                Log.d("55125",String.valueOf(sum_code_1_odd)+","+String.valueOf(sum_code_1_even)+","+String.valueOf(sum_code_2_odd)+","+String.valueOf(sum_code_2_even)+","+String.valueOf(sum_code_3_odd)+","+String.valueOf(sum_code_3_even));
-                                                Log.d("55125",code_3);
-
-                                                Update_bigorderlist update_bigorderlist = new Update_bigorderlist();
-                                                update_bigorderlist.execute();
-                                                Update_orderlist update_orderlist = new Update_orderlist();
-                                                update_orderlist.execute();
-                                                Handler handler1 = new Handler();
-                                                handler1.postDelayed(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-
-                                                        switch (pay){
-                                                            case "success":
-                                                            {
-                                                                Log.d("55125",shoppingcar_goodscount+","+shoppingcar_goodsnumber+","+shoppingcar_goodsprice);
-                                                                ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingListFragment.class, null);
-                                                                break;
-                                                            }
-                                                            case "fail":
-                                                            {
-                                                                Toast.makeText(getContext(),"請查看商品庫存量或課程剩餘人數",Toast.LENGTH_SHORT).show();
-                                                                break;
-                                                            }
-                                                            default:
-                                                                break;
-                                                        }
-                                                    }
-                                                },600);
+                                            codedate_str_7 = String.valueOf(codedate_int);
+                                            String codedate_str_6 = codedate_str_7.substring(codedate_str_7.length() - 6, codedate_str_7.length());
+                                            if (priceTotal_all <= 20000) {
+                                                codemoney_str_3 = "6V6";
+                                                code_1 = codedate_str_6 + codemoney_str_3;
+                                            } else if (20000 < priceTotal_all && priceTotal_all <= 40000) {
+                                                codemoney_str_3 = "6V7";
+                                                code_1 = codedate_str_6 + codemoney_str_3;
+                                            } else if (40000 < priceTotal_all) {
+                                                codemoney_str_3 = "6V8";
+                                                code_1 = codedate_str_6 + codemoney_str_3;
                                             }
-                                        },300);
+                                            Insert_newbigorderlist insert_newbigorderlist = new Insert_newbigorderlist();
+                                            insert_newbigorderlist.execute();
+                                            final Handler handler = new Handler();
+                                            handler.postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    bigorderlistnumber = String.format("%06d", Long.parseLong(bigorderlistnumber));
+                                                    String code2plus = "000900842" + bigorderlistnumber;
+                                                    int sum = 0;//將變數初始化
+                                                    char[] ch_array = code2plus.toCharArray();//將字串轉成字元陣列
+                                                    for (int i = 0; i < ch_array.length; i++) {
+                                                        int c = ch_array[i] - '0';//將字元做計算轉int
+                                                        sum += c;//加總
+                                                    }
+                                                    sum = (sum * 13) % 11;
+                                                    if (sum == 10)
+                                                        sum = 0;
+                                                    code_2 = "000900842" + bigorderlistnumber + String.valueOf(sum);
+                                                    String codedate_str_4 = codedate_str_7.substring(codedate_str_7.length() - 6, codedate_str_7.length() - 2);
+
+                                                    String checklittleseven_1 = "";
+                                                    String checklittleseven_2 = "";
+                                                    int odd = 0, even = 0;
+                                                    code_3 = codedate_str_4 + "00" + String.format("%09d", Long.parseLong(String.valueOf(priceTotal_all)));
+                                                    char[] code_1_str = code_1.toCharArray();
+                                                    char[] code_2_str = code_2.toCharArray();
+                                                    char[] code_3_str = code_3.toCharArray();//將字串轉成字元陣列
+                                                    int sum_code_1_odd = 0;
+                                                    for (int i = 0; i < code_1_str.length; i = i + 2) {
+                                                        int c = code_1_str[i] - '0';//將字元做計算轉int
+                                                        sum_code_1_odd += c;//加總
+                                                    }
+                                                    int sum_code_1_even = 0;
+                                                    for (int i = 1; i < code_1_str.length; i = i + 2) {
+                                                        if (code_1_str[i] == 'v') {
+                                                            sum_code_1_even = sum_code_1_even + 5;
+                                                        } else {
+                                                            int c = code_1_str[i] - '0';//將字元做計算轉int
+                                                            sum_code_1_even += c;
+                                                        }//加總
+                                                    }
+                                                    int sum_code_2_odd = 0;
+                                                    for (int i = 0; i < code_2_str.length; i = i + 2) {
+                                                        int c = code_2_str[i] - '0';//將字元做計算轉int
+                                                        sum_code_2_odd += c;//加總
+                                                    }
+                                                    int sum_code_2_even = 0;
+                                                    for (int i = 1; i < code_2_str.length; i = i + 2) {
+                                                        int c = code_2_str[i] - '0';//將字元做計算轉int
+                                                        sum_code_2_even += c;//加總
+                                                    }
+                                                    int sum_code_3_odd = 0;
+                                                    for (int i = 0; i < code_3_str.length; i = i + 2) {
+                                                        int c = code_3_str[i] - '0';//將字元做計算轉int
+                                                        sum_code_3_odd += c;//加總
+                                                    }
+                                                    int sum_code_3_even = 0;
+                                                    for (int i = 1; i < code_3_str.length; i = i + 2) {
+                                                        int c = code_3_str[i] - '0';//將字元做計算轉int
+                                                        sum_code_3_even += c;//加總
+                                                    }
+                                                    odd = (sum_code_1_odd + sum_code_2_odd + sum_code_3_odd) % 11;
+                                                    if (odd == 0)
+                                                        checklittleseven_1 = "A";
+                                                    else if (odd == 10)
+                                                        checklittleseven_1 = "B";
+                                                    else if (odd != 10 && odd != 0)
+                                                        checklittleseven_1 = String.valueOf(odd);
+                                                    even = (sum_code_1_even + sum_code_2_even + sum_code_3_even) % 11;
+                                                    if (even == 0)
+                                                        checklittleseven_2 = "X";
+                                                    else if (even == 10)
+                                                        checklittleseven_2 = "Y";
+                                                    else if (even != 10 && odd != 0)
+                                                        checklittleseven_2 = String.valueOf(even);
+                                                    code_3 = codedate_str_4 + checklittleseven_1 + checklittleseven_2 + String.format("%09d", Long.parseLong(String.valueOf(priceTotal_all)));
+                                                    Log.d("55125", code_1);
+                                                    Log.d("55125", code_2);
+                                                    Log.d("55125", String.valueOf(sum_code_1_odd) + "," + String.valueOf(sum_code_1_even) + "," + String.valueOf(sum_code_2_odd) + "," + String.valueOf(sum_code_2_even) + "," + String.valueOf(sum_code_3_odd) + "," + String.valueOf(sum_code_3_even));
+                                                    Log.d("55125", code_3);
+
+                                                    Update_bigorderlist update_bigorderlist = new Update_bigorderlist();
+                                                    update_bigorderlist.execute();
+                                                    Update_orderlist update_orderlist = new Update_orderlist();
+                                                    update_orderlist.execute();
+                                                    Handler handler1 = new Handler();
+                                                    handler1.postDelayed(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+
+                                                            switch (pay) {
+                                                                case "success": {
+                                                                    Log.d("55125", shoppingcar_goodscount + "," + shoppingcar_goodsnumber + "," + shoppingcar_goodsprice);
+                                                                    ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingListFragment.class, null);
+                                                                    break;
+                                                                }
+                                                                case "fail": {
+                                                                    Toast.makeText(getContext(), "請查看商品庫存量或課程剩餘人數", Toast.LENGTH_SHORT).show();
+                                                                    break;
+                                                                }
+                                                                default:
+                                                                    break;
+                                                            }
+                                                        }
+                                                    }, 600);
+                                                }
+                                            }, 300);
 
 
-                                    }
-                                })
-                                .setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Toast.makeText(getContext(), R.string.cancel, Toast.LENGTH_SHORT).show();
-                                    }
-                                }).show();
+                                        }
+                                    })
+                                    .setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Toast.makeText(getContext(), R.string.cancel, Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).show();
+                        }
                         break;
                     default:
                         Toast.makeText(getContext(),"請選擇付款方式",Toast.LENGTH_SHORT).show();

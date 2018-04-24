@@ -117,6 +117,7 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
             @Override
             public void run() {
                 Toast.makeText(getActivity(), "請稍後", Toast.LENGTH_SHORT).show();
+
                 shoppingAdapter.notifyDataSetChanged();
             }
         }, 500);
@@ -306,6 +307,7 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
         public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.custom_recyclerview_shoppingcar_query, parent, false);
+
             ViewHolder vh = new ViewHolder(v);
 
             return vh;
@@ -366,6 +368,7 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                     }
                 }
             });
+            holder.checkBox.setChecked(false);
             holder.checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
