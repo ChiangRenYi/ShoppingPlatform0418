@@ -52,7 +52,7 @@ public class OrderDetailFragment extends Fragment implements View.OnTouchListene
 
     private String[] tmp = new String[14];
 
-    public static String orderTypeNum,orderDes = "",bod_id,payway;
+    public static String orderTypeNum = "",orderDes = "",bod_id,payway;
     private String orderType;
 
     public OrderDetailFragment() {
@@ -137,6 +137,7 @@ public class OrderDetailFragment extends Fragment implements View.OnTouchListene
             case"1":
                 orderType = "商品";
                 break;
+
             default:
                 break;
         }
