@@ -26,6 +26,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.R;
+import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
+import com.example.wmnl_yo.shoppingplatform.activity.loginActivity;
 import com.example.wmnl_yo.shoppingplatform.database.GetParentChild;
 import com.example.wmnl_yo.shoppingplatform.database.SignUp;
 import com.example.wmnl_yo.shoppingplatform.object.CourseObject;
@@ -181,71 +183,84 @@ public class CourseQueryDetailFragment extends Fragment implements View.OnTouchL
                 super.onPostExecute(result);
             }
         }.execute("圖片連結網址路徑");
-        btnCourseCancel.setText("報名上課");
+        if(loginActivity.userPeople.equals("teacher")){
+            btnCourseCancel.setText("確認並回上一頁");
+            btnCourseCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((MainActivity) getContext()).replaceFragment(CourseQueryResultFragment.class, null);
+                }
+            });
+
+        }else if(loginActivity.userPeople.equals("student")){
+            btnCourseCancel.setText("報名上課");
+            final Handler handler2 = new Handler();
+            btnCourseCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    GetParentChild getParentChild = new GetParentChild();
+                    getParentChild.execute();
+                    Toast.makeText(getActivity(), "請稍後...", Toast.LENGTH_SHORT).show();
+                    final Handler handler = new Handler();
+                    final Handler handler2 = new Handler();
+
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (stringCQDParentChild == null) {
+                                Toast.makeText(getActivity(), "請以會員登入", Toast.LENGTH_SHORT).show();
+                            } else {
+                                new AlertDialog.Builder(getActivity())
+                                        .setItems(stringCQDParentChild, new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                CQDParentChild = stringCQDParentChild[which];
+                                                SignUp signUp = new SignUp();
+                                                signUp.execute();
+
+                                                handler2.postDelayed(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        Log.d("55125-2",signUpCheck);
+
+                                                        switch (signUpCheck)
+                                                        {
+                                                            case "signup" :
+                                                                Toast.makeText(getActivity(),
+                                                                        CQDParentChild + "報名成功", Toast.LENGTH_SHORT).show();
+                                                                break;
+                                                            case "signupcheck" :
+                                                                Toast.makeText(getActivity(),
+                                                                        CQDParentChild+"已報名過此課程",Toast.LENGTH_SHORT).show();
+                                                                break;
+                                                            case "you don't have permissions" :
+                                                                Toast.makeText(getActivity(),
+                                                                        "請進會員資料勾選該親子館即可報名",Toast.LENGTH_SHORT).show();
+                                                                break;
+                                                            case "alternate" :
+                                                                Toast.makeText(getActivity(),
+                                                                        CQDParentChild + "已報名候補", Toast.LENGTH_SHORT).show();
+                                                                break;
+                                                            default:
+                                                                break;
+                                                        }
+                                                    }
+                                                },600);
+
+                                            }
+                                        }).show();
+                            }
+                        }
+                    }, 300);
+
+                }
+            });
+        }
+
         lvCourseDetail.setAdapter(arrayAdapter);
         lvCourseDetail.addHeaderView(headerView);
         lvCourseDetail.addFooterView(footerView);
-        final Handler handler2 = new Handler();
-        btnCourseCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                GetParentChild getParentChild = new GetParentChild();
-                getParentChild.execute();
-                Toast.makeText(getActivity(), "請稍後...", Toast.LENGTH_SHORT).show();
-                final Handler handler = new Handler();
-                final Handler handler2 = new Handler();
 
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (stringCQDParentChild == null) {
-                            Toast.makeText(getActivity(), "請以會員登入", Toast.LENGTH_SHORT).show();
-                        } else {
-                            new AlertDialog.Builder(getActivity())
-                                    .setItems(stringCQDParentChild, new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            CQDParentChild = stringCQDParentChild[which];
-                                            SignUp signUp = new SignUp();
-                                            signUp.execute();
-
-                                            handler2.postDelayed(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    Log.d("55125-2",signUpCheck);
-
-                                                    switch (signUpCheck)
-                                                    {
-                                                        case "signup" :
-                                                            Toast.makeText(getActivity(),
-                                                                    CQDParentChild + "報名成功", Toast.LENGTH_SHORT).show();
-                                                            break;
-                                                        case "signupcheck" :
-                                                            Toast.makeText(getActivity(),
-                                                                CQDParentChild+"已報名過此課程",Toast.LENGTH_SHORT).show();
-                                                            break;
-                                                        case "you don't have permissions" :
-                                                            Toast.makeText(getActivity(),
-                                                                    "請進會員資料勾選該親子館即可報名",Toast.LENGTH_SHORT).show();
-                                                            break;
-                                                        case "alternate" :
-                                                            Toast.makeText(getActivity(),
-                                                                    CQDParentChild + "已報名候補", Toast.LENGTH_SHORT).show();
-                                                            break;
-                                                        default:
-                                                            break;
-                                                    }
-                                                }
-                                            },600);
-
-                                        }
-                                    }).show();
-                        }
-                    }
-                }, 300);
-
-            }
-        });
         return v;
     }
     //photo

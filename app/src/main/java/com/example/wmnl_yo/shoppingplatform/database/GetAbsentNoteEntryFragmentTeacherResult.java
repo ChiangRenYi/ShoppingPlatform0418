@@ -167,7 +167,7 @@ public class GetAbsentNoteEntryFragmentTeacherResult extends AsyncTask<String, V
                     default:
                         break;
                 }
-                switch (absent_teacherInf[14]){
+                switch (absent_teacherInf[15]){
                     case "-1" :
                         absent_teacher_astatus[j] = "不通過";
                         absent_teacherInf[15] = "不通過";
@@ -183,10 +183,10 @@ public class GetAbsentNoteEntryFragmentTeacherResult extends AsyncTask<String, V
                 }
                 dim.addItem(new AbsentNoteTeacherObject.AbsentNoteTeacherObjectItem(String.valueOf(i + 1),
                         absent_teacherInf[1], absent_teacherInf[2], absent_teacherInf[3], absent_teacherInf[4]+":"+absent_teacherInf[5], absent_teacherInf[7]+":"+absent_teacherInf[8],
-                        absent_teacherInf[10], absent_teacherInf[11], absent_teacherInf[12], absent_teacherInf[13], absent_teacherInf[14], absent_teacherInf[10]));
+                        absent_teacherInf[10], absent_teacherInf[11], absent_teacherInf[12], absent_teacherInf[13], absent_teacherInf[15], absent_teacherInf[14]));
                 j++;
                 Log.d("55125", j + ":"  + absent_teacherInf[1]+","+absent_teacherInf[2]+","+absent_teacherInf[3]+","+absent_teacherInf[4]+":"+absent_teacherInf[5]+","+absent_teacherInf[7]+":"+absent_teacherInf[8]+","+
-                        absent_teacherInf[10]+","+absent_teacherInf[11]+","+absent_teacherInf[12]+","+absent_teacherInf[13]+","+absent_teacherInf[14]+","+absent_teacherInf[10]);
+                        absent_teacherInf[10]+","+absent_teacherInf[11]+","+absent_teacherInf[12]+","+absent_teacherInf[13]+","+absent_teacherInf[15]+","+absent_teacherInf[14]);
             }
 
         }

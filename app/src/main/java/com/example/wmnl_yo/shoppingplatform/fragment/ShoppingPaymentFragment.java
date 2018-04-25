@@ -146,7 +146,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                 switch(payment_rg.getCheckedRadioButtonId()){
                     case R.id.payment_code:
                         bod_payment = "1";
-                        if(priceTotal_all == 0){
+                        if(shoppingcar_goodscount.equals("")){
                             Toast.makeText(getContext(), "沒有需要下訂單的東西", Toast.LENGTH_SHORT).show();
                         }else {
 
