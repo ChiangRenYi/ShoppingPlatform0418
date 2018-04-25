@@ -342,6 +342,8 @@
                      android:id="@+id/textView25"
                      android:layout_width="match_parent"
                      android:layout_height="wrap_content"
+                     android:layout_marginTop="@dimen/_22sdp"
+                     android:layout_marginLeft="@dimen/_8sdp"
                      android:text="Gary"
                      android:textColor="#000000"
                      android:textSize="@dimen/_20sdp" />
@@ -355,14 +357,13 @@
                 <!--android:textSize="@dimen/_10sdp"-->
                 <!--android:id="@+id/textView24" />-->
 
-                <TextView
-                    android:id="@+id/textView23"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:text="薪北市三峽光明公共托育中心"
-                    android:textColor="#c9c9c9"
-                    android:textSize="@dimen/_10sdp" />
+                 <TextView
+                     android:id="@+id/textView23"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:paddingTop="@dimen/_10sdp"
+                     android:textColor="#c9c9c9"
+                     android:textSize="@dimen/_10sdp" />
 
                 <!--<TextView-->
                 <!--android:text="種子班-伊蝶"-->

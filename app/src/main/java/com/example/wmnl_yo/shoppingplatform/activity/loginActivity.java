@@ -29,7 +29,7 @@ public class loginActivity extends Activity {
 
     private EditText AccountEditText ,PasswordEditText;
     private Button LoginButton ,RegisterButton,NonmemberBotton;
-    public static String account ,password,loginResult;
+    public static String account ,password,loginResult ="";
     private SegmentedGroup sg;
     private RadioButton rbMember,rbTeacher,rbBasicLevel,rbManager,rbDepartmentOfSocial,rbAdmin;
     private SharedPreferences preferences;
@@ -118,7 +118,10 @@ public class loginActivity extends Activity {
                                             startActivity(intent);
                                             finish();
                                             break;
+
                                         default:
+                                            Toast.makeText(loginActivity.this, "請重新輸入密碼", Toast.LENGTH_SHORT).show();
+                                            PasswordEditText.setText("");
                                             break;
                                     }
                                 }
