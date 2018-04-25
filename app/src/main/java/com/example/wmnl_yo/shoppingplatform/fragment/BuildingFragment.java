@@ -210,78 +210,81 @@ public class BuildingFragment extends Fragment implements View.OnTouchListener, 
             numberPicker(getResources().getStringArray(R.array.courseFindTypeCountyCity), i - 1);
             t = String.valueOf(i);
         } else if (i == 2) {
-            switch (buildingcountry)
-            {
-                case "不限":
-                    break;
-                case "基隆市":
-                    numberPicker(getResources().getStringArray(R.array.基隆市), i - 1);
-                    break;
-                case "臺北市":
-                    numberPicker(getResources().getStringArray(R.array.臺北市), i - 1);
-                    break;
-                case "新北市":
-                    numberPicker(getResources().getStringArray(R.array.新北市), i - 1);
-                    break;
-                case "桃園市":
-                    numberPicker(getResources().getStringArray(R.array.桃園市), i - 1);
-                    break;
-                case "新竹市":
-                    numberPicker(getResources().getStringArray(R.array.新竹市), i - 1);
-                    break;
-                case "新竹縣":
-                    numberPicker(getResources().getStringArray(R.array.新竹縣), i - 1);
-                    break;
-                case "苗栗縣":
-                    numberPicker(getResources().getStringArray(R.array.苗栗縣), i - 1);
-                    break;
-                case "臺中市":
-                    numberPicker(getResources().getStringArray(R.array.臺中市), i - 1);
-                    break;
-                case "彰化縣":
-                    numberPicker(getResources().getStringArray(R.array.彰化縣), i - 1);
-                    break;
-                case "南投縣":
-                    numberPicker(getResources().getStringArray(R.array.南投縣), i - 1);
-                    break;
-                case "雲林縣":
-                    numberPicker(getResources().getStringArray(R.array.雲林縣), i - 1);
-                    break;
-                case "嘉義市":
-                    numberPicker(getResources().getStringArray(R.array.嘉義市), i - 1);
-                    break;
-                case "嘉義縣":
-                    numberPicker(getResources().getStringArray(R.array.嘉義縣), i - 1);
-                    break;
-                case "臺南市":
-                    numberPicker(getResources().getStringArray(R.array.臺南市), i - 1);
-                    break;
-                case "高雄市":
-                    numberPicker(getResources().getStringArray(R.array.高雄市), i - 1);
-                    break;
-                case "屏東縣":
-                    numberPicker(getResources().getStringArray(R.array.屏東縣), i - 1);
-                    break;
-                case "臺東縣":
-                    numberPicker(getResources().getStringArray(R.array.臺東縣), i - 1);
-                    break;
-                case "花蓮縣":
-                    numberPicker(getResources().getStringArray(R.array.花蓮縣), i - 1);
-                    break;
-                case "宜蘭縣":
-                    numberPicker(getResources().getStringArray(R.array.宜蘭縣), i - 1);
-                    break;
-                case "澎湖縣":
-                    numberPicker(getResources().getStringArray(R.array.澎湖縣), i - 1);
-                    break;
-                case "金門縣":
-                    numberPicker(getResources().getStringArray(R.array.金門縣), i - 1);
-                    break;
-                case "連江縣":
-                    numberPicker(getResources().getStringArray(R.array.連江縣), i - 1);
-                    break;
-                default:
-                    break;
+            if (buildingcountry == null) {
+                Toast.makeText(view.getContext(), "請選擇親子館縣市!!!", Toast.LENGTH_SHORT).show();
+            } else {
+                switch (buildingcountry) {
+                    case "不限":
+                        break;
+                    case "基隆市":
+                        numberPicker(getResources().getStringArray(R.array.基隆市), i - 1);
+                        break;
+                    case "臺北市":
+                        numberPicker(getResources().getStringArray(R.array.臺北市), i - 1);
+                        break;
+                    case "新北市":
+                        numberPicker(getResources().getStringArray(R.array.新北市), i - 1);
+                        break;
+                    case "桃園市":
+                        numberPicker(getResources().getStringArray(R.array.桃園市), i - 1);
+                        break;
+                    case "新竹市":
+                        numberPicker(getResources().getStringArray(R.array.新竹市), i - 1);
+                        break;
+                    case "新竹縣":
+                        numberPicker(getResources().getStringArray(R.array.新竹縣), i - 1);
+                        break;
+                    case "苗栗縣":
+                        numberPicker(getResources().getStringArray(R.array.苗栗縣), i - 1);
+                        break;
+                    case "臺中市":
+                        numberPicker(getResources().getStringArray(R.array.臺中市), i - 1);
+                        break;
+                    case "彰化縣":
+                        numberPicker(getResources().getStringArray(R.array.彰化縣), i - 1);
+                        break;
+                    case "南投縣":
+                        numberPicker(getResources().getStringArray(R.array.南投縣), i - 1);
+                        break;
+                    case "雲林縣":
+                        numberPicker(getResources().getStringArray(R.array.雲林縣), i - 1);
+                        break;
+                    case "嘉義市":
+                        numberPicker(getResources().getStringArray(R.array.嘉義市), i - 1);
+                        break;
+                    case "嘉義縣":
+                        numberPicker(getResources().getStringArray(R.array.嘉義縣), i - 1);
+                        break;
+                    case "臺南市":
+                        numberPicker(getResources().getStringArray(R.array.臺南市), i - 1);
+                        break;
+                    case "高雄市":
+                        numberPicker(getResources().getStringArray(R.array.高雄市), i - 1);
+                        break;
+                    case "屏東縣":
+                        numberPicker(getResources().getStringArray(R.array.屏東縣), i - 1);
+                        break;
+                    case "臺東縣":
+                        numberPicker(getResources().getStringArray(R.array.臺東縣), i - 1);
+                        break;
+                    case "花蓮縣":
+                        numberPicker(getResources().getStringArray(R.array.花蓮縣), i - 1);
+                        break;
+                    case "宜蘭縣":
+                        numberPicker(getResources().getStringArray(R.array.宜蘭縣), i - 1);
+                        break;
+                    case "澎湖縣":
+                        numberPicker(getResources().getStringArray(R.array.澎湖縣), i - 1);
+                        break;
+                    case "金門縣":
+                        numberPicker(getResources().getStringArray(R.array.金門縣), i - 1);
+                        break;
+                    case "連江縣":
+                        numberPicker(getResources().getStringArray(R.array.連江縣), i - 1);
+                        break;
+                    default:
+                        break;
+                }
             }
             t = String.valueOf(i);
         } else if (i == 3) {
