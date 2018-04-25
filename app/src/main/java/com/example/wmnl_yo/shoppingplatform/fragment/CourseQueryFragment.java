@@ -58,7 +58,7 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
     private View v;
     private String[] tmp;
     public String courseQueryCountry, courseQueryCity, courseQueryBuilding, courseQueryType, courseQueryClass, courseQueryTeacher, courseQueryMonth, courseQueryTime, courseQueryPrice;
-    public static String cCountry, cCity, cBuilding, cType, cClass, cTeacher, cMonth, cTimeS, cTimeE, cPrice,Building_check;
+    public static String cCountry, cCity, cBuilding, cType, cClass, cTeacher, cMonth, cTimeS, cTimeE, cPrice,Building_check="crycry";
     public static String[] stringBuilding, stringType, stringClass, stringMonth, stringTeacher, stringTime, stringPrice;
 
     private OnFragmentInteractionListener mListener;
@@ -94,7 +94,7 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
         }
         tv = new TextView[getResources().getStringArray(R.array.courseFindType).length];
         tmp = new String[]{"請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇"};
-
+        Building_check="crycry";
     }
 
     @Override

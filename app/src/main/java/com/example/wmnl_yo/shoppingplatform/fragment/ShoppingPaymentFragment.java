@@ -63,7 +63,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
     private TextView priceTotal_text;
     public static String code_1,code_2,code_3,bigorderlistnumber;
     private String codedate_str_7;
-    public static String codedate_str_8,bod_payment;
+    public static String codedate_str_8,bod_payment,bl_number;
     public static String shoppingcar_goodscount,shoppingcar_goodsnumber,shoppingcar_goodsprice;
     public static String pay;
 
@@ -178,7 +178,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                                 @Override
                                 public void run() {
                                     bigorderlistnumber = String.format("%06d", Long.parseLong(bigorderlistnumber));
-                                    String code2plus = "000900842" + bigorderlistnumber;
+                                    String code2plus = "000"+ bl_number + bigorderlistnumber;
                                     int sum = 0;//將變數初始化
                                     char[] ch_array = code2plus.toCharArray();//將字串轉成字元陣列
                                     for (int i = 0; i < ch_array.length; i++) {
@@ -188,7 +188,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                                     sum = (sum * 13) % 11;
                                     if (sum == 10)
                                         sum = 0;
-                                    code_2 = "000900842" + bigorderlistnumber + String.valueOf(sum);
+                                    code_2 = "000"+ bl_number + bigorderlistnumber + String.valueOf(sum);
                                     String codedate_str_4 = codedate_str_7.substring(codedate_str_7.length() - 6, codedate_str_7.length() - 2);
 
                                     String checklittleseven_1 = "";
@@ -317,7 +317,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                                 @Override
                                 public void run() {
                                     bigorderlistnumber = String.format("%06d", Long.parseLong(bigorderlistnumber));
-                                    String code2plus = "000900842" + bigorderlistnumber;
+                                    String code2plus = "000"+ bl_number + bigorderlistnumber;
                                     int sum = 0;//將變數初始化
                                     char[] ch_array = code2plus.toCharArray();//將字串轉成字元陣列
                                     for (int i = 0; i < ch_array.length; i++) {
@@ -327,7 +327,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                                     sum = (sum * 13) % 11;
                                     if (sum == 10)
                                         sum = 0;
-                                    code_2 = "000900842" + bigorderlistnumber + String.valueOf(sum);
+                                    code_2 = "000"+ bl_number + bigorderlistnumber + String.valueOf(sum);
                                     String codedate_str_4 = codedate_str_7.substring(codedate_str_7.length() - 6, codedate_str_7.length() - 2);
 
                                     String checklittleseven_1 = "";
@@ -461,7 +461,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                                                 @Override
                                                 public void run() {
                                                     bigorderlistnumber = String.format("%06d", Long.parseLong(bigorderlistnumber));
-                                                    String code2plus = "000900842" + bigorderlistnumber;
+                                                    String code2plus = "000"+ bl_number + bigorderlistnumber;
                                                     int sum = 0;//將變數初始化
                                                     char[] ch_array = code2plus.toCharArray();//將字串轉成字元陣列
                                                     for (int i = 0; i < ch_array.length; i++) {
@@ -471,7 +471,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                                                     sum = (sum * 13) % 11;
                                                     if (sum == 10)
                                                         sum = 0;
-                                                    code_2 = "000900842" + bigorderlistnumber + String.valueOf(sum);
+                                                    code_2 = "000"+ bl_number + bigorderlistnumber + String.valueOf(sum);
                                                     String codedate_str_4 = codedate_str_7.substring(codedate_str_7.length() - 6, codedate_str_7.length() - 2);
 
                                                     String checklittleseven_1 = "";

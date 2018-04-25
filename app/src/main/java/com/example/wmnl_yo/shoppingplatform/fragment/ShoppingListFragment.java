@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
 import com.example.wmnl_yo.shoppingplatform.database.DeleteShoppingListObject;
+import com.example.wmnl_yo.shoppingplatform.database.GetBuildingblnumber;
 import com.example.wmnl_yo.shoppingplatform.database.GetShoppingList;
 import com.example.wmnl_yo.shoppingplatform.database.GetShoppingListAll;
 import com.example.wmnl_yo.shoppingplatform.database.GetShoppingListBuilding;
@@ -210,6 +211,10 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                             });
 
                         } else {
+
+                            GetBuildingblnumber getBuildingblnumber = new GetBuildingblnumber();
+                            getBuildingblnumber.execute();
+
                             String[] deletegoods = goods.split(",");
                             int count = deletegoods.length;
                             for (int i = goodsnumber - 1; i >= 0; i--) {
