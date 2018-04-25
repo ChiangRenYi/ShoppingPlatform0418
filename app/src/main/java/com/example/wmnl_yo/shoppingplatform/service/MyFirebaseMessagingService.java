@@ -31,7 +31,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";
     private Bitmap bitmap;
-
+    private String messageInner;
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // [START_EXCLUDE]
@@ -51,6 +51,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
+            messageInner = remoteMessage.getData().get("body");
+            MainActivity.pushDialogtext = messageInner;
 
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
@@ -65,6 +67,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            messageInner = remoteMessage.getNotification().getBody();
         }
 
         //The message which i send will have keys named [message, image, AnotherActivity] and corresponding values.
@@ -72,6 +75,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         //message will contain the Push Message
         String message = remoteMessage.getData().get("message");
+
+
         //imageUri will contain URL of the image to be displayed with Notification
         String imageUri = remoteMessage.getData().get("image");
         //If the key AnotherActivity has  value as True then when the user taps on notification, in the app AnotherActivity will be opened.
@@ -79,9 +84,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         String TrueOrFlase = remoteMessage.getData().get("AnotherActivity");
 
         //To get a Bitmap image from the URL received
-        bitmap = getBitmapfromUrl(imageUri);
+//        bitmap = getBitmapfromUrl(imageUri);
 
-        sendNotification(message, bitmap, TrueOrFlase);
+        sendNotification(messageInner);
+//        , bitmap, TrueOrFlase);
     }
     // [END receive_message]
 
@@ -111,7 +117,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      *
      * @param messageBody FCM message body received.
      */
-    private void sendNotification(String messageBody, Bitmap image, String TrueOrFalse) {
+    private void sendNotification(String messageBody) {
+        //, Bitmap image, String TrueOrFalse
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //        intent.putExtra("AnotherActivity", TrueOrFalse);
@@ -120,11 +127,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setLargeIcon(image)/*Notification icon image*/
+//                .setLargeIcon(image)/*Notification icon image*/
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle(messageBody)
-                .setStyle(new NotificationCompat.BigPictureStyle()
-                        .bigPicture(image))/*Notification with Image*/
+//                .setStyle(new NotificationCompat.BigPictureStyle()
+//                        .bigPicture(image))/*Notification with Image*/
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);

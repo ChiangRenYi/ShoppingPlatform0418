@@ -214,61 +214,61 @@ public class MainActivity extends AppCompatActivity implements
 //   //     badgeView.setBadgeGravity(Gravity.END | Gravity.TOP);
 
         //推播
-        PusherOptions options = new PusherOptions();
-        options.setCluster("ap1");
-        Pusher pusher = new Pusher("71a6ae25a75c862961c0", options);
-
-        Channel channel = pusher.subscribe("my-channel");
-        channel.bind("my-event", new SubscriptionEventListener() {
-            @Override
-            public void onEvent(String channelName, String eventName, final String data) {
-                System.out.println(data);
-                Log.d("55123",data);
-                String str[] = data.split(": ");
-                String str1[] = str[1].toString().split("\"");
-
-                String text = StringEscapeUtils.unescapeJava(str1[1]);
-                pushDialogtext = text;
-                Log.d("55125",text);
-
-                NotificationManager mNotificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-
-                //Step2. 設定當按下這個通知之後要執行的activity
-                Intent notifyIntent = new Intent(MainActivity.this,MainActivity.class);
-                notifyIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                PendingIntent appIntent = PendingIntent.getActivity(MainActivity.this, 0, notifyIntent, 0);
-                //Step3. 透過 Notification.Builder 來建構 notification，
-                //並直接使用其.build() 的方法將設定好屬性的 Builder 轉換
-                //成 notification，最後開始將顯示通知訊息發送至狀態列上。
-                Notification notification
-                        = new Notification.Builder(MainActivity.this)
-                        .setContentIntent(appIntent)
-                        .setSmallIcon(R.drawable.ic_notification) // 設置狀態列裡面的圖示（小圖示）　　
-                        .setLargeIcon(BitmapFactory.decodeResource(MainActivity.this.getResources(),R.drawable.ic_notification)) // 下拉下拉清單裡面的圖示（大圖示）
-                        .setTicker("notification on status bar.") // 設置狀態列的顯示的資訊
-                        .setWhen(System.currentTimeMillis())// 設置時間發生時間
-                        .setAutoCancel(true) // 設置通知被使用者點擊後是否清除  //notification.flags = Notification.FLAG_AUTO_CANCEL;
-                        .setContentTitle("親子館") // 設置下拉清單裡的標題
-                        .setContentText(text)// 設置上下文內容
-                        .setOngoing(true)//true使notification變為ongoing，用戶不能手動清除
-                        .setVibrate(vibrate)
-                        .setDefaults(Notification.DEFAULT_ALL).build();
-                // 將此通知放到通知欄的"Ongoing"即"正在運行"組中
-                notification.flags = Notification.FLAG_ONGOING_EVENT;
-                // 表明在點擊了通知欄中的"清除通知"後，此通知不清除，
-                // 經常與FLAG_ONGOING_EVENT一起使用
-                notification.flags = Notification.FLAG_NO_CLEAR;
-                //閃爍燈光
-                notification.flags = Notification.FLAG_SHOW_LIGHTS;
-                mNotificationManager.notify(0, notification);
-
-
-            }
-
-        });
+//        PusherOptions options = new PusherOptions();
+//        options.setCluster("ap1");
+//        Pusher pusher = new Pusher("71a6ae25a75c862961c0", options);
+//
+//        Channel channel = pusher.subscribe("my-channel");
+//        channel.bind("my-event", new SubscriptionEventListener() {
+//            @Override
+//            public void onEvent(String channelName, String eventName, final String data) {
+//                System.out.println(data);
+//                Log.d("55123",data);
+//                String str[] = data.split(": ");
+//                String str1[] = str[1].toString().split("\"");
+//
+//                String text = StringEscapeUtils.unescapeJava(str1[1]);
+//                pushDialogtext = text;
+//                Log.d("55125",text);
+//
+//                NotificationManager mNotificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+//
+//                //Step2. 設定當按下這個通知之後要執行的activity
+//                Intent notifyIntent = new Intent(MainActivity.this,MainActivity.class);
+//                notifyIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                PendingIntent appIntent = PendingIntent.getActivity(MainActivity.this, 0, notifyIntent, 0);
+//                //Step3. 透過 Notification.Builder 來建構 notification，
+//                //並直接使用其.build() 的方法將設定好屬性的 Builder 轉換
+//                //成 notification，最後開始將顯示通知訊息發送至狀態列上。
+//                Notification notification
+//                        = new Notification.Builder(MainActivity.this)
+//                        .setContentIntent(appIntent)
+//                        .setSmallIcon(R.drawable.ic_notification) // 設置狀態列裡面的圖示（小圖示）　　
+//                        .setLargeIcon(BitmapFactory.decodeResource(MainActivity.this.getResources(),R.drawable.ic_notification)) // 下拉下拉清單裡面的圖示（大圖示）
+//                        .setTicker("notification on status bar.") // 設置狀態列的顯示的資訊
+//                        .setWhen(System.currentTimeMillis())// 設置時間發生時間
+//                        .setAutoCancel(true) // 設置通知被使用者點擊後是否清除  //notification.flags = Notification.FLAG_AUTO_CANCEL;
+//                        .setContentTitle("親子館") // 設置下拉清單裡的標題
+//                        .setContentText(text)// 設置上下文內容
+//                        .setOngoing(true)//true使notification變為ongoing，用戶不能手動清除
+//                        .setVibrate(vibrate)
+//                        .setDefaults(Notification.DEFAULT_ALL).build();
+//                // 將此通知放到通知欄的"Ongoing"即"正在運行"組中
+//                notification.flags = Notification.FLAG_ONGOING_EVENT;
+//                // 表明在點擊了通知欄中的"清除通知"後，此通知不清除，
+//                // 經常與FLAG_ONGOING_EVENT一起使用
+//                notification.flags = Notification.FLAG_NO_CLEAR;
+//                //閃爍燈光
+//                notification.flags = Notification.FLAG_SHOW_LIGHTS;
+//                mNotificationManager.notify(0, notification);
+//
+//
+//            }
+//
+//        });
         DialogFragment dialog = PushDialog.newInstance(pushDialogtext);
         dialog.show(getSupportFragmentManager(),"dialog");
-        pusher.connect();
+//        pusher.connect();
 
 
     }

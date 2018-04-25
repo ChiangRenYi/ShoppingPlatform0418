@@ -105,12 +105,14 @@ public class AnnouncementDetailFragment extends Fragment implements View.OnTouch
                 }
 
                 viewHolder.tvAnnouncementDetail.setText(getContext().getResources().getStringArray(R.array.announcementDetail)[position]);
-                if (position == 6 || position == 7) {
-                    viewHolder.tvAnnouncementDetailContent.setText(tmp[position]);
-                    viewHolder.tvAnnouncementDetailContent.setGravity(Gravity.LEFT);
-                } else {
-                    viewHolder.tvAnnouncementDetailContent.setText(tmp[position]);
-                }
+//                if (position == 2) {
+//                    viewHolder.tvAnnouncementDetailContent.setText(tmp[position]);
+//                    viewHolder.tvAnnouncementDetailContent.setGravity(Gravity.LEFT);
+//                } else {
+//                    viewHolder.tvAnnouncementDetailContent.setText(tmp[position]);
+//                }
+
+                viewHolder.tvAnnouncementDetailContent.setText(tmp[position]);
                 return convertView;
             }
         };
