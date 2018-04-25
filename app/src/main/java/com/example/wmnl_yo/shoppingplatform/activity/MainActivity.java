@@ -300,9 +300,9 @@ public class MainActivity extends AppCompatActivity implements
 
     public void setSubTitle(String a) {
         if (!a.equals("")) {
-            setTitle(R.string.app_name + a);
+            setTitle("托育中心" + a);
         } else {
-            setTitle(R.string.app_name);
+            setTitle("托育中心");
         }
     }
 
