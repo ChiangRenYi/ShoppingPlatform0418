@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "220149861981",
-    "firebase_url": "https://shoppingplatform-a83ec.firebaseio.com",
-    "project_id": "shoppingplatform-a83ec",
-    "storage_bucket": "shoppingplatform-a83ec.appspot.com"
+    "project_number": "632216916521",
+    "firebase_url": "https://parentchildmuseum.firebaseio.com",
+    "project_id": "parentchildmuseum",
+    "storage_bucket": "parentchildmuseum.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:220149861981:android:124d09050e305852",
+        "mobilesdk_app_id": "1:632216916521:android:124d09050e305852",
         "android_client_info": {
           "package_name": "com.example.wmnl_yo.shoppingplatform"
         }
       },
       "oauth_client": [
         {
-          "client_id": "220149861981-5ffu4rdd8noei97oafua7uhngq13upf9.apps.googleusercontent.com",
+          "client_id": "632216916521-pemep2vjne5gh3g1i172ind958fvbnsr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.wmnl_yo.shoppingplatform",
-            "certificate_hash": "636db695b7670f0e5882a5186bec4076a31ba527"
+            "certificate_hash": "06e7f23546192e73f13f73309b5ff8c78ed4407c"
           }
         },
         {
-          "client_id": "220149861981-unddd1378mn5ac1et5f8ddh5okjqsq5h.apps.googleusercontent.com",
+          "client_id": "632216916521-ie5qadfcuo5tt1k2ac4137l7cnibk5r9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAJcHpOrZqjzU_acR5vUvO88NoLMUJsfYk"
+          "current_key": "AIzaSyBgOX2UpmCyAfWg_51h5frKl4bub_U0Gfg"
         }
       ],
       "services": {
@@ -40,10 +40,41 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "220149861981-unddd1378mn5ac1et5f8ddh5okjqsq5h.apps.googleusercontent.com",
+              "client_id": "632216916521-ie5qadfcuo5tt1k2ac4137l7cnibk5r9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632216916521:android:3442855b4ca5bc9e",
+        "android_client_info": {
+          "package_name": "com.parentchildmuseum.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632216916521-ie5qadfcuo5tt1k2ac4137l7cnibk5r9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgOX2UpmCyAfWg_51h5frKl4bub_U0Gfg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
