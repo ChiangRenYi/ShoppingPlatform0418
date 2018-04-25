@@ -23,14 +23,18 @@ public class ShoppingCarObject implements Serializable {
         public  String goodsnumber;
         public final String goodsprice;
         public final String goodswarehouse;
+        public final String goodschildname;
+        public final String goodsbuild;
 
-        public ShoppingCarObjectItem(String goodsCount,String goodskind, String goods, String goodsnumber, String goodsprice,String goodswarehouse) {
+        public ShoppingCarObjectItem(String goodsCount,String goodskind, String goods, String goodsnumber, String goodsprice,String goodswarehouse,String goodschildname,String goodsbuild) {
             this.goodsCount = goodsCount;
             this.goodskind =goodskind;
             this.goods = goods;
             this.goodsnumber = goodsnumber;
             this.goodsprice = goodsprice;
             this.goodswarehouse = goodswarehouse;
+            this.goodschildname = goodschildname;
+            this.goodsbuild = goodsbuild;
         }
     }
 

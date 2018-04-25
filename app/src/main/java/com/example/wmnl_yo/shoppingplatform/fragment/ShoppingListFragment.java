@@ -279,7 +279,7 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
         public class ViewHolder extends RecyclerView.ViewHolder {
             public RecyclerView ll;
             public CheckBox checkBox;
-            public TextView tvGoodsName, tvGoodsNumber, tvGoodsPrice,tvGoodWarehouse;
+            public TextView tvGoodsName, tvGoodsNumber, tvGoodsPrice,tvGoodWarehouse,tvGoodChildname,tvGoodBuild;
             public Button btnplus, btnminus;
             public ShoppingCarObject.ShoppingCarObjectItem mItem;
 
@@ -293,7 +293,8 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                 btnplus = (Button) v.findViewById(R.id.shoppingcar_plus);
                 btnminus = (Button) v.findViewById(R.id.shoppingcar_minus);
                 tvGoodWarehouse = (TextView)v.findViewById(R.id.shoppingcar_warehouse);
-
+                tvGoodChildname = (TextView)v.findViewById(R.id.shoppingcar_childname);
+                tvGoodBuild = (TextView)v.findViewById(R.id.shoppingcar_build);
             }
 
 
@@ -436,6 +437,8 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
 
                 }
             });
+            holder.tvGoodChildname.setText(mShoppingCarObjectList.get(position).goodschildname.trim());
+            holder.tvGoodBuild.setText(mShoppingCarObjectList.get(position).goodsbuild.trim());
         }
 
         @Override

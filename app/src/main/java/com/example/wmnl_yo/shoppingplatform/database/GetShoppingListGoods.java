@@ -106,6 +106,8 @@ public class GetShoppingListGoods extends AsyncTask<String, Void, String> {
             String[] shoppingObjectAll_number = new String[shoppingObjectAll.length - 1];
             String[] shoppingObjectAll_price = new String[shoppingObjectAll.length - 1];
             String[] shoppingObjectAll_warehouse = new String[shoppingObjectAll.length - 1];
+            String[] shoppingObjectAll_childname = new String[shoppingObjectAll.length - 1];
+            String[] shoppingObjectAll_build = new String[shoppingObjectAll.length - 1];
 
             ShoppingCarObject.ITEMS.clear();
             ShoppingCarObject dim = new ShoppingCarObject();
@@ -118,13 +120,14 @@ public class GetShoppingListGoods extends AsyncTask<String, Void, String> {
                 shoppingObjectAll_number[j] = shoppingMallAllInf[4];
                 shoppingObjectAll_price[j] = shoppingMallAllInf[5];
                 shoppingObjectAll_warehouse[j] = shoppingMallAllInf[6];
-
+                shoppingObjectAll_childname[j] = shoppingMallAllInf[7];
+                shoppingObjectAll_build[j] = shoppingMallAllInf[7];
 
                 dim.addItem(new ShoppingCarObject.ShoppingCarObjectItem(
-                        shoppingMallAllInf[1],shoppingMallAllInf[2],shoppingMallAllInf[3],shoppingMallAllInf[4],shoppingMallAllInf[5],shoppingMallAllInf[6]));
+                        shoppingMallAllInf[1],shoppingMallAllInf[2],shoppingMallAllInf[3],shoppingMallAllInf[4],shoppingMallAllInf[5],shoppingMallAllInf[7],shoppingMallAllInf[6],shoppingMallAllInf[8]));
 
                 j++;
-                Log.d("55125", j + ":"  + shoppingMallAllInf[1]+","+shoppingMallAllInf[2]+","+shoppingMallAllInf[3]+","+shoppingMallAllInf[4]+","+shoppingMallAllInf[5]+","+shoppingMallAllInf[6]);
+                Log.d("55125", j + ":"  + shoppingMallAllInf[1]+","+shoppingMallAllInf[2]+","+shoppingMallAllInf[3]+","+shoppingMallAllInf[4]+","+shoppingMallAllInf[5]+","+shoppingMallAllInf[6]+","+shoppingMallAllInf[7]+","+shoppingMallAllInf[8]);
             }
             ShoppingListFragment.goodsnumber = j;
         }

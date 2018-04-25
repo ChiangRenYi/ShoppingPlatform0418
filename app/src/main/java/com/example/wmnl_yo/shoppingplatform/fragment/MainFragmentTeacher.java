@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
-import com.example.wmnl_yo.shoppingplatform.database.GetSelectMemberFragment;
 
 public class MainFragmentTeacher extends Fragment implements View.OnClickListener {
     private View view;
@@ -31,7 +30,6 @@ public class MainFragmentTeacher extends Fragment implements View.OnClickListene
         btnBuilding = (LinearLayout) view.findViewById(R.id.layout_building_button);
         btnAttendenceManage = (LinearLayout) view.findViewById(R.id.layout_attendence_manage_button);
         btnRollcall = (LinearLayout) view.findViewById(R.id.layout_course_rollcall);
-        btnInteractive = (LinearLayout) view.findViewById(R.id.layout_interactive_button);
         btnOpinion = (LinearLayout) view.findViewById(R.id.layout_opinion_button);
 
         btnMemberService.setOnClickListener(this);
@@ -39,7 +37,6 @@ public class MainFragmentTeacher extends Fragment implements View.OnClickListene
         btnBuilding.setOnClickListener(this);
         btnAttendenceManage.setOnClickListener(this);
         btnRollcall.setOnClickListener(this);
-        btnInteractive.setOnClickListener(this);
         btnOpinion.setOnClickListener(this);
         tvName.setText(Constants.ACCOUNT);
 
