@@ -107,7 +107,7 @@
                 android:layout_gravity="right"
                 android:layout_weight="1"
                 android:button="@drawable/radiobutton_selector"
-                android:text="條碼繳費"
+                android:text="超商繳費"
                 android:textSize="@dimen/_10sdp"
                 android:textColor="@android:color/background_dark" />
 

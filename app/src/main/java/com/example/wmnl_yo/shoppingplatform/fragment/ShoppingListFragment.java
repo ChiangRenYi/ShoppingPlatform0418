@@ -293,7 +293,6 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                 btnplus = (Button) v.findViewById(R.id.shoppingcar_plus);
                 btnminus = (Button) v.findViewById(R.id.shoppingcar_minus);
                 tvGoodWarehouse = (TextView)v.findViewById(R.id.shoppingcar_warehouse);
-                tvGoodChildname = (TextView)v.findViewById(R.id.shoppingcar_childname);
                 tvGoodBuild = (TextView)v.findViewById(R.id.shoppingcar_build);
             }
 
@@ -317,7 +316,12 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-            holder.tvGoodsName.setText(mShoppingCarObjectList.get(position).goods.trim());
+            if(mShoppingCarObjectList.get(position).goodskind.equals("0")){
+                holder.tvGoodsName.setText(mShoppingCarObjectList.get(position).goodschildname.trim()+"："+mShoppingCarObjectList.get(position).goods.trim());
+            }else{
+                holder.tvGoodsName.setText(mShoppingCarObjectList.get(position).goods.trim());
+            }
+
             holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber.trim());
             priceTotal = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice.trim()).intValue()
                     * Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber.trim()).intValue();
@@ -437,7 +441,6 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
 
                 }
             });
-            holder.tvGoodChildname.setText(mShoppingCarObjectList.get(position).goodschildname.trim());
             holder.tvGoodBuild.setText(mShoppingCarObjectList.get(position).goodsbuild.trim());
         }
 

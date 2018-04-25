@@ -664,7 +664,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
         private List<ShoppingCarObject.ShoppingCarObjectItem> mShoppingCarObjectList;
         public class ViewHolder extends RecyclerView.ViewHolder {
             public RecyclerView ll;
-            public TextView tvGoodsName,tvGoodsNumber, tvGoodsPrice;
+            public TextView tvGoodsName,tvGoodsNumber, tvGoodsPrice,tvGoodsChild,tvGoodsBuild;
             public ShoppingCarObject.ShoppingCarObjectItem mItem;
             public ViewHolder(View v) {
                 super(v);
@@ -672,6 +672,8 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                 tvGoodsName = (TextView) v.findViewById(R.id.paymenygoodsName);
                 tvGoodsNumber = (TextView) v.findViewById(R.id.paymenygoodsNumber);
                 tvGoodsPrice = (TextView) v.findViewById(R.id.paymenygoodsPrice);
+                tvGoodsChild = (TextView) v.findViewById(R.id.paymenygoodschild);
+                tvGoodsBuild = (TextView) v.findViewById(R.id.paymenygoodsbuild);
             }
         }
 
@@ -693,6 +695,8 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
 
             holder.tvGoodsName.setText(mShoppingCarObjectList.get(position).goods);
             holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
+            holder.tvGoodsChild.setText(mShoppingCarObjectList.get(position).goodschildname);
+            holder.tvGoodsBuild.setText(mShoppingCarObjectList.get(position).goodsbuild);
             priceTotal = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice).intValue()*Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber).intValue();
             holder.tvGoodsPrice.setText(String.valueOf(priceTotal));
             shoppingcar_goodscount = mShoppingCarObjectList.get(position).goodsCount+"@#"+shoppingcar_goodscount;
