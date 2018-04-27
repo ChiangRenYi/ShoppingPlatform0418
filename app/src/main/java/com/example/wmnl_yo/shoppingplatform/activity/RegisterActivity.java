@@ -169,6 +169,10 @@ public class RegisterActivity extends Activity {
                                 Log.e("55886","RegisterInfo："+ Register_Account + "," + Register_Password + "," + Register_Career + "," + Register_Nationality + "," +Register_Gender);
                                 edAccount.setText("");
                                 SendResponse ="noRepeat";
+                            }else if(SendResponse == "repeat_id"){
+                                Toast.makeText(RegisterActivity.this,"此身分證已註冊帳號",Toast.LENGTH_SHORT).show();
+                                edID.setText("");
+                                SendResponse ="noRepeat";
                             }else{
                                 Log.e("55886","沒有重複");
                                 Toast.makeText(RegisterActivity.this,"申請成功！",Toast.LENGTH_SHORT).show();

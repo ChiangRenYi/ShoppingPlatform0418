@@ -24,6 +24,7 @@ import com.example.wmnl_yo.shoppingplatform.database.GetOrderListDetail;
 import com.example.wmnl_yo.shoppingplatform.object.OrderObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -181,8 +182,6 @@ public class OrderResultFragment extends Fragment implements View.OnTouchListene
             public LinearLayout ll;
             public TextView tvDate,tvNum,tvState,tvPayway;
 
-            //  public AnnouncementObject.AnnouncementObjectItem mItem;
-
             public ViewHolder(View v) {
                 super(v);
                 ll = (LinearLayout) v.findViewById(R.id.orderll);
@@ -202,7 +201,6 @@ public class OrderResultFragment extends Fragment implements View.OnTouchListene
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.custom_listview_order_result, parent, false);
             ViewHolder vh = new ViewHolder(v);
-
             return vh;
         }
 

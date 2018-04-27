@@ -149,14 +149,11 @@ public class CategoryFragment extends Fragment implements View.OnTouchListener{
         public class ViewHolder extends RecyclerView.ViewHolder {
             public LinearLayout ll;
             public TextView tvTitle;
-            //  public AnnouncementObject.AnnouncementObjectItem mItem;
 
             public ViewHolder(View v) {
                 super(v);
                 ll = (LinearLayout) v.findViewById(R.id.an_ll);
                 tvTitle = (TextView) v.findViewById(R.id.announcement);
-//                Log.d("55125-asd",AnnouncementObjectList.toString());
-                Collections.reverse(AnnouncementObjectList);
 
             }
         }

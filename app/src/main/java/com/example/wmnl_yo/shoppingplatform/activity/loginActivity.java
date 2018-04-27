@@ -42,12 +42,14 @@ public class loginActivity extends Activity {
         setContentView(R.layout.login_layout);
 
         preferences = getSharedPreferences(Constants.PREFERENCE, Context.MODE_PRIVATE);
-
+        String Memory_account = preferences.getString("PREFERENCE_ACCOUNT","");
         AccountEditText = (EditText)findViewById(R.id.editText_account);
         PasswordEditText = (EditText)findViewById(R.id.editText_password);
         LoginButton = (Button)findViewById(R.id.Button_Login);
         RegisterButton = (Button)findViewById(R.id.Button_register);
         NonmemberBotton = (Button)findViewById(R.id.Button_nonmember_login);
+
+        AccountEditText.setText(Memory_account);
 
         sg = (SegmentedGroup)findViewById(R.id.radioGroup_user_indentity);
         rbMember = (RadioButton)findViewById(R.id.radioButton_indentity_member);
