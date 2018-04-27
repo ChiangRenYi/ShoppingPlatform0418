@@ -113,6 +113,8 @@ public class GetCourseQueryFragmentResult extends AsyncTask<String, Void, String
             Log.d("55125",s);
             int j = 0;
 
+            CourseQueryFragment.classall = s;
+
             String[] courseQuery = s.split("<br>");
             String[] courseQuery_picture = new String[courseQuery.length - 1];
             String[] courseQuery_csid = new String[courseQuery.length - 1];

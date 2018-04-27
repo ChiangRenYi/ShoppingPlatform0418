@@ -1,5 +1,6 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
@@ -67,11 +68,12 @@ public class CourseQueryDetailFragment extends Fragment implements View.OnTouchL
 
     public static String[] tmp;
 
-    public static String[] stringCQDParentChild;
+    public static String[] arrayCQDParentChild;
 
     public static String signUpCheck;
 
-
+    public static String stringCQDParentChild="";
+    ProgressDialog progressDoalog;
     public CourseQueryDetailFragment() {
         // Required empty public constructor
     }
@@ -102,7 +104,7 @@ public class CourseQueryDetailFragment extends Fragment implements View.OnTouchL
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         courseObject = (CourseObject.CourseObjectItem) getArguments().getSerializable("courseDetail");
-
+        signUpCheck = "";
         tmp = new String[getContext().getResources().getStringArray(R.array.courseDetail).length];
 
         tmp[0] = "" + courseObject.mNumber;
@@ -126,7 +128,7 @@ public class CourseQueryDetailFragment extends Fragment implements View.OnTouchL
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_course_query_detail, container, false);
         v.setOnTouchListener(this);
-
+        stringCQDParentChild="";
         lvCourseDetail = (ListView) v.findViewById(R.id.lCourse);
 
         arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_listview_order_detail) {
@@ -198,60 +200,102 @@ public class CourseQueryDetailFragment extends Fragment implements View.OnTouchL
             btnCourseCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    signUpCheck = "";
                     GetParentChild getParentChild = new GetParentChild();
                     getParentChild.execute();
-                    Toast.makeText(getActivity(), "請稍後...", Toast.LENGTH_SHORT).show();
+
+                    progressDoalog = new ProgressDialog(getActivity());
+                    progressDoalog.setMessage("載入中，請稍後...");
+                    progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    progressDoalog.setCancelable(false);
+                    progressDoalog.show();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(3000);
+                                progressDoalog.dismiss();
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }).start();
                     final Handler handler = new Handler();
                     final Handler handler2 = new Handler();
-
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            if (stringCQDParentChild == null) {
-                                Toast.makeText(getActivity(), "請以會員登入", Toast.LENGTH_SHORT).show();
-                            } else {
+                            if(stringCQDParentChild.equals("")) {
+                                Toast.makeText(getActivity(), "請檢查網路連線", Toast.LENGTH_SHORT).show();
+                            }else if(stringCQDParentChild.equals("nothing")){
+                                Toast.makeText(getActivity(), "請從網頁板新增小孩", Toast.LENGTH_SHORT).show();
+                            }else {
+
                                 new AlertDialog.Builder(getActivity())
-                                        .setItems(stringCQDParentChild, new DialogInterface.OnClickListener() {
+                                        .setItems(arrayCQDParentChild, new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
-                                                CQDParentChild = stringCQDParentChild[which];
+                                                CQDParentChild = arrayCQDParentChild[which];
                                                 SignUp signUp = new SignUp();
                                                 signUp.execute();
+                                                progressDoalog = new ProgressDialog(getActivity());
+                                                progressDoalog.setMessage("載入中，請稍後...");
+                                                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                                                progressDoalog.setCancelable(false);
+                                                progressDoalog.show();
+                                                new Thread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        try {
+                                                            Thread.sleep(3000);
+                                                            progressDoalog.dismiss();
 
+                                                        } catch (Exception e) {
+                                                            e.printStackTrace();
+                                                        }
+                                                    }
+                                                }).start();
                                                 handler2.postDelayed(new Runnable() {
                                                     @Override
                                                     public void run() {
-                                                        Log.d("55125-2",signUpCheck);
+                                                        Log.d("55125-2", signUpCheck);
+                                                        try {
 
-                                                        switch (signUpCheck)
-                                                        {
-                                                            case "signup" :
-                                                                Toast.makeText(getActivity(),
-                                                                        CQDParentChild + "報名成功", Toast.LENGTH_SHORT).show();
-                                                                break;
-                                                            case "signupcheck" :
-                                                                Toast.makeText(getActivity(),
-                                                                        CQDParentChild+"已報名過此課程",Toast.LENGTH_SHORT).show();
-                                                                break;
-                                                            case "you don't have permissions" :
-                                                                Toast.makeText(getActivity(),
-                                                                        "請進會員資料勾選該親子館即可報名",Toast.LENGTH_SHORT).show();
-                                                                break;
-                                                            case "alternate" :
-                                                                Toast.makeText(getActivity(),
-                                                                        CQDParentChild + "已報名候補", Toast.LENGTH_SHORT).show();
-                                                                break;
-                                                            default:
-                                                                break;
+
+                                                            switch (signUpCheck) {
+                                                                case "signup":
+                                                                    Toast.makeText(getActivity(),
+                                                                            CQDParentChild + "報名成功", Toast.LENGTH_SHORT).show();
+                                                                    break;
+                                                                case "signupcheck":
+                                                                    Toast.makeText(getActivity(),
+                                                                            CQDParentChild + "已報名過此課程", Toast.LENGTH_SHORT).show();
+                                                                    break;
+                                                                case "you don't have permissions":
+                                                                    Toast.makeText(getActivity(),
+                                                                            "請進會員資料勾選該親子館即可報名", Toast.LENGTH_SHORT).show();
+                                                                    break;
+                                                                case "alternate":
+                                                                    Toast.makeText(getActivity(),
+                                                                            CQDParentChild + "已報名候補", Toast.LENGTH_SHORT).show();
+                                                                    break;
+                                                                default:
+                                                                    break;
+                                                            }
+                                                        }catch (Exception e){
+                                                            Toast.makeText(getActivity(), "請檢查網路連線", Toast.LENGTH_SHORT).show();
                                                         }
                                                     }
-                                                },600);
+                                                }, 3000);
 
                                             }
                                         }).show();
                             }
                         }
-                    }, 300);
+                    },3000);
+
+
 
                 }
             });

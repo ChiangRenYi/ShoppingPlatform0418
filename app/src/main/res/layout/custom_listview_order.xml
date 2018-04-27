@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
+        android:layout_height="@dimen/_40sdp"
         android:background="@android:color/white"
         android:weightSum="3"
         >
@@ -14,11 +14,12 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_40sdp"
             android:layout_weight="1"
             android:gravity="center"
             android:layout_gravity="center"
             android:text="TextView"
+            android:textSize="@dimen/_13sdp"
             android:textColor="@android:color/black"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -26,17 +27,18 @@
         <TextView
             android:id="@+id/textView2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_40sdp"
             android:layout_weight="2"
             android:gravity="center"
             android:layout_gravity="center"
+            android:textSize="@dimen/_13sdp"
             android:text="@string/no"
             android:textColor="@android:color/black"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_40sdp"
             android:background="@drawable/ic_chevron_right"
             android:layout_gravity="center"/>
 

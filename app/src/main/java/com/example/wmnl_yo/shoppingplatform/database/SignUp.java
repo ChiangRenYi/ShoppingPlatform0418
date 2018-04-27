@@ -68,6 +68,7 @@ public class SignUp extends AsyncTask<String, Void, String> {
                     if (buffer.length() == 0) {
                         // Stream was empty. No point in parsing.
                         Log.d("55125", "nothing");
+
                     } else {
                         result = buffer.toString();
                     }
@@ -89,14 +90,14 @@ public class SignUp extends AsyncTask<String, Void, String> {
                     Log.e("55125", "Error", e);
                 }
             }
-            CourseQueryDetailFragment.signUpCheck = result.trim();
-            return result;
 
+            return result;
         }
     }
 
     protected void onPostExecute(String s) {
         if (s != null) {
+            CourseQueryDetailFragment.signUpCheck = s.trim();
             Log.d("55125", s);
 
 

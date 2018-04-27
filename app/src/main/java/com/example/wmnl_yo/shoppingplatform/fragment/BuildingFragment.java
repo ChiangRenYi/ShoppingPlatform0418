@@ -153,17 +153,23 @@ public class BuildingFragment extends Fragment implements View.OnTouchListener, 
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                switch (connectbuilding)
-                                {
-                                    case "nothing" :
-                                        Toast.makeText(getContext(), "此地區無親子館!!!", Toast.LENGTH_SHORT).show();
-                                        break;
-                                    case "check":
-                                        ((MainActivity) getContext()).replaceFragment(BuildingDetailFragment.class, null);
-                                        break;
-                                    default:
-                                        break;
+                                try {
+                                    switch (connectbuilding)
+                                    {
+                                        case "nothing" :
+                                            Toast.makeText(getContext(), "此地區無親子館!!!", Toast.LENGTH_SHORT).show();
+                                            break;
+                                        case "check":
+                                            ((MainActivity) getContext()).replaceFragment(BuildingDetailFragment.class, null);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }catch (Exception e){
+                                    Toast.makeText(getContext(),"請檢察網路連線訊號",Toast.LENGTH_SHORT).show();
+                                    ((MainActivity) getContext()).replaceFragment(BuildingFragment.class, null);
                                 }
+
                             }
                         },600);
 

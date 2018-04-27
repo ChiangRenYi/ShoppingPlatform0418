@@ -16,6 +16,7 @@
         android:layout_weight="1.2"
         android:gravity="center"
         android:text="123123123112312312"
+        android:singleLine="true"
         android:textColor="@android:color/black" />
 
     <TextView

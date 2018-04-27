@@ -65,6 +65,7 @@ public class GetCourseRecordFragmentResult extends AsyncTask<String, Void, Strin
                     if (buffer.length() == 0) {
                         // Stream was empty. No point in parsing.
                         Log.d("55125", "nothing");
+                        CourseRecordFragment.checkCourseRecord = "nothing";
                         CourseRecordObject.ITEMS.clear();
                     } else {
                         result = buffer.toString();
@@ -98,8 +99,8 @@ public class GetCourseRecordFragmentResult extends AsyncTask<String, Void, Strin
         if (s != null) {
             Log.d("55125",s);
             int j = 0;
-
             String[] courseRecord = s.split("<QQ>");
+            CourseRecordFragment.checkCourseRecord = courseRecord[0].trim();
             String[] courseRecord_picture = new String[courseRecord.length - 1];
             String[] courseRecord_csid = new String[courseRecord.length - 1];
             String[] courseRecord_erename = new String[courseRecord.length - 1];
@@ -167,6 +168,5 @@ public class GetCourseRecordFragmentResult extends AsyncTask<String, Void, Strin
 
         }
         Log.d("55125","notifyDataSetChanged");
-        CourseRecordFragment.rAdapter.notifyDataSetChanged();
     }
 }

@@ -222,6 +222,7 @@ public class CourseRecordDetailFragment extends Fragment implements View.OnTouch
                                                         case "delete" :
                                                             Toast.makeText(getActivity(),
                                                                     CRDParentChild + "已取消報名", Toast.LENGTH_SHORT).show();
+
                                                             ((MainActivity)getContext()).replaceFragment(CourseRecordFragment.class, null);
                                                             break;
                                                         default:

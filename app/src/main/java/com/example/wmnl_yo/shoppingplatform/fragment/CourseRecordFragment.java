@@ -1,18 +1,22 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
@@ -43,7 +47,9 @@ public class CourseRecordFragment extends Fragment implements View.OnTouchListen
     private OnFragmentInteractionListener mListener;
     private RecyclerView mRecyclerView;
     public static MyAdapter rAdapter;
+    ProgressDialog progressDoalog;
 
+    public static String checkCourseRecord = "";
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -69,8 +75,7 @@ public class CourseRecordFragment extends Fragment implements View.OnTouchListen
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        GetCourseRecordFragmentResult getCourseRecordFragmentResult = new GetCourseRecordFragmentResult();
-        getCourseRecordFragmentResult.execute();
+
     }
 
     @Override
@@ -79,12 +84,48 @@ public class CourseRecordFragment extends Fragment implements View.OnTouchListen
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_course_record, container, false);
         v.setOnTouchListener(this);
-
+        checkCourseRecord = "";
         mRecyclerView = (RecyclerView) v.findViewById(R.id.rv);
 
         rAdapter = new MyAdapter(CourseRecordObject.ITEMS);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        GetCourseRecordFragmentResult getCourseRecordFragmentResult = new GetCourseRecordFragmentResult();
+        getCourseRecordFragmentResult.execute();
+
+        progressDoalog = new ProgressDialog(getActivity());
+        progressDoalog.setMessage("載入中，請稍後...");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.setCancelable(false);
+        progressDoalog.show();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                    progressDoalog.dismiss();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("55125",checkCourseRecord+"123");
+                if(checkCourseRecord.equals("") ){
+                    Toast.makeText(getContext(),"請檢查網路連線訊號",Toast.LENGTH_SHORT).show();
+                }else if(checkCourseRecord.equals("nothing") || checkCourseRecord.equals("//THANKS")){
+                    Toast.makeText(getContext(),"沒有購買課程的紀錄",Toast.LENGTH_SHORT).show();
+                }else {
+                    rAdapter.notifyDataSetChanged();
+                }
+            }
+        },3000);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
                 layoutManager.getOrientation());
@@ -96,12 +137,14 @@ public class CourseRecordFragment extends Fragment implements View.OnTouchListen
         return v;
     }
 
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
+
 
     @Override
     public void onAttach(Context context) {

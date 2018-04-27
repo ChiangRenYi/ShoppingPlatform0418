@@ -66,6 +66,7 @@ public class GetParentChild extends AsyncTask<String, Void, String> {
                     if (buffer.length() == 0) {
                         // Stream was empty. No point in parsing.
                         Log.d("55125", "nothing");
+                        CourseQueryDetailFragment.stringCQDParentChild = "nothing";
                     } else {
                         result = buffer.toString();
                     }
@@ -94,12 +95,13 @@ public class GetParentChild extends AsyncTask<String, Void, String> {
 
     protected void onPostExecute(String s) {
         if (s != null) {
+            CourseQueryDetailFragment.stringCQDParentChild = s;
             Log.d("55125", s);
             String[] postParentChildInf = s.split("@#");
             int count = postParentChildInf.length;
             postParentChildInf[count-1] = postParentChildInf[count-1].trim();
             postParentChildInf[0] = "請選擇";
-            CourseQueryDetailFragment.stringCQDParentChild = postParentChildInf;
+            CourseQueryDetailFragment.arrayCQDParentChild = postParentChildInf;
             CourseRecordDetailFragment.stringCRDParentChild = postParentChildInf;
             AbsentNoteEntryFragment.string_absent_entry_student = postParentChildInf;
         }
