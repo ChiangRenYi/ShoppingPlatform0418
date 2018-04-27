@@ -117,9 +117,14 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getActivity(), "請稍後", Toast.LENGTH_SHORT).show();
+                try {
+                    Toast.makeText(getActivity(), "請稍後", Toast.LENGTH_SHORT).show();
 
-                shoppingAdapter.notifyDataSetChanged();
+                    shoppingAdapter.notifyDataSetChanged();
+                }catch (Exception e){
+                    Log.d("55125","error");
+
+                }
             }
         }, 500);
 

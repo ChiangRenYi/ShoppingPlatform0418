@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
@@ -189,15 +190,24 @@ public class OrderDetailFragment extends Fragment implements View.OnTouchListene
 
         btnCancelOrder.setText("取消訂單");
 
-        if(orderState.equals("已付款")){
-            btnGoPay.setEnabled(false);
-            btnGoPay.getBackground().setColorFilter(0xFF888888,android.graphics.PorterDuff.Mode.MULTIPLY );
-            btnCancelOrder.getBackground().setColorFilter(0xFF888888,android.graphics.PorterDuff.Mode.MULTIPLY );
-            btnCancelOrder.setEnabled(false);
-        }else {
-            btnGoPay.setEnabled(true);
-            btnCancelOrder.setEnabled(true);
+        try{
+            if(orderState.equals("已付款")){
+                btnGoPay.setEnabled(false);
+                btnGoPay.getBackground().setColorFilter(0xFF888888,android.graphics.PorterDuff.Mode.MULTIPLY );
+                btnCancelOrder.getBackground().setColorFilter(0xFF888888,android.graphics.PorterDuff.Mode.MULTIPLY );
+                btnCancelOrder.setEnabled(false);
+            }else {
+                btnGoPay.setEnabled(true);
+                btnCancelOrder.setEnabled(true);
+            }
+
+        }catch (Exception e){
+            Toast.makeText(getActivity(),"123",Toast.LENGTH_SHORT).show();
+            Log.d("55125-error",e.getMessage());
+
         }
+
+
 
         btnGoPay.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -99,6 +99,7 @@ public class GetPersonalInfo extends AsyncTask<String,Void,String>{
 
     protected void onPostExecute(String s) {
         String career = "";
+        String country= "";
         String[] result = s.split("@#");
         Log.d("55555",result[1]+result[2]+result[3]+result[4]+result[5]+result[6]+result[7]+result[8]+result[9]+result[10]);
 
@@ -139,10 +140,34 @@ public class GetPersonalInfo extends AsyncTask<String,Void,String>{
                 break;
         }
 
+        switch (result[4]){
+            case "1":
+                country = "台灣";
+                break;
+
+            case "2":
+                country = "日本";
+                break;
+
+            case "3":
+                country = "美國";
+                break;
+
+            case "4":
+                country = "中國";
+                break;
+
+            case "5":
+                country = "香港";
+                break;
+
+            default:
+                break;
+        }
         MemberServiceFragment.PIname = result[1];
         MemberServiceFragment.PIgender = result[2];
         MemberServiceFragment.PIcareer = career;
-        MemberServiceFragment.PInationality = result[4];
+        MemberServiceFragment.PInationality = country;
         MemberServiceFragment.PIID = result[5];
         MemberServiceFragment.PIbirthday = result[6];
         MemberServiceFragment.PImail = result[7];

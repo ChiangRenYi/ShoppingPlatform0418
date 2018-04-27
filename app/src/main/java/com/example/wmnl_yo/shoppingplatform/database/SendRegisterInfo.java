@@ -118,6 +118,9 @@ Log.e("55886","重複瞜 這在SEND");
             RegisterActivity.SendResponse = "repeat";
             Log.e("55555","重複帳號");
 
+        }else if(s.equals("repeatid")){
+            RegisterActivity.SendResponse = "repeat_id";
+            Log.e("55555","重複身分證字號");
         }else  if(s == null){
             Log.e("55886","沒重複 這在SEND");
             Log.e("55555-",s);
