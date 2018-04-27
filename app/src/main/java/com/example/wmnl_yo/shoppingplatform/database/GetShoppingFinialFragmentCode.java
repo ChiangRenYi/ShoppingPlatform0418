@@ -26,7 +26,7 @@ public class GetShoppingFinialFragmentCode extends AsyncTask<String, Void, Strin
 
     @Override
     protected String doInBackground(String... params) {
-        Log.d("55125", "getShoppingcode...");
+        Log.d("55125-getShoppingcode", "getShoppingcode...");
         String url = Constants.SERVER_URL + "getShoppingcode.php";
         HttpURLConnection connection = null;
         BufferedReader reader = null;
