@@ -94,35 +94,41 @@ public class loginActivity extends Activity {
                                 @Override
                                 public void run() {
                                     // Do something after 5s = 5000ms
-                                    switch (loginResult) {
-                                        case "noAccount":
-                                            Toast.makeText(loginActivity.this, "查無此帳號，請重新輸入", Toast.LENGTH_SHORT).show();
-                                            AccountEditText.setText("");
-                                            PasswordEditText.setText("");
-                                            Log.e("55886L", "查無此帳號");
-                                            break;
+                                    try {
+                                        switch (loginResult) {
+                                            case "noAccount":
+                                                Toast.makeText(loginActivity.this, "查無此帳號，請重新輸入", Toast.LENGTH_SHORT).show();
+                                                AccountEditText.setText("");
+                                                PasswordEditText.setText("");
+                                                Log.e("55886L", "查無此帳號");
+                                                break;
 
-                                        case "wrongPassword":
-                                            Toast.makeText(loginActivity.this, "密碼錯誤，請重新輸入", Toast.LENGTH_SHORT).show();
-                                            PasswordEditText.setText("");
+                                            case "wrongPassword":
+                                                Toast.makeText(loginActivity.this, "密碼錯誤，請重新輸入", Toast.LENGTH_SHORT).show();
+                                                PasswordEditText.setText("");
 
-                                            Log.e("55886L", "密碼錯誤");
-                                            break;
+                                                Log.e("55886L", "密碼錯誤");
+                                                break;
 
-                                        case "success":
-                                            Toast.makeText(loginActivity.this, "登入成功", Toast.LENGTH_SHORT).show();
-                                            Log.e("55886L", "登入成功");
-                                            Constants.ACCOUNT = account;
-                                            Intent intent = new Intent();
-                                            intent.setClass(loginActivity.this, MainActivity.class);
-                                            startActivity(intent);
-                                            finish();
-                                            break;
+                                            case "success":
+                                                Toast.makeText(loginActivity.this, "登入成功", Toast.LENGTH_SHORT).show();
+                                                Log.e("55886L", "登入成功");
+                                                Constants.ACCOUNT = account;
+                                                Intent intent = new Intent();
+                                                intent.setClass(loginActivity.this, MainActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                                break;
 
-                                        default:
-                                            Toast.makeText(loginActivity.this, "請重新輸入密碼", Toast.LENGTH_SHORT).show();
-                                            PasswordEditText.setText("");
-                                            break;
+                                            default:
+                                                Toast.makeText(loginActivity.this, "請重新輸入密碼", Toast.LENGTH_SHORT).show();
+                                                PasswordEditText.setText("");
+                                                break;
+                                        }
+                                    }catch (Exception e){
+                                        Toast.makeText(loginActivity.this,"請檢查網路狀態",Toast.LENGTH_SHORT).show();
+                                    }finally {
+                                        PasswordEditText.setText("");
                                     }
                                 }
                             }, 500);

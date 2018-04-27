@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,6 +25,8 @@ import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.database.GetAnnouncement;
 import com.example.wmnl_yo.shoppingplatform.object.AnnouncementObject;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class CategoryFragment extends Fragment implements View.OnTouchListener{
@@ -74,6 +77,7 @@ public class CategoryFragment extends Fragment implements View.OnTouchListener{
         v.setOnTouchListener(this);
 
         recyclerView = (RecyclerView) v.findViewById(R.id.an_recyclerview);
+
 
         myAdapter = new MyAdapter(AnnouncementObject.ITEMS);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -151,12 +155,16 @@ public class CategoryFragment extends Fragment implements View.OnTouchListener{
                 super(v);
                 ll = (LinearLayout) v.findViewById(R.id.an_ll);
                 tvTitle = (TextView) v.findViewById(R.id.announcement);
+//                Log.d("55125-asd",AnnouncementObjectList.toString());
+                Collections.reverse(AnnouncementObjectList);
 
             }
         }
 
         public MyAdapter(List<AnnouncementObject.AnnouncementObjectItem> announcementObjectList) {
+
             AnnouncementObjectList = announcementObjectList;
+
         }
 
         @Override
