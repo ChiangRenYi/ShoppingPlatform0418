@@ -17,12 +17,12 @@ public class CourseRecordObject implements Serializable {
     public static class CourseRecordObjectItem implements Serializable {
 
         public final String rCount,rPicture,rNumber,rCourseBuildingName,rCourseName,rCourseTeacher,rCourseDate,rCourseWeek,rCourseSTime,rCourseSTime1,rCourseETime,rCourseETime1,
-                rTeacherIntro,rCourseContent,rTotal,rRemaining,rPrice,rPayment;
+                rTeacherIntro,rCourseContent,rTotal,rRemaining,rPrice,rPayment,rOdid,rStudentid,rStudentname;
 
         public CourseRecordObjectItem(String rCount,String rPicture, String rNumber, String rCourseBuildingName, String rCourseName, String rCourseTeacher, String rCourseDate,
                          String rCourseWeek, String rCourseSTime, String rCourseSTime1, String rCourseETime,
                          String rCourseETime1, String rTeacherIntro, String rCourseContent,
-                         String rTotal, String rRemaining, String rPrice, String rPayment) {
+                         String rTotal, String rRemaining, String rPrice, String rPayment,String rOdid,String rStudentid,String rStudentname) {
             this.rCount = rCount;
             this.rPicture = rPicture;
             this.rNumber = rNumber;
@@ -41,6 +41,9 @@ public class CourseRecordObject implements Serializable {
             this.rRemaining = rRemaining;
             this.rPrice = rPrice;
             this.rPayment = rPayment;
+            this.rOdid = rOdid;
+            this.rStudentid = rStudentid;
+            this.rStudentname = rStudentname;
         }
     }
 }

@@ -27,7 +27,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.R;
-import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
 import com.example.wmnl_yo.shoppingplatform.activity.loginActivity;
 import com.example.wmnl_yo.shoppingplatform.database.GetParentChild;
 import com.example.wmnl_yo.shoppingplatform.database.SignUp;
@@ -186,13 +185,7 @@ public class CourseQueryDetailFragment extends Fragment implements View.OnTouchL
             }
         }.execute("圖片連結網址路徑");
         if(loginActivity.userPeople.equals("teacher")){
-            btnCourseCancel.setText("確認並回上一頁");
-            btnCourseCancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ((MainActivity) getContext()).replaceFragment(CourseQueryResultFragment.class, null);
-                }
-            });
+            btnCourseCancel.setVisibility(View.INVISIBLE);
 
         }else if(loginActivity.userPeople.equals("student")){
             btnCourseCancel.setText("報名上課");

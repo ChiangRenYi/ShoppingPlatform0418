@@ -1,7 +1,7 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -11,7 +11,6 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -26,9 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.R;
-import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
 import com.example.wmnl_yo.shoppingplatform.database.DeleteCourse;
-import com.example.wmnl_yo.shoppingplatform.database.GetParentChild;
 import com.example.wmnl_yo.shoppingplatform.object.CourseRecordObject;
 
 import java.io.IOException;
@@ -70,7 +67,7 @@ public class CourseRecordDetailFragment extends Fragment implements View.OnTouch
     private ArrayAdapter arrayAdapter;
 
     private String[] tmp;
-
+    ProgressDialog progressDoalog;
     public CourseRecordDetailFragment() {
         // Required empty public constructor
     }
@@ -104,7 +101,7 @@ public class CourseRecordDetailFragment extends Fragment implements View.OnTouch
         courseRecordObject = (CourseRecordObject.CourseRecordObjectItem) getArguments().getSerializable("courseRecordDetail");
 
         tmp = new String[getContext().getResources().getStringArray(R.array.courseRecordDetail).length];
-
+        deleteCheck = "";
         tmp[0] = courseRecordObject.rNumber;
         tmp[1] = courseRecordObject.rCourseBuildingName;
         tmp[2] = courseRecordObject.rCourseName;
@@ -118,7 +115,7 @@ public class CourseRecordDetailFragment extends Fragment implements View.OnTouch
         tmp[9] = "" + courseRecordObject.rRemaining;
         tmp[10] = "" + courseRecordObject.rPrice;
         tmp[11] = "" + courseRecordObject.rPayment;
-
+        tmp[12] = "" + courseRecordObject.rStudentname;
 
     }
 
@@ -192,50 +189,48 @@ public class CourseRecordDetailFragment extends Fragment implements View.OnTouch
         btnCourseCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GetParentChild getParentChild = new GetParentChild();
-                getParentChild.execute();
-                Toast.makeText(getActivity(),"請稍後...", Toast.LENGTH_SHORT).show();
-                final Handler handler = new Handler();
-                final Handler handler2 = new Handler();
+                deleteCheck ="";
+                DeleteCourse deleteCourse = new DeleteCourse();
+                deleteCourse.execute();
+                progressDoalog = new ProgressDialog(getActivity());
+                progressDoalog.setMessage("載入中，請稍後...");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.setCancelable(false);
+                progressDoalog.show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(3000);
+                            progressDoalog.dismiss();
 
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+                final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (stringCRDParentChild == null) {
-                            Toast.makeText(getActivity(), "請以會員登入", Toast.LENGTH_SHORT).show();
-                        } else {
-                            new AlertDialog.Builder(getActivity())
-                                    .setItems(stringCRDParentChild, new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            CRDParentChild = stringCRDParentChild[which];
-                                            DeleteCourse deleteCourse = new DeleteCourse();
-                                            deleteCourse.execute();
-
-                                            handler2.postDelayed(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    Log.d("55125-2",deleteCheck);
-
-                                                    switch (deleteCheck)
-                                                    {
-                                                        case "delete" :
-                                                            Toast.makeText(getActivity(),
-                                                                    CRDParentChild + "已取消報名", Toast.LENGTH_SHORT).show();
-
-                                                            ((MainActivity)getContext()).replaceFragment(CourseRecordFragment.class, null);
-                                                            break;
-                                                        default:
-                                                            break;
-                                                    }
-                                                }
-                                            },600);
-
-                                        }
-                                    }).show();
+                        Log.d("55125-2",deleteCheck);
+                        switch (deleteCheck)
+                        {
+                            case "delete" :
+                                Toast.makeText(getActivity(),
+                                        "已取消報名，請回上一頁", Toast.LENGTH_SHORT).show();
+                                break;
+                            case "nothing":
+                                Toast.makeText(getActivity(),
+                                         "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                            case "":
+                                Toast.makeText(getActivity(),
+                                        "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                            default:
+                                break;
                         }
-                    }
-                }, 300);
+                        }
+                }, 3000);
 
             }
         });

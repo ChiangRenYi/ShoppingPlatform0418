@@ -40,9 +40,9 @@ public class DeleteCourse extends AsyncTask<String, Void, String> {
             //傳值
             Uri.Builder builder = new Uri.Builder()
                     .appendQueryParameter("account", Constants.ACCOUNT)
-                    .appendQueryParameter("oc_id", CourseRecordDetailFragment.courseRecordObject.rNumber)
-                    .appendQueryParameter("er_name", CourseRecordDetailFragment.courseRecordObject.rCourseBuildingName)
-                    .appendQueryParameter("crd_parentchild", CourseRecordDetailFragment.CRDParentChild);
+                    .appendQueryParameter("crd_parentchild", CourseRecordDetailFragment.courseRecordObject.rStudentid)
+                    .appendQueryParameter("od_id", CourseRecordDetailFragment.courseRecordObject.rOdid);
+            Log.d("55125",Constants.ACCOUNT+CourseRecordDetailFragment.courseRecordObject.rStudentid+CourseRecordDetailFragment.courseRecordObject.rOdid);
 
             String query = builder.build().getEncodedQuery();
 
@@ -89,7 +89,7 @@ public class DeleteCourse extends AsyncTask<String, Void, String> {
                     Log.e("55125", "Error", e);
                 }
             }
-            CourseRecordDetailFragment.deleteCheck = result.trim();
+
             return result;
 
         }
@@ -98,7 +98,7 @@ public class DeleteCourse extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         if (s != null) {
             Log.d("55125", s);
-
+            CourseRecordDetailFragment.deleteCheck = s.trim();
 
         }
     }

@@ -7,7 +7,6 @@ import android.util.Log;
 import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.fragment.ShoppingListFragment;
 import com.example.wmnl_yo.shoppingplatform.object.ShoppingCarObject;
-import com.example.wmnl_yo.shoppingplatform.object.ShoppingMallObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -66,7 +65,7 @@ public class GetShoppingListAll extends AsyncTask<String, Void, String> {
                     if (buffer.length() == 0) {
                         // Stream was empty. No point in parsing.
                         Log.d("55125", "nothing");
-                        ShoppingMallObject.ITEMS.clear();
+                        ShoppingCarObject.ITEMS.clear();
                     } else {
                         result = buffer.toString();
                     }

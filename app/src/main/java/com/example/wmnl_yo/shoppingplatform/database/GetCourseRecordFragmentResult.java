@@ -118,6 +118,9 @@ public class GetCourseRecordFragmentResult extends AsyncTask<String, Void, Strin
             String[] courseRecord_oclnumber = new String[courseRecord.length - 1];
             String[] courseRecord_ocprice =  new String[courseRecord.length - 1];
             String[] courseRecord_ocpayment =  new String[courseRecord.length - 1];
+            String[] courseRecord_odid =  new String[courseRecord.length - 1];
+            String[] courseRecord_studentid =  new String[courseRecord.length - 1];
+            String[] courseRecord_studentname =  new String[courseRecord.length - 1];
             CourseRecordObject.ITEMS.clear();
             CourseRecordObject dim = new CourseRecordObject();
             for (int i = 0; i < courseRecord.length - 1; i++) {
@@ -140,7 +143,9 @@ public class GetCourseRecordFragmentResult extends AsyncTask<String, Void, Strin
                 courseRecord_oclnumber[j] = courseRecordInf[17];
                 courseRecord_ocprice[j] = courseRecordInf[18];
                 courseRecord_ocpayment[j] = courseRecordInf[19];
-
+                courseRecord_odid[j] = courseRecordInf[20];
+                courseRecord_studentid[j] = courseRecordInf[21];
+                courseRecord_studentname[j] = courseRecordInf[22];
                 switch (courseRecordInf[19]){
                     case "0" :
                         courseRecord_ocpayment[j] = "未結帳";
@@ -158,12 +163,12 @@ public class GetCourseRecordFragmentResult extends AsyncTask<String, Void, Strin
                 dim.addItem(new CourseRecordObject.CourseRecordObjectItem(String.valueOf(i + 1),
                         courseRecordInf[1],courseRecordInf[2],courseRecordInf[3],courseRecordInf[4],courseRecordInf[5],courseRecordInf[6],
                         courseRecordInf[7],courseRecordInf[8],courseRecordInf[9],courseRecordInf[11],courseRecordInf[12],
-                        courseRecordInf[14],courseRecordInf[15],courseRecordInf[16],courseRecordInf[17],courseRecordInf[18],courseRecordInf[19]));
+                        courseRecordInf[14],courseRecordInf[15],courseRecordInf[16],courseRecordInf[17],courseRecordInf[18],courseRecordInf[19],courseRecordInf[20],courseRecordInf[21],courseRecordInf[22]));
 
                 j++;
                 Log.d("55125", j + ":"  + courseRecordInf[1]+","+courseRecordInf[2]+","+courseRecordInf[3]+","+courseRecordInf[4]+","+courseRecordInf[5]+","+courseRecordInf[6]+","+
                         courseRecordInf[7]+","+courseRecordInf[8]+","+courseRecordInf[9]+","+courseRecordInf[11]+","+courseRecordInf[12]+","+
-                        courseRecordInf[14]+","+courseRecordInf[15]+","+courseRecordInf[16]+","+courseRecordInf[17]+","+courseRecordInf[18]+","+courseRecordInf[19]);
+                        courseRecordInf[14]+","+courseRecordInf[15]+","+courseRecordInf[16]+","+courseRecordInf[17]+","+courseRecordInf[18]+","+courseRecordInf[19]+","+courseRecordInf[20]+","+courseRecordInf[21]+","+courseRecordInf[22]);
             }
 
         }

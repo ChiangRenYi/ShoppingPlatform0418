@@ -637,6 +637,7 @@
         <item>剩餘名額:</item>
         <item>價格:</item>
         <item>繳費狀態:</item>
+        <item>報名小孩:</item>
     </string-array>
 
     <string-array name="shoppingObjectDetail">
