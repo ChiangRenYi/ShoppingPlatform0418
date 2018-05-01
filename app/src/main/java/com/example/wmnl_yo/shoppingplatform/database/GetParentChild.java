@@ -7,7 +7,6 @@ import android.util.Log;
 import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.fragment.AbsentNoteEntryFragment;
 import com.example.wmnl_yo.shoppingplatform.fragment.CourseQueryDetailFragment;
-import com.example.wmnl_yo.shoppingplatform.fragment.CourseRecordDetailFragment;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -98,12 +97,15 @@ public class GetParentChild extends AsyncTask<String, Void, String> {
             CourseQueryDetailFragment.stringCQDParentChild = s;
             Log.d("55125", s);
             String[] postParentChildInf = s.split("@#");
+            String[] postParentInf = s.split("@#");
             int count = postParentChildInf.length;
+            int count1 = postParentInf.length;
             postParentChildInf[count-1] = postParentChildInf[count-1].trim();
             postParentChildInf[0] = "請選擇";
+            postParentInf[count1-1] = postParentInf[count1-1].trim();
+            postParentInf[0] = "請選擇";
             CourseQueryDetailFragment.arrayCQDParentChild = postParentChildInf;
-            CourseRecordDetailFragment.stringCRDParentChild = postParentChildInf;
-            AbsentNoteEntryFragment.string_absent_entry_student = postParentChildInf;
+            AbsentNoteEntryFragment.string_absent_entry_student = postParentInf;
         }
     }
 }

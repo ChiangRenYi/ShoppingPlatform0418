@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="@dimen/_10sdp"
-                android:minHeight="@dimen/_70sdp"
+                android:minHeight="@dimen/_40sdp"
                 android:background="@android:color/white"
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:weightSum="3">
@@ -43,6 +43,7 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:text="學生："
+                    android:textSize="@dimen/_14sdp"
                     android:textColor="@android:color/black"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     />
@@ -54,7 +55,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:text="@string/no"
+                    android:text="請選擇"
+                    android:textSize="@dimen/_14sdp"
                     android:textColor="@android:color/black"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -70,7 +72,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/white"
                 android:padding="@dimen/_5sdp"
-                android:minHeight="@dimen/_70sdp"
+                android:minHeight="@dimen/_40sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:weightSum="3">
 
@@ -82,6 +84,8 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:text="親子館地點："
+                    android:textSize="@dimen/_14sdp"
+
                     android:maxLines="1"
                     android:textColor="@android:color/black"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -93,7 +97,8 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:text="@string/no"
+                    android:text="請選擇"
+                    android:textSize="@dimen/_14sdp"
                     android:textColor="@android:color/black"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -109,7 +114,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/white"
                 android:padding="@dimen/_5sdp"
-                android:minHeight="@dimen/_70sdp"
+                android:minHeight="@dimen/_40sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:weightSum="3">
 
@@ -121,6 +126,7 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:text="請假日期："
+                    android:textSize="@dimen/_14sdp"
                     android:textColor="@android:color/black"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -131,7 +137,8 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:text="@string/no"
+                    android:text="請選擇"
+                    android:textSize="@dimen/_14sdp"
                     android:textColor="@android:color/black"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -147,7 +154,8 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/white"
                 android:padding="@dimen/_5sdp"
-                android:minHeight="@dimen/_70sdp"
+                android:minHeight="@dimen/_40sdp"
+
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:weightSum="3">
 
@@ -159,6 +167,7 @@
                         android:gravity="center"
                         android:layout_gravity="center"
                         android:text="課程："
+                        android:textSize="@dimen/_14sdp"
                         android:textColor="@android:color/black"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -169,7 +178,8 @@
                         android:layout_weight="2"
                         android:gravity="center"
                         android:layout_gravity="center"
-                        android:text="@string/no"
+                        android:text="請選擇"
+                        android:textSize="@dimen/_14sdp"
                         android:textColor="@android:color/black"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -186,7 +196,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/white"
                 android:padding="@dimen/_5sdp"
-                android:minHeight="@dimen/_70sdp"
+                android:minHeight="@dimen/_40sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:weightSum="3">
 
@@ -199,6 +209,7 @@
                         android:gravity="center"
                         android:layout_gravity="center"
                         android:text="假別："
+                        android:textSize="@dimen/_14sdp"
                         android:textColor="@android:color/black"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -209,7 +220,8 @@
                         android:layout_weight="2"
                         android:gravity="center"
                         android:layout_gravity="center"
-                        android:text="@string/no"
+                        android:text="請選擇"
+                        android:textSize="@dimen/_14sdp"
                         android:textColor="@android:color/black"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -226,7 +238,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/white"
                 android:padding="@dimen/_5sdp"
-                android:minHeight="@dimen/_70sdp"
+                android:minHeight="@dimen/_40sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:weightSum="3">
 
@@ -238,6 +250,7 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:text="退費與保留："
+                    android:textSize="@dimen/_14sdp"
                     android:textColor="@android:color/black"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -248,7 +261,8 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:text="@string/no"
+                    android:text="請選擇"
+                    android:textSize="@dimen/_14sdp"
                     android:textColor="@android:color/black"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -276,6 +290,7 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:text="原因："
+                    android:textSize="@dimen/_14sdp"
                     android:textColor="@android:color/black"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -286,6 +301,7 @@
                     android:layout_weight="2"
                     android:layout_gravity="center"
                     android:hint="請輸入..."
+                    android:textSize="@dimen/_14sdp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@android:color/black"
                     android:textColorHighlight="@android:color/darker_gray"
@@ -305,6 +321,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:text="送出"
+                    android:textSize="@dimen/_13sdp"
                     android:backgroundTint="#51cdf0"
                     android:textColor="@android:color/white"/>
             </TableRow>

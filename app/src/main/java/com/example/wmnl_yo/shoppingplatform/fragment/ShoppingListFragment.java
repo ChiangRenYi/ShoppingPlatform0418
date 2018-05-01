@@ -481,7 +481,7 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                 db_shoppinglist_kind = numberPickerView.getContentByCurrValue();
                 Log.e("55125", db_shoppinglist_kind);
 
-                if (db_shoppinglist_kind == "商品") {
+                if (db_shoppinglist_kind == "嬰幼兒商品") {
                     goodsnumber = 0;
                     GetShoppingListGoods getShoppingListGoods = new GetShoppingListGoods();
                     getShoppingListGoods.execute();

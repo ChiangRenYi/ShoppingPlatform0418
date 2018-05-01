@@ -97,7 +97,7 @@ public class GetShoppingList extends AsyncTask<String, Void, String> {
         if (s != null) {
             Log.d("55125", s);
             String[] postbuildingInf = s.split("@#");
-            postbuildingInf[0] = "商品";
+            postbuildingInf[0] = "嬰幼兒商品";
 
             int count = postbuildingInf.length-1;
             postbuildingInf[count] = postbuildingInf[count].trim();
@@ -114,9 +114,11 @@ public class GetShoppingList extends AsyncTask<String, Void, String> {
                 nonDuplicateBuildingArray[i] = (String) tempArray[i];
             }
             for (int t = 0 ; t < nonDuplicateBuildingArray.length ; t++) {
-                if(nonDuplicateBuildingArray[t] == "商品") {
+                if(nonDuplicateBuildingArray[t] == "嬰幼兒商品") {
                     nonDuplicateBuildingArray[t] = nonDuplicateBuildingArray[0];
-                    nonDuplicateBuildingArray[0] = "商品";
+                    nonDuplicateBuildingArray[0] = "嬰幼兒商品";
+                }else{
+                    nonDuplicateBuildingArray[t] = nonDuplicateBuildingArray[t]+"課程";
                 }
             }
             ShoppingListFragment.values = nonDuplicateBuildingArray;

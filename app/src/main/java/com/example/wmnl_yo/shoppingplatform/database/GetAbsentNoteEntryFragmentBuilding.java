@@ -67,6 +67,7 @@ public class GetAbsentNoteEntryFragmentBuilding extends AsyncTask<String, Void, 
                     if (buffer.length() == 0) {
                         // Stream was empty. No point in parsing.
                         Log.d("55125", "nothing");
+                        AbsentNoteEntryFragment.absent_entry_student_net = "nothing";
                     } else {
                         result = buffer.toString();
                     }
