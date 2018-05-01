@@ -41,7 +41,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.3"
                 android:gravity="center"
-                android:text="日期"
+                android:text="上課日期"
                 android:textColor="@android:color/darker_gray" />
 
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.4"
                 android:gravity="center"
-                android:text="時段"
+                android:text="上課時段"
                 android:textColor="@android:color/darker_gray" />
 
             <TextView
