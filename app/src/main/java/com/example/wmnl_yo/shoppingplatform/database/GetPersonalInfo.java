@@ -87,11 +87,11 @@ public class GetPersonalInfo extends AsyncTask<String,Void,String>{
                     Log.e("55125", "Error", e);
                 }
             }
-            Log.e("55555",result);
-            Log.e("55886","顯示資料庫回傳結果");
+//            Log.e("55555",result);
+//            Log.e("55886","顯示資料庫回傳結果");
             String a = result.trim();
-            Log.e("55555~",a);
-            Log.e("55886","再次顯示回傳結果");
+//            Log.e("55555~",a);
+//            Log.e("55886","再次顯示回傳結果");
             return a;
 
         }
@@ -111,27 +111,27 @@ public class GetPersonalInfo extends AsyncTask<String,Void,String>{
 
         switch (result[3]){
 
-            case "0":
+            case "1":
                 career = "公";
                 break;
 
-            case "1":
+            case "2":
                 career = "工";
                 break;
 
-            case "2":
+            case "3":
                 career = "教";
                 break;
 
-            case "3":
+            case "4":
                 career = "軍/警";
                 break;
 
-            case "4":
+            case "5":
                 career = "家管";
                 break;
 
-            case "5":
+            case "6":
                 career = "商";
                 break;
 
