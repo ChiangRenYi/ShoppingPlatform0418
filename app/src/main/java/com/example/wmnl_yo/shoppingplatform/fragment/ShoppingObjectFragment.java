@@ -122,11 +122,14 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
                 }
             }
         }).start();
-        Handler handler =new Handler();
+        Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 rAdapter.notifyDataSetChanged();
+                if(ShoppingMallObject.ITEMS.isEmpty()){
+                    Toast.makeText(getContext(), "請檢察網路連線訊號", Toast.LENGTH_SHORT).show();
+                }
             }
         },3000);
 
@@ -176,6 +179,7 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
         shopping_object_search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ShoppingMallObject.ITEMS.clear();
                 db_shopping_object_search_edittext = shopping_object_search_edittext.getText().toString();
                 Log.e("55125",db_shopping_object_search_edittext);
                 GetShoppingMallSeleteName getShoppingMallSeleteName = new GetShoppingMallSeleteName();
@@ -303,6 +307,9 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
                     @Override
                     public void run() {
                         rAdapter.notifyDataSetChanged();
+                        if(ShoppingMallObject.ITEMS.isEmpty()){
+                            Toast.makeText(getContext(), "請檢察網路連線訊號", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 },3000);
             }
@@ -353,7 +360,7 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
                     @Override
                     public void run() {
                         rAdapter.notifyDataSetChanged();
-                        if(ShoppingMallObject.ITEMS == null){
+                        if(ShoppingMallObject.ITEMS.isEmpty()){
                             Toast.makeText(getContext(), "請檢察網路連線訊號", Toast.LENGTH_SHORT).show();
                         }
                     }
