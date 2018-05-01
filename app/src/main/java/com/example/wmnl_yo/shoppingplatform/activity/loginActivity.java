@@ -49,8 +49,6 @@ public class loginActivity extends Activity {
         RegisterButton = (Button)findViewById(R.id.Button_register);
         NonmemberBotton = (Button)findViewById(R.id.Button_nonmember_login);
 
-        //456456456464646456
-        //11111111111111
         AccountEditText.setText(Memory_account);
 
         sg = (SegmentedGroup)findViewById(R.id.radioGroup_user_indentity);
