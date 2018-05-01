@@ -27,6 +27,7 @@ public class GetSatisfacationChildFragmentResult extends AsyncTask<String, Void,
     public static String[] satisfacation_childID;
     public static String[] satisfacation;
     public static String child;
+    public static int internetState=1;
     protected String doInBackground(String... params) {
         Log.d("55125", "getSatisfacationChild.php");
         String url = Constants.SERVER_URL + "getSatisfacationChild.php";
@@ -94,13 +95,58 @@ public class GetSatisfacationChildFragmentResult extends AsyncTask<String, Void,
 //            Log.d("","56465");
 //            Log.d("123",SatisfacationChildFragment.child);
 //            Log.d("","56465");
-            ////////////////////////////////////////
+//            ////////////////////////////////////////
+//
+//
+//            Log.d("55125",result);
+//            int j = 0;
+//
+//            satisfacation = result.split("<QQ>");
+//            satifacation_childName = new String[satisfacation.length-1];
+//            satisfacation_childID = new String[satisfacation.length-1];
+//            SatisfacationChildObject.ITEMS.clear();
+//            SatisfacationChildObject dim = new SatisfacationChildObject();
+//            for (int i = 0; i < satisfacation.length - 1; i++) {
+//                String[] satisfacationInf = new String[2];
+//                satisfacationInf = satisfacation[i].split("@#");
+//                satifacation_childName[j] = satisfacationInf[1];
+////                Log.d("andydatabase",satisfacation[0]);//andytemp
+//
+//                Log.d("andydatabase",satifacation_childName[j]);
+//                satisfacation_childID[j] = satisfacationInf[2];
+//                Log.d("andydatabase",satisfacation_childID[j]);
+//
+//
+//
+//
+//                dim.addItem(new SatisfacationChildObject.SatisfacationChildObjectItem(
+//                        satisfacationInf[1],satisfacationInf[2]));
+//
+//
+//
+//
+//
+//                j++;
+//                Log.d("55125", j + ":"  + satisfacationInf[1]+","+satisfacationInf[2]);
+//            }
+//
+//
+//
+//
+//            ////////////////////////////////////////
+            child=result;
+            return result;
 
+        }
+    }
 
-            Log.d("55125",result);
+    protected void onPostExecute(String s) {
+        if (s != null) {
+            internetState=1;
+            Log.d("55125", s);
             int j = 0;
 
-            satisfacation = result.split("<QQ>");
+            satisfacation = s.split("<QQ>");
             satifacation_childName = new String[satisfacation.length-1];
             satisfacation_childID = new String[satisfacation.length-1];
             SatisfacationChildObject.ITEMS.clear();
@@ -133,17 +179,12 @@ public class GetSatisfacationChildFragmentResult extends AsyncTask<String, Void,
 
 
             ////////////////////////////////////////
-            child=result;
-            return result;
 
         }
-    }
-
-    protected void onPostExecute(String s) {
-        if (s != null) {
-            Log.d("55125", s);
-
-
+        if(s==null)
+        {
+            Log.d("andyOnpost","null");
+            internetState=0;
         }
         Log.d("55125","notifyDataSetChanged");
         SatisfacationChildFragment.rAdapter.notifyDataSetChanged();
