@@ -1,6 +1,7 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -71,7 +72,9 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
     private Button shopping_object_search_button,shopping_object_layout_button;
     private EditText shopping_object_search_edittext;
     private static String type = "list";
-
+    public static String string_shopping_mall_name_net = "no";
+    public static String string_shopping_mall_object_name_net = "no";
+    ProgressDialog progressDoalog;
     public ShoppingObjectFragment() {
         // Required empty public constructor
     }
@@ -101,16 +104,31 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        Toast.makeText(getActivity(),"請稍後...", Toast.LENGTH_SHORT).show();
-        final Handler handler = new Handler();
+        GetShoppingMallKind getShoppingMallKind = new GetShoppingMallKind();
+        getShoppingMallKind.execute();
+        progressDoalog = new ProgressDialog(getActivity());
+        progressDoalog.setMessage("載入中，請稍後...");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.setCancelable(false);
+        progressDoalog.show();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                    progressDoalog.dismiss();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+        Handler handler =new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 rAdapter.notifyDataSetChanged();
             }
-        }, 300);
-        GetShoppingMallKind getShoppingMallKind = new GetShoppingMallKind();
-        getShoppingMallKind.execute();
+        },3000);
 
     }
 
@@ -133,13 +151,25 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
         shopping_object_kind_t2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numberPicker(string_shopping_object_kind);
+                if(string_shopping_object_kind == null){
+                    Toast.makeText(getContext(), "請檢察網路連線訊號", Toast.LENGTH_SHORT).show();
+                    shopping_object_kind_t2.setText("請選擇");
+                }else {
+                    numberPicker(string_shopping_object_kind);
+                }
+                string_shopping_mall_object_name_net= "no";
             }
         });
         shopping_object_kindsecond_t2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numberPicker2(string_shopping_object_kindsecond);
+                if(string_shopping_object_kind == null || string_shopping_mall_object_name_net.equals("no")){
+                    Toast.makeText(getContext(), "請檢察網路連線訊號", Toast.LENGTH_SHORT).show();
+                    shopping_object_kind_t2.setText("請選擇");
+                    string_shopping_object_kind = null;
+                }else {
+                    numberPicker2(string_shopping_object_kindsecond);
+                }
             }
         });
 
@@ -150,14 +180,37 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
                 Log.e("55125",db_shopping_object_search_edittext);
                 GetShoppingMallSeleteName getShoppingMallSeleteName = new GetShoppingMallSeleteName();
                 getShoppingMallSeleteName.execute();
-                Toast.makeText(getActivity(),"搜尋"+" "+db_shopping_object_search_edittext+" "+"請稍後...", Toast.LENGTH_SHORT).show();
-                final Handler handler = new Handler();
+                progressDoalog = new ProgressDialog(getActivity());
+                progressDoalog.setMessage("載入中，請稍後...");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.setCancelable(false);
+                progressDoalog.show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(3000);
+                            progressDoalog.dismiss();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+                Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         rAdapter.notifyDataSetChanged();
+                        if(string_shopping_mall_name_net.equals("no")){
+                            Toast.makeText(getContext(), "請檢察網路連線訊號", Toast.LENGTH_SHORT).show();
+                            shopping_object_kindsecond_t2.setText("請選擇");
+                            string_shopping_object_kindsecond= null;
+                        }else if(string_shopping_mall_name_net.equals("nothing")){
+                            Toast.makeText(getContext(), "沒有符合搜尋條件的嬰幼兒商品", Toast.LENGTH_SHORT).show();
+                        }else{
+                        }
                     }
-                }, 300);
+                },3000);
 
             }
         });
@@ -219,27 +272,39 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
         btnSuccess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ShoppingMallObject.ITEMS.clear();
                 ad.dismiss();
                 shopping_object_kind_t2.setText(numberPickerView.getContentByCurrValue());
                 shopping_object_kindsecond_t2.setText("請選擇");
                 db_shopping_object_kind = numberPickerView.getContentByCurrValue();
                 Log.e("55125",db_shopping_object_kind);
-
                 GetShoppingMallSeleteKind getShoppingMallSeleteKind = new GetShoppingMallSeleteKind();
                 getShoppingMallSeleteKind.execute();
-
                 GetShoppingMallKindsecond getShoppingMallKindsecond = new GetShoppingMallKindsecond();
                 getShoppingMallKindsecond.execute();
-
-                Toast.makeText(getActivity(),"搜尋"+" "+db_shopping_object_kind+"種類 "+"請稍後...", Toast.LENGTH_SHORT).show();
-                final Handler handler = new Handler();
+                progressDoalog = new ProgressDialog(getActivity());
+                progressDoalog.setMessage("載入中，請稍後...");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.setCancelable(false);
+                progressDoalog.show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(3000);
+                            progressDoalog.dismiss();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+                Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         rAdapter.notifyDataSetChanged();
                     }
-                }, 300);
-
+                },3000);
             }
         });
     }
@@ -259,6 +324,7 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
         btnSuccess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ShoppingMallObject.ITEMS.clear();
                 ad.dismiss();
                 shopping_object_kindsecond_t2.setText(numberPickerView.getContentByCurrValue());
                 db_shopping_object_kindsecond = numberPickerView.getContentByCurrValue();
@@ -266,15 +332,32 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
 
                 GetShoppingMallSeleteKindsecond getShoppingMallSeleteKindsecond = new GetShoppingMallSeleteKindsecond();
                 getShoppingMallSeleteKindsecond.execute();
-
-                Toast.makeText(getActivity(),"搜尋"+" "+db_shopping_object_kindsecond+"種類 "+"請稍後...", Toast.LENGTH_SHORT).show();
-                final Handler handler = new Handler();
+                progressDoalog = new ProgressDialog(getActivity());
+                progressDoalog.setMessage("載入中，請稍後...");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.setCancelable(false);
+                progressDoalog.show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(3000);
+                            progressDoalog.dismiss();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+                Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         rAdapter.notifyDataSetChanged();
+                        if(ShoppingMallObject.ITEMS == null){
+                            Toast.makeText(getContext(), "請檢察網路連線訊號", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }, 300);
+                },3000);
 
             }
         });
