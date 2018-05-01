@@ -106,14 +106,19 @@ public class GetAbsentNoteEntryFragmentClass extends AsyncTask<String, Void, Str
                 postclass[postclassInf-1] = postclass[postclassInf-1].trim();
 
                 String post_class[] = new String[postclassInf/7+1];
+                String post_id[] = new String[postclassInf/7+1];
                 post_class[0] = "請選擇";
+                post_id[0] = "請選擇";
                 for(int i = 0 ; i < postclassInf-8 ; i++)
                 {
-                    post_class[i/8+1] = postclass[i+1] +"-"+ postclass[i+2]+":"+postclass[i+3]+"~"+postclass[i+5]+":"+postclass[i+6]+" "+postclass[i+8];
+                    post_class[i/8+1] = postclass[i+2]+":"+postclass[i+3]+"~"+postclass[i+5]+":"+postclass[i+6]+" "+postclass[i+8];
                     Log.d("55125","posttimeInf"+post_class[i/8+1]);
+                    post_id[i/8+1] =  postclass[i+1] +"-"+ postclass[i+2]+":"+postclass[i+3]+"~"+postclass[i+5]+":"+postclass[i+6]+" "+postclass[i+8];
+                    Log.d("55125","posttimeInf"+post_id[i/8+1]);
                     i = i+7;
                 }
                 AbsentNoteEntryFragment.string_absent_entry_class = post_class;
+                AbsentNoteEntryFragment.string_absent_entry_class_new = post_id;
             }
            /*
             AbsentNoteEntryFragment.string_absent_entry_building = nonDuplicateBuildingArray;

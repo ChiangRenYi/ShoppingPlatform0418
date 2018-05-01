@@ -52,7 +52,7 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
     private int count = 0;
     private TextView absent_entry_student ,absent_entry_building,absent_entry_start,absent_entry_class,absent_entry_kind,absent_entry_money;
     private EditText absent_entry_reason;
-    public static String[] string_absent_entry_student,string_absent_entry_building,string_absent_entry_class;
+    public static String[] string_absent_entry_student,string_absent_entry_building,string_absent_entry_class,string_absent_entry_class_new;
     private String[] db_split;
     public static String db_absent_entry_student,db_absent_entry_building,db_absent_entry_start,db_absent_entry_class,db_absent_entry_kind,db_absent_entry_money,db_absent_entry_reason;
     public static String absent_student_leave;
@@ -269,8 +269,15 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
                     Log.e("55125",db_absent_entry_building);
                 }else if(position == 3){
                     absent_entry_class.setText(numberPickerView.getContentByCurrValue());
-                    db_split = numberPickerView.getContentByCurrValue().split("-");
-                    db_absent_entry_class = db_split[0];
+                    int count = string_absent_entry_class_new.length-1;
+                    Log.e("55125", String.valueOf(count));
+                    for(int i = 0; i < count ; i++){
+                        Log.e("55125", string_absent_entry_class_new[i+1]);
+                        String[] spilt = string_absent_entry_class_new[i+1].split("-");
+                        if(spilt[1].equals(numberPickerView.getContentByCurrValue())){
+                            db_absent_entry_class = spilt[0];
+                        }
+                    }
                     Log.e("55125",db_absent_entry_class);
                 }else if(position == 4){
                     absent_entry_kind.setText(numberPickerView.getContentByCurrValue());

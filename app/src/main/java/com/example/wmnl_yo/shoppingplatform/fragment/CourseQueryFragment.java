@@ -1,5 +1,6 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -99,6 +101,18 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
         tv = new TextView[getResources().getStringArray(R.array.courseFindType).length];
         tmp = new String[]{"請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇"};
         Building_check="crycry";
+        final Dialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+        alertDialog.show();
+        alertDialog.setCanceledOnTouchOutside(false);
+        Window window = alertDialog.getWindow();
+        window.setContentView(R.layout.choose_course_alert);
+        Button btn_cancel=(Button) window.findViewById(R.id.check);//确定按钮
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
     }
 
     @Override

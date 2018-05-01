@@ -43,6 +43,7 @@
 
     </TableLayout>
     <Button
+        android:id="@+id/check"
         android:layout_width="@dimen/_75sdp"
         android:layout_height="@dimen/_25sdp"
         android:layout_gravity="center"
