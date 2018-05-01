@@ -89,10 +89,42 @@ public class GetSelectBuildingFragment extends AsyncTask<String, Void, String> {
                     Log.e("55125", "Error", e);
                 }
             }
-            Log.d("55125",result);
+//            Log.d("55125",result);
+//            int j = 0;
+//
+//            String[] selectBuilding = result.split("<QQ>");
+//            String[] selectBuilding_name = new String[selectBuilding.length - 1];
+//            String[] selectBuilding_auid = new String[selectBuilding.length - 1];
+//            String[] selectBuilding_erid = new String[selectBuilding.length - 1];
+//
+//            SelectBuildingObject.ITEMS.clear();
+//            SelectBuildingObject dim = new SelectBuildingObject();
+//
+//            for (int i = 0; i < selectBuilding.length - 1; i++) {
+//                String[] selectBuildingInf = new String[5];
+//                selectBuildingInf = selectBuilding[i].split("@#");
+//                selectBuilding_name[j] = selectBuildingInf[1];
+//                selectBuilding_auid[j] = selectBuildingInf[2];
+//                selectBuilding_erid[j] = selectBuildingInf[3];
+//
+//                dim.addItem(new SelectBuildingObject.SelectBuildingObjectItem(R.drawable.ic_building,
+//                        selectBuildingInf[1],selectBuildingInf[2],selectBuildingInf[3]));
+//
+//                j++;
+//                Log.d("55125", selectBuildingInf[1]+","+selectBuildingInf[2]+","+selectBuildingInf[3]);
+//            }
+            return result;
+
+        }
+    }
+
+    protected void onPostExecute(String s) {
+
+        if (s != null){
+            Log.d("55125",s);
             int j = 0;
 
-            String[] selectBuilding = result.split("<QQ>");
+            String[] selectBuilding = s.split("<QQ>");
             String[] selectBuilding_name = new String[selectBuilding.length - 1];
             String[] selectBuilding_auid = new String[selectBuilding.length - 1];
             String[] selectBuilding_erid = new String[selectBuilding.length - 1];
@@ -113,12 +145,7 @@ public class GetSelectBuildingFragment extends AsyncTask<String, Void, String> {
                 j++;
                 Log.d("55125", selectBuildingInf[1]+","+selectBuildingInf[2]+","+selectBuildingInf[3]);
             }
-            return result;
-
         }
-    }
-
-    protected void onPostExecute(String s) {
 
         Log.d("55125","notifyDataSetChanged");
         SelectBuildingFragment.bAdapter.notifyDataSetChanged();
