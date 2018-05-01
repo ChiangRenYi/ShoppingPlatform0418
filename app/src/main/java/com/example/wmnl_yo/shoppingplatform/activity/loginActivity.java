@@ -133,7 +133,7 @@ public class loginActivity extends Activity {
                                         PasswordEditText.setText("");
                                     }
                                 }
-                            }, 500);
+                            }, 850);
 
 
                         }
