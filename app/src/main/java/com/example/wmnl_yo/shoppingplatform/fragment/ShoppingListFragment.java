@@ -368,7 +368,7 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                 @Override
                 public void onClick(View v) {
                     int newgoodsnumber = Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber) - 1;
-                    if (newgoodsnumber < 0) {
+                    if (newgoodsnumber <= 0) {
                         newgoodsnumber = Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber);
                         mShoppingCarObjectList.get(position).goodsnumber = String.valueOf(newgoodsnumber);
                         holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
