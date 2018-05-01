@@ -109,15 +109,18 @@ public class GetAnnouncement extends AsyncTask<String,Void,String> {
             String[] announcementQuery_content = new String[announcementQuery.length - 1];
 
             String[] announcementQueryInf = new String[4];
+//            String[] timeSpare = new String[2];
             for (int i = 0; i < announcementQuery.length -1; i++){
 
                 announcementQueryInf = announcementQuery[i].split("@#");
+//                timeSpare = announcementQueryInf[2].split(".");
+//                Log.d("55125",timeSpare[0]+"/"+timeSpare[1]);
                 dim.addItem(new AnnouncementObject.AnnouncementObjectItem(
                         announcementQueryInf[2],
                         announcementQueryInf[1],
                         announcementQueryInf[3]));
 
-                announcementQuery_time[j] = announcementQueryInf[2];
+                announcementQuery_time[j] =   announcementQueryInf[2];
                 announcementQuery_title[j] = announcementQueryInf[1];
                 announcementQuery_content[j] = announcementQueryInf[3];
                 j++;
