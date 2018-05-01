@@ -1,17 +1,24 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
+import com.example.wmnl_yo.shoppingplatform.database.GetSelectBuildingFragment;
+import com.example.wmnl_yo.shoppingplatform.database.GetSelectStudentFragment;
 import com.example.wmnl_yo.shoppingplatform.database.GetShoppingMallAll;
 
 public class MainFragmentStudent extends Fragment implements View.OnClickListener {
@@ -57,6 +64,8 @@ public class MainFragmentStudent extends Fragment implements View.OnClickListene
 
         Fragment fragment = null;
         Class fragmentClass = null;
+        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = connManager.getActiveNetworkInfo();
 
         switch (v.getId()) {
 
@@ -83,19 +92,29 @@ public class MainFragmentStudent extends Fragment implements View.OnClickListene
                 fragmentClass = SatisfacationChildFragment.class;
                 break;
 
-
             case R.id.layout_interactive_button:
+
+                GetSelectBuildingFragment getSelectBuildingFragment = new GetSelectBuildingFragment();
+                getSelectBuildingFragment.execute();
+
                 fragmentClass = SelectBuildingFragment.class;
                 break;
 
             case R.id.layout_health_manage_button:
+
+                GetSelectStudentFragment getSelectStudentFragment = new GetSelectStudentFragment();
+                getSelectStudentFragment.execute();
+
+//                if(info == null || !info.isConnected()){
+//                    Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_LONG).show();
+//                }else{
+//                }
                 fragmentClass = SelectStudentFragment.class;
                 break;
             case R.id.layout_shoppingmall_button:
 
                 GetShoppingMallAll getShoppingMallAll = new GetShoppingMallAll();
                 getShoppingMallAll.execute();
-
 
                 fragmentClass = ShoppingObjectFragment.class;
 

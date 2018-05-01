@@ -92,10 +92,43 @@ public class GetSelectStudentFragment extends AsyncTask<String, Void, String> {
                     Log.e("55125", "Error", e);
                 }
             }
-            Log.d("55125",result);
+//            Log.d("55125",result);
+//            int j = 0;
+//
+//            String[] selectStudent = result.split("<QQ>");
+////            String[] selectStudent_pic = new String[selectStudent.length - 1];
+//            String[] selectStudent_name = new String[selectStudent.length - 1];
+//            String[] selectStudent_sid = new String[selectStudent.length - 1];
+//
+//
+//            SelectStudentObject.ITEMS.clear();
+//            SelectStudentObject dim = new SelectStudentObject();
+//
+//            for (int i = 0; i < selectStudent.length - 1; i++) {
+//                String[] selectStudentInf = new String[5];
+//                selectStudentInf = selectStudent[i].split("@#");
+////                selectStudent_pic[j] = selectStudentInf[1];
+//                selectStudent_name[j] = selectStudentInf[1];
+//                selectStudent_sid[j] = selectStudentInf[2];
+//
+//                dim.addItem(new SelectStudentObject.SelectStudentObjectItem(R.drawable.nav_tku,
+//                        selectStudentInf[1],selectStudentInf[2]));
+//
+//                j++;
+//                Log.d("55125", selectStudentInf[1]+","+selectStudentInf[2]);
+//            }
+            return result;
+
+        }
+    }
+
+    protected void onPostExecute(String s) {
+
+        if (s != null){
+            Log.d("55125",s);
             int j = 0;
 
-            String[] selectStudent = result.split("<QQ>");
+            String[] selectStudent = s.split("<QQ>");
 //            String[] selectStudent_pic = new String[selectStudent.length - 1];
             String[] selectStudent_name = new String[selectStudent.length - 1];
             String[] selectStudent_sid = new String[selectStudent.length - 1];
@@ -111,18 +144,13 @@ public class GetSelectStudentFragment extends AsyncTask<String, Void, String> {
                 selectStudent_name[j] = selectStudentInf[1];
                 selectStudent_sid[j] = selectStudentInf[2];
 
-                dim.addItem(new SelectStudentObject.SelectStudentObjectItem(R.drawable.nav_tku,
+                dim.addItem(new SelectStudentObject.SelectStudentObjectItem(R.drawable.unknown_user,
                         selectStudentInf[1],selectStudentInf[2]));
 
                 j++;
                 Log.d("55125", selectStudentInf[1]+","+selectStudentInf[2]);
             }
-            return result;
-
         }
-    }
-
-    protected void onPostExecute(String s) {
 
         Log.d("55125","notifyDataSetChanged");
         SelectStudentFragment.sAdapter.notifyDataSetChanged();

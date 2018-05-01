@@ -89,10 +89,42 @@ public class GetSelectMemberFragment extends AsyncTask<String, Void, String> {
                     Log.e("55125", "Error", e);
                 }
             }
-            Log.d("55125",result);
+//            Log.d("55125",result);
+//            int j = 0;
+//
+//            String[] selectMember = result.split("<QQ>");
+//            String[] selectMember_name = new String[selectMember.length - 1];
+//            String[] selectMember_auid = new String[selectMember.length - 1];
+//            String[] selectMember_erid = new String[selectMember.length - 1];
+//
+//            SelectMemberObject.ITEMS.clear();
+//            SelectMemberObject dim = new SelectMemberObject();
+//
+//            for (int i = 0; i < selectMember.length - 1; i++) {
+//                String[] selectMemberInf = new String[5];
+//                selectMemberInf = selectMember[i].split("@#");
+//                selectMember_name[j] = selectMemberInf[1];
+//                selectMember_auid[j] = selectMemberInf[2];
+//                selectMember_erid[j] = selectMemberInf[3];
+//
+//                dim.addItem(new SelectMemberObject.SelectMemberObjectItem(R.drawable.ic_person,
+//                        selectMemberInf[1],selectMemberInf[2],selectMemberInf[3]));
+//
+//                j++;
+//                Log.d("55125", selectMemberInf[1]+","+selectMemberInf[2]+","+selectMemberInf[3]);
+//            }
+            return result;
+
+        }
+    }
+
+    protected void onPostExecute(String s) {
+
+        if (s != null){
+            Log.d("55125",s);
             int j = 0;
 
-            String[] selectMember = result.split("<QQ>");
+            String[] selectMember = s.split("<QQ>");
             String[] selectMember_name = new String[selectMember.length - 1];
             String[] selectMember_auid = new String[selectMember.length - 1];
             String[] selectMember_erid = new String[selectMember.length - 1];
@@ -113,12 +145,7 @@ public class GetSelectMemberFragment extends AsyncTask<String, Void, String> {
                 j++;
                 Log.d("55125", selectMemberInf[1]+","+selectMemberInf[2]+","+selectMemberInf[3]);
             }
-            return result;
-
         }
-    }
-
-    protected void onPostExecute(String s) {
 
         Log.d("55125","notifyDataSetChanged");
         SelectMemberFragment.bAdapter.notifyDataSetChanged();

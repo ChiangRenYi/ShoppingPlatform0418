@@ -79,6 +79,10 @@ public class MainFragmentTeacher extends Fragment implements View.OnClickListene
                 break;
 
             case R.id.layout_opinion_button:
+
+                GetSelectMemberFragment getSelectMemberFragment = new GetSelectMemberFragment();
+                getSelectMemberFragment.execute();
+
                 fragmentClass = SelectMemberFragment.class;
                 break;
 //
