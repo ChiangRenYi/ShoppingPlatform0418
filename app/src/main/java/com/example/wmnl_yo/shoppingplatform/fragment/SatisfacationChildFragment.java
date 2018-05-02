@@ -1,8 +1,13 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -104,6 +109,7 @@ public class SatisfacationChildFragment extends Fragment implements View.OnTouch
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -276,12 +282,28 @@ public class SatisfacationChildFragment extends Fragment implements View.OnTouch
                 holder.ll.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Bundle bundle = new Bundle();
-                        bundle.putString("childID", mChildRecordList.get(position).rChild_ID);
-//                    Log.d("andysendchildID",childList.get(position));    //get the position for child name
-                        SatisfactionSurveyFragment fragobj = new SatisfactionSurveyFragment();
-                        fragobj.setArguments(bundle);
-                        ((MainActivity) getContext()).replaceFragment(SatisfactionSurveyFragment.class, fragobj);
+                        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                        NetworkInfo info=connManager.getActiveNetworkInfo();
+
+                        if (info == null || !info.isConnected())
+                        {
+                            Toast.makeText(getActivity(),"請檢查網路,再重新嘗試點擊",Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("childID", mChildRecordList.get(position).rChild_ID);
+//                                                      Log.d("andysendchildID",childList.get(position));    //get the position for child name
+                            SatisfactionSurveyFragment fragobj = new SatisfactionSurveyFragment();
+                            fragobj.setArguments(bundle);
+                            ((MainActivity) getContext()).replaceFragment(SatisfactionSurveyFragment.class, fragobj);
+                        }
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("childID", mChildRecordList.get(position).rChild_ID);
+////                    Log.d("andysendchildID",childList.get(position));    //get the position for child name
+//                        SatisfactionSurveyFragment fragobj = new SatisfactionSurveyFragment();
+//                        fragobj.setArguments(bundle);
+//                        ((MainActivity) getContext()).replaceFragment(SatisfactionSurveyFragment.class, fragobj);
                     }
                 });
 
