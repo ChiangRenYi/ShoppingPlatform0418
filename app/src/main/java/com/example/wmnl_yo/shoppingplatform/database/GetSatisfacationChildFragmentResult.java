@@ -3,9 +3,12 @@ package com.example.wmnl_yo.shoppingplatform.database;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.Constants;
+import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
 import com.example.wmnl_yo.shoppingplatform.fragment.SatisfacationChildFragment;
+import com.example.wmnl_yo.shoppingplatform.fragment.SatisfactionSurveyFragment;
 import com.example.wmnl_yo.shoppingplatform.object.SatisfacationChildObject;
 
 import java.io.BufferedReader;
@@ -18,6 +21,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static com.example.wmnl_yo.shoppingplatform.fragment.SatisfacationChildFragment.mChildRecordList;
+
 /**
  * Created by WMNL on 2018/2/26.
  */
@@ -27,7 +32,7 @@ public class GetSatisfacationChildFragmentResult extends AsyncTask<String, Void,
     public static String[] satisfacation_childID;
     public static String[] satisfacation;
     public static String child;
-    public static int internetState=1;
+    public static int internetState;
     protected String doInBackground(String... params) {
         Log.d("55125", "getSatisfacationChild.php");
         String url = Constants.SERVER_URL + "getSatisfacationChild.php";
@@ -142,7 +147,7 @@ public class GetSatisfacationChildFragmentResult extends AsyncTask<String, Void,
 
     protected void onPostExecute(String s) {
         if (s != null) {
-            internetState=1;
+//            internetState=1;
             Log.d("55125", s);
             int j = 0;
 
@@ -184,7 +189,11 @@ public class GetSatisfacationChildFragmentResult extends AsyncTask<String, Void,
         if(s==null)
         {
             Log.d("andyOnpost","null");
-            internetState=0;
+//            internetState=0;
+            mChildRecordList.clear();
+            SatisfacationChildFragment.rAdapter.notifyDataSetChanged();
+//            Toast.makeText(SatisfacationChildFragment.,"網路不穩，請重新嘗試",Toast.LENGTH_LONG);
+            Log.d("andyNull","success");
         }
         Log.d("55125","notifyDataSetChanged");
         SatisfacationChildFragment.rAdapter.notifyDataSetChanged();
