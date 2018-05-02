@@ -64,8 +64,8 @@ public class MainFragmentStudent extends Fragment implements View.OnClickListene
 
         Fragment fragment = null;
         Class fragmentClass = null;
-        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo info = connManager.getActiveNetworkInfo();
+//        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo info = connManager.getActiveNetworkInfo();
 
         switch (v.getId()) {
 
