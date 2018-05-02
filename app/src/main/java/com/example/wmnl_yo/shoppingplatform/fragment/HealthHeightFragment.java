@@ -1,6 +1,8 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,7 +42,8 @@ public class HealthHeightFragment extends Fragment implements View.OnTouchListen
     private String mParam2;
     private RecyclerView rv;
     public static MyHealthAdapter hAdapter;
-    private List<HealthHeightObject.HealthHeightObjectItem> healthHeightList = new ArrayList<>();
+    public static List<HealthHeightObject.HealthHeightObjectItem> mhealthHeightList;
+//    private List<HealthHeightObject.HealthHeightObjectItem> healthHeightList = new ArrayList<>();
     private OnFragmentInteractionListener mListener;
 
     public HealthHeightFragment() {
@@ -72,9 +75,6 @@ public class HealthHeightFragment extends Fragment implements View.OnTouchListen
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        GetHealthHeightFragment getHealthHeightFragment = new GetHealthHeightFragment();
-        getHealthHeightFragment.execute();
-
         //pic, 身高, 單位, 時間, 日期
 //        healthHeightList.add(new HealthHeightObject(R.drawable.ic_height,124.0,"公分", "Root","10:05","2017-04-22"));
     }
@@ -96,7 +96,18 @@ public class HealthHeightFragment extends Fragment implements View.OnTouchListen
         final DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(),
                 layoutManager.getOrientation());
 
-        Toast.makeText(getActivity(),"請稍後...", Toast.LENGTH_SHORT).show();
+        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info=connManager.getActiveNetworkInfo();
+
+        if (info == null || !info.isConnected())
+        {
+            Toast.makeText(getActivity(),"請檢查網路後,重新進入此頁面",Toast.LENGTH_LONG).show();
+        }else{
+            GetHealthHeightFragment getHealthHeightFragment = new GetHealthHeightFragment();
+            getHealthHeightFragment.execute();
+        }
+
+//        Toast.makeText(getActivity(),"請稍後...", Toast.LENGTH_SHORT).show();
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -156,7 +167,7 @@ public class HealthHeightFragment extends Fragment implements View.OnTouchListen
     }
 
     public class MyHealthAdapter extends RecyclerView.Adapter<MyHealthAdapter.ViewHolder> {
-        private List<HealthHeightObject.HealthHeightObjectItem> mhealthHeightList;
+//        private List<HealthHeightObject.HealthHeightObjectItem> mhealthHeightList;
         public class ViewHolder extends RecyclerView.ViewHolder {
             public RecyclerView rv;
             public ImageView ivPic;

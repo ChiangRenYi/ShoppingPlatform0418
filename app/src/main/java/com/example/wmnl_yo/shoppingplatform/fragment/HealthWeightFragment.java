@@ -1,6 +1,8 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,7 +42,8 @@ public class HealthWeightFragment extends Fragment implements View.OnTouchListen
     private String mParam2;
     private RecyclerView rv;
     public static MyHealthAdapter wAdapter;
-    private List<HealthWeightObject.HealthWeightObjectItem> healthWeightList = new ArrayList<HealthWeightObject.HealthWeightObjectItem>();
+    public static List<HealthWeightObject.HealthWeightObjectItem> mhealthWeightList;
+//    private List<HealthWeightObject.HealthWeightObjectItem> healthWeightList = new ArrayList<HealthWeightObject.HealthWeightObjectItem>();
     private OnFragmentInteractionListener mListener;
 
     public HealthWeightFragment() {
@@ -72,9 +75,6 @@ public class HealthWeightFragment extends Fragment implements View.OnTouchListen
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        GetHealthWeightFragment getHealthWeightFragment = new GetHealthWeightFragment();
-        getHealthWeightFragment.execute();
-
         //pic, 體重, 單位, 時間, 日期
 //        healthWeightList.add(new HealthWeightObject(R.drawable.ic_weight,31.8,"公斤", "Root","10:10","2017-04-22"));
     }
@@ -97,7 +97,18 @@ public class HealthWeightFragment extends Fragment implements View.OnTouchListen
         final DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(),
                 layoutManager.getOrientation());
 
-        Toast.makeText(getActivity(),"請稍後...", Toast.LENGTH_SHORT).show();
+        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info=connManager.getActiveNetworkInfo();
+
+        if (info == null || !info.isConnected())
+        {
+            Toast.makeText(getActivity(),"請檢查網路後,重新進入此頁面",Toast.LENGTH_LONG).show();
+        }else{
+            GetHealthWeightFragment getHealthWeightFragment = new GetHealthWeightFragment();
+            getHealthWeightFragment.execute();
+        }
+
+//        Toast.makeText(getActivity(),"請稍後...", Toast.LENGTH_SHORT).show();
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -157,7 +168,7 @@ public class HealthWeightFragment extends Fragment implements View.OnTouchListen
     }
 
     public class MyHealthAdapter extends RecyclerView.Adapter<MyHealthAdapter.ViewHolder> {
-        private List<HealthWeightObject.HealthWeightObjectItem> mhealthWeightList;
+//        private List<HealthWeightObject.HealthWeightObjectItem> mhealthWeightList;
         public class ViewHolder extends RecyclerView.ViewHolder {
             public RecyclerView rv;
             public ImageView ivPic;

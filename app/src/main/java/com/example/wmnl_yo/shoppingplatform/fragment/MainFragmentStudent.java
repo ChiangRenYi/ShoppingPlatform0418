@@ -105,10 +105,6 @@ public class MainFragmentStudent extends Fragment implements View.OnClickListene
                 GetSelectStudentFragment getSelectStudentFragment = new GetSelectStudentFragment();
                 getSelectStudentFragment.execute();
 
-//                if(info == null || !info.isConnected()){
-//                    Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_LONG).show();
-//                }else{
-//                }
                 fragmentClass = SelectStudentFragment.class;
                 break;
             case R.id.layout_shoppingmall_button:

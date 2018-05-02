@@ -1,6 +1,8 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.database.GetOpinionMessageFragment;
@@ -21,6 +24,7 @@ import com.example.wmnl_yo.shoppingplatform.database.GetOpinionMessageFragment;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -113,22 +117,31 @@ public class OpinionMessengerFragment extends Fragment implements View.OnTouchLi
         fab_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SimpleDateFormat ymd=new SimpleDateFormat("yyyy-MM-dd");
-                SimpleDateFormat hm=new SimpleDateFormat("HH:mm");
-                OMDate = ymd.format(new java.util.Date());
-                OMTime = hm.format(new java.util.Date());
-                OMText = etMessage.getText().toString();
+                ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo info=connManager.getActiveNetworkInfo();
+
+                if (info == null || !info.isConnected()) {
+                    Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_LONG).show();
+                }else{
+                    if (!Objects.equals(etMessage.getText().toString(),"")){
+                        SimpleDateFormat ymd=new SimpleDateFormat("yyyy-MM-dd");
+                        SimpleDateFormat hm=new SimpleDateFormat("HH:mm");
+                        OMDate = ymd.format(new java.util.Date());
+                        OMTime = hm.format(new java.util.Date());
+                        OMText = etMessage.getText().toString();
 //                Log.d("55125", String.valueOf(OMDate));
 //                Log.d("55125", String.valueOf(OMTime));
 //                Log.d("55125", String.valueOf(OMText));
 
-                GetOpinionMessageFragment getOpinionMessageFragment = new GetOpinionMessageFragment();
-                getOpinionMessageFragment.execute();
+                        GetOpinionMessageFragment getOpinionMessageFragment = new GetOpinionMessageFragment();
+                        getOpinionMessageFragment.execute();
 
 //                Toast.makeText(getActivity(),"訊息已送出", Toast.LENGTH_SHORT).show();
 
-                etMessage.setText("");
-                OMText="";
+                        etMessage.setText("");
+                        OMText="";
+                    }
+                }
             }
         });
 

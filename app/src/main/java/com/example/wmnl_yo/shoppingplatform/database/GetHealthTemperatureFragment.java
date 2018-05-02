@@ -8,7 +8,6 @@ import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.fragment.HealthManageFragment;
 import com.example.wmnl_yo.shoppingplatform.fragment.HealthTemperatureFragment;
-import com.example.wmnl_yo.shoppingplatform.object.CourseRecordObject;
 import com.example.wmnl_yo.shoppingplatform.object.HealthTemperatureObject;
 
 import java.io.BufferedReader;
@@ -20,6 +19,8 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import static com.example.wmnl_yo.shoppingplatform.fragment.HealthTemperatureFragment.mhealthTemperatureList;
 
 /**
  * Created by Sandy on 2017/8/30.
@@ -148,6 +149,9 @@ public class GetHealthTemperatureFragment extends AsyncTask<String, Void, String
                 j++;
                 Log.d("55125", healthTemperatureInf[1] + "°C" + "," + healthTemperatureInf[2] + "(" + healthTemperatureInf[3] + ")");
             }
+        }else{
+            mhealthTemperatureList.clear();
+            HealthTemperatureFragment.tAdapter.notifyDataSetChanged();
         }
         Log.d("55125","notifyDataSetChanged");
         HealthTemperatureFragment.tAdapter.notifyDataSetChanged();

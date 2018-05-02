@@ -3,14 +3,10 @@ package com.example.wmnl_yo.shoppingplatform.database;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
-
 import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.R;
-import com.example.wmnl_yo.shoppingplatform.fragment.HealthHeightFragment;
 import com.example.wmnl_yo.shoppingplatform.fragment.SelectStudentFragment;
-import com.example.wmnl_yo.shoppingplatform.object.HealthHeightObject;
 import com.example.wmnl_yo.shoppingplatform.object.SelectStudentObject;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -20,6 +16,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import static com.example.wmnl_yo.shoppingplatform.fragment.SelectStudentFragment.mselectstudentList;
 
 /**
  * Created by Sandy on 2017/8/30.
@@ -150,6 +147,9 @@ public class GetSelectStudentFragment extends AsyncTask<String, Void, String> {
                 j++;
                 Log.d("55125", selectStudentInf[1]+","+selectStudentInf[2]);
             }
+        }else {
+            mselectstudentList.clear();
+            SelectStudentFragment.sAdapter.notifyDataSetChanged();
         }
 
         Log.d("55125","notifyDataSetChanged");
