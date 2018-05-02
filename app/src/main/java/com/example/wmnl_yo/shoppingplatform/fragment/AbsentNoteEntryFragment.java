@@ -2,6 +2,7 @@ package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -55,9 +56,9 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
     public static String[] string_absent_entry_student,string_absent_entry_building,string_absent_entry_class,string_absent_entry_class_new;
     private String[] db_split;
     public static String db_absent_entry_student,db_absent_entry_building,db_absent_entry_start,db_absent_entry_class,db_absent_entry_kind,db_absent_entry_money,db_absent_entry_reason;
-    public static String absent_student_leave;
+    public static String absent_student_leave,absent_entry_student_net="no",absent_entry_class_net="no";
     private OnFragmentInteractionListener mListener;
-
+    ProgressDialog progressDoalog;
     public AbsentNoteEntryFragment() {
         // Required empty public constructor
     }
@@ -89,6 +90,22 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
         }
         GetParentChild getParentChild = new GetParentChild();
         getParentChild.execute();
+        progressDoalog = new ProgressDialog(getActivity());
+        progressDoalog.setMessage("載入中，請稍後...");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.setCancelable(false);
+        progressDoalog.show();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                    progressDoalog.dismiss();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     @Override
@@ -97,8 +114,8 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_absent_student, container, false);
         v.setOnTouchListener(this);
-        Button btnSend = (Button) v.findViewById(R.id.btnSend);
 
+        Button btnSend = (Button) v.findViewById(R.id.btnSend);
         absent_entry_student = (TextView)v.findViewById(R.id.absent_student);
         absent_entry_building = (TextView)v.findViewById(R.id.absent_building);
         absent_entry_start = (TextView)v.findViewById(R.id.absent_start);
@@ -117,10 +134,13 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
         absent_entry_building.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(string_absent_entry_building == null)
+                if(string_absent_entry_building == null && absent_entry_student_net.equals("no"))
                 {
+                    Toast.makeText(v.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                    absent_entry_student.setText("請選擇");
+                }else if(string_absent_entry_building == null && absent_entry_student_net.equals("nothing")) {
                     Toast.makeText(v.getContext(), db_absent_entry_student+"沒有須請假的課程", Toast.LENGTH_SHORT).show();
-                }else if(string_absent_entry_building != null) {
+                }else{
                     int i = 2;
                     numberPicker(string_absent_entry_building, i - 1);
                 }
@@ -137,10 +157,13 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
             @Override
             public void onClick(View v) {
                 int i = 4;
-                if(string_absent_entry_class == null)
+                if(string_absent_entry_class == null && absent_entry_class_net.equals("no"))
                 {
-                    Toast.makeText(v.getContext(), db_absent_entry_student+"在"+db_absent_entry_start+"沒有須請假的課程", Toast.LENGTH_SHORT).show();
-                }else if(string_absent_entry_class != null) {
+                    Toast.makeText(v.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                    absent_entry_start.setText("請選擇");
+                }else if(string_absent_entry_class == null && absent_entry_class_net.equals("nothing")) {
+                    Toast.makeText(v.getContext(), db_absent_entry_student+"在"+db_absent_entry_start+"沒有須請假的課程", Toast.LENGTH_SHORT).show();;
+                }else{
                     numberPicker(string_absent_entry_class, i - 1);
                 }
             }
@@ -169,41 +192,61 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
                 {
                     Toast.makeText(view.getContext(), "有選項沒填，請確認!!!", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(getActivity(), "請稍後...", Toast.LENGTH_SHORT).show();
                     SignUp_AbsentNoteEntryFragment signUp_absentNoteEntryFragment = new SignUp_AbsentNoteEntryFragment();
                     signUp_absentNoteEntryFragment.execute();
+                    progressDoalog = new ProgressDialog(getActivity());
+                    progressDoalog.setMessage("載入中，請稍後...");
+                    progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    progressDoalog.setCancelable(false);
+                    progressDoalog.show();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(3000);
+                                progressDoalog.dismiss();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }).start();
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
 
-                            switch (absent_student_leave) {
-                                case "signup":
-                                    Toast.makeText(getActivity(),
-                                            db_absent_entry_student + "請假完成", Toast.LENGTH_SHORT).show();
-                                    int class_number_ok = string_absent_entry_class.length;
-                                    for (int i = 0; i < class_number_ok; i++) {
-                                        if (i == 0)
-                                            string_absent_entry_class[i] = "無";
-                                        else
-                                            string_absent_entry_class[i] = "";
-                                    }
-                                    break;
-                                case "signupcheck":
-                                    Toast.makeText(getActivity(),
-                                            db_absent_entry_student + "此課程已請假", Toast.LENGTH_SHORT).show();
-                                    int class_number = string_absent_entry_class.length;
-                                    for (int i = 0; i < class_number; i++) {
-                                        if (i == 0)
-                                            string_absent_entry_class[i] = "無";
-                                        else
-                                            string_absent_entry_class[i] = "";
-                                    }
-                                    break;
+                            try {
+                                switch (absent_student_leave) {
+                                    case "signup":
+                                        Toast.makeText(getActivity(),
+                                                db_absent_entry_student + "請假完成", Toast.LENGTH_SHORT).show();
+                                        int class_number_ok = string_absent_entry_class.length;
+                                        for (int i = 0; i < class_number_ok; i++) {
+                                            if (i == 0)
+                                                string_absent_entry_class[i] = "無";
+                                            else
+                                                string_absent_entry_class[i] = "";
+                                        }
+                                        break;
+                                    case "signupcheck":
+                                        Toast.makeText(getActivity(),
+                                                db_absent_entry_student + "此課程已請假", Toast.LENGTH_SHORT).show();
+                                        int class_number = string_absent_entry_class.length;
+                                        for (int i = 0; i < class_number; i++) {
+                                            if (i == 0)
+                                                string_absent_entry_class[i] = "無";
+                                            else
+                                                string_absent_entry_class[i] = "";
+                                        }
+                                        break;
+                                }
+
+                            }catch (Exception e){
+                                Toast.makeText(getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
                             }
 
                         }
-                    }, 500);
+                    }, 3000);
                 }
             }
         });
@@ -258,12 +301,15 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
             public void onClick(View view) {
                 ad.dismiss();
                 if(position == 0){
+                    absent_entry_student_net="no";
+                    absent_entry_class_net="no";
                     absent_entry_student.setText(numberPickerView.getContentByCurrValue());
                     db_absent_entry_student = numberPickerView.getContentByCurrValue();
                     Log.e("55125",db_absent_entry_student);
                     GetAbsentNoteEntryFragmentBuilding getAbsentNoteEntryFragmentBuilding = new GetAbsentNoteEntryFragmentBuilding();
                     getAbsentNoteEntryFragmentBuilding.execute();
                 }else if(position == 1){
+                    absent_entry_class_net="no";
                     absent_entry_building.setText(numberPickerView.getContentByCurrValue());
                     db_absent_entry_building = numberPickerView.getContentByCurrValue();
                     Log.e("55125",db_absent_entry_building);
@@ -312,7 +358,22 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
                     }
                     Log.e("55125",db_absent_entry_money);
                 }
-
+                progressDoalog = new ProgressDialog(getActivity());
+                progressDoalog.setMessage("載入中，請稍後...");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.setCancelable(false);
+                progressDoalog.show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(1500);
+                            progressDoalog.dismiss();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
             }
         });
     }
@@ -328,6 +389,7 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
                 if(position == 2){
                     absent_entry_start.setText(setDateFormat(year, month, day));
                     db_absent_entry_start = setDateFormat(year, month, day);
+                    absent_entry_class_net="no";
                     GetAbsentNoteEntryFragmentClass getAbsentNoteEntryFragmentClass = new GetAbsentNoteEntryFragmentClass();
                     getAbsentNoteEntryFragmentClass.execute();
                     Log.e("55125",db_absent_entry_start);

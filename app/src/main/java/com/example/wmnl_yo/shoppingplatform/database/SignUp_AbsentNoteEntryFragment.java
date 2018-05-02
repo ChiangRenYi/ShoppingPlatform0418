@@ -99,7 +99,7 @@ public class SignUp_AbsentNoteEntryFragment extends AsyncTask<String, Void, Stri
                     Log.e("55125", "Error", e);
                 }
             }
-            AbsentNoteEntryFragment.absent_student_leave = result.trim();
+
             return result;
 
         }
@@ -108,7 +108,7 @@ public class SignUp_AbsentNoteEntryFragment extends AsyncTask<String, Void, Stri
     protected void onPostExecute(String s) {
         if (s != null) {
             Log.d("55125", s);
-
+            AbsentNoteEntryFragment.absent_student_leave = s.trim();
 
         }
     }

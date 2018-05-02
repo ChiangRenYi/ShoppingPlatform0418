@@ -64,6 +64,7 @@ public class GetShoppingMallSeleteName extends AsyncTask<String, Void, String> {
                     if (buffer.length() == 0) {
                         // Stream was empty. No point in parsing.
                         Log.d("55125", "nothing");
+                        ShoppingObjectFragment.string_shopping_mall_name_net = "nothing";
                         ShoppingMallObject.ITEMS.clear();
                     } else {
                         result = buffer.toString();
@@ -94,7 +95,7 @@ public class GetShoppingMallSeleteName extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
 
         if (s != null) {
-
+            ShoppingObjectFragment.string_shopping_mall_name_net = "yes";
             Log.d("55125",s);
 
             int j = 0;
