@@ -19,6 +19,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static com.example.wmnl_yo.shoppingplatform.fragment.SelectBuildingFragment.mselectbuildingList;
+
 /**
  * Created by Sandy on 2017/8/30.
  */
@@ -145,6 +147,9 @@ public class GetSelectBuildingFragment extends AsyncTask<String, Void, String> {
                 j++;
                 Log.d("55125", selectBuildingInf[1]+","+selectBuildingInf[2]+","+selectBuildingInf[3]);
             }
+        }else {
+            mselectbuildingList.clear();
+            SelectBuildingFragment.bAdapter.notifyDataSetChanged();
         }
 
         Log.d("55125","notifyDataSetChanged");

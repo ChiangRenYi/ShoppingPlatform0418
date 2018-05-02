@@ -20,6 +20,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static com.example.wmnl_yo.shoppingplatform.fragment.HealthCircumferenceFragment.mhealthCircumferenceList;
+
 /**
  * Created by Sandy on 2017/8/30.
  */
@@ -148,6 +150,9 @@ public class GetHealthCircumferenceFragment extends AsyncTask<String, Void, Stri
                 j++;
                 Log.d("55125", healthCircumferenceInf[1]+"Cm"+","+healthCircumferenceInf[2]+"("+healthCircumferenceInf[3]+")");
             }
+        }else{
+            mhealthCircumferenceList.clear();
+            HealthCircumferenceFragment.cAdapter.notifyDataSetChanged();
         }
         Log.d("55125","notifyDataSetChanged");
         HealthCircumferenceFragment.cAdapter.notifyDataSetChanged();

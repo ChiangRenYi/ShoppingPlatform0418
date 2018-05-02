@@ -1,6 +1,8 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
 import com.example.wmnl_yo.shoppingplatform.R;
@@ -78,15 +81,23 @@ public class HealthManageFragment extends Fragment implements View.OnTouchListen
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        Bundle bundle = getArguments();
+        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info=connManager.getActiveNetworkInfo();
 
-        SDId=bundle.getString("SDId");
-        Log.d("andygetchildID",SDId);
+        if (info == null || !info.isConnected())
+        {
+            Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_LONG).show();
+        }else{
+            Bundle bundle = getArguments();
 
-        fragmentList.add(HealthTemperatureFragment.newInstance("",""));
-        fragmentList.add(HealthWeightFragment.newInstance("",""));
-        fragmentList.add(HealthHeightFragment.newInstance("",""));
-        fragmentList.add(HealthCircumferenceFragment.newInstance("",""));
+            SDId=bundle.getString("SDId");
+            Log.d("andygetchildID",SDId);
+
+            fragmentList.add(HealthTemperatureFragment.newInstance("",""));
+            fragmentList.add(HealthWeightFragment.newInstance("",""));
+            fragmentList.add(HealthHeightFragment.newInstance("",""));
+            fragmentList.add(HealthCircumferenceFragment.newInstance("",""));
+        }
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,11 +19,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.R;
+import com.example.wmnl_yo.shoppingplatform.activity.loginActivity;
 import com.example.wmnl_yo.shoppingplatform.database.GetOpinionMessageFragmentTeacher;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -86,14 +90,22 @@ public class OpinionMessengerFragmentTeacher extends Fragment implements View.On
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        //接收打包資料進行拆解
-        Bundle bundle = getArguments();
-        AUId = bundle.getString("AUId");
-        ERId = bundle.getString("ERId");
+        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info=connManager.getActiveNetworkInfo();
 
-        Log.d("55125", AUId +","+ ERId);
+        if (info == null || !info.isConnected())
+        {
+            Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_LONG).show();
+        }else{
+            //接收打包資料進行拆解
+            Bundle bundle = getArguments();
+            AUId = bundle.getString("AUId");
+            ERId = bundle.getString("ERId");
 
-        fragmentList.add(OpinionMessageAddFragmentTeacher.newInstance("",""));
+            Log.d("55125", AUId +","+ ERId);
+
+            fragmentList.add(OpinionMessageAddFragmentTeacher.newInstance("",""));
+        }
     }
 
     @Override
@@ -113,22 +125,32 @@ public class OpinionMessengerFragmentTeacher extends Fragment implements View.On
         fab_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SimpleDateFormat ymd=new SimpleDateFormat("yyyy-MM-dd");
-                SimpleDateFormat hm=new SimpleDateFormat("HH:mm");
-                OMDate = ymd.format(new java.util.Date());
-                OMTime = hm.format(new java.util.Date());
-                OMText = etMessage.getText().toString();
-                Log.d("55125", String.valueOf(OMDate));
-                Log.d("55125", String.valueOf(OMTime));
-                Log.d("55125", String.valueOf(OMText));
 
-                GetOpinionMessageFragmentTeacher getOpinionMessageFragmentTeacher = new GetOpinionMessageFragmentTeacher();
-                getOpinionMessageFragmentTeacher.execute();
+                ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo info=connManager.getActiveNetworkInfo();
 
-                Toast.makeText(getActivity(),"訊息已送出", Toast.LENGTH_SHORT).show();
+                if (info == null || !info.isConnected()) {
+                    Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_LONG).show();
+                }else{
+                    if (!Objects.equals(etMessage.getText().toString(),"")){
+                        SimpleDateFormat ymd=new SimpleDateFormat("yyyy-MM-dd");
+                        SimpleDateFormat hm=new SimpleDateFormat("HH:mm");
+                        OMDate = ymd.format(new java.util.Date());
+                        OMTime = hm.format(new java.util.Date());
+                        OMText = etMessage.getText().toString();
+//                Log.d("55125", String.valueOf(OMDate));
+//                Log.d("55125", String.valueOf(OMTime));
+//                Log.d("55125", String.valueOf(OMText));
 
-                etMessage.setText("");
-                OMText="";
+                        GetOpinionMessageFragmentTeacher getOpinionMessageFragmentTeacher = new GetOpinionMessageFragmentTeacher();
+                        getOpinionMessageFragmentTeacher.execute();
+
+//                        Toast.makeText(getActivity(),"訊息已送出", Toast.LENGTH_SHORT).show();
+
+                        etMessage.setText("");
+                        OMText="";
+                    }
+                }
             }
         });
 

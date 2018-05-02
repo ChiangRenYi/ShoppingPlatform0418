@@ -19,6 +19,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static com.example.wmnl_yo.shoppingplatform.fragment.SelectMemberFragment.mselectmemberList;
+
 /**
  * Created by Sandy on 2017/8/30.
  */
@@ -145,6 +147,9 @@ public class GetSelectMemberFragment extends AsyncTask<String, Void, String> {
                 j++;
                 Log.d("55125", selectMemberInf[1]+","+selectMemberInf[2]+","+selectMemberInf[3]);
             }
+        }else {
+            mselectmemberList.clear();
+            SelectMemberFragment.bAdapter.notifyDataSetChanged();
         }
 
         Log.d("55125","notifyDataSetChanged");

@@ -20,6 +20,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static com.example.wmnl_yo.shoppingplatform.fragment.HealthWeightFragment.mhealthWeightList;
+
 /**
  * Created by Sandy on 2017/8/30.
  */
@@ -140,14 +142,16 @@ public class GetHealthWeightFragment extends AsyncTask<String, Void, String> {
                 healthWeight_time[j] = healthWeightInf[3];
 
                 dim.addItem(new HealthWeightObject.HealthWeightObjectItem(R.drawable.ic_weight,
-                        healthWeightInf[1],"Kg",healthWeightInf[2]+'('+healthWeightInf[3]+')'));
+                        healthWeightInf[1],"g",healthWeightInf[2]+'('+healthWeightInf[3]+')'));
 
                 j++;
                 Log.d("55125", healthWeightInf[1]+","+"Kg"+","+healthWeightInf[2]+'('+healthWeightInf[3]+')');
             }
 
+        }else{
+            mhealthWeightList.clear();
+            HealthWeightFragment.wAdapter.notifyDataSetChanged();
         }
-
         Log.d("55125","notifyDataSetChanged");
         HealthWeightFragment.wAdapter.notifyDataSetChanged();
     }

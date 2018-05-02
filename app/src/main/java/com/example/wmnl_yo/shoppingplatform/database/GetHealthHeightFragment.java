@@ -18,6 +18,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static com.example.wmnl_yo.shoppingplatform.fragment.HealthHeightFragment.mhealthHeightList;
+
 /**
  * Created by Sandy on 2017/8/30.
  */
@@ -145,6 +147,9 @@ public class GetHealthHeightFragment extends AsyncTask<String, Void, String> {
                 j++;
                 Log.d("55125", healthHeightInf[1]+","+"Cm"+","+healthHeightInf[2]+"("+healthHeightInf[3]+")");
             }
+        }else{
+            mhealthHeightList.clear();
+            HealthHeightFragment.hAdapter.notifyDataSetChanged();
         }
         Log.d("55125","notifyDataSetChanged");
         HealthHeightFragment.hAdapter.notifyDataSetChanged();

@@ -19,6 +19,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static com.example.wmnl_yo.shoppingplatform.fragment.OpinionMessageAddFragment.mopinionmessageList;
+
 /**
  * Created by Sandy on 2017/8/30.
  */
@@ -123,7 +125,36 @@ public class GetOpinionMessageFragment extends AsyncTask<String, Void, String> {
     }
 
     protected void onPostExecute(String s) {
+        if (s != null) {
+            Log.d("55125",s);
+            int j = 0;
 
+            String[] opinionmessage = s.split("<QQ>");
+            String[] opinionmessage_name = new String[opinionmessage.length - 1];
+            String[] opinionmessage_message = new String[opinionmessage.length - 1];
+            String[] opinionmessage_date = new String[opinionmessage.length - 1];
+            String[] opinionmessage_time = new String[opinionmessage.length - 1];
+
+            OpinionmessageObject.ITEMS.clear();
+            OpinionmessageObject dim = new OpinionmessageObject();
+
+            for (int i = 0; i < opinionmessage.length - 1; i++) {
+                String[] opinionmessageInf = new String[20];
+                opinionmessageInf = opinionmessage[i].split("@#");
+                opinionmessage_name[j] = opinionmessageInf[1];
+                opinionmessage_message[j] = opinionmessageInf[2];
+                opinionmessage_date[j] = opinionmessageInf[3];
+                opinionmessage_time[j] = opinionmessageInf[4];
+
+                dim.addItem(new OpinionmessageObject.OpinionmessageObjectItem(opinionmessageInf[1]+":",opinionmessageInf[2],opinionmessageInf[3]+"("+opinionmessageInf[4]+")"));
+
+                j++;
+                Log.d("55125", opinionmessageInf[1]+","+opinionmessageInf[2]+","+opinionmessageInf[3]+"("+opinionmessageInf[4]+")");
+            }
+        }else {
+            mopinionmessageList.clear();
+            OpinionMessageAddFragment.oAdapter.notifyDataSetChanged();
+        }
         Log.d("55125","notifyDataSetChanged");
         OpinionMessageAddFragment.oAdapter.notifyDataSetChanged();
     }
