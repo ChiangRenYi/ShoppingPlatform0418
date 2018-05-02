@@ -1,5 +1,6 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -57,7 +58,7 @@ public class ShoppingObjectDetailFragment extends Fragment implements View.OnTou
     private ArrayAdapter arrayAdapter;
 
     private String[] tmp;
-
+    ProgressDialog progressDoalog;
     public ShoppingObjectDetailFragment() {
         // Required empty public constructor
     }
@@ -167,30 +168,50 @@ public class ShoppingObjectDetailFragment extends Fragment implements View.OnTou
             public void onClick(View v) {
                 SignUpShoppingMall signUpShoppingMall = new SignUpShoppingMall();
                 signUpShoppingMall.execute();
-                Toast.makeText(getActivity(),"請稍後...", Toast.LENGTH_SHORT).show();
-                final Handler handler = new Handler();
+                progressDoalog = new ProgressDialog(getActivity());
+                progressDoalog.setMessage("載入中，請稍後...");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.setCancelable(false);
+                progressDoalog.show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(3000);
+                            progressDoalog.dismiss();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+                Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        switch (shoppingmallsignCheck)
-                        {
-                            case "signup" :
-                                Log.d("55125", shoppingmallsignCheck);
-                                Toast.makeText(getActivity(),"已加至購物車", Toast.LENGTH_SHORT).show();
-                                break;
-                            case "you already buy" :
-                                Log.d("55125", shoppingmallsignCheck);
-                                Toast.makeText(getActivity(),"此商品已加入過購物車，請至購物車更改數量", Toast.LENGTH_SHORT).show();
-                                break;
-                            case "you can't buy" :
-                                Log.d("55125", shoppingmallsignCheck);
-                                Toast.makeText(getActivity(),"庫存不足，無法購買", Toast.LENGTH_SHORT).show();
-                                break;
+                        try {
+
+
+                            switch (shoppingmallsignCheck) {
+                                case "signup":
+                                    Log.d("55125", shoppingmallsignCheck);
+                                    Toast.makeText(getActivity(), "已加至購物車", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case "you already buy":
+                                    Log.d("55125", shoppingmallsignCheck);
+                                    Toast.makeText(getActivity(), "此商品已加入過購物車，請至購物車更改數量", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case "you can't buy":
+                                    Log.d("55125", shoppingmallsignCheck);
+                                    Toast.makeText(getActivity(), "庫存不足，無法購買", Toast.LENGTH_SHORT).show();
+                                    break;
                                 default:
                                     break;
+                            }
+                        }catch (Exception e){
+                            Toast.makeText(getActivity(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
                         }
                     }
-                }, 300);
+                }, 3000);
             }
         });
         return v;

@@ -93,7 +93,7 @@ public class GetShoppingMallKindsecond extends AsyncTask<String, Void, String> {
 
     protected void onPostExecute(String s) {
         if (s != null) {
-
+            ShoppingObjectFragment.string_shopping_mall_object_name_net = "yes";
             Log.d("55125", s);
             String[] postkindInf = s.split("@#");
             postkindInf[0] = "請選擇";
