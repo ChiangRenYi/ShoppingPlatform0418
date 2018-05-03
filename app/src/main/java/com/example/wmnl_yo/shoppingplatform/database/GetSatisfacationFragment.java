@@ -29,6 +29,7 @@ public class GetSatisfacationFragment extends AsyncTask<String, Void, String> {
     public static String[] satisfacation_course;
     public static String[] satisfacation_questionnaire;
     public static String[] satisfacation_questionID;
+    public static String[] satisfacation_coursePlace;
 
     public static String[] satisfacation;
     public static String result;
@@ -159,6 +160,7 @@ public class GetSatisfacationFragment extends AsyncTask<String, Void, String> {
             satisfacation_course = new String[satisfacation.length-1];
             satisfacation_questionnaire = new String[satisfacation.length-1];
             satisfacation_questionID = new String[satisfacation.length-1];
+            satisfacation_coursePlace = new String[satisfacation.length-1];
 
             SatisfacationSurveyObject.ITEMS.clear();
             SatisfacationSurveyObject dim = new SatisfacationSurveyObject();
@@ -177,15 +179,18 @@ public class GetSatisfacationFragment extends AsyncTask<String, Void, String> {
                 satisfacation_questionID[j] = satisfacationInf[4];
                 Log.d("andydatabaseQuestionID",satisfacation_questionID[j]);
 
+                satisfacation_coursePlace[j] = satisfacationInf[5];
+                Log.d("andydatabaseQuestionID",satisfacation_coursePlace[j]);
+
                 dim.addItem(new SatisfacationSurveyObject.SatisfacationSurveyObjectItem(
-                        satisfacationInf[1],satisfacationInf[2],satisfacationInf[3],satisfacationInf[4]));
+                        satisfacationInf[1],satisfacationInf[2],satisfacationInf[3],satisfacationInf[4],satisfacationInf[5]));
 
 
 
 
 
                 j++;
-                Log.d("55125", j + ":"  + satisfacationInf[1]+","+satisfacationInf[2]+","+satisfacationInf[3]+","+satisfacationInf[4]);
+                Log.d("55125", j + ":"  + satisfacationInf[1]+","+satisfacationInf[2]+","+satisfacationInf[3]+","+satisfacationInf[4]+","+satisfacationInf[5]);
             }
 
         }

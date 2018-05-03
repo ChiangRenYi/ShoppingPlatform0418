@@ -21,7 +21,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1.58"
+                android:layout_weight="1.18"
+                android:gravity="center"
+                android:text="中心"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.17"
                 android:gravity="center"
                 android:text="教師"
                 android:textColor="@android:color/darker_gray" />
@@ -31,7 +40,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1.61"
+                android:layout_weight="1.26"
                 android:gravity="center"
                 android:text="課程名稱"
                 android:textColor="@android:color/darker_gray" />

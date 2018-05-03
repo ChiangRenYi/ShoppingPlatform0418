@@ -180,7 +180,7 @@ public class SatisfactionSurveyFragment extends Fragment implements View.OnTouch
 //        private List <SatisfacationSurveyObject.SatisfacationSurveyObjectItem> mSurveyRecordList;
         public class ViewHolder extends RecyclerView.ViewHolder {
             public LinearLayout ll;
-            public TextView tvTeacherName, tvCourseName, tvQuestionnaire;
+            public TextView tvTeacherName, tvCourseName, tvQuestionnaire,tvCoursePlace;
             public    SatisfacationSurveyObject.SatisfacationSurveyObjectItem mItem;
 
 
@@ -190,6 +190,8 @@ public class SatisfactionSurveyFragment extends Fragment implements View.OnTouch
                 tvTeacherName = (TextView) v.findViewById(R.id.tvTeacherName);
                 tvCourseName = (TextView) v.findViewById(R.id.tvCourseName);
                 tvQuestionnaire = (TextView) v.findViewById(R.id.tvQuestionnaire);
+                tvCoursePlace = (TextView) v.findViewById(R.id.tvCoursePlace);
+
             }
         }
 
@@ -240,6 +242,7 @@ public class SatisfactionSurveyFragment extends Fragment implements View.OnTouch
                 holder.tvTeacherName.setText(mSurveyRecordList.get(position).rTeacher);
                 holder.tvCourseName.setText(mSurveyRecordList.get(position).rCourse);
                 holder.tvQuestionnaire.setText(mSurveyRecordList.get(position).rQuestionnaire);
+                holder.tvCoursePlace.setText(mSurveyRecordList.get(position).rCoursePlace);
 
 
         }

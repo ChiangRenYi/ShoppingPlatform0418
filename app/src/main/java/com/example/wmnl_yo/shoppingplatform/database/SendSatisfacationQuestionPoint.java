@@ -145,6 +145,8 @@ public class SendSatisfacationQuestionPoint extends AsyncTask<String, Void, Stri
             }
         } catch (Exception e) {
             Log.e("55125", e.toString());
+            Log.d("andyerror",e.toString());
+
             return null;
         } finally {
                 /*close urlConnection*/
@@ -157,6 +159,7 @@ public class SendSatisfacationQuestionPoint extends AsyncTask<String, Void, Stri
                     reader.close();
                 } catch (final IOException e) {
                     Log.e("55125", "Error", e);
+                    Log.d("andyerror",e.toString());
                 }
             }
 

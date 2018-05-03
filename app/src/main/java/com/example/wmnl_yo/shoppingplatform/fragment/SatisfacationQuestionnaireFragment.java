@@ -143,6 +143,13 @@ public class SatisfacationQuestionnaireFragment extends Fragment implements View
 
         mRecyclerView.addItemDecoration(dividerItemDecoration);
 
+//        for(int i=0;i<amountOfQ;i++)
+//        {
+//
+//            mQuestionRecordList.get(i).rQuestionPoint="5";
+//
+//        }
+
 //        btnConfirm.setOnClickListener(new View.OnClickListener() {   //andytemp OnClick
 //            @Override
 //            public void onClick(View view) {
@@ -225,7 +232,7 @@ public class SatisfacationQuestionnaireFragment extends Fragment implements View
                 tvReason=(TextView)v.findViewById(R.id.tvReason);
 
                 questionResponse=(Button) v.findViewById(R.id.questionResponse);
-
+//                reset(ViewHolder.this);andytemp for doing  預設 非常滿意
 
 //                rg=(RadioGroup)v.findViewById(R.id.rg); ////////andytemp for declare radioGroup
 
@@ -257,9 +264,17 @@ public class SatisfacationQuestionnaireFragment extends Fragment implements View
 //        Dictionary questionIndex = new Hashtable();
         Dictionary questionReason = new Hashtable();
         public void reset(final ViewHolder holder){
-            holder.btnSuperGood.setBackgroundColor(Color.WHITE);
 //            holder.btnSuperGood.setBackgroundResource(R.drawable.btn_background);//andytemp drawable
+//
+//            holder.btnSuperGood.setTextColor(Color.WHITE);
+//            for(int i =0;i<amountOfQ;i++)
+//            {
+//                mQuestionRecordList.get(i).rQuestionPoint="5";
+//
+//            }
+            holder.btnSuperGood.setBackgroundColor(Color.WHITE);
             holder.btnSuperGood.setTextColor(Color.BLACK);
+
             holder.btnGood.setBackgroundColor(Color.WHITE);
             holder.btnGood.setTextColor(Color.BLACK);
             holder.btnNormal.setBackgroundColor(Color.WHITE);
@@ -306,8 +321,15 @@ public class SatisfacationQuestionnaireFragment extends Fragment implements View
 //            });
             if(selected.get(position)==null)
             {
-                holder.btnSuperGood.setBackgroundColor(Color.WHITE);
-                holder.btnSuperGood.setTextColor(Color.BLACK);
+                holder.btnSuperGood.setBackgroundResource(R.drawable.btn_background);//andytemp drawable
+
+                holder.btnSuperGood.setTextColor(Color.WHITE);
+                for(int i=0;i<amountOfQ;i++)
+                {
+
+                    mQuestionRecordList.get(i).rQuestionPoint="5";
+
+                }
                 holder.btnGood.setBackgroundColor(Color.WHITE);
                 holder.btnGood.setTextColor(Color.BLACK);
                 holder.btnNormal.setBackgroundColor(Color.WHITE);
