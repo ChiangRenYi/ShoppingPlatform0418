@@ -308,7 +308,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/_10sdp"
-                    android:text="薪北市三峽光明公共托育中心"
+                    android:text="新北市三峽光明公共托育中心"
                     android:textColor="#c9c9c9"
                     android:textSize="@dimen/_10sdp" />
 

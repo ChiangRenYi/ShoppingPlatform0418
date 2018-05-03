@@ -3,6 +3,8 @@ package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -109,8 +111,6 @@ public class MemberServiceFragment extends Fragment {
                                 ((MainActivity) getContext()).replaceFragment(EmployInfoFragment.class, null);
                             }
                         }, 2000);
-
-
                     }
                 }
             });
@@ -129,10 +129,16 @@ public class MemberServiceFragment extends Fragment {
         btnCompetence.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"功能開發中",Toast.LENGTH_SHORT).show();
 
+                ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo info=connManager.getActiveNetworkInfo();
 
-
+                if (info == null || !info.isConnected())
+                {
+                    Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getActivity(),"功能開發中",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return view;
