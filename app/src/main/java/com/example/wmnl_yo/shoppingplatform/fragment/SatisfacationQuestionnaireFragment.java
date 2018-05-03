@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -47,7 +49,7 @@ public class SatisfacationQuestionnaireFragment extends Fragment implements View
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private List<SatisfacationQuestionObject.SatisfacationQuestionObjectItem> mQuestionRecordList;
+    public static List<SatisfacationQuestionObject.SatisfacationQuestionObjectItem> mQuestionRecordList;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -184,7 +186,7 @@ public class SatisfacationQuestionnaireFragment extends Fragment implements View
 
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-        private List<SatisfacationQuestionObject.SatisfacationQuestionObjectItem> mQuestionRecordList;
+//        private List<SatisfacationQuestionObject.SatisfacationQuestionObjectItem> mQuestionRecordList;
 
 
 
@@ -797,17 +799,30 @@ public class SatisfacationQuestionnaireFragment extends Fragment implements View
                 }
                 if(reasonflag==1)
                 {
-                    SendSatisfacationQuestionPoint sendSatisfacationQuestionPoint=new SendSatisfacationQuestionPoint();
-                    sendSatisfacationQuestionPoint.execute();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("childID", SatisfactionSurveyFragment.childID.trim());
+                    ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo info=connManager.getActiveNetworkInfo();
+
+                    if (info == null || !info.isConnected())
+                    {
+                        Toast.makeText(getActivity(),"請檢查網路,再重新嘗試點擊",Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        SendSatisfacationQuestionPoint sendSatisfacationQuestionPoint=new SendSatisfacationQuestionPoint();
+                        sendSatisfacationQuestionPoint.execute();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("childID", SatisfactionSurveyFragment.childID.trim());
 //                    Log.d("andysendchildID",childList.get(position));    //get the position for child name
-                    SatisfactionSurveyFragment fragobj = new SatisfactionSurveyFragment();
-                    fragobj.setArguments(bundle);
-                    SatisfacationQuestionnaireFragment satisfacationQuestionnaireFragment =new SatisfacationQuestionnaireFragment();
-                    FragmentManager fm = getActivity()
-                            .getSupportFragmentManager();
-                    fm.popBackStack();
+                        SatisfactionSurveyFragment fragobj = new SatisfactionSurveyFragment();
+                        fragobj.setArguments(bundle);
+                        SatisfacationQuestionnaireFragment satisfacationQuestionnaireFragment =new SatisfacationQuestionnaireFragment();
+                        FragmentManager fm = getActivity()
+                                .getSupportFragmentManager();
+                        fm.popBackStack();
+                        Toast.makeText(getActivity(),"問卷提交完成",Toast.LENGTH_LONG).show();
+
+                    }
+
 
 //                    fm.putFragment(bundle,SatisfactionSurveyFragment.childID.trim(),fragobj);  //bughere
 
@@ -815,7 +830,7 @@ public class SatisfacationQuestionnaireFragment extends Fragment implements View
 
 //                    getActivity().getFragmentManager().beginTransaction().remove(view.this).commit(); //andytemp
 
-                    Toast.makeText(getActivity(),"問卷提交完成",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getActivity(),"問卷提交完成",Toast.LENGTH_LONG).show();
                 }
                 else if(reasonflag==0)
                 {

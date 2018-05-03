@@ -18,6 +18,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static com.example.wmnl_yo.shoppingplatform.fragment.SatisfactionSurveyFragment.mSurveyRecordList;
+
 /**
  * Created by WMNL on 2018/2/23.
  */
@@ -186,6 +188,15 @@ public class GetSatisfacationFragment extends AsyncTask<String, Void, String> {
                 Log.d("55125", j + ":"  + satisfacationInf[1]+","+satisfacationInf[2]+","+satisfacationInf[3]+","+satisfacationInf[4]);
             }
 
+        }
+        if(s==null)
+        {
+            Log.d("andyOnpost","null");
+//            internetState=0;
+            mSurveyRecordList.clear();
+            SatisfactionSurveyFragment.rAdapter.notifyDataSetChanged();
+//            Toast.makeText(SatisfacationChildFragment.,"網路不穩，請重新嘗試",Toast.LENGTH_LONG);
+            Log.d("andyNull","success");
         }
         Log.d("55125","notifyDataSetChanged");
         SatisfactionSurveyFragment.rAdapter.notifyDataSetChanged();

@@ -1,8 +1,13 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
@@ -37,6 +43,7 @@ public class SatisfacationChildFragment extends Fragment implements View.OnTouch
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    public static List<SatisfacationChildObject.SatisfacationChildObjectItem> mChildRecordList;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -79,8 +86,8 @@ public class SatisfacationChildFragment extends Fragment implements View.OnTouch
 
 
 
-        GetSatisfacationChildFragmentResult getSatisfacationChildFragmentResult = new GetSatisfacationChildFragmentResult();
-        getSatisfacationChildFragmentResult.execute();//執行連網動作
+//        GetSatisfacationChildFragmentResult getSatisfacationChildFragmentResult = new GetSatisfacationChildFragmentResult();
+//        getSatisfacationChildFragmentResult.execute();//執行連網動作
 
         ///////////設delay 需等待連網取得資料的速度，才會讓後面setText的結果顯示出資料庫抓取的資料，而不是初值。
         int i=0;
@@ -102,6 +109,7 @@ public class SatisfacationChildFragment extends Fragment implements View.OnTouch
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -131,6 +139,20 @@ public class SatisfacationChildFragment extends Fragment implements View.OnTouch
         mRecyclerView.setAdapter(rAdapter);
 
         mRecyclerView.addItemDecoration(dividerItemDecoration);
+        GetSatisfacationChildFragmentResult getSatisfacationChildFragmentResult = new GetSatisfacationChildFragmentResult();
+        getSatisfacationChildFragmentResult.execute();//執行連網動作
+//        Log.d("recordlist",String.valueOf(mChildRecordList.size()));
+
+//            Log.d("recordlist",String.valueOf(mChildRecordList.size()));
+
+//            if(mChildRecordList.size()==0)
+//            {
+//                Toast.makeText(getActivity(),"網路不穩請重新嘗試",Toast.LENGTH_LONG);
+//            }
+//        if(mChildRecordList.size()==0)
+//        {
+//            Toast.makeText(getActivity(),"網路不穩請重新嘗試",Toast.LENGTH_LONG);
+//        }
 
 
         return v;
@@ -181,7 +203,7 @@ public class SatisfacationChildFragment extends Fragment implements View.OnTouch
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-        private List<SatisfacationChildObject.SatisfacationChildObjectItem> mChildRecordList;
+//        private List<SatisfacationChildObject.SatisfacationChildObjectItem> mChildRecordList;
         public class ViewHolder extends RecyclerView.ViewHolder {
             public LinearLayout ll;
             public TextView tvChildName;
@@ -192,6 +214,7 @@ public class SatisfacationChildFragment extends Fragment implements View.OnTouch
                 super(v);
                 ll = (LinearLayout) v.findViewById(R.id.ll);
                 tvChildName = (TextView) v.findViewById(R.id.childName);
+                Log.d("childlist",String.valueOf(mChildRecordList.size()));
 
             }
         }
@@ -237,13 +260,19 @@ public class SatisfacationChildFragment extends Fragment implements View.OnTouch
 
 
 
-
+//            Log.d("recordlist",String.valueOf(mChildRecordList.size()));
 
 
 //                holder.tvChildName.setText(childArray[0].toString());
 //            holder.tvChildName.setText(childArray.get(1).toString());
 //            Log.d("andytest",childArray.get(1).toString());
 //            holder.tvChildName.setText(childList.get(0)); //bug here//andytemp
+//                Log.d("recordlist",String.valueOf(mChildRecordList.size()));
+//
+//                if(mChildRecordList.size()==0)
+//                {
+//                    Toast.makeText(getActivity(),"網路不穩請重新嘗試",Toast.LENGTH_LONG);
+//                }
 
                 holder.mItem = mChildRecordList.get(position);
                 Log.d("andyOnBindView", mChildRecordList.get(position).rChildName);
@@ -253,12 +282,28 @@ public class SatisfacationChildFragment extends Fragment implements View.OnTouch
                 holder.ll.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Bundle bundle = new Bundle();
-                        bundle.putString("childID", mChildRecordList.get(position).rChild_ID);
-//                    Log.d("andysendchildID",childList.get(position));    //get the position for child name
-                        SatisfactionSurveyFragment fragobj = new SatisfactionSurveyFragment();
-                        fragobj.setArguments(bundle);
-                        ((MainActivity) getContext()).replaceFragment(SatisfactionSurveyFragment.class, fragobj);
+                        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                        NetworkInfo info=connManager.getActiveNetworkInfo();
+
+                        if (info == null || !info.isConnected())
+                        {
+                            Toast.makeText(getActivity(),"請檢查網路,再重新嘗試點擊",Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("childID", mChildRecordList.get(position).rChild_ID);
+//                                                      Log.d("andysendchildID",childList.get(position));    //get the position for child name
+                            SatisfactionSurveyFragment fragobj = new SatisfactionSurveyFragment();
+                            fragobj.setArguments(bundle);
+                            ((MainActivity) getContext()).replaceFragment(SatisfactionSurveyFragment.class, fragobj);
+                        }
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("childID", mChildRecordList.get(position).rChild_ID);
+////                    Log.d("andysendchildID",childList.get(position));    //get the position for child name
+//                        SatisfactionSurveyFragment fragobj = new SatisfactionSurveyFragment();
+//                        fragobj.setArguments(bundle);
+//                        ((MainActivity) getContext()).replaceFragment(SatisfactionSurveyFragment.class, fragobj);
                     }
                 });
 
