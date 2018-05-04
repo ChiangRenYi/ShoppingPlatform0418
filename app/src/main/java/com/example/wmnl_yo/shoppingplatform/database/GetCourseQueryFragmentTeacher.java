@@ -39,12 +39,11 @@ public class GetCourseQueryFragmentTeacher extends AsyncTask<String, Void, Strin
             connection.setDoInput(true);
             connection.setConnectTimeout(20000);
             //傳值
-            Log.d("55125", CourseQueryFragment.cCountry+","+CourseQueryFragment.cCity+","+CourseQueryFragment.cBuilding+","+CourseQueryFragment.cClass+","+CourseQueryFragment.cMonth);
+            Log.d("55125", CourseQueryFragment.cCountry+","+CourseQueryFragment.cCity+","+CourseQueryFragment.cBuilding+","+CourseQueryFragment.cMonth);
             Uri.Builder builder = new Uri.Builder()
                     .appendQueryParameter("country", CourseQueryFragment.cCountry.trim())
                     .appendQueryParameter("city",CourseQueryFragment.cCity.trim())
                     .appendQueryParameter("building",CourseQueryFragment.cBuilding.trim())
-                    .appendQueryParameter("class",CourseQueryFragment.cClass.trim())
                     .appendQueryParameter("month",CourseQueryFragment.cMonth.trim())
                     .appendQueryParameter("type",CourseQueryFragment.cType.trim());
 
@@ -100,8 +99,8 @@ public class GetCourseQueryFragmentTeacher extends AsyncTask<String, Void, Strin
 
     protected void onPostExecute(String s) {
         if (s != null) {
-            Log.d("55125",s);
-
+            Log.d("55125",s+",");
+            s = s.trim();
             String[] postteacherInf = s.split("@#");
             postteacherInf[0] = "不限";
             int count = postteacherInf.length-1;

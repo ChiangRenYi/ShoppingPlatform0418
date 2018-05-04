@@ -39,12 +39,11 @@ public class GetCourseQueryFragmentMonth extends AsyncTask<String, Void, String>
             connection.setDoInput(true);
             connection.setConnectTimeout(20000);
             //傳值
-            Log.d("55125", CourseQueryFragment.cCountry+","+CourseQueryFragment.cCity+","+CourseQueryFragment.cBuilding+","+CourseQueryFragment.cClass);
+            Log.d("55125", CourseQueryFragment.cCountry+","+CourseQueryFragment.cCity+","+CourseQueryFragment.cBuilding);
             Uri.Builder builder = new Uri.Builder()
                     .appendQueryParameter("country", CourseQueryFragment.cCountry.trim())
                     .appendQueryParameter("city",CourseQueryFragment.cCity.trim())
                     .appendQueryParameter("building",CourseQueryFragment.cBuilding.trim())
-                    .appendQueryParameter("class",CourseQueryFragment.cClass.trim())
                     .appendQueryParameter("type",CourseQueryFragment.cType.trim());
 
             String query = builder.build().getEncodedQuery();

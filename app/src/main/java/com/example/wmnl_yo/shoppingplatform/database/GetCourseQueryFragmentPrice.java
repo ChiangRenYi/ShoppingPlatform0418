@@ -40,18 +40,14 @@ public class GetCourseQueryFragmentPrice extends AsyncTask<String, Void, String>
             connection.setConnectTimeout(20000);
             //傳值
             Log.d("55125", CourseQueryFragment.cCountry+","+CourseQueryFragment.cCity+","
-                    +CourseQueryFragment.cBuilding+","+CourseQueryFragment.cClass+","
-                    +CourseQueryFragment.cMonth+","+CourseQueryFragment.cTeacher+","
-                    +CourseQueryFragment.cTimeS+","+CourseQueryFragment.cTimeE);
+                    +CourseQueryFragment.cBuilding+","
+                    +CourseQueryFragment.cMonth+","+CourseQueryFragment.cTeacher);
             Uri.Builder builder = new Uri.Builder()
                     .appendQueryParameter("country", CourseQueryFragment.cCountry.trim())
                     .appendQueryParameter("city",CourseQueryFragment.cCity.trim())
                     .appendQueryParameter("building",CourseQueryFragment.cBuilding.trim())
-                    .appendQueryParameter("class",CourseQueryFragment.cClass.trim())
                     .appendQueryParameter("month",CourseQueryFragment.cMonth.trim())
                     .appendQueryParameter("teacher",CourseQueryFragment.cTeacher.trim())
-                    .appendQueryParameter("timeS",CourseQueryFragment.cTimeS.trim())
-                    .appendQueryParameter("timeE",CourseQueryFragment.cTimeE.trim())
                     .appendQueryParameter("type",CourseQueryFragment.cType.trim());
 
             String query = builder.build().getEncodedQuery();
@@ -135,7 +131,6 @@ public class GetCourseQueryFragmentPrice extends AsyncTask<String, Void, String>
                 }
             }
 
-            CourseQueryFragment.stringPrice = nonDuplicatePriceArray;
         }
 
 

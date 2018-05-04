@@ -26,12 +26,10 @@ import android.widget.Toast;
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
 import com.example.wmnl_yo.shoppingplatform.database.GetCourseQueryFragmentBuilding;
-import com.example.wmnl_yo.shoppingplatform.database.GetCourseQueryFragmentClass;
 import com.example.wmnl_yo.shoppingplatform.database.GetCourseQueryFragmentMonth;
 import com.example.wmnl_yo.shoppingplatform.database.GetCourseQueryFragmentPrice;
 import com.example.wmnl_yo.shoppingplatform.database.GetCourseQueryFragmentResult;
 import com.example.wmnl_yo.shoppingplatform.database.GetCourseQueryFragmentTeacher;
-import com.example.wmnl_yo.shoppingplatform.database.GetCourseQueryFragmentTime;
 import com.example.wmnl_yo.shoppingplatform.database.GetCourseQueryFragmentType;
 
 import cn.carbswang.android.numberpickerview.library.NumberPickerView;
@@ -61,9 +59,9 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
     private int mYear, mMonth, mDay;
     private View v;
     private String[] tmp;
-    public String courseQueryCountry, courseQueryCity, courseQueryBuilding, courseQueryType, courseQueryClass, courseQueryTeacher, courseQueryMonth, courseQueryTime, courseQueryPrice;
-    public static String cCountry, cCity, cBuilding, cType, cClass, cTeacher, cMonth, cTimeS, cTimeE, cPrice,Building_check="crycry";
-    public static String[] stringBuilding, stringType, stringClass, stringMonth, stringTeacher, stringTime, stringPrice;
+    public String courseQueryCountry, courseQueryCity, courseQueryBuilding, courseQueryType, courseQueryTeacher, courseQueryMonth;
+    public static String cCountry, cCity, cBuilding, cType, cTeacher, cMonth,Building_check="crycry";
+    public static String[] stringBuilding, stringType, stringMonth, stringTeacher;
     //判斷是否有課程&網路
     public static String classall = "";
     ProgressDialog progressDoalog;
@@ -99,7 +97,7 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         tv = new TextView[getResources().getStringArray(R.array.courseFindType).length];
-        tmp = new String[]{"請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇"};
+        tmp = new String[]{"請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇"};
         Building_check="crycry";
         final Dialog alertDialog = new AlertDialog.Builder(getActivity()).create();
         alertDialog.show();
@@ -169,12 +167,11 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
                 @Override
                 public void onClick(View view) {
 
-                    if (cCountry == null || cCity == null || cBuilding == null || cType == null || cClass == null || cTeacher == null || cMonth == null || cTimeS == null || cTimeE == null || cPrice == null) {
+                    if (cCountry == null || cCity == null || cBuilding == null || cType == null || cTeacher == null || cMonth == null ) {
 
                         Toast.makeText(view.getContext(), "有選項沒選，請確認!!!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Log.e("55125", cCountry + cCity + cBuilding + cType + cClass
-                                + cTeacher + cMonth + cTimeS + cTimeE + cPrice);
+                        Log.e("55125", cCountry + cCity + cBuilding + cType + cTeacher + cMonth);
                         GetCourseQueryFragmentResult getCourseQueryFragmentResult = new GetCourseQueryFragmentResult();
                         getCourseQueryFragmentResult.execute();
 
@@ -372,29 +369,14 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
                 numberPicker(stringType, i - 1);
                 t = String.valueOf(i);
             }
-        } else if (i == 5) {
-
-            if (stringClass == null) {
-                if(cCountry.equals("") || cCity.equals("") || cBuilding.equals("") || cType.equals("")){
-                    Toast.makeText(view.getContext(), "縣市或地區或托育中心或課程類別有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
-
-                }else {
-                    tv[3].setText("請選擇");
-                    cClass = "";
-                    Toast.makeText(view.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
-                }
-            } else if (stringClass != null) {
-                numberPicker(stringClass, i - 1);
-                t = String.valueOf(i);
-            }
-        } else if (i == 6) {
+        }else if (i == 5) {
 
             if (stringMonth == null) {
-                if(cCountry.equals("") || cCity.equals("") || cBuilding.equals("") || cType.equals("") || cClass.equals("")){
+                if(cCountry.equals("") || cCity.equals("") || cBuilding.equals("") || cType.equals("") ){
                     Toast.makeText(view.getContext(), "縣市或地區或托育中心或課程類別或課程內容有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
 
                 }else {
-                    tv[4].setText("請選擇");
+                    tv[3].setText("請選擇");
                     cMonth = "";
                     Toast.makeText(view.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
                 }
@@ -402,49 +384,19 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
                 numberPicker(stringMonth, i - 1);
                 t = String.valueOf(i);
             }
-        } else if (i == 7) {
+        } else if (i == 6) {
 
             if (stringTeacher == null) {
-                if(cCountry.equals("") || cCity.equals("") || cBuilding.equals("") || cType.equals("") || cClass.equals("") || cMonth.equals("")){
+                if(cCountry.equals("") || cCity.equals("") || cBuilding.equals("") || cType.equals("") || cMonth.equals("")){
                     Toast.makeText(view.getContext(), "縣市或地區或托育中心或課程類別或課程內容或開課日期有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
 
                 }else {
-                    tv[5].setText("請選擇");
+                    tv[4].setText("請選擇");
                     cTeacher = "";
                     Toast.makeText(view.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
                 }
             } else if (stringTeacher != null) {
                 numberPicker(stringTeacher, i - 1);
-                t = String.valueOf(i);
-            }
-        } else if (i == 8) {
-
-            if (stringTime == null) {
-                if(cCountry.equals("") || cCity.equals("") || cBuilding.equals("") || cType.equals("") || cClass.equals("") || cMonth.equals("") || cTeacher.equals("")){
-                    Toast.makeText(view.getContext(), "縣市或地區或托育中心或課程類別或課程內容或開課日期或授課老師有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
-
-                }else {
-                    tv[6].setText("請選擇");
-                    cTimeS = "";
-                    cTimeE = "";
-                    Toast.makeText(view.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
-                }
-            } else if (stringTime != null) {
-                numberPicker(stringTime, i - 1);
-                t = String.valueOf(i);
-            }
-        } else if (i == 9) {
-            if (stringPrice == null) {
-                if(cCountry.equals("") || cCity.equals("") || cBuilding.equals("") || cType.equals("") || cClass.equals("") || cMonth.equals("") || cTeacher.equals("") ||cTimeE.equals("")){
-                    Toast.makeText(view.getContext(), "縣市或地區或托育中心或課程類別或課程內容或開課日期或授課老師或上課時段有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
-
-                }else {
-                    tv[7].setText("請選擇");
-                    cPrice = "";
-                    Toast.makeText(view.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
-                }
-            } else if (stringPrice != null) {
-                numberPicker(stringPrice, i - 1);
                 t = String.valueOf(i);
             }
         }
@@ -497,45 +449,28 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
                     cCity ="";
                     cBuilding = "";
                     cType = "";
-                    cClass = "";
                     cTeacher = "";
                     cMonth = "";
-                    cTimeS = "";
-                    cTimeE = "";
-                    cPrice = "";
                     tv[0].setText(cCountry);
                     tv[1].setText("請選擇");
                     tv[2].setText("請選擇");
                     tv[3].setText("請選擇");
                     tv[4].setText("請選擇");
                     tv[5].setText("請選擇");
-                    tv[6].setText("請選擇");
-                    tv[7].setText("請選擇");
-                    tv[8].setText("請選擇");
                     Log.e("55125", courseQueryCountry);
                 } else if (choose == 2) {
                     cBuilding = "";
                     cType = "";
-                    cClass = "";
                     cTeacher = "";
                     cMonth = "";
-                    cTimeS = "";
-                    cTimeE = "";
-                    cPrice = "";
                     tv[2].setText("請選擇");
                     tv[3].setText("請選擇");
                     tv[4].setText("請選擇");
                     tv[5].setText("請選擇");
-                    tv[6].setText("請選擇");
-                    tv[7].setText("請選擇");
-                    tv[8].setText("請選擇");
                     CourseQueryFragment.stringBuilding = null;
                     CourseQueryFragment.stringType= null;
-                    CourseQueryFragment.stringClass= null;
                     CourseQueryFragment.stringMonth= null;
                     CourseQueryFragment.stringTeacher= null;
-                    CourseQueryFragment.stringTime= null;
-                    CourseQueryFragment.stringPrice= null;
                     courseQueryCity = numberPickerView.getContentByCurrValue();
                     cCity = courseQueryCity;
                     Log.e("55125", cCity);
@@ -545,24 +480,14 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
                     getCourseQueryFragmentBuilding.execute();
                 } else if (choose == 3) {
                     cType = "";
-                    cClass = "";
                     cTeacher = "";
                     cMonth = "";
-                    cTimeS = "";
-                    cTimeE = "";
-                    cPrice = "";
                     tv[3].setText("請選擇");
                     tv[4].setText("請選擇");
                     tv[5].setText("請選擇");
-                    tv[6].setText("請選擇");
-                    tv[7].setText("請選擇");
-                    tv[8].setText("請選擇");
                     CourseQueryFragment.stringType= null;
-                    CourseQueryFragment.stringClass= null;
                     CourseQueryFragment.stringMonth= null;
                     CourseQueryFragment.stringTeacher= null;
-                    CourseQueryFragment.stringTime= null;
-                    CourseQueryFragment.stringPrice= null;
                     courseQueryBuilding = numberPickerView.getContentByCurrValue();
                     cBuilding = courseQueryBuilding;
                     Log.e("55125", cBuilding);
@@ -572,96 +497,30 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
                 } else if (choose == 4) {
                     tv[4].setText("請選擇");
                     tv[5].setText("請選擇");
-                    tv[6].setText("請選擇");
-                    tv[7].setText("請選擇");
-                    tv[8].setText("請選擇");
-                    cClass = "";
                     cTeacher = "";
                     cMonth = "";
-                    cTimeS = "";
-                    cTimeE = "";
-                    cPrice = "";
-                    CourseQueryFragment.stringClass= null;
                     CourseQueryFragment.stringMonth= null;
                     CourseQueryFragment.stringTeacher= null;
-                    CourseQueryFragment.stringTime= null;
-                    CourseQueryFragment.stringPrice= null;
                     courseQueryType = numberPickerView.getContentByCurrValue();
                     cType = courseQueryType;
                     Log.e("55125", cType);
-                    GetCourseQueryFragmentClass getCourseQueryFragmentClass = new GetCourseQueryFragmentClass();
-                    getCourseQueryFragmentClass.execute();
-
-                } else if (choose == 5) {
-                    cTeacher = "";
-                    cMonth = "";
-                    cTimeS = "";
-                    cTimeE = "";
-                    cPrice = "";
-                    tv[5].setText("請選擇");
-                    tv[6].setText("請選擇");
-                    tv[7].setText("請選擇");
-                    tv[8].setText("請選擇");
-                    CourseQueryFragment.stringMonth= null;
-                    CourseQueryFragment.stringTeacher= null;
-                    CourseQueryFragment.stringTime= null;
-                    CourseQueryFragment.stringPrice= null;
-                    courseQueryClass = numberPickerView.getContentByCurrValue();
-                    cClass = courseQueryClass;
-                    Log.e("55125", cClass);
                     GetCourseQueryFragmentMonth getCourseQueryFragmentMonth = new GetCourseQueryFragmentMonth();
                     getCourseQueryFragmentMonth.execute();
 
-                } else if (choose == 6) {
-                    cMonth = "";
-                    cTimeS = "";
-                    cTimeE = "";
-                    cPrice = "";
-                    tv[6].setText("請選擇");
-                    tv[7].setText("請選擇");
-                    tv[8].setText("請選擇");
+                } else if (choose == 5) {
+                    cTeacher = "";
+                    tv[5].setText("請選擇");
                     CourseQueryFragment.stringTeacher= null;
-                    CourseQueryFragment.stringTime= null;
-                    CourseQueryFragment.stringPrice= null;
                     courseQueryMonth = numberPickerView.getContentByCurrValue();
-                    cMonth = courseQueryMonth;
-                    Log.e("55125", cMonth);
+                    cTeacher = courseQueryMonth;
+                    Log.e("55125", courseQueryMonth);
                     GetCourseQueryFragmentTeacher getCourseQueryFragmentTeacher = new GetCourseQueryFragmentTeacher();
                     getCourseQueryFragmentTeacher.execute();
-                } else if (choose == 7) {
-                    cTimeS = "";
-                    cTimeE = "";
-                    cPrice = "";
-                    tv[7].setText("請選擇");
-                    tv[8].setText("請選擇");
-                    CourseQueryFragment.stringTime= null;
-                    CourseQueryFragment.stringPrice= null;
+
+                } else if (choose == 6) {
                     courseQueryTeacher = numberPickerView.getContentByCurrValue();
                     cTeacher = courseQueryTeacher;
-                    GetCourseQueryFragmentTime getCourseQueryFragmentTime = new GetCourseQueryFragmentTime();
-                    getCourseQueryFragmentTime.execute();
                     Log.e("55125", cTeacher);
-                } else if (choose == 8) {
-                    cPrice = "";
-                    tv[8].setText("請選擇");
-                    CourseQueryFragment.stringPrice= null;
-                    courseQueryTime = numberPickerView.getContentByCurrValue();
-                    String[] courseQueryTimesplit = courseQueryTime.split("~");
-                    if (courseQueryTime == "不限") {
-                        cTimeS = "不限";
-                        cTimeE = "不限";
-                    } else {
-                        cTimeS = courseQueryTimesplit[0];
-                        cTimeE = courseQueryTimesplit[1];
-                    }
-
-                    GetCourseQueryFragmentPrice getCourseQueryFragmentPrice = new GetCourseQueryFragmentPrice();
-                    getCourseQueryFragmentPrice.execute();
-                    Log.e("55125", courseQueryTime);
-                } else if (choose == 9) {
-                    courseQueryPrice = numberPickerView.getContentByCurrValue();
-                    cPrice = courseQueryPrice;
-                    Log.e("55125", cPrice);
                 }
                 ad.dismiss();
                 tv[position].setText(numberPickerView.getContentByCurrValue().trim());

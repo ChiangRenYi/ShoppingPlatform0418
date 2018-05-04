@@ -42,19 +42,12 @@ public class CourseManageFragment extends Fragment {
                 CourseQueryFragment.cCity="";
                 CourseQueryFragment.cBuilding="";
                 CourseQueryFragment.cType="";
-                CourseQueryFragment.cClass="";
                 CourseQueryFragment.cTeacher="";
                 CourseQueryFragment.cMonth="";
-                CourseQueryFragment.cTimeS="";
-                CourseQueryFragment.cTimeE="";
-                CourseQueryFragment.cPrice="";
                 CourseQueryFragment.stringBuilding = null;
                 CourseQueryFragment.stringType= null;
-                CourseQueryFragment.stringClass= null;
                 CourseQueryFragment.stringMonth= null;
                 CourseQueryFragment.stringTeacher= null;
-                CourseQueryFragment.stringTime= null;
-                CourseQueryFragment.stringPrice= null;
                 ((MainActivity) getContext()).replaceFragment(CourseRecordFragment.class, null);
 
 
