@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -86,26 +88,6 @@ public class OrderDetailFragment extends Fragment implements View.OnTouchListene
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-//        tmp[0] = orderObject.getBusinessNumber();
-//        tmp[1] = orderObject.getProductType();
-//        tmp[2] = orderObject.getProductName();
-//        tmp[3] = orderObject.getOrderDate().getYear() + 1900 + "/" + orderObject.getOrderDate().getMonth() + "/" + orderObject.getOrderDate().getDate();
-//       // tmp[4] = orderObject.getShippingDate().getYear() + 1900 + "/" + orderObject.getShippingDate().getMonth() + "/" + orderObject.getShippingDate().getDate();
-//        tmp[4] = orderObject.getPaymentMethod();
-//        tmp[5] = orderObject.getShippingMethod();
-//        tmp[6] = orderObject.getOrderState();
-//        tmp[7] = orderObject.getShippingState();
-//        tmp[8] = orderObject.getProductPrice() + "";
-//        tmp[9] = orderObject.getProductAmount() + "";
-//        tmp[10] = orderObject.getSubtotal() + "";
-//        tmp[11] = orderObject.getTotal() + "";
-//        tmp[12] = orderObject.getDescription();
-
-//        Log.d("55125-tst",orderTypeNum);
-
-
-
-
 
     }
 
@@ -140,6 +122,7 @@ public class OrderDetailFragment extends Fragment implements View.OnTouchListene
                 break;
 
             default:
+                orderType = "商品";
                 break;
         }
 
@@ -148,8 +131,8 @@ public class OrderDetailFragment extends Fragment implements View.OnTouchListene
         tmp[1] = orderType;//抓資料庫
         tmp[2] = orderDate;
         tmp[3] = orderPayway;
-        tmp[4] = "無";
-        tmp[5] = orderState;
+        tmp[4] = orderState;
+        tmp[5] = "無";
         tmp[6] = "無";
         tmp[7] = orderMoney;
         tmp[8] = orderDes;
@@ -170,8 +153,25 @@ public class OrderDetailFragment extends Fragment implements View.OnTouchListene
                     holder = (ViewHolder) convertView.getTag();
                 }
 
-                holder.tvProductDetail.setText(getContext().getResources().getStringArray(R.array.productDetail)[position]);
-                holder.tvProductDetailContent.setText(tmp[position]);
+                switch (orderTypeNum){
+
+                    case"0":
+//                        orderType = "課程";
+                        holder.tvProductDetail.setText(getContext().getResources().getStringArray(R.array.courseOrderDetail)[position]);
+                        holder.tvProductDetailContent.setText(tmp[position]);
+                        break;
+
+                    case"1":
+//                        orderType = "商品";
+                        holder.tvProductDetail.setText(getContext().getResources().getStringArray(R.array.productDetail)[position]);
+                        holder.tvProductDetailContent.setText(tmp[position]);
+                        break;
+
+                    default:
+                        holder.tvProductDetail.setText(getContext().getResources().getStringArray(R.array.productDetail)[position]);
+                        holder.tvProductDetailContent.setText(tmp[position]);
+                        break;
+                }
 
                 return convertView;
             }
@@ -209,70 +209,87 @@ public class OrderDetailFragment extends Fragment implements View.OnTouchListene
 
 
 
-        btnGoPay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (payway){
-                    case "0":
-                        ShoppingCarATMFragment.sp_atm_number_data = orderListNum;
-                        ShoppingCarATMFragment.get_page_way = "1";
-                        ((MainActivity)getContext()).replaceFragment(ShoppingCarATMFragment.class, null);
 
-                        break;
 
-                    case "1":
-                        ShoppingFinialFragment.sp_code_number_data = orderListNum;
-                        ShoppingFinialFragment.get_page_way = "1";
-                        ((MainActivity)getContext()).replaceFragment(ShoppingFinialFragment.class, null);
+            btnGoPay.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo info=connManager.getActiveNetworkInfo();
+                    if (info == null || !info.isConnected())
+                    {
+                        Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_SHORT).show();
+                    }else {
+                        switch (payway) {
+                            case "0":
+                                ShoppingCarATMFragment.sp_atm_number_data = orderListNum;
+                                ShoppingCarATMFragment.get_page_way = "1";
+                                ((MainActivity) getContext()).replaceFragment(ShoppingCarATMFragment.class, null);
 
-                        break;
+                                break;
 
-                    case "2":
+                            case "1":
+                                ShoppingFinialFragment.sp_code_number_data = orderListNum;
+                                ShoppingFinialFragment.get_page_way = "1";
+                                ((MainActivity) getContext()).replaceFragment(ShoppingFinialFragment.class, null);
 
+                                break;
+
+                            case "2":
+
+                                new AlertDialog.Builder(getActivity())
+                                        .setMessage("請至網頁版使用信用卡結帳")
+                                        .setPositiveButton("確認", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+
+                                            }
+                                        })
+
+                                        .show();
+
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            });
+
+
+
+            btnCancelOrder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo info=connManager.getActiveNetworkInfo();
+                    if (info == null || !info.isConnected()) {
+                        Toast.makeText(getActivity(), "請檢查網路", Toast.LENGTH_SHORT).show();
+                    } else {
                         new AlertDialog.Builder(getActivity())
-                                .setMessage("請至網頁版使用信用卡結帳")
-                                .setPositiveButton("確認", new DialogInterface.OnClickListener() {
+                                .setMessage("是否確定取消訂單?")
+                                .setPositiveButton("是", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        DeleteShoppingBigorderlist deleteShoppingBigorderlist = new DeleteShoppingBigorderlist();
+                                        deleteShoppingBigorderlist.execute();
+
+                                        arrayAdapter.notifyDataSetChanged();
+                                        ((MainActivity) getContext()).replaceFragment(OrderResultFragment.class, null);
 
                                     }
                                 })
-
+                                .setNeutralButton("否", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //留空
+                                    }
+                                })
                                 .show();
-
-                        break;
-                    default:
-                        break;
+                    }
                 }
+            });
 
-            }
-        });
-
-        btnCancelOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AlertDialog.Builder(getActivity())
-                        .setMessage("是否確定取消訂單?")
-                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                DeleteShoppingBigorderlist deleteShoppingBigorderlist = new DeleteShoppingBigorderlist();
-                                deleteShoppingBigorderlist.execute();
-
-                                arrayAdapter.notifyDataSetChanged();
-                                ((MainActivity)getContext()).replaceFragment(OrderResultFragment.class, null);
-
-                            }
-                        })
-                        .setNeutralButton("否", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                             //留空
-                            }
-                        })
-                        .show();
-            }
-        });
 
         productDetailList.setAdapter(arrayAdapter);
         productDetailList.addHeaderView(headerView);

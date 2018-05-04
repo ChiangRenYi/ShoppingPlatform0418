@@ -15,14 +15,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="3.5">
+            android:weightSum="4.3">
 
             <TextView
                 android:id="@+id/tvCourseNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_weight="1.3"
                 android:gravity="center"
                 android:text="課程編號 : XXXX"
                 android:textColor="@android:color/darker_gray" />
@@ -32,7 +32,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1.5"
+                android:layout_weight="1.6"
                 android:gravity="center"
                 android:text="課程名稱 : XXXX"
                 android:textColor="@android:color/darker_gray" />
@@ -41,9 +41,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_weight="0.7"
                 android:gravity="center"
-                android:text="點名"
+                android:text="未到"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.7"
+                android:gravity="center"
+                android:text="已到"
                 android:textColor="@android:color/darker_gray" />
 
         </LinearLayout>
@@ -51,8 +60,16 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_380sdp"
             android:layout_marginTop="@dimen/_5sdp" />
+
+        <Button
+            android:id="@+id/checkRollCall"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="#51cdf0"
+            android:text="確認點名"
+            android:textSize="@dimen/_15sdp" />
 
     </LinearLayout>
 

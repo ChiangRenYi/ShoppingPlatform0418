@@ -597,9 +597,25 @@
         <!--<item>商品名:</item>-->
         <item>訂單日期:</item>
         <item>付款方式:</item>
-        <item>送貨方式:</item>
         <item>訂單狀態:</item>
+        <item>送貨方式:</item>
         <item>出貨狀態:</item>
+        <item>價格:</item>
+        <!--<item>數量:</item>-->
+        <!--<item>小計:</item>-->
+        <!--<item>合計:</item>-->
+        <item>內容:</item>
+    </string-array>
+
+    <string-array name="courseOrderDetail">
+        <item>訂單編號:</item>
+        <item>類型:</item>
+        <!--<item>商品名:</item>-->
+        <item>訂單日期:</item>
+        <item>付款方式:</item>
+        <item>訂單狀態:</item>
+        <item>上課地點:</item>
+        <item>上課學生:</item>
         <item>價格:</item>
         <!--<item>數量:</item>-->
         <!--<item>小計:</item>-->

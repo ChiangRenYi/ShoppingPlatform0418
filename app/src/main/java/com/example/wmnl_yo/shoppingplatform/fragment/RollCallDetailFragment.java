@@ -1,6 +1,8 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,9 +14,12 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.R;
+import com.example.wmnl_yo.shoppingplatform.activity.loginActivity;
 
 import java.util.ArrayList;
 
@@ -45,6 +50,7 @@ public class RollCallDetailFragment extends Fragment implements View.OnTouchList
     private String courseName,courseNumber;
     private TextView tvCourseNumber, tvCourseName;
     private SwitchCompat mSwitchCompat;
+    private Button check;
 
     public RollCallDetailFragment() {
         // Required empty public constructor
@@ -99,7 +105,7 @@ public class RollCallDetailFragment extends Fragment implements View.OnTouchList
         mRecyclerView = (RecyclerView) v.findViewById(R.id.rv);
         tvCourseNumber = (TextView) v.findViewById(R.id.tvCourseNumber);
         tvCourseName = (TextView) v.findViewById(R.id.tvCourseName);
-
+        check = (Button) v.findViewById(R.id.checkRollCall);
         mAdapter = new MyAdapter(personIDList, personList);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -115,6 +121,22 @@ public class RollCallDetailFragment extends Fragment implements View.OnTouchList
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addItemDecoration(dividerItemDecoration);
+
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo info=connManager.getActiveNetworkInfo();
+
+                if (info == null || !info.isConnected())
+                {
+                    Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_LONG).show();
+                }
+                else {
+
+                }
+            }
+        });
 
         return v;
     }
@@ -174,6 +196,7 @@ public class RollCallDetailFragment extends Fragment implements View.OnTouchList
                 super(v);
                 tvPersonID = (TextView) v.findViewById(R.id.personID);
                 tvPersonName = (TextView) v.findViewById(R.id.personName);
+
             }
         }
 

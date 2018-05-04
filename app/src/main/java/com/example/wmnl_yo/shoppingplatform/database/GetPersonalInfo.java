@@ -3,6 +3,7 @@ package com.example.wmnl_yo.shoppingplatform.database;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.fragment.MemberServiceFragment;
@@ -87,95 +88,101 @@ public class GetPersonalInfo extends AsyncTask<String,Void,String>{
                     Log.e("55125", "Error", e);
                 }
             }
+            if(result != null) {
 //            Log.e("55555",result);
 //            Log.e("55886","顯示資料庫回傳結果");
-            String a = result.trim();
+                String a = result.trim();
 //            Log.e("55555~",a);
 //            Log.e("55886","再次顯示回傳結果");
-            return a;
-
+                return a;
+            }
+            return result;
         }
     }
 
     protected void onPostExecute(String s) {
-        String career = "";
-        String country= "";
-        String[] result = s.split("@#");
-        Log.d("55555",result[1]+result[2]+result[3]+result[4]+result[5]+result[6]+result[7]+result[8]+result[9]+result[10]);
+        try {
+            String career = "";
+            String country = "";
+            String[] result = s.split("@#");
+            Log.d("55555", result[1] + result[2] + result[3] + result[4] + result[5] + result[6] + result[7] + result[8] + result[9] + result[10]);
 
-        if(result[2].equals("0")){
-            result[2] = "男";
-        }else{
-            result[2] = "女";
+            if (result[2].equals("0")) {
+                result[2] = "男";
+            } else {
+                result[2] = "女";
+            }
+
+            switch (result[3]) {
+
+                case "1":
+                    career = "公";
+                    break;
+
+                case "2":
+                    career = "工";
+                    break;
+
+                case "3":
+                    career = "教";
+                    break;
+
+                case "4":
+                    career = "軍/警";
+                    break;
+
+                case "5":
+                    career = "家管";
+                    break;
+
+                case "6":
+                    career = "商";
+                    break;
+
+
+                default:
+                    break;
+            }
+
+            switch (result[4]) {
+                case "1":
+                    country = "台灣";
+                    break;
+
+                case "2":
+                    country = "日本";
+                    break;
+
+                case "3":
+                    country = "美國";
+                    break;
+
+                case "4":
+                    country = "中國";
+                    break;
+
+                case "5":
+                    country = "香港";
+                    break;
+
+                default:
+                    break;
+            }
+            MemberServiceFragment.PIname = result[1];
+            MemberServiceFragment.PIgender = result[2];
+            MemberServiceFragment.PIcareer = career;
+            MemberServiceFragment.PInationality = country;
+            MemberServiceFragment.PIID = result[5];
+            MemberServiceFragment.PIbirthday = result[6];
+            MemberServiceFragment.PImail = result[7];
+            MemberServiceFragment.PIaddress = result[8];
+            MemberServiceFragment.PIcontact_phone = result[9];
+            MemberServiceFragment.PIphone = result[10];
+
+            Log.e("DB55555", MemberServiceFragment.PIgender);
+        }catch (Exception e){
+
         }
-
-        switch (result[3]){
-
-            case "1":
-                career = "公";
-                break;
-
-            case "2":
-                career = "工";
-                break;
-
-            case "3":
-                career = "教";
-                break;
-
-            case "4":
-                career = "軍/警";
-                break;
-
-            case "5":
-                career = "家管";
-                break;
-
-            case "6":
-                career = "商";
-                break;
-
-
-            default:
-                break;
-        }
-
-        switch (result[4]){
-            case "1":
-                country = "台灣";
-                break;
-
-            case "2":
-                country = "日本";
-                break;
-
-            case "3":
-                country = "美國";
-                break;
-
-            case "4":
-                country = "中國";
-                break;
-
-            case "5":
-                country = "香港";
-                break;
-
-            default:
-                break;
-        }
-        MemberServiceFragment.PIname = result[1];
-        MemberServiceFragment.PIgender = result[2];
-        MemberServiceFragment.PIcareer = career;
-        MemberServiceFragment.PInationality = country;
-        MemberServiceFragment.PIID = result[5];
-        MemberServiceFragment.PIbirthday = result[6];
-        MemberServiceFragment.PImail = result[7];
-        MemberServiceFragment.PIaddress = result[8];
-        MemberServiceFragment.PIcontact_phone = result[9];
-        MemberServiceFragment.PIphone = result[10];
-
-        Log.e("DB55555", MemberServiceFragment.PIgender);
     }
 
 }

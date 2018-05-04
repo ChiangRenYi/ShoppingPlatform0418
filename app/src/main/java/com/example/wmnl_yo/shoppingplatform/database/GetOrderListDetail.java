@@ -99,32 +99,17 @@ public class GetOrderListDetail extends AsyncTask<String,Void,String> {
         if (s != null) {
             Log.d("55125", s);
             int j = 0;
-//            OrderDetailObject.ITEMS.clear();
-//            OrderDetailObject dim = new OrderDetailObject();
 
             String[] orderlistQuery = s.split("<br>");
             String T = String.valueOf(orderlistQuery.length - 1);
             Log.e("55125", T);
-//            String[] orderlistQuery_date = new String[orderlistQuery.length - 1];
-//            String[] orderlistQuery_num = new String[orderlistQuery.length - 1];
-//            String[] orderlistQuery_payway = new String[orderlistQuery.length - 1];
-//            String[] orderlistQuery_state = new String[orderlistQuery.length - 1];
-//            String[] orderlistQuery_money = new String[orderlistQuery.length - 1];
 
             String[] orderlistQueryInf = new String[4];
             for (int i = 0; i < orderlistQuery.length - 1; i++) {
 
                 orderlistQueryInf = orderlistQuery[i].split("@#");
-//                dim.addItem(new OrderDetailObject.OrderDetailObjectItem(
-//                        orderlistQueryInf[1],
-//                        "安安123"
-//                       ));
                 OrderDetailFragment.orderTypeNum = orderlistQueryInf[1];
 
-//                orderlistQuery_date[j] = orderlistQueryInf[0];
-//                orderlistQuery_num[j] = orderlistQueryInf[1];
-//                orderlistQuery_payway[j] = orderlistQueryInf[2];
-//                orderlistQuery_state[j] = orderlistQueryInf[3];
                 OrderDetailFragment.orderDes = OrderDetailFragment.orderDes + orderlistQueryInf[2] +"\n" + "單價 :" + orderlistQueryInf[3] + "元   " + "數量:" + orderlistQueryInf[4] +  "個"+ "\n" +"----------------------------------" +"\n";
                 j++;
 

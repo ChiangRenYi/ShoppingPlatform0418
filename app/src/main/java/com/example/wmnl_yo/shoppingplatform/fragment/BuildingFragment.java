@@ -166,7 +166,7 @@ public class BuildingFragment extends Fragment implements View.OnTouchListener, 
                                             break;
                                     }
                                 }catch (Exception e){
-                                    Toast.makeText(getContext(),"請檢察網路連線訊號",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(),"請檢查網路連線訊號",Toast.LENGTH_SHORT).show();
                                     ((MainActivity) getContext()).replaceFragment(BuildingFragment.class, null);
                                 }
 
