@@ -1,6 +1,8 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,9 +20,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
+import com.example.wmnl_yo.shoppingplatform.activity.loginActivity;
 import com.example.wmnl_yo.shoppingplatform.database.GetSelectStudentFragment;
 import com.example.wmnl_yo.shoppingplatform.object.SelectStudentObject;
 import com.flyco.tablayout.SegmentTabLayout;
@@ -49,7 +53,8 @@ public class SelectStudentFragment extends Fragment implements View.OnTouchListe
     private String mParam2;
     private RecyclerView rv;
     public static MySelectAdapter sAdapter;
-    private List<SelectStudentObject.SelectStudentObjectItem> selectstudentList = new ArrayList<SelectStudentObject.SelectStudentObjectItem>();
+    public static List<SelectStudentObject.SelectStudentObjectItem> mselectstudentList;
+//    private List<SelectStudentObject.SelectStudentObjectItem> selectstudentList = new ArrayList<SelectStudentObject.SelectStudentObjectItem>();
     private OnFragmentInteractionListener mListener;
     public static String sStudent;
 
@@ -82,9 +87,6 @@ public class SelectStudentFragment extends Fragment implements View.OnTouchListe
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        GetSelectStudentFragment getSelectStudentFragment = new GetSelectStudentFragment();
-        getSelectStudentFragment.execute();
     }
 
     @Override
@@ -104,6 +106,17 @@ public class SelectStudentFragment extends Fragment implements View.OnTouchListe
         //分隔線
         final DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(),
                 layoutManager.getOrientation());
+
+        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info=connManager.getActiveNetworkInfo();
+
+        if (info == null || !info.isConnected())
+        {
+            Toast.makeText(getActivity(),"請檢查網路後,重新進入此頁面",Toast.LENGTH_LONG).show();
+        }else{
+            GetSelectStudentFragment getSelectStudentFragment = new GetSelectStudentFragment();
+            getSelectStudentFragment.execute();
+        }
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -165,7 +178,7 @@ public class SelectStudentFragment extends Fragment implements View.OnTouchListe
     }
 
     public class MySelectAdapter extends RecyclerView.Adapter<MySelectAdapter.ViewHolder> {
-        private List<SelectStudentObject.SelectStudentObjectItem> mselectstudentList;
+//        private List<SelectStudentObject.SelectStudentObjectItem> mselectstudentList;
         public class ViewHolder extends RecyclerView.ViewHolder {
             public RelativeLayout rv;
             public ImageView ivPic;
@@ -198,11 +211,21 @@ public class SelectStudentFragment extends Fragment implements View.OnTouchListe
             holder.rv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("SDId",mselectstudentList.get(position).SD_id);
-                    HealthManageFragment fragobj = new HealthManageFragment();
-                    fragobj.setArguments(bundle);
-                    ((MainActivity) getContext()).replaceFragment(HealthManageFragment.class, fragobj);//null fragobj
+
+                    ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo info=connManager.getActiveNetworkInfo();
+
+                    if (info == null || !info.isConnected())
+                    {
+                        Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("SDId",mselectstudentList.get(position).SD_id);
+                        HealthManageFragment fragobj = new HealthManageFragment();
+                        fragobj.setArguments(bundle);
+                        ((MainActivity) getContext()).replaceFragment(HealthManageFragment.class, fragobj);//null fragobj
+                    }
                 }
             });
             holder.mItem = mselectstudentList.get(position);

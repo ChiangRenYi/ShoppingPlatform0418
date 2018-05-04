@@ -1,6 +1,8 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
@@ -46,7 +49,8 @@ public class SelectBuildingFragment extends Fragment implements View.OnTouchList
     private String mParam2;
     private RecyclerView rv;
     public static MySelectAdapter bAdapter;
-    private List<SelectBuildingObject.SelectBuildingObjectItem> selectbuildingList = new ArrayList<SelectBuildingObject.SelectBuildingObjectItem>();
+    public static List<SelectBuildingObject.SelectBuildingObjectItem> mselectbuildingList;
+//    private List<SelectBuildingObject.SelectBuildingObjectItem> selectbuildingList = new ArrayList<SelectBuildingObject.SelectBuildingObjectItem>();
     private OnFragmentInteractionListener mListener;
     public static String bBuilding;
 
@@ -79,10 +83,6 @@ public class SelectBuildingFragment extends Fragment implements View.OnTouchList
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        GetSelectBuildingFragment getSelectBuildingFragment = new GetSelectBuildingFragment();
-        getSelectBuildingFragment.execute();
-
     }
 
     @Override
@@ -102,6 +102,17 @@ public class SelectBuildingFragment extends Fragment implements View.OnTouchList
         //分隔線
         final DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(),
                 layoutManager.getOrientation());
+
+        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info=connManager.getActiveNetworkInfo();
+
+        if (info == null || !info.isConnected())
+        {
+            Toast.makeText(getActivity(),"請檢查網路後,重新進入此頁面",Toast.LENGTH_LONG).show();
+        }else{
+            GetSelectBuildingFragment getSelectBuildingFragment = new GetSelectBuildingFragment();
+            getSelectBuildingFragment.execute();
+        }
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -163,7 +174,7 @@ public class SelectBuildingFragment extends Fragment implements View.OnTouchList
     }
 
     public class MySelectAdapter extends RecyclerView.Adapter<MySelectAdapter.ViewHolder> {
-        private List<SelectBuildingObject.SelectBuildingObjectItem> mselectbuildingList;
+//        private List<SelectBuildingObject.SelectBuildingObjectItem> mselectbuildingList;
         public class ViewHolder extends RecyclerView.ViewHolder {
             public RelativeLayout rv;
             public ImageView ivPic;
@@ -196,14 +207,23 @@ public class SelectBuildingFragment extends Fragment implements View.OnTouchList
             holder.rv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("AUId",mselectbuildingList.get(position).AU_id);
-                    bundle.putSerializable("ERId",mselectbuildingList.get(position).ER_id);
-                    OpinionMessengerFragment fragobj = new OpinionMessengerFragment();
-                    fragobj.setArguments(bundle);
-                    Log.d("55125", String.valueOf(bundle));
 
-                    ((MainActivity) getContext()).replaceFragment(OpinionMessengerFragment.class, fragobj);//null fragobj
+                    ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo info=connManager.getActiveNetworkInfo();
+
+                    if (info == null || !info.isConnected())
+                    {
+                        Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_LONG).show();
+                    }else{
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("AUId",mselectbuildingList.get(position).AU_id);
+                        bundle.putSerializable("ERId",mselectbuildingList.get(position).ER_id);
+                        OpinionMessengerFragment fragobj = new OpinionMessengerFragment();
+                        fragobj.setArguments(bundle);
+//                    Log.d("55125", String.valueOf(bundle));
+
+                        ((MainActivity) getContext()).replaceFragment(OpinionMessengerFragment.class, fragobj);//null fragobj
+                    }
                 }
             });
             holder.mItem = mselectbuildingList.get(position);

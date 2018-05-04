@@ -1,6 +1,8 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
@@ -45,6 +48,8 @@ public class SatisfactionSurveyFragment extends Fragment implements View.OnTouch
     public static List<String> questionnaireList= new ArrayList<>();
     public static List<String> satisfacationList= new ArrayList<>();
     private static List<String> question = new ArrayList<>();///andy for group information
+    public static List <SatisfacationSurveyObject.SatisfacationSurveyObjectItem> mSurveyRecordList;
+
     Thread thread;
 
     /**
@@ -172,10 +177,10 @@ public class SatisfactionSurveyFragment extends Fragment implements View.OnTouch
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-        private List <SatisfacationSurveyObject.SatisfacationSurveyObjectItem> mSurveyRecordList;
+//        private List <SatisfacationSurveyObject.SatisfacationSurveyObjectItem> mSurveyRecordList;
         public class ViewHolder extends RecyclerView.ViewHolder {
             public LinearLayout ll;
-            public TextView tvTeacherName, tvCourseName, tvQuestionnaire;
+            public TextView tvTeacherName, tvCourseName, tvQuestionnaire,tvCoursePlace;
             public    SatisfacationSurveyObject.SatisfacationSurveyObjectItem mItem;
 
 
@@ -185,6 +190,8 @@ public class SatisfactionSurveyFragment extends Fragment implements View.OnTouch
                 tvTeacherName = (TextView) v.findViewById(R.id.tvTeacherName);
                 tvCourseName = (TextView) v.findViewById(R.id.tvCourseName);
                 tvQuestionnaire = (TextView) v.findViewById(R.id.tvQuestionnaire);
+                tvCoursePlace = (TextView) v.findViewById(R.id.tvCoursePlace);
+
             }
         }
 
@@ -206,12 +213,23 @@ public class SatisfactionSurveyFragment extends Fragment implements View.OnTouch
                 holder.ll.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Bundle bundle = new Bundle();
-                        Log.d("andyQuestionID",mSurveyRecordList.get(position).rQuestionID);
-                        bundle.putString("questionNaire", mSurveyRecordList.get(position).rQuestionID);
-                        SatisfacationQuestionnaireFragment fragobj = new SatisfacationQuestionnaireFragment();
-                        fragobj.setArguments(bundle);
-                        ((MainActivity) getContext()).replaceFragment(SatisfacationQuestionnaireFragment.class, fragobj);
+                        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                        NetworkInfo info=connManager.getActiveNetworkInfo();
+
+                        if (info == null || !info.isConnected())
+                        {
+                            Toast.makeText(getActivity(),"請檢查網路,再重新嘗試點擊",Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Bundle bundle = new Bundle();
+                            Log.d("andyQuestionID",mSurveyRecordList.get(position).rQuestionID);
+                            bundle.putString("questionNaire", mSurveyRecordList.get(position).rQuestionID);
+                            SatisfacationQuestionnaireFragment fragobj = new SatisfacationQuestionnaireFragment();
+                            fragobj.setArguments(bundle);
+                            ((MainActivity) getContext()).replaceFragment(SatisfacationQuestionnaireFragment.class, fragobj);
+                        }
+
                     }
                 });
 //            teacherList = Arrays.asList(GetSatisfacationFragment.satisfacation_teacher);//andytemp array to list
@@ -224,6 +242,7 @@ public class SatisfactionSurveyFragment extends Fragment implements View.OnTouch
                 holder.tvTeacherName.setText(mSurveyRecordList.get(position).rTeacher);
                 holder.tvCourseName.setText(mSurveyRecordList.get(position).rCourse);
                 holder.tvQuestionnaire.setText(mSurveyRecordList.get(position).rQuestionnaire);
+                holder.tvCoursePlace.setText(mSurveyRecordList.get(position).rCoursePlace);
 
 
         }

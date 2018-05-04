@@ -16,13 +16,14 @@ public class SatisfacationSurveyObject implements Serializable{
 
     public static class SatisfacationSurveyObjectItem implements Serializable {
 
-        public final String rTeacher,rCourse,rQuestionnaire,rQuestionID;
+        public final String rTeacher,rCourse,rQuestionnaire,rQuestionID,rCoursePlace;
 
-        public SatisfacationSurveyObjectItem(String rTeacher, String rCourse, String rQuestionnaire, String rQuestionID) {
+        public SatisfacationSurveyObjectItem(String rTeacher, String rCourse, String rQuestionnaire, String rQuestionID,String rCoursePlace) {
             this.rTeacher = rTeacher;
             this.rCourse = rCourse;
             this.rQuestionnaire = rQuestionnaire;
             this.rQuestionID = rQuestionID;
+            this.rCoursePlace = rCoursePlace;
 
         }
     }

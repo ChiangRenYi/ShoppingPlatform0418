@@ -183,8 +183,8 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
                             @Override
                             public void run() {
                                 if(classall.equals("")){
-                                    tv[8].setText("請選擇");
-                                    Toast.makeText(getContext(), "請檢察網路連線訊號", Toast.LENGTH_SHORT).show();
+//                                    tv[8].setText("請選擇");
+                                    Toast.makeText(getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
                                 }else {
                                     progressDoalog = new ProgressDialog(getActivity());
                                     progressDoalog.setMessage("載入中，請稍後...");

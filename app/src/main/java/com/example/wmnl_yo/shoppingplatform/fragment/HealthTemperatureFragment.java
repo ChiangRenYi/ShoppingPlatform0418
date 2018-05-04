@@ -1,6 +1,8 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -41,7 +43,8 @@ public class HealthTemperatureFragment extends Fragment implements View.OnTouchL
     private String mParam2;
     private RecyclerView rv;
     public static MyHealthAdapter tAdapter;
-    private List<HealthTemperatureObject.HealthTemperatureObjectItem> healthTemperatureList = new ArrayList<HealthTemperatureObject.HealthTemperatureObjectItem>();
+    public static List<HealthTemperatureObject.HealthTemperatureObjectItem> mhealthTemperatureList;
+//    private List<HealthTemperatureObject.HealthTemperatureObjectItem> healthTemperatureList = new ArrayList<HealthTemperatureObject.HealthTemperatureObjectItem>();
     private OnFragmentInteractionListener mListener;
 
     public HealthTemperatureFragment() {
@@ -73,11 +76,7 @@ public class HealthTemperatureFragment extends Fragment implements View.OnTouchL
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        GetHealthTemperatureFragment getHealthTemperatureFragment = new GetHealthTemperatureFragment();
-        getHealthTemperatureFragment.execute();
 //        pic, 溫度, 單位, 時間, 日期
-
 //        healthTemperatureList.add(new HealthTemperatureObject.HealthTemperatureObjectItem(R.drawable.ic_temperature, 32.3, "°C", "Root", "12:00", "2017-04-23"));
     }
 
@@ -99,7 +98,18 @@ public class HealthTemperatureFragment extends Fragment implements View.OnTouchL
         final DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(),
                 layoutManager.getOrientation());
 
-        Toast.makeText(getActivity(),"請稍後...", Toast.LENGTH_SHORT).show();
+        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info=connManager.getActiveNetworkInfo();
+
+        if (info == null || !info.isConnected())
+        {
+            Toast.makeText(getActivity(),"請檢查網路後,重新進入此頁面",Toast.LENGTH_LONG).show();
+        }else{
+            GetHealthTemperatureFragment getHealthTemperatureFragment = new GetHealthTemperatureFragment();
+            getHealthTemperatureFragment.execute();
+        }
+
+//        Toast.makeText(getActivity(),"請稍後...", Toast.LENGTH_SHORT).show();
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -162,7 +172,7 @@ public class HealthTemperatureFragment extends Fragment implements View.OnTouchL
 
 
     public class MyHealthAdapter extends RecyclerView.Adapter<MyHealthAdapter.ViewHolder> {
-        private List<HealthTemperatureObject.HealthTemperatureObjectItem> mhealthTemperatureList;
+//        private List<HealthTemperatureObject.HealthTemperatureObjectItem> mhealthTemperatureList;
         public class ViewHolder extends RecyclerView.ViewHolder {
             public RecyclerView rv;
             public ImageView ivPic;

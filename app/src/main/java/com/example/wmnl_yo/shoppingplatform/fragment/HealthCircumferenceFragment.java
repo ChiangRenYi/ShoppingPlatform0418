@@ -1,6 +1,8 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -42,7 +44,8 @@ public class HealthCircumferenceFragment extends Fragment implements View.OnTouc
     private String mParam2;
     private RecyclerView rv;
     public static MyHealthAdapter cAdapter;
-    private List<HealthCircumferenceObject.HealthCircumferenceObjectItem> healthCircumferenceList = new ArrayList<>();
+    public static List<HealthCircumferenceObject.HealthCircumferenceObjectItem> mhealthCircumferenceList;
+//    private List<HealthCircumferenceObject.HealthCircumferenceObjectItem> healthCircumferenceList = new ArrayList<>();
     private OnFragmentInteractionListener mListener;
 
     public HealthCircumferenceFragment() {
@@ -74,10 +77,6 @@ public class HealthCircumferenceFragment extends Fragment implements View.OnTouc
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        GetHealthCircumferenceFragment getHealthCircumferenceFragment = new GetHealthCircumferenceFragment();
-        getHealthCircumferenceFragment.execute();
-
         //pic, 頭圍, 單位, 時間, 日期
 //        healthCircumferenceList.add(new HealthCircumferenceObject(R.drawable.ic_circumference,28.5,"公分", "Root","10:00","2017-04-22"));
     }
@@ -99,7 +98,18 @@ public class HealthCircumferenceFragment extends Fragment implements View.OnTouc
         final DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(),
                 layoutManager.getOrientation());
 
-        Toast.makeText(getActivity(),"請稍後...", Toast.LENGTH_SHORT).show();
+        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info=connManager.getActiveNetworkInfo();
+
+        if (info == null || !info.isConnected())
+        {
+            Toast.makeText(getActivity(),"請檢查網路後,重新進入此頁面",Toast.LENGTH_LONG).show();
+        }else{
+            GetHealthCircumferenceFragment getHealthCircumferenceFragment = new GetHealthCircumferenceFragment();
+            getHealthCircumferenceFragment.execute();
+        }
+
+//        Toast.makeText(getActivity(),"請稍後...", Toast.LENGTH_SHORT).show();
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -159,7 +169,7 @@ public class HealthCircumferenceFragment extends Fragment implements View.OnTouc
     }
 
     public class MyHealthAdapter extends RecyclerView.Adapter<MyHealthAdapter.ViewHolder> {
-        private List<HealthCircumferenceObject.HealthCircumferenceObjectItem> mhealthCircumferenceList;
+//        private List<HealthCircumferenceObject.HealthCircumferenceObjectItem> mhealthCircumferenceList;
         public class ViewHolder extends RecyclerView.ViewHolder {
             public RecyclerView rv;
             public ImageView ivPic;

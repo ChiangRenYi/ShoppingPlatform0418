@@ -18,6 +18,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static com.example.wmnl_yo.shoppingplatform.fragment.SatisfacationQuestionnaireFragment.mQuestionRecordList;
+
 /**
  * Created by WMNL on 2018/3/12.
  */
@@ -160,12 +162,13 @@ public class GetSatisfacationQuestionFragmentResult extends AsyncTask<String, Vo
                 String[] satisfacationInf = new String[5];
                 satisfacationInf = satisfacation[i].split("@#");
                 satisfacation_question[j] = satisfacationInf[1];
+                satisfacationInf[1] = String.valueOf(i+1)+". "+ satisfacationInf[1];
 //                Log.d("andydatabase",satisfacation[0]);//andytemp
 
                 Log.d("andydatabase",satisfacation_question[j]);
                 satisfacation_questionID[j] = satisfacationInf[2];
                 Log.d("andydatabase",satisfacation_questionID[j]);
-//                satisfacation_questionPoint[j] = "0";//andyfail
+//                satisfacation_questionPoint[j] = "0";//andyfail嗎
 //                Log.d("andydatabase",satisfacation_questionID[j]);
 
 
@@ -180,6 +183,15 @@ public class GetSatisfacationQuestionFragmentResult extends AsyncTask<String, Vo
                 Log.d("55125", j + ":"  + satisfacationInf[1]+","+satisfacationInf[2]);
             }
 
+        }
+        if(s==null)
+        {
+            Log.d("andyOnpost","null");
+//            internetState=0;
+            mQuestionRecordList.clear();
+            SatisfacationQuestionnaireFragment.rAdapter.notifyDataSetChanged();
+//            Toast.makeText(SatisfacationChildFragment.,"網路不穩，請重新嘗試",Toast.LENGTH_LONG);
+            Log.d("andyNull","success");
         }
         Log.d("55125","notifyDataSetChanged");
         SatisfacationQuestionnaireFragment.rAdapter.notifyDataSetChanged();

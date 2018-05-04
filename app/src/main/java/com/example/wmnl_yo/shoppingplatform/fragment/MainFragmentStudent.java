@@ -64,8 +64,8 @@ public class MainFragmentStudent extends Fragment implements View.OnClickListene
 
         Fragment fragment = null;
         Class fragmentClass = null;
-        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo info = connManager.getActiveNetworkInfo();
+//        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo info = connManager.getActiveNetworkInfo();
 
         switch (v.getId()) {
 
@@ -105,10 +105,6 @@ public class MainFragmentStudent extends Fragment implements View.OnClickListene
                 GetSelectStudentFragment getSelectStudentFragment = new GetSelectStudentFragment();
                 getSelectStudentFragment.execute();
 
-//                if(info == null || !info.isConnected()){
-//                    Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_LONG).show();
-//                }else{
-//                }
                 fragmentClass = SelectStudentFragment.class;
                 break;
             case R.id.layout_shoppingmall_button:

@@ -41,7 +41,8 @@ public class OpinionMessageAddFragmentTeacher extends Fragment implements View.O
     private String mParam2;
     private RecyclerView rv;
     public static OpmessageAdapter oAdapter;
-    private List<OpinionmessageObject.OpinionmessageObjectItem> opinionmessageList = new ArrayList<OpinionmessageObject.OpinionmessageObjectItem>();
+    public static List<OpinionmessageObject.OpinionmessageObjectItem> mopinionmessageList;
+//    private List<OpinionmessageObject.OpinionmessageObjectItem> opinionmessageList = new ArrayList<OpinionmessageObject.OpinionmessageObjectItem>();
     private OnFragmentInteractionListener mListener;
 
     public OpinionMessageAddFragmentTeacher() {
@@ -162,7 +163,7 @@ public class OpinionMessageAddFragmentTeacher extends Fragment implements View.O
     }
 
     public class OpmessageAdapter extends RecyclerView.Adapter<OpmessageAdapter.ViewHolder> {
-        private List<OpinionmessageObject.OpinionmessageObjectItem> mopinionmessageList;
+//        private List<OpinionmessageObject.OpinionmessageObjectItem> mopinionmessageList;
         public class ViewHolder extends RecyclerView.ViewHolder {
             public RecyclerView rv;
             public CardView cv;
