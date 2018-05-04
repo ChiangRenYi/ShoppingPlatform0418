@@ -162,12 +162,13 @@ public class GetSatisfacationQuestionFragmentResult extends AsyncTask<String, Vo
                 String[] satisfacationInf = new String[5];
                 satisfacationInf = satisfacation[i].split("@#");
                 satisfacation_question[j] = satisfacationInf[1];
+                satisfacationInf[1] = String.valueOf(i+1)+". "+ satisfacationInf[1];
 //                Log.d("andydatabase",satisfacation[0]);//andytemp
 
                 Log.d("andydatabase",satisfacation_question[j]);
                 satisfacation_questionID[j] = satisfacationInf[2];
                 Log.d("andydatabase",satisfacation_questionID[j]);
-//                satisfacation_questionPoint[j] = "0";//andyfail
+//                satisfacation_questionPoint[j] = "0";//andyfail嗎
 //                Log.d("andydatabase",satisfacation_questionID[j]);
 
 
