@@ -109,52 +109,51 @@ public class GetCourseQueryFragmentResult extends AsyncTask<String, Void, String
             CourseQueryFragment.classall = s;
 
             String[] courseQuery = s.split("<br>");
-            String[] courseQuery_picture = new String[courseQuery.length - 1];
-            String[] courseQuery_csid = new String[courseQuery.length - 1];
-            String[] courseQuery_erename = new String[courseQuery.length - 1];
-            String[] courseQuery_cscname = new String[courseQuery.length - 1];
-            String[] courseQuery_emname = new String[courseQuery.length - 1];
-            String[] courseQuery_occsdate = new String[courseQuery.length - 1];
-            String[] courseQuery_rorweek = new String[courseQuery.length - 1];
-            String[] courseQuery_occstime = new String[courseQuery.length - 1];
-            String[] courseQuery_occstime1 = new String[courseQuery.length - 1];
-            String[] courseQuery_occetime = new String[courseQuery.length - 1];
-            String[] courseQuery_occetime1 = new String[courseQuery.length - 1];
-            String[] courseQuery_emabiography = new String[courseQuery.length - 1];
-            String[] courseQuery_csccontent = new String[courseQuery.length - 1];;
-            String[] courseQuery_ocanumber = new String[courseQuery.length - 1];
-            String[] courseQuery_oclnumber = new String[courseQuery.length - 1];
-            String[] courseQuery_ocprice =  new String[courseQuery.length - 1];
+            String[] courseQuery_photo = new String[courseQuery.length - 1];
+            String[] courseQuery_count = new String[courseQuery.length - 1];
+            String[] courseQuery_building = new String[courseQuery.length - 1];
+            String[] courseQuery_type = new String[courseQuery.length - 1];
+            String[] courseQuery_classname = new String[courseQuery.length - 1];
+            String[] courseQuery_teacher = new String[courseQuery.length - 1];
+            String[] courseQuery_days = new String[courseQuery.length - 1];
+            String[] courseQuery_sdate = new String[courseQuery.length - 1];
+            String[] courseQuery_edate = new String[courseQuery.length - 1];
+            String[] courseQuery_time = new String[courseQuery.length - 1];
+            String[] courseQuery_teacherinfo = new String[courseQuery.length - 1];
+            String[] courseQuery_content = new String[courseQuery.length - 1];
+            String[] courseQuery_total = new String[courseQuery.length - 1];
+            String[] courseQuery_remain = new String[courseQuery.length - 1];
+            String[] courseQuery_price = new String[courseQuery.length - 1];
+
             CourseObject.ITEMS.clear();
             CourseObject dim = new CourseObject();
             for (int i = 0; i < courseQuery.length - 1; i++) {
-                String[] courseQueryInf = new String[18];
-                courseQueryInf = courseQuery[i].split("@#|:");
+                String[] courseQueryInf ;
+                courseQueryInf = courseQuery[i].split("@#");
 
-                dim.addItem(new CourseObject.CourseObjectItem(String.valueOf(i + 1),
-                                courseQueryInf[1],courseQueryInf[2],courseQueryInf[3],courseQueryInf[4],courseQueryInf[5],courseQueryInf[6],
-                                courseQueryInf[7],courseQueryInf[8],courseQueryInf[9],courseQueryInf[11],courseQueryInf[12],
-                                courseQueryInf[14],courseQueryInf[15],courseQueryInf[16],courseQueryInf[17],courseQueryInf[18]));
-                courseQuery_picture[j] = courseQueryInf[1];
-                courseQuery_csid[j] = courseQueryInf[2];
-                courseQuery_erename[j] = courseQueryInf[3];
-                courseQuery_cscname[j] = courseQueryInf[4];
-                courseQuery_emname[j] = courseQueryInf[5];
-                courseQuery_occsdate[j] = courseQueryInf[6];
-                courseQuery_rorweek[j] = courseQueryInf[7];
-                courseQuery_occstime[j] = courseQueryInf[8];
-                courseQuery_occstime1[j] = courseQueryInf[9];
-                courseQuery_occetime[j] = courseQueryInf[11];
-                courseQuery_occetime1[j] = courseQueryInf[12];
-                courseQuery_emabiography[j] = courseQueryInf[14];
-                courseQuery_csccontent[j] = courseQueryInf[15];
-                courseQuery_ocanumber[j] = courseQueryInf[16];
-                courseQuery_oclnumber[j] = courseQueryInf[17];
-                courseQuery_ocprice[j] = courseQueryInf[18];
+                dim.addItem(new CourseObject.CourseObjectItem(
+                                courseQueryInf[2],courseQueryInf[1],courseQueryInf[3],courseQueryInf[4],courseQueryInf[5],courseQueryInf[6],
+                                courseQueryInf[7],courseQueryInf[8],courseQueryInf[9],courseQueryInf[10],courseQueryInf[11],
+                                courseQueryInf[12],courseQueryInf[13],courseQueryInf[14],courseQueryInf[15]));
+                courseQuery_photo[j] = courseQueryInf[1];
+                courseQuery_count[j] = courseQueryInf[2];
+                courseQuery_building[j] = courseQueryInf[3];
+                courseQuery_type[j] = courseQueryInf[4];
+                courseQuery_classname[j] = courseQueryInf[5];
+                courseQuery_teacher[j] = courseQueryInf[6];
+                courseQuery_days[j] = courseQueryInf[7];
+                courseQuery_sdate[j] = courseQueryInf[8];
+                courseQuery_edate[j] = courseQueryInf[9];
+                courseQuery_time[j] = courseQueryInf[10];
+                courseQuery_teacherinfo[j] = courseQueryInf[11];
+                courseQuery_content[j] = courseQueryInf[12];
+                courseQuery_total[j] = courseQueryInf[13];
+                courseQuery_remain[j] = courseQueryInf[14];
+                courseQuery_price[j] = courseQueryInf[15];
                 j++;
                 Log.d("55125", j + ":"  + courseQueryInf[1]+","+ courseQueryInf[2]+","+courseQueryInf[3]+","+courseQueryInf[4]+","+courseQueryInf[5]+","+courseQueryInf[6]+","+
-                        courseQueryInf[7]+","+courseQueryInf[8]+","+courseQueryInf[9]+","+courseQueryInf[11]+","+courseQueryInf[12]+","+
-                        courseQueryInf[14]+","+courseQueryInf[15]+","+courseQueryInf[16]+","+courseQueryInf[17]+","+courseQueryInf[18]);
+                        courseQueryInf[7]+","+courseQueryInf[8]+","+courseQueryInf[9]+","+courseQueryInf[10]+","+courseQueryInf[11]+","+
+                        courseQueryInf[12]+","+courseQueryInf[13]+","+courseQueryInf[14]+","+courseQueryInf[15]);
             }
 
             if(CourseQueryResultFragment.mAdapter!=null) {

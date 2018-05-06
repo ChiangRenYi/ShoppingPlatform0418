@@ -373,7 +373,7 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
 
             if (stringMonth == null) {
                 if(cCountry.equals("") || cCity.equals("") || cBuilding.equals("") || cType.equals("") ){
-                    Toast.makeText(view.getContext(), "縣市或地區或托育中心或課程類別或課程內容有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), "縣市或地區或托育中心或課程類別有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
 
                 }else {
                     tv[3].setText("請選擇");
@@ -388,7 +388,7 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
 
             if (stringTeacher == null) {
                 if(cCountry.equals("") || cCity.equals("") || cBuilding.equals("") || cType.equals("") || cMonth.equals("")){
-                    Toast.makeText(view.getContext(), "縣市或地區或托育中心或課程類別或課程內容或開課日期有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), "縣市或地區或托育中心或課程類別或開課月份有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
 
                 }else {
                     tv[4].setText("請選擇");

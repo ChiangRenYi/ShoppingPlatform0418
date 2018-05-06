@@ -106,18 +106,20 @@ public class CourseQueryDetailFragment extends Fragment implements View.OnTouchL
         signUpCheck = "";
         tmp = new String[getContext().getResources().getStringArray(R.array.courseDetail).length];
 
-        tmp[0] = "" + courseObject.mNumber;
-        tmp[1] = courseObject.mCourseBuildingName;
-        tmp[2] = courseObject.mCourseName;
-        tmp[3] = courseObject.mCourseTeacher;
-        tmp[4] = courseObject.mCourseDate+courseObject.mCourseWeek;
-        tmp[5] = courseObject.mCourseSTime+":"+courseObject.mCourseSTime1+
-                "~"+courseObject.mCourseETime+":"+courseObject.mCourseETime1;
-        tmp[6] = courseObject.mTeacherIntro;
-        tmp[7] = courseObject.mCourseContent;
-        tmp[8] = "" + courseObject.mTotal;
-        tmp[9] = "" + courseObject.mRemaining;
-        tmp[10] = "" + courseObject.mPrice;
+        tmp[0] = "" + courseObject.mCount;
+        tmp[1] = courseObject.mBuilding;
+        tmp[2] = courseObject.mType;
+        tmp[3] = courseObject.mClassname;
+        tmp[4] = courseObject.mTeacher;
+        tmp[5] = courseObject.mDays;
+        tmp[6] = courseObject.mSDate+
+                "~"+courseObject.mSDate;
+        tmp[7] = courseObject.mTime;
+        tmp[8] = courseObject.mTeacherinfo;
+        tmp[9] = courseObject.mContent;
+        tmp[10] = "" + courseObject.mTotal;
+        tmp[11] = "" + courseObject.mRemain;
+        tmp[12] = "" + courseObject.mPrice;
 
     }
 
@@ -150,7 +152,7 @@ public class CourseQueryDetailFragment extends Fragment implements View.OnTouchL
                 }
 
                 viewHolder.tvCourseDetail.setText(getContext().getResources().getStringArray(R.array.courseDetail)[position]);
-                if(position==6||position==7){
+                if(position==8||position==9){
                     viewHolder.tvCourseDetailContent.setText(tmp[position]);
                     viewHolder.tvCourseDetailContent.setGravity(Gravity.LEFT);
                 }
@@ -173,7 +175,7 @@ public class CourseQueryDetailFragment extends Fragment implements View.OnTouchL
             @Override
             protected Bitmap doInBackground(String... params)
             {
-                String url = "http://163.13.128.77:8080/20180423-v1/ParentChildMuseum/CourseIntroductionRegistrations/CourseIntroductionRegistration/static/"+courseObject.mPicture;
+                String url = "http://163.13.128.77:8080/20180423-v1/ParentChildMuseum/CourseIntroductionRegistrations/CourseIntroductionRegistration/static/"+courseObject.mPhoto;
                 return getBitmapFromURL(url);
             }
 

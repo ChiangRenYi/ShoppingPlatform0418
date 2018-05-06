@@ -40,8 +40,8 @@ public class SignUp extends AsyncTask<String, Void, String> {
             //傳值
             Uri.Builder builder = new Uri.Builder()
                     .appendQueryParameter("account", Constants.ACCOUNT)
-                    .appendQueryParameter("oc_id", CourseQueryDetailFragment.courseObject.mNumber)
-                    .appendQueryParameter("er_name", CourseQueryDetailFragment.courseObject.mCourseBuildingName)
+                    .appendQueryParameter("oc_id", CourseQueryDetailFragment.courseObject.mCount)
+                    .appendQueryParameter("er_name", CourseQueryDetailFragment.courseObject.mBuilding)
                     .appendQueryParameter("crd_parentchild", CourseQueryDetailFragment.CQDParentChild);
 
             String query = builder.build().getEncodedQuery();

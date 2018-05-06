@@ -16,29 +16,23 @@ public class CourseObject implements Serializable {
 
     public static class CourseObjectItem implements Serializable {
 
-        public final String mCount,mPicture,mNumber,mCourseBuildingName,mCourseName,mCourseTeacher,mCourseDate,mCourseWeek,mCourseSTime,mCourseSTime1,mCourseETime,mCourseETime1,
-                mTeacherIntro,mCourseContent,mTotal,mRemaining,mPrice;
+        public final String mCount,mPhoto,mBuilding,mType,mClassname,mTeacher,mDays,mSDate,mEDate,mTime,mTeacherinfo,mContent,mTotal,mRemain,mPrice;
 
-        public CourseObjectItem(String mCount,String mPicture, String mNumber, String mCourseBuildingName, String mCourseName, String mCourseTeacher, String mCourseDate,
-                         String mCourseWeek, String mCourseSTime, String mCourseSTime1, String mCourseETime,
-                         String mCourseETime1, String mTeacherIntro, String mCourseContent,
-                         String mTotal, String mRemaining, String mPrice) {
+        public CourseObjectItem(String mCount,String mPhoto,String mBuilding,String mType,String mClassname,String mTeacher,String mDays,String mSDate,String mEDate,String mTime,String mTeacherinfo,String mContent,String mTotal,String mRemain,String mPrice) {
             this.mCount = mCount;
-            this.mPicture = mPicture;
-            this.mNumber = mNumber;
-            this.mCourseBuildingName = mCourseBuildingName;
-            this.mCourseName = mCourseName;
-            this.mCourseTeacher = mCourseTeacher;
-            this.mCourseDate = mCourseDate;
-            this.mCourseWeek = mCourseWeek;
-            this.mCourseSTime = mCourseSTime;
-            this.mCourseSTime1 = mCourseSTime1;
-            this.mCourseETime = mCourseETime;
-            this.mCourseETime1 = mCourseETime1;
-            this.mTeacherIntro = mTeacherIntro;
-            this.mCourseContent = mCourseContent;
+            this.mPhoto = mPhoto;
+            this.mBuilding = mBuilding;
+            this.mType = mType;
+            this.mClassname = mClassname;
+            this.mTeacher = mTeacher;
+            this.mDays = mDays;
+            this.mSDate = mSDate;
+            this.mEDate = mEDate;
+            this.mTime = mTime;
+            this.mTeacherinfo = mTeacherinfo;
+            this.mContent = mContent;
             this.mTotal = mTotal;
-            this.mRemaining = mRemaining;
+            this.mRemain = mRemain;
             this.mPrice = mPrice;
         }
     }

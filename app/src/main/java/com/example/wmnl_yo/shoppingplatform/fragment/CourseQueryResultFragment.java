@@ -183,11 +183,10 @@ public class CourseQueryResultFragment extends Fragment implements View.OnTouchL
                 }
             });
             holder.mItem = mCourseQueryList.get(position);
-            holder.tvCourseName.setText(mCourseQueryList.get(position).mCourseName);
-            holder.tvCourseTeacher.setText(mCourseQueryList.get(position).mCourseTeacher);
-            holder.tvCourseDate.setText(mCourseQueryList.get(position).mCourseDate+mCourseQueryList.get(position).mCourseWeek);
-            holder.tvCourseTime.setText(mCourseQueryList.get(position).mCourseSTime+":"+mCourseQueryList.get(position).mCourseSTime1+
-                                        "~"+mCourseQueryList.get(position).mCourseETime+":"+mCourseQueryList.get(position).mCourseETime1);
+            holder.tvCourseName.setText(mCourseQueryList.get(position).mClassname);
+            holder.tvCourseTeacher.setText(mCourseQueryList.get(position).mTeacher);
+            holder.tvCourseDate.setText(mCourseQueryList.get(position).mSDate
+                    +" ~ "+mCourseQueryList.get(position).mEDate);
         }
 
         @Override
