@@ -130,6 +130,24 @@ public class GetCourseQueryFragmentResult extends AsyncTask<String, Void, String
             for (int i = 0; i < courseQuery.length - 1; i++) {
                 String[] courseQueryInf ;
                 courseQueryInf = courseQuery[i].split("@#");
+                courseQueryInf[10] = "123" + courseQueryInf[10];
+                String[] timeQuery = courseQueryInf[10].split("@&");
+                String s1 = "";
+                for(int q = 0; q <= timeQuery.length-1; q++){
+                    if (q % 4 == 3 ) {
+                        s1 = s1 + timeQuery[q]+"~";
+                    }else if (q % 4 == 2 ) {
+                        s1 = s1 + "("+timeQuery[q]+")";
+                    }else if (q % 4 == 1 ) {
+                        s1 = s1 + timeQuery[q];
+                    }else if (q % 4 == 0 && q!= timeQuery.length && q!= 0){
+                        s1 = s1 + timeQuery[q]+"\n";
+                    }else if (q % 4 == 0 && q == timeQuery.length-1){
+                        s1 = s1 + timeQuery[q];
+                    }
+                    Log.d("55125",q +":" +s1);
+                }
+                courseQueryInf[10] = s1;
 
                 dim.addItem(new CourseObject.CourseObjectItem(
                                 courseQueryInf[2],courseQueryInf[1],courseQueryInf[3],courseQueryInf[4],courseQueryInf[5],courseQueryInf[6],

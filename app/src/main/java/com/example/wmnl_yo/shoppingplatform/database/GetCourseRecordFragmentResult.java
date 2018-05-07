@@ -135,7 +135,27 @@ public class GetCourseRecordFragmentResult extends AsyncTask<String, Void, Strin
                 courseRecord_days[j] = courseRecordInf[7];
                 courseRecord_sdate[j] = courseRecordInf[8];
                 courseRecord_edate[j] = courseRecordInf[9];
+
+                courseRecordInf[10] = "123" + courseRecordInf[10];
+                String[] timeQuery = courseRecordInf[10].split("@&");
+                String s1 = "";
+                for(int q = 0; q <= timeQuery.length-1; q++){
+                    if (q % 4 == 3 ) {
+                        s1 = s1 + timeQuery[q]+"~";
+                    }else if (q % 4 == 2 ) {
+                        s1 = s1 + "("+timeQuery[q]+")";
+                    }else if (q % 4 == 1 ) {
+                        s1 = s1 + timeQuery[q];
+                    }else if (q % 4 == 0 && q!= timeQuery.length && q!= 0){
+                        s1 = s1 + timeQuery[q]+"\n";
+                    }else if (q % 4 == 0 && q == timeQuery.length-1){
+                        s1 = s1 + timeQuery[q];
+                    }
+                    Log.d("55125",q +":" +s1);
+                }
+                courseRecordInf[10] = s1;
                 courseRecord_time[j] = courseRecordInf[10];
+
                 courseRecord_teacherinfo[j] = courseRecordInf[11];
                 courseRecord_content[j] = courseRecordInf[12];
                 courseRecord_total[j] = courseRecordInf[13];

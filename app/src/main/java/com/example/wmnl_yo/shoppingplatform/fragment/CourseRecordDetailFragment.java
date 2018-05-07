@@ -149,7 +149,7 @@ public class CourseRecordDetailFragment extends Fragment implements View.OnTouch
                 }
 
                 viewHolder.tvCourseDetail.setText(getContext().getResources().getStringArray(R.array.courseRecordDetail)[position]);
-                if(position==8||position==9){
+                if(position==7||position==8||position==9){
                     viewHolder.tvCourseDetailContent.setText(tmp[position]);
                     viewHolder.tvCourseDetailContent.setGravity(Gravity.LEFT);
                 }
