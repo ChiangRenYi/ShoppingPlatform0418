@@ -124,7 +124,7 @@ public class GetCourseRecordFragmentResult extends AsyncTask<String, Void, Strin
             CourseRecordObject.ITEMS.clear();
             CourseRecordObject dim = new CourseRecordObject();
             for (int i = 0; i < courseRecord.length - 1; i++) {
-                String[] courseRecordInf = new String[20];
+                String[] courseRecordInf ;
                 courseRecordInf = courseRecord[i].split("@#");
                 courseRecord_photo[j] = courseRecordInf[1];
                 courseRecord_count[j] = courseRecordInf[2];
@@ -153,6 +153,10 @@ public class GetCourseRecordFragmentResult extends AsyncTask<String, Void, Strin
                     case "1" :
                         courseRecord_ocpayment[j] = "已結帳";
                         courseRecordInf[16] = "已結帳";
+                        break;
+                    case "3" :
+                        courseRecord_ocpayment[j] = "已加入購物車，請至購物車結帳";
+                        courseRecordInf[16] = "已加入購物車，請至購物車結帳";
                         break;
                     default:
                         break;
