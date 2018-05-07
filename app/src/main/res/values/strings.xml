@@ -626,7 +626,7 @@
     <string-array name="courseDetail">
         <item>課程編號:</item>
         <item>托育中心:</item>
-        <item>課程:</item>
+        <item>課程類別:</item>
         <item>課程名稱:</item>
         <item>授課老師:</item>
         <item>上課天數:</item>
@@ -641,9 +641,11 @@
 
     <string-array name="courseRecordDetail">
         <item>課程編號:</item>
-        <item>親子館地點:</item>
+        <item>托育中心:</item>
+        <item>課程類別:</item>
         <item>課程名稱:</item>
         <item>授課老師:</item>
+        <item>上課天數:</item>
         <item>上課日期:</item>
         <item>上課時段:</item>
         <item>老師簡介:</item>

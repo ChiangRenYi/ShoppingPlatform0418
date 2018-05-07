@@ -99,24 +99,24 @@ public class GetCourseRecordFragmentResult extends AsyncTask<String, Void, Strin
         if (s != null) {
             Log.d("55125",s);
             int j = 0;
-            String[] courseRecord = s.split("<QQ>");
+
+            String[] courseRecord = s.split("<br>");
             CourseRecordFragment.checkCourseRecord = courseRecord[0].trim();
-            String[] courseRecord_picture = new String[courseRecord.length - 1];
-            String[] courseRecord_csid = new String[courseRecord.length - 1];
-            String[] courseRecord_erename = new String[courseRecord.length - 1];
-            String[] courseRecord_cscname = new String[courseRecord.length - 1];
-            String[] courseRecord_emname = new String[courseRecord.length - 1];
-            String[] courseRecord_occsdate = new String[courseRecord.length - 1];
-            String[] courseRecord_rorweek = new String[courseRecord.length - 1];
-            String[] courseRecord_occstime = new String[courseRecord.length - 1];
-            String[] courseRecord_occstime1 = new String[courseRecord.length - 1];
-            String[] courseRecord_occetime = new String[courseRecord.length - 1];
-            String[] courseRecord_occetime1 = new String[courseRecord.length - 1];
-            String[] courseRecord_emabiography = new String[courseRecord.length - 1];
-            String[] courseRecord_csccontent = new String[courseRecord.length - 1];
-            String[] courseRecord_ocanumber = new String[courseRecord.length - 1];
-            String[] courseRecord_oclnumber = new String[courseRecord.length - 1];
-            String[] courseRecord_ocprice =  new String[courseRecord.length - 1];
+            String[] courseRecord_photo = new String[courseRecord.length - 1];
+            String[] courseRecord_count = new String[courseRecord.length - 1];
+            String[] courseRecord_building = new String[courseRecord.length - 1];
+            String[] courseRecord_type = new String[courseRecord.length - 1];
+            String[] courseRecord_classname = new String[courseRecord.length - 1];
+            String[] courseRecord_teacher = new String[courseRecord.length - 1];
+            String[] courseRecord_days = new String[courseRecord.length - 1];
+            String[] courseRecord_sdate = new String[courseRecord.length - 1];
+            String[] courseRecord_edate = new String[courseRecord.length - 1];
+            String[] courseRecord_time = new String[courseRecord.length - 1];
+            String[] courseRecord_teacherinfo = new String[courseRecord.length - 1];
+            String[] courseRecord_content = new String[courseRecord.length - 1];
+            String[] courseRecord_total = new String[courseRecord.length - 1];
+            String[] courseRecord_remain = new String[courseRecord.length - 1];
+            String[] courseRecord_price = new String[courseRecord.length - 1];
             String[] courseRecord_ocpayment =  new String[courseRecord.length - 1];
             String[] courseRecord_odid =  new String[courseRecord.length - 1];
             String[] courseRecord_studentid =  new String[courseRecord.length - 1];
@@ -125,50 +125,48 @@ public class GetCourseRecordFragmentResult extends AsyncTask<String, Void, Strin
             CourseRecordObject dim = new CourseRecordObject();
             for (int i = 0; i < courseRecord.length - 1; i++) {
                 String[] courseRecordInf = new String[20];
-                courseRecordInf = courseRecord[i].split("@#|:");
-                courseRecord_picture[j] = courseRecordInf[1];
-                courseRecord_csid[j] = courseRecordInf[2];
-                courseRecord_erename[j] = courseRecordInf[3];
-                courseRecord_cscname[j] = courseRecordInf[4];
-                courseRecord_emname[j] = courseRecordInf[5];
-                courseRecord_occsdate[j] = courseRecordInf[6];
-                courseRecord_rorweek[j] = courseRecordInf[7];
-                courseRecord_occstime[j] = courseRecordInf[8];
-                courseRecord_occstime1[j] = courseRecordInf[9];
-                courseRecord_occetime[j] = courseRecordInf[11];
-                courseRecord_occetime1[j] = courseRecordInf[12];
-                courseRecord_emabiography[j] = courseRecordInf[14];
-                courseRecord_csccontent[j] = courseRecordInf[15];
-                courseRecord_ocanumber[j] = courseRecordInf[16];
-                courseRecord_oclnumber[j] = courseRecordInf[17];
-                courseRecord_ocprice[j] = courseRecordInf[18];
-                courseRecord_ocpayment[j] = courseRecordInf[19];
-                courseRecord_odid[j] = courseRecordInf[20];
-                courseRecord_studentid[j] = courseRecordInf[21];
-                courseRecord_studentname[j] = courseRecordInf[22];
-                switch (courseRecordInf[19]){
+                courseRecordInf = courseRecord[i].split("@#");
+                courseRecord_photo[j] = courseRecordInf[1];
+                courseRecord_count[j] = courseRecordInf[2];
+                courseRecord_building[j] = courseRecordInf[3];
+                courseRecord_type[j] = courseRecordInf[4];
+                courseRecord_classname[j] = courseRecordInf[5];
+                courseRecord_teacher[j] = courseRecordInf[6];
+                courseRecord_days[j] = courseRecordInf[7];
+                courseRecord_sdate[j] = courseRecordInf[8];
+                courseRecord_edate[j] = courseRecordInf[9];
+                courseRecord_time[j] = courseRecordInf[10];
+                courseRecord_teacherinfo[j] = courseRecordInf[11];
+                courseRecord_content[j] = courseRecordInf[12];
+                courseRecord_total[j] = courseRecordInf[13];
+                courseRecord_remain[j] = courseRecordInf[14];
+                courseRecord_price[j] = courseRecordInf[15];
+                courseRecord_ocpayment[j] = courseRecordInf[16];
+                courseRecord_odid[j] = courseRecordInf[17];
+                courseRecord_studentid[j] = courseRecordInf[18];
+                courseRecord_studentname[j] = courseRecordInf[19];
+                switch (courseRecordInf[16]){
                     case "0" :
                         courseRecord_ocpayment[j] = "未結帳";
-                        courseRecordInf[19] = "未結帳";
+                        courseRecordInf[16] = "未結帳";
                         break;
                     case "1" :
                         courseRecord_ocpayment[j] = "已結帳";
-                        courseRecordInf[19] = "已結帳";
+                        courseRecordInf[16] = "已結帳";
                         break;
                     default:
                         break;
                 }
 
 
-                dim.addItem(new CourseRecordObject.CourseRecordObjectItem(String.valueOf(i + 1),
-                        courseRecordInf[1],courseRecordInf[2],courseRecordInf[3],courseRecordInf[4],courseRecordInf[5],courseRecordInf[6],
-                        courseRecordInf[7],courseRecordInf[8],courseRecordInf[9],courseRecordInf[11],courseRecordInf[12],
-                        courseRecordInf[14],courseRecordInf[15],courseRecordInf[16],courseRecordInf[17],courseRecordInf[18],courseRecordInf[19],courseRecordInf[20],courseRecordInf[21],courseRecordInf[22]));
+                dim.addItem(new CourseRecordObject.CourseRecordObjectItem(courseRecordInf[2],courseRecordInf[1],courseRecordInf[3],courseRecordInf[4],courseRecordInf[5],courseRecordInf[6],
+                        courseRecordInf[7],courseRecordInf[8],courseRecordInf[9],courseRecordInf[10],courseRecordInf[11],
+                        courseRecordInf[12],courseRecordInf[13],courseRecordInf[14],courseRecordInf[15],courseRecordInf[16],courseRecordInf[17],courseRecordInf[18],courseRecordInf[19]));
 
                 j++;
                 Log.d("55125", j + ":"  + courseRecordInf[1]+","+courseRecordInf[2]+","+courseRecordInf[3]+","+courseRecordInf[4]+","+courseRecordInf[5]+","+courseRecordInf[6]+","+
-                        courseRecordInf[7]+","+courseRecordInf[8]+","+courseRecordInf[9]+","+courseRecordInf[11]+","+courseRecordInf[12]+","+
-                        courseRecordInf[14]+","+courseRecordInf[15]+","+courseRecordInf[16]+","+courseRecordInf[17]+","+courseRecordInf[18]+","+courseRecordInf[19]+","+courseRecordInf[20]+","+courseRecordInf[21]+","+courseRecordInf[22]);
+                        courseRecordInf[7]+","+courseRecordInf[8]+","+courseRecordInf[9]+","+courseRecordInf[10]+","+courseRecordInf[11]+","+
+                        courseRecordInf[12]+","+courseRecordInf[13]+","+courseRecordInf[14]+","+courseRecordInf[15]+","+courseRecordInf[16]+","+courseRecordInf[17]+","+courseRecordInf[18]+","+courseRecordInf[19]);
             }
 
         }

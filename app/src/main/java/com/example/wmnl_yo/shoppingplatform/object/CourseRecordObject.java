@@ -16,29 +16,26 @@ public class CourseRecordObject implements Serializable {
 
     public static class CourseRecordObjectItem implements Serializable {
 
-        public final String rCount,rPicture,rNumber,rCourseBuildingName,rCourseName,rCourseTeacher,rCourseDate,rCourseWeek,rCourseSTime,rCourseSTime1,rCourseETime,rCourseETime1,
-                rTeacherIntro,rCourseContent,rTotal,rRemaining,rPrice,rPayment,rOdid,rStudentid,rStudentname;
+        public final String rCount,rPhoto,rBuilding,rType,rClassname,rTeacher,rDays,rSDate,rEDate,rTime,rTeacherinfo,rContent,rTotal,rRemain,rPrice,rPayment,rOdid,rStudentid,rStudentname;
 
-        public CourseRecordObjectItem(String rCount,String rPicture, String rNumber, String rCourseBuildingName, String rCourseName, String rCourseTeacher, String rCourseDate,
-                         String rCourseWeek, String rCourseSTime, String rCourseSTime1, String rCourseETime,
-                         String rCourseETime1, String rTeacherIntro, String rCourseContent,
-                         String rTotal, String rRemaining, String rPrice, String rPayment,String rOdid,String rStudentid,String rStudentname) {
+        public CourseRecordObjectItem(String rCount,String rPhoto, String rBuilding, String rType, String rClassname, String rTeacher, String rDays,
+                         String rSDate, String rEDate, String rTime, String rTeacherinfo,
+                         String rContent, String rTotal, String rRemain,
+                         String rPrice, String rPayment,String rOdid,String rStudentid,String rStudentname) {
             this.rCount = rCount;
-            this.rPicture = rPicture;
-            this.rNumber = rNumber;
-            this.rCourseBuildingName = rCourseBuildingName;
-            this.rCourseName = rCourseName;
-            this.rCourseTeacher = rCourseTeacher;
-            this.rCourseDate = rCourseDate;
-            this.rCourseWeek = rCourseWeek;
-            this.rCourseSTime = rCourseSTime;
-            this.rCourseSTime1 = rCourseSTime1;
-            this.rCourseETime = rCourseETime;
-            this.rCourseETime1 = rCourseETime1;
-            this.rTeacherIntro = rTeacherIntro;
-            this.rCourseContent = rCourseContent;
+            this.rPhoto = rPhoto;
+            this.rBuilding = rBuilding;
+            this.rType = rType;
+            this.rClassname = rClassname;
+            this.rTeacher = rTeacher;
+            this.rDays = rDays;
+            this.rSDate = rSDate;
+            this.rEDate = rEDate;
+            this.rTime = rTime;
+            this.rTeacherinfo = rTeacherinfo;
+            this.rContent = rContent;
             this.rTotal = rTotal;
-            this.rRemaining = rRemaining;
+            this.rRemain = rRemain;
             this.rPrice = rPrice;
             this.rPayment = rPayment;
             this.rOdid = rOdid;

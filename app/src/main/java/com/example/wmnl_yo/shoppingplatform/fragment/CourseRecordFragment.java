@@ -197,7 +197,6 @@ public class CourseRecordFragment extends Fragment implements View.OnTouchListen
                 tvCourseName = (TextView) v.findViewById(R.id.courseName);
                 tvCourseTeacher = (TextView) v.findViewById(R.id.courseTeacher);
                 tvCourseDate = (TextView) v.findViewById(R.id.courseDate);
-                tvCourseTime = (TextView) v.findViewById(R.id.courseTime);
             }
         }
 
@@ -227,11 +226,9 @@ public class CourseRecordFragment extends Fragment implements View.OnTouchListen
                 }
             });
             holder.mItem = mCourseRecordList.get(position);
-            holder.tvCourseName.setText(mCourseRecordList.get(position).rCourseName);
-            holder.tvCourseTeacher.setText(mCourseRecordList.get(position).rCourseTeacher);
-            holder.tvCourseDate.setText(mCourseRecordList.get(position).rCourseDate+mCourseRecordList.get(position).rCourseWeek);
-            holder.tvCourseTime.setText(mCourseRecordList.get(position).rCourseSTime+":"+mCourseRecordList.get(position).rCourseSTime1+
-                    "~"+mCourseRecordList.get(position).rCourseETime+":"+mCourseRecordList.get(position).rCourseETime1);
+            holder.tvCourseName.setText(mCourseRecordList.get(position).rClassname);
+            holder.tvCourseTeacher.setText(mCourseRecordList.get(position).rTeacher);
+            holder.tvCourseDate.setText(mCourseRecordList.get(position).rSDate+"~"+mCourseRecordList.get(position).rEDate);
         }
 
         @Override

@@ -102,20 +102,21 @@ public class CourseRecordDetailFragment extends Fragment implements View.OnTouch
 
         tmp = new String[getContext().getResources().getStringArray(R.array.courseRecordDetail).length];
         deleteCheck = "";
-        tmp[0] = courseRecordObject.rNumber;
-        tmp[1] = courseRecordObject.rCourseBuildingName;
-        tmp[2] = courseRecordObject.rCourseName;
-        tmp[3] = courseRecordObject.rCourseTeacher;
-        tmp[4] = courseRecordObject.rCourseDate+courseRecordObject.rCourseWeek;
-        tmp[5] = courseRecordObject.rCourseSTime+":"+courseRecordObject.rCourseSTime1+
-                "~"+courseRecordObject.rCourseETime+":"+courseRecordObject.rCourseETime1;
-        tmp[6] = courseRecordObject.rTeacherIntro;
-        tmp[7] = courseRecordObject.rCourseContent;
-        tmp[8] = "" + courseRecordObject.rTotal;
-        tmp[9] = "" + courseRecordObject.rRemaining;
-        tmp[10] = "" + courseRecordObject.rPrice;
-        tmp[11] = "" + courseRecordObject.rPayment;
-        tmp[12] = "" + courseRecordObject.rStudentname;
+        tmp[0] = courseRecordObject.rCount;
+        tmp[1] = courseRecordObject.rBuilding;
+        tmp[2] = courseRecordObject.rType;
+        tmp[3] = courseRecordObject.rClassname;
+        tmp[4] = courseRecordObject.rTeacher;
+        tmp[5] = courseRecordObject.rDays;
+        tmp[6] = courseRecordObject.rSDate+" ~ "+courseRecordObject.rEDate;
+        tmp[7] = courseRecordObject.rTime;
+        tmp[8] = "" + courseRecordObject.rTeacherinfo;
+        tmp[9] = "" + courseRecordObject.rContent;
+        tmp[10] = "" + courseRecordObject.rTotal;
+        tmp[11] = "" + courseRecordObject.rRemain;
+        tmp[12] = "" + courseRecordObject.rPrice;
+        tmp[13] = "" + courseRecordObject.rPayment;
+        tmp[14] = "" + courseRecordObject.rStudentname;
 
     }
 
@@ -148,7 +149,7 @@ public class CourseRecordDetailFragment extends Fragment implements View.OnTouch
                 }
 
                 viewHolder.tvCourseDetail.setText(getContext().getResources().getStringArray(R.array.courseRecordDetail)[position]);
-                if(position==6||position==7){
+                if(position==8||position==9){
                     viewHolder.tvCourseDetailContent.setText(tmp[position]);
                     viewHolder.tvCourseDetailContent.setGravity(Gravity.LEFT);
                 }
@@ -169,7 +170,7 @@ public class CourseRecordDetailFragment extends Fragment implements View.OnTouch
             @Override
             protected Bitmap doInBackground(String... params)
             {
-                String url = "http://163.13.128.77:8080/20171205-11v/ParentChildMuseum/CourseIntroductionRegistrations/CourseIntroductionRegistration/static/"+courseRecordObject.rPicture;
+                String url = "http://163.13.128.77:8080/20171205-11v/ParentChildMuseum/CourseIntroductionRegistrations/CourseIntroductionRegistration/static/"+courseRecordObject.rPhoto;
                 return getBitmapFromURL(url);
             }
 
