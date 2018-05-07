@@ -142,7 +142,7 @@ public class GetHealthWeightFragment extends AsyncTask<String, Void, String> {
                 healthWeight_time[j] = healthWeightInf[3];
 
                 dim.addItem(new HealthWeightObject.HealthWeightObjectItem(R.drawable.ic_weight,
-                        healthWeightInf[1],"g",healthWeightInf[2]+'('+healthWeightInf[3]+')'));
+                        healthWeightInf[1],"Kg",healthWeightInf[2]+'('+healthWeightInf[3]+')'));
 
                 j++;
                 Log.d("55125", healthWeightInf[1]+","+"Kg"+","+healthWeightInf[2]+'('+healthWeightInf[3]+')');
