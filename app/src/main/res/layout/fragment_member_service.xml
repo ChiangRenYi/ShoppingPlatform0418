@@ -48,8 +48,9 @@
             android:padding="@dimen/_15sdp"
             android:text="權限管理"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/_20sdp"/>
-            <!--android:visibility="invisible"-->
+            android:textSize="@dimen/_20sdp"
+            android:visibility="invisible"/>
+
     </LinearLayout>
 
 

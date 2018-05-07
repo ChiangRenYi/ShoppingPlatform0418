@@ -29,8 +29,8 @@ import butterknife.InjectView;
 
 public class CompetenceFragment extends Fragment{
     @InjectView(R.id.dropDownMenu)
-    DropDownMenu mDropDownMenu;
-    private String headers[] = {"城市", "年龄", "性别", "星座"};
+    public DropDownMenu mDropDownMenu;
+    private String headers[] = {"城市", "年龄"};
     private List<View> popupViews = new ArrayList<>();
 
 
@@ -48,9 +48,10 @@ public class CompetenceFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if(view == null){
             view = inflater.inflate(R.layout.fragment_competence, container, false);
-            ButterKnife.inject(getActivity());
+
 
         }
+        ButterKnife.inject(getActivity());
         initView();
 
         return view;
@@ -64,15 +65,15 @@ public class CompetenceFragment extends Fragment{
 //        cityView.setAdapter(cityAdapter);
 
         //init age menu
-        final ListView ageView = new ListView(getContext());
+        final ListView ageView = new ListView(getActivity());
         ageView.setDividerHeight(0);
-        ageAdapter = new ListDropDownAdapter(getContext(), Arrays.asList(ages));
+        ageAdapter = new ListDropDownAdapter(getActivity(), Arrays.asList(ages));
         ageView.setAdapter(ageAdapter);
 
         //init sex menu
-        final ListView sexView = new ListView(getContext());
+        final ListView sexView = new ListView(getActivity());
         sexView.setDividerHeight(0);
-        sexAdapter = new ListDropDownAdapter(getContext(), Arrays.asList(sexs));
+        sexAdapter = new ListDropDownAdapter(getActivity(), Arrays.asList(sexs));
         sexView.setAdapter(sexAdapter);
 
         //init constellation
@@ -109,7 +110,7 @@ public class CompetenceFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ageAdapter.setCheckItem(position);
-                mDropDownMenu.setTabText(position == 0 ? headers[1] : ages[position]);
+                mDropDownMenu.setTabText(position == 0 ? headers[0] : ages[position]);
                 mDropDownMenu.closeMenu();
             }
         });
@@ -118,7 +119,7 @@ public class CompetenceFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 sexAdapter.setCheckItem(position);
-                mDropDownMenu.setTabText(position == 0 ? headers[2] : sexs[position]);
+                mDropDownMenu.setTabText(position == 0 ? headers[1] : sexs[position]);
                 mDropDownMenu.closeMenu();
             }
         });
@@ -132,7 +133,7 @@ public class CompetenceFragment extends Fragment{
 //        });
 
         //init context view
-        TextView contentView = new TextView(getContext());
+        TextView contentView = new TextView(getActivity());
         contentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         contentView.setText("内容显示区域");
         contentView.setGravity(Gravity.CENTER);

@@ -55,7 +55,7 @@ public class OrderDetailFragment extends Fragment implements View.OnTouchListene
 
     private String[] tmp = new String[14];
 
-    public static String orderTypeNum = "",orderDes = "",bod_id,payway;
+    public static String orderTypeNum = "",orderDes = "",bod_id,payway,orderPlace,orderName;
     private String orderType;
 
     public OrderDetailFragment() {
@@ -159,6 +159,8 @@ public class OrderDetailFragment extends Fragment implements View.OnTouchListene
 //                        orderType = "課程";
                         holder.tvProductDetail.setText(getContext().getResources().getStringArray(R.array.courseOrderDetail)[position]);
                         holder.tvProductDetailContent.setText(tmp[position]);
+                        tmp[5] = orderPlace;
+                        tmp[6] = orderName;
                         break;
 
                     case"1":
