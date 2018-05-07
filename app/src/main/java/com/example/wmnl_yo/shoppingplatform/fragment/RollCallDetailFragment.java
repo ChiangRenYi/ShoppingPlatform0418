@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.R;
+import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
 import com.example.wmnl_yo.shoppingplatform.activity.loginActivity;
 
 import java.util.ArrayList;
@@ -130,10 +131,12 @@ public class RollCallDetailFragment extends Fragment implements View.OnTouchList
 
                 if (info == null || !info.isConnected())
                 {
-                    Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_SHORT).show();
                 }
                 else {
 
+                    Toast.makeText(getActivity(),"點名完成！",Toast.LENGTH_SHORT).show();
+                    ((MainActivity) getContext()).replaceFragment(RollCallFragment.class, null);
                 }
             }
         });

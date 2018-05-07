@@ -129,7 +129,7 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
             public void run() {
                 rAdapter.notifyDataSetChanged();
                 if(ShoppingMallObject.ITEMS.isEmpty()){
-                    Toast.makeText(getContext(), "請檢察網路連線訊號", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
                 }
             }
         },3000);
@@ -156,7 +156,7 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
             @Override
             public void onClick(View v) {
                 if(string_shopping_object_kind == null){
-                    Toast.makeText(getContext(), "請檢察網路連線訊號", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
                     shopping_object_kind_t2.setText("請選擇");
                 }else {
                     numberPicker(string_shopping_object_kind);
@@ -168,7 +168,7 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
             @Override
             public void onClick(View v) {
                 if(string_shopping_object_kind == null || string_shopping_mall_object_name_net.equals("no")){
-                    Toast.makeText(getContext(), "請檢察網路連線訊號", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
                     shopping_object_kind_t2.setText("請選擇");
                     string_shopping_object_kind = null;
                 }else {
@@ -207,7 +207,7 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
                     public void run() {
                         rAdapter.notifyDataSetChanged();
                         if(string_shopping_mall_name_net.equals("no")){
-                            Toast.makeText(getContext(), "請檢察網路連線訊號", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
                             shopping_object_kindsecond_t2.setText("請選擇");
                             string_shopping_object_kindsecond= null;
                         }else if(string_shopping_mall_name_net.equals("nothing")){
@@ -309,7 +309,7 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
                     public void run() {
                         rAdapter.notifyDataSetChanged();
                         if(ShoppingMallObject.ITEMS.isEmpty()){
-                            Toast.makeText(getContext(), "請檢察網路連線訊號", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },3000);
@@ -362,7 +362,7 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
                     public void run() {
                         rAdapter.notifyDataSetChanged();
                         if(ShoppingMallObject.ITEMS.isEmpty()){
-                            Toast.makeText(getContext(), "請檢察網路連線訊號", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },3000);
