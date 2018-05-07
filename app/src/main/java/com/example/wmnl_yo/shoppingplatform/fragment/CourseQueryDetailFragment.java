@@ -275,6 +275,11 @@ public class CourseQueryDetailFragment extends Fragment implements View.OnTouchL
                                                                     Toast.makeText(getActivity(),
                                                                             CQDParentChild + "已報名候補", Toast.LENGTH_SHORT).show();
                                                                     break;
+                                                                case "can't sign up":
+                                                                    Toast.makeText(getActivity(),
+                                                                            CQDParentChild + "候補及正取皆沒有名額", Toast.LENGTH_SHORT).show();
+                                                                    break;
+
                                                                 default:
                                                                     break;
                                                             }
