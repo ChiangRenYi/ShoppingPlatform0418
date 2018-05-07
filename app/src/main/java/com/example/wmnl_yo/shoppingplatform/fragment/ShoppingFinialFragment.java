@@ -1,5 +1,6 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -50,7 +51,7 @@ public class ShoppingFinialFragment extends Fragment implements View.OnTouchList
     private TextView sp_finial_person_text, sp_finial_money_text, sp_finial_code_text1, sp_finial_code_text2, sp_finial_code_text3,sp_code_number,sp_code_date;
     public static String __text1,__text2,__text3,sp_date,sp_money;
     private Button shopping_CODE_check;
-
+    ProgressDialog progressDoalog;
     public static String sp_code_number_data = "",get_page_way = "0";
 
     public ShoppingFinialFragment() {
@@ -137,8 +138,30 @@ public class ShoppingFinialFragment extends Fragment implements View.OnTouchList
             public void onClick(View v) {
                 switch (get_page_way){
                     case "0":
-                        ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingListFragment.class, null);
+                        progressDoalog = new ProgressDialog(getActivity());
+                        progressDoalog.setMessage("載入中，請稍後...");
+                        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                        progressDoalog.setCancelable(false);
+                        progressDoalog.show();
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    Thread.sleep(3000);
+                                    progressDoalog.dismiss();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }).start();
 
+                        Handler handler1 = new Handler();
+                        handler1.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingListFragment.class, null);
+                            }
+                        },3000);
                         break;
 
                     case "1":

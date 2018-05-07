@@ -1,6 +1,7 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
@@ -73,7 +74,8 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
     public static ArrayList shoppinglistbuy;
     public static String deleteitem = "";
     public static String deleteitemcheck = "";
-
+    public static String itemvalue = "no";
+    ProgressDialog progressDoalog;
     public ShoppingListFragment() {
         // Required empty public constructor
     }
@@ -104,30 +106,6 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        deleteitem = "";
-        deleteitemcheck = "";
-        goods = "";
-        db_shoppinglist_kind = "請選擇";
-        values = null;
-        GetShoppingList getShoppingListObject = new GetShoppingList();
-        getShoppingListObject.execute();
-        GetShoppingListAll getShoppingListAll = new GetShoppingListAll();
-        getShoppingListAll.execute();
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Toast.makeText(getActivity(), "請稍後", Toast.LENGTH_SHORT).show();
-
-                    shoppingAdapter.notifyDataSetChanged();
-                }catch (Exception e){
-                    Log.d("55125","error");
-
-                }
-            }
-        }, 500);
-
     }
 
     @Override
@@ -137,22 +115,38 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_shopping_list, container, false);
         v.setOnTouchListener(this);
-//    GetAbsentNoteEntryFragmentResult getAbsentNoteEntryFragmentResult = new GetAbsentNoteEntryFragmentResult();
-//        getAbsentNoteEntryFragmentResult.execute();
+
+        deleteitem = "";
+        deleteitemcheck = "";
+        goods = "";
+        itemvalue = "no";
+        db_shoppinglist_kind = "請選擇";
+        values = null;
+        GetShoppingList getShoppingListObject = new GetShoppingList();
+        getShoppingListObject.execute();
+        GetShoppingListAll getShoppingListAll = new GetShoppingListAll();
+        getShoppingListAll.execute();
 
         mRecyclerView = (RecyclerView) v.findViewById(R.id.car_rv);
         shoppingcheck = (Button) v.findViewById(R.id.car_check);
         shoppingAdapter = new MyAdapter(ShoppingCarObject.ITEMS);
         dataredo = (ImageButton) v.findViewById(R.id.dataredo);
         car_object_kind_t2 = (TextView) v.findViewById(R.id.car_object_kind_t2);
-
+        shoppingAdapter.notifyDataSetChanged();
         car_object_kind_t2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numberPicker(values);
+                try{numberPicker(values);
+                }catch (Exception e){
+                    if(itemvalue.equals("no")) {
+                        Toast.makeText(getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getContext(), "請重新整理\n如沒有需要結帳的商品購物車將是空的", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
             }
         });
-        shoppingAdapter = new MyAdapter(ShoppingCarObject.ITEMS);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
@@ -172,21 +166,39 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                 goods = "";
                 db_shoppinglist_kind = "請選擇";
                 values = null;
+                itemvalue = "no";
                 car_object_kind_t2.setText("請選擇");
-
+                ShoppingCarObject.ITEMS.clear();
                 GetShoppingList getShoppingListObject = new GetShoppingList();
                 getShoppingListObject.execute();
                 GetShoppingListAll getShoppingListAll = new GetShoppingListAll();
                 getShoppingListAll.execute();
 
+                progressDoalog = new ProgressDialog(getActivity());
+                progressDoalog.setMessage("載入中，請稍後...");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.setCancelable(false);
+                progressDoalog.show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(3000);
+                            progressDoalog.dismiss();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getActivity(), "請稍後", Toast.LENGTH_SHORT).show();
                         shoppingAdapter.notifyDataSetChanged();
                     }
-                }, 500);
+                },3000);
+
             }
         });
 
@@ -194,6 +206,24 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
         shoppingcheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                progressDoalog = new ProgressDialog(getActivity());
+                progressDoalog.setMessage("載入中，請稍後...");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.setCancelable(false);
+                progressDoalog.show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(1500);
+                            progressDoalog.dismiss();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
 
 
                 Handler handler = new Handler();
@@ -240,7 +270,7 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                             ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingPaymentFragment.class, null);
                         }
                     }
-                }, 500);
+                }, 1500);
 
 
             }
@@ -325,12 +355,14 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
+            try {
+                if(mShoppingCarObjectList.get(position).goodskind.equals("0")){
+                    holder.tvGoodsName.setText(mShoppingCarObjectList.get(position).goodschildname.trim()+"："+mShoppingCarObjectList.get(position).goods.trim());
+                }else{
+                    holder.tvGoodsName.setText(mShoppingCarObjectList.get(position).goods.trim());
+                }
+            }catch (Exception e){}
 
-            if(mShoppingCarObjectList.get(position).goodskind.equals("0")){
-                holder.tvGoodsName.setText(mShoppingCarObjectList.get(position).goodschildname.trim()+"："+mShoppingCarObjectList.get(position).goods.trim());
-            }else{
-                holder.tvGoodsName.setText(mShoppingCarObjectList.get(position).goods.trim());
-            }
 
             holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber.trim());
             priceTotal = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice.trim()).intValue()
@@ -494,14 +526,22 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                     goods = "";
                 }
 
-                Toast.makeText(getActivity(), "搜尋結帳商品請稍後...", Toast.LENGTH_SHORT).show();
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
+                progressDoalog = new ProgressDialog(getActivity());
+                progressDoalog.setMessage("載入中，請稍後...");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.setCancelable(false);
+                progressDoalog.show();
+                new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        shoppingAdapter.notifyDataSetChanged();
+                        try {
+                            Thread.sleep(1500);
+                            progressDoalog.dismiss();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
-                }, 600);
+                }).start();
 
             }
         });

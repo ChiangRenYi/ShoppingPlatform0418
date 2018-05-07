@@ -1,5 +1,6 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,7 +40,7 @@ public class ShoppingCarATMFragment extends Fragment implements View.OnTouchList
     public static String sp_ATM_money_text,sp_ATM_account,sp_ATM_data;
     private OnFragmentInteractionListener mListener;
     private Button shopping_ATM_check;
-
+    ProgressDialog progressDoalog;
     public static String sp_atm_number_data = "",get_page_way = "0";
     public ShoppingCarATMFragment() {
         // Required empty public constructor
@@ -114,7 +115,30 @@ public class ShoppingCarATMFragment extends Fragment implements View.OnTouchList
 
                 switch (get_page_way){
                     case "0":
-                        ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingListFragment.class, null);
+                        progressDoalog = new ProgressDialog(getActivity());
+                        progressDoalog.setMessage("載入中，請稍後...");
+                        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                        progressDoalog.setCancelable(false);
+                        progressDoalog.show();
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    Thread.sleep(3000);
+                                    progressDoalog.dismiss();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }).start();
+
+                        Handler handler1 = new Handler();
+                        handler1.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingListFragment.class, null);
+                            }
+                        },3000);
 
                         break;
 

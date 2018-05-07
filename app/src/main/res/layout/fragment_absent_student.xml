@@ -83,7 +83,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:text="親子館地點："
+                    android:text="托育中心："
                     android:textSize="@dimen/_14sdp"
 
                     android:maxLines="1"

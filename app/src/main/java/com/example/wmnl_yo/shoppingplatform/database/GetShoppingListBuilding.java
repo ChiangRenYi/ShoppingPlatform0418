@@ -64,8 +64,10 @@ public class GetShoppingListBuilding extends AsyncTask<String, Void, String> {
                         buffer.append(inputLine + "\n");
                     if (buffer.length() == 0) {
                         // Stream was empty. No point in parsing.
-                        Log.d("55125", "nothing");
+
                         ShoppingCarObject.ITEMS.clear();
+                        ShoppingListFragment.shoppingAdapter.notifyDataSetChanged();
+                        Log.d("55125", "nothing");
                     } else {
                         result = buffer.toString();
                     }
