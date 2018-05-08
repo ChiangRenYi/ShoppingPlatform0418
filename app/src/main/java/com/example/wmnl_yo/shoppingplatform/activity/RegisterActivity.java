@@ -2,6 +2,9 @@ package com.example.wmnl_yo.shoppingplatform.activity;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -121,27 +124,34 @@ public class RegisterActivity extends Activity {
         btnRegisterOK.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Register_Account = edAccount.getText().toString();
-                Register_Name = edName.getText().toString();
-                Register_ID = edID.getText().toString();
-                Register_Birthday = edBirthday.getText().toString();
-                Register_Mail = edMail.getText().toString();
-                Register_Address = edAddress.getText().toString();
-                Register_ContactPhone = edContactPhone.getText().toString();
-                Register_Phone = edPhone.getText().toString();
+                ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo info=connManager.getActiveNetworkInfo();
 
-                Register_Password = edPassword.getText().toString();
-                Register_PasswordCheck = edPasswordCheck.getText().toString();
+                if (info == null || !info.isConnected())
+                {
+                    Toast.makeText(RegisterActivity.this,"請檢查網路連線" ,Toast.LENGTH_LONG).show();
+                }else {
+                    Register_Account = edAccount.getText().toString();
+                    Register_Name = edName.getText().toString();
+                    Register_ID = edID.getText().toString();
+                    Register_Birthday = edBirthday.getText().toString();
+                    Register_Mail = edMail.getText().toString();
+                    Register_Address = edAddress.getText().toString();
+                    Register_ContactPhone = edContactPhone.getText().toString();
+                    Register_Phone = edPhone.getText().toString();
 
-                if(Register_Account.matches("")||Register_Name.matches("")||Register_Career.matches("")||Register_Nationality.matches("")|Register_ID.matches("")||Register_Birthday.matches("")||Register_Address.matches("")||Register_ContactPhone.matches("")||Register_Phone.matches("")) {
-                    Toast.makeText(RegisterActivity.this, "欄位不能為空白！", Toast.LENGTH_SHORT).show();
-                }else if (!Register_Password.matches(Register_PasswordCheck)){
-                    Toast.makeText(RegisterActivity.this, "兩次輸入密碼不一致，請重新輸入", Toast.LENGTH_SHORT).show();
-                    edPassword.setText("");
-                    edPasswordCheck.setText("");
-                }else{
-                    //傳進資料庫
-                    Log.e("55886","準備傳資料庫");
+                    Register_Password = edPassword.getText().toString();
+                    Register_PasswordCheck = edPasswordCheck.getText().toString();
+
+                    if (Register_Account.matches("") || Register_Name.matches("") || Register_Career.matches("") || Register_Nationality.matches("") | Register_ID.matches("") || Register_Birthday.matches("") || Register_Address.matches("") || Register_ContactPhone.matches("") || Register_Phone.matches("")) {
+                        Toast.makeText(RegisterActivity.this, "欄位不能為空白！", Toast.LENGTH_SHORT).show();
+                    } else if (!Register_Password.matches(Register_PasswordCheck)) {
+                        Toast.makeText(RegisterActivity.this, "兩次輸入密碼不一致，請重新輸入", Toast.LENGTH_SHORT).show();
+                        edPassword.setText("");
+                        edPasswordCheck.setText("");
+                    } else {
+                        //傳進資料庫
+                        Log.e("55886", "準備傳資料庫");
 //                    Runnable r1 = new Runnable() {
 //                        @Override
 //                        public void run() {
@@ -151,36 +161,36 @@ public class RegisterActivity extends Activity {
 //                    };
 //                    Thread t1 = new Thread(r1);
 //                    t1.start();
-                    SendRegisterInfo sendRegisterInfo = new SendRegisterInfo();
-                    sendRegisterInfo.execute();
-                    Log.e("55886","傳完資料庫");
+                        SendRegisterInfo sendRegisterInfo = new SendRegisterInfo();
+                        sendRegisterInfo.execute();
+                        Log.e("55886", "傳完資料庫");
 
-                    Toast.makeText(RegisterActivity.this,"請稍後...",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "請稍後...", Toast.LENGTH_SHORT).show();
 
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Do something after 5s = 5000ms
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                // Do something after 5s = 5000ms
 
-                            if(SendResponse == "repeat"){
-                                Log.e("55886","重複了!");
-                                Toast.makeText(RegisterActivity.this,"帳號已存在，請更改帳號",Toast.LENGTH_SHORT).show();
-                                Log.e("55886","RegisterInfo："+ Register_Account + "," + Register_Password + "," + Register_Career + "," + Register_Nationality + "," +Register_Gender);
-                                edAccount.setText("");
-                                SendResponse ="noRepeat";
-                            }else if(SendResponse == "repeat_id"){
-                                Toast.makeText(RegisterActivity.this,"此身分證已註冊帳號",Toast.LENGTH_SHORT).show();
-                                edID.setText("");
-                                SendResponse ="noRepeat";
-                            }else{
-                                Log.e("55886","沒有重複");
-                                Toast.makeText(RegisterActivity.this,"申請成功！",Toast.LENGTH_SHORT).show();
-                                Log.e("55886","RegisterInfo："+ Register_Account + "," + Register_Password + "," + Register_Career + "," + Register_Nationality);
-                                finish();
+                                if (SendResponse == "repeat") {
+                                    Log.e("55886", "重複了!");
+                                    Toast.makeText(RegisterActivity.this, "帳號已存在，請更改帳號", Toast.LENGTH_SHORT).show();
+                                    Log.e("55886", "RegisterInfo：" + Register_Account + "," + Register_Password + "," + Register_Career + "," + Register_Nationality + "," + Register_Gender);
+                                    edAccount.setText("");
+                                    SendResponse = "noRepeat";
+                                } else if (SendResponse == "repeat_id") {
+                                    Toast.makeText(RegisterActivity.this, "此身分證已註冊帳號", Toast.LENGTH_SHORT).show();
+                                    edID.setText("");
+                                    SendResponse = "noRepeat";
+                                } else {
+                                    Log.e("55886", "沒有重複");
+                                    Toast.makeText(RegisterActivity.this, "申請成功！", Toast.LENGTH_SHORT).show();
+                                    Log.e("55886", "RegisterInfo：" + Register_Account + "," + Register_Password + "," + Register_Career + "," + Register_Nationality);
+                                    finish();
+                                }
                             }
-                        }
-                    }, 1500);
+                        }, 1500);
 
 //                    if(SendResponse == "repeat"){
 //                        Log.e("55886","重複了!");
@@ -192,12 +202,12 @@ public class RegisterActivity extends Activity {
 //                        Toast.makeText(RegisterActivity.this,"申請成功！",Toast.LENGTH_SHORT).show();
 //                    }
 //                    Log.e("55454","success");
+                    }
+
+
+                    //Log.e("55555",Account+"\n"+Name+"\n"+Career+"\n"+Nationality+"\n"+ID+"\n"+Birthday+"\n"+Mail+"\n"+Address+"\n"+ContactPhone+"\n"+Phone+"\n"+Password+"\n"+PasswordCheck);
+
                 }
-
-
-                //Log.e("55555",Account+"\n"+Name+"\n"+Career+"\n"+Nationality+"\n"+ID+"\n"+Birthday+"\n"+Mail+"\n"+Address+"\n"+ContactPhone+"\n"+Phone+"\n"+Password+"\n"+PasswordCheck);
-
-
             }
         });
 
