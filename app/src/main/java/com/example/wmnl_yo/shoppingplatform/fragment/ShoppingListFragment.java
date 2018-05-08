@@ -544,6 +544,13 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                         }
                     }
                 }).start();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        shoppingAdapter.notifyDataSetChanged();
+                    }
+                },1500);
 
             }
         });
