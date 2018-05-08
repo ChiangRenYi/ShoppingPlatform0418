@@ -173,7 +173,7 @@ public class GetSatisfacationQuestionFragmentResult extends AsyncTask<String, Vo
 
 
                 dim.addItem(new SatisfacationQuestionObject.SatisfacationQuestionObjectItem(
-                        satisfacationInf[1],satisfacationInf[2],"0",null));
+                        satisfacationInf[1],satisfacationInf[2],"5",null));
 
 
 

@@ -30,7 +30,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1.17"
+                android:layout_weight="1.22"
                 android:gravity="center"
                 android:text="教師"
                 android:textColor="@android:color/darker_gray" />
@@ -40,7 +40,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1.26"
+                android:layout_weight="1.13"
                 android:gravity="center"
                 android:text="課程名稱"
                 android:textColor="@android:color/darker_gray" />

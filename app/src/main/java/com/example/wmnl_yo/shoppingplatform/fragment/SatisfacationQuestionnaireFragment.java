@@ -324,12 +324,12 @@ public class SatisfacationQuestionnaireFragment extends Fragment implements View
                 holder.btnSuperGood.setBackgroundResource(R.drawable.btn_background);//andytemp drawable
 
                 holder.btnSuperGood.setTextColor(Color.WHITE);
-                for(int i=0;i<amountOfQ;i++)
-                {
-
-                    mQuestionRecordList.get(i).rQuestionPoint="5";
-
-                }
+//                for(int i=0;i<amountOfQ;i++)
+//                {
+//
+//                    mQuestionRecordList.get(i).rQuestionPoint="5";
+//
+//                }
                 holder.btnGood.setBackgroundColor(Color.WHITE);
                 holder.btnGood.setTextColor(Color.BLACK);
                 holder.btnNormal.setBackgroundColor(Color.WHITE);
