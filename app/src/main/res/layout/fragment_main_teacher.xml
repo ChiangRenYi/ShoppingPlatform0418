@@ -325,7 +325,7 @@
                  android:layout_alignParentStart="true"
                  android:layout_alignParentTop="true"
                  android:padding="@dimen/_5sdp"
-                 app:srcCompat="@drawable/unknown_user" />
+                 app:srcCompat="@drawable/garzhang" />
 
              <LinearLayout
                  android:layout_width="match_parent"

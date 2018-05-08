@@ -83,7 +83,7 @@ public class OpinionMessageAddFragment extends Fragment implements View.OnTouchL
                 GetOpinionMessageFragment getOpinionMessageFragment = new GetOpinionMessageFragment();
                 getOpinionMessageFragment.execute();
             }
-        }, 100);
+        }, 300);
 
     }
 

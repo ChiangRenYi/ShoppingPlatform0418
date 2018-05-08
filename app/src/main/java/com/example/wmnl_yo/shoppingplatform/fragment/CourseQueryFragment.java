@@ -99,12 +99,13 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
         tv = new TextView[getResources().getStringArray(R.array.courseFindType).length];
         tmp = new String[]{"請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇"};
         Building_check="crycry";
-        final Dialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-        alertDialog.show();
+        final Dialog alertDialog = new Dialog(getActivity());
+        alertDialog.setContentView(R.layout.choose_course_alert);
         alertDialog.setCanceledOnTouchOutside(false);
-        Window window = alertDialog.getWindow();
-        window.setContentView(R.layout.choose_course_alert);
-        Button btn_cancel=(Button) window.findViewById(R.id.check);//确定按钮
+        alertDialog.show();
+//        Window window = alertDialog.getWindow();
+//        window.setContentView(R.layout.choose_course_alert);
+        Button btn_cancel=(Button) alertDialog.findViewById(R.id.check);//确定按钮
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -546,4 +547,5 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
             }
         });
     }
+
 }
