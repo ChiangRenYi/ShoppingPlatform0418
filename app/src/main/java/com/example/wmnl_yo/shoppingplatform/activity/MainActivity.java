@@ -353,23 +353,28 @@ public class MainActivity extends AppCompatActivity implements
         switch (item.getItemId()) {
 
             case android.R.id.home:
-                if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-                    boolean done = getSupportFragmentManager().popBackStackImmediate();
-                    Log.d("55123", String.valueOf(getSupportFragmentManager().getBackStackEntryCount()) + "：" + String.valueOf(done));
-                    if (done == true && getSupportFragmentManager().getBackStackEntryCount() == 0) {
-                        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                        getSupportActionBar().setHomeButtonEnabled(false);
-                        setSubTitle("");
+                try {
+                    if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                        boolean done = getSupportFragmentManager().popBackStackImmediate();
+                        Log.d("55123", String.valueOf(getSupportFragmentManager().getBackStackEntryCount()) + "：" + String.valueOf(done));
+                        if (done == true && getSupportFragmentManager().getBackStackEntryCount() == 0) {
+                            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                            getSupportActionBar().setHomeButtonEnabled(false);
+                            setSubTitle("");
+                        }
+
+                    }else {
+                        Log.d("55123", String.valueOf(getSupportFragmentManager().getBackStackEntryCount()));
+
                     }
+                }catch (Exception e){
 
                 }
+
 //                else if(getSupportFragmentManager().getBackStackEntryCount() == 1){
 //
 //                }
-                else {
-                    Log.d("55123", String.valueOf(getSupportFragmentManager().getBackStackEntryCount()));
 
-                }
 //                Fragment fragment = null;
 //                Class fragmentClass = null;
 //                fragmentClass = MainFragmentStudent.class;

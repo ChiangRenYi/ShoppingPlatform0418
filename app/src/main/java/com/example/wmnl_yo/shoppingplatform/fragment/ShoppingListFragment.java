@@ -140,8 +140,10 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                 }catch (Exception e){
                     if(itemvalue.equals("no")) {
                         Toast.makeText(getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
-                    }else{
+                    }else if(itemvalue.equals("nothing")) {
                         Toast.makeText(getContext(), "請重新整理\n如沒有需要結帳的商品購物車將是空的", Toast.LENGTH_SHORT).show();
+                    }else{
+
                     }
                 }
 

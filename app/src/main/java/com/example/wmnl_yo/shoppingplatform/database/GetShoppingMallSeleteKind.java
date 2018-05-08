@@ -63,6 +63,7 @@ public class GetShoppingMallSeleteKind extends AsyncTask<String, Void, String> {
                         buffer.append(inputLine + "\n");
                     if (buffer.length() == 0) {
                         // Stream was empty. No point in parsing.
+
                         Log.d("55125", "nothing");
                         ShoppingMallObject.ITEMS.clear();
                     } else {
@@ -96,7 +97,6 @@ public class GetShoppingMallSeleteKind extends AsyncTask<String, Void, String> {
         if (s != null) {
 
             Log.d("55125",s);
-
             int j = 0;
             String[] shoppingMallAll = s.split("<br>");
             String[] courseRecord_photo = new String[shoppingMallAll.length - 1];

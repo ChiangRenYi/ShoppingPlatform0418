@@ -65,6 +65,7 @@ public class GetShoppingList extends AsyncTask<String, Void, String> {
                         buffer.append(inputLine + "\n");
                     if (buffer.length() == 0) {
                         // Stream was empty. No point in parsing.
+                        ShoppingListFragment.itemvalue = "nothing";
                         Log.d("55125", "nothing");
 
                     } else {
@@ -96,6 +97,7 @@ public class GetShoppingList extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         if (s != null) {
             Log.d("55125", s);
+            ShoppingListFragment.itemvalue = s;
             String[] postbuildingInf = s.split("@#");
             postbuildingInf[0] = "嬰幼兒商品";
 
