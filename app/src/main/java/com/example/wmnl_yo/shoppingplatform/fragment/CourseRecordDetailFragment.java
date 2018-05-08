@@ -187,54 +187,60 @@ public class CourseRecordDetailFragment extends Fragment implements View.OnTouch
         lvCourseDetail.setAdapter(arrayAdapter);
         lvCourseDetail.addHeaderView(headerView);
         lvCourseDetail.addFooterView(footerView);
-        btnCourseCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteCheck ="";
-                DeleteCourse deleteCourse = new DeleteCourse();
-                deleteCourse.execute();
-                progressDoalog = new ProgressDialog(getActivity());
-                progressDoalog.setMessage("載入中，請稍後...");
-                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                progressDoalog.setCancelable(false);
-                progressDoalog.show();
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(3000);
-                            progressDoalog.dismiss();
+        if(courseRecordObject.rPayment.equals("正取，請盡速繳費")){
+            btnCourseCancel.setEnabled(false);
+            btnCourseCancel.getBackground().setColorFilter(0xFF888888,android.graphics.PorterDuff.Mode.MULTIPLY );;
+        }else{
+            btnCourseCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    deleteCheck ="";
+                    DeleteCourse deleteCourse = new DeleteCourse();
+                    deleteCourse.execute();
+                    progressDoalog = new ProgressDialog(getActivity());
+                    progressDoalog.setMessage("載入中，請稍後...");
+                    progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    progressDoalog.setCancelable(false);
+                    progressDoalog.show();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(3000);
+                                progressDoalog.dismiss();
 
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
-                    }
-                }).start();
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Log.d("55125-2",deleteCheck);
-                        switch (deleteCheck)
-                        {
-                            case "delete" :
-                                Toast.makeText(getActivity(),
-                                        "已取消報名，請回上一頁", Toast.LENGTH_SHORT).show();
-                                break;
-                            case "nothing":
-                                Toast.makeText(getActivity(),
-                                         "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
-                            case "":
-                                Toast.makeText(getActivity(),
-                                        "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
-                            default:
-                                break;
+                    }).start();
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.d("55125-2",deleteCheck);
+                            switch (deleteCheck)
+                            {
+                                case "delete" :
+                                    Toast.makeText(getActivity(),
+                                            "已取消報名，請回上一頁", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case "nothing":
+                                    Toast.makeText(getActivity(),
+                                            "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                                case "":
+                                    Toast.makeText(getActivity(),
+                                            "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                                default:
+                                    break;
+                            }
                         }
-                        }
-                }, 3000);
+                    }, 3000);
 
-            }
-        });
+                }
+            });
+        }
+
         return v;
     }
 

@@ -167,12 +167,12 @@ public class GetCourseRecordFragmentResult extends AsyncTask<String, Void, Strin
                 courseRecord_studentname[j] = courseRecordInf[19];
                 switch (courseRecordInf[16]){
                     case "0" :
-                        courseRecord_ocpayment[j] = "未結帳";
-                        courseRecordInf[16] = "未結帳";
+                        courseRecord_ocpayment[j] = "正取，請盡速繳費";
+                        courseRecordInf[16] = "正取，請盡速繳費";
                         break;
                     case "1" :
-                        courseRecord_ocpayment[j] = "已結帳";
-                        courseRecordInf[16] = "已結帳";
+                        courseRecord_ocpayment[j] = "備取";
+                        courseRecordInf[16] = "備取";
                         break;
                     case "3" :
                         courseRecord_ocpayment[j] = "已加入購物車，請至購物車結帳";
