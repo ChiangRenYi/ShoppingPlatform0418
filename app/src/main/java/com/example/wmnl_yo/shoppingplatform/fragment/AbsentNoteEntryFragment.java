@@ -137,24 +137,38 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
         absent_entry_building.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            try {
+                    if(string_absent_entry_building == null && absent_entry_student_net.equals("no"))
+                    {
+                        Toast.makeText(v.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                        absent_entry_student.setText("請選擇");
+                    }else if(string_absent_entry_building == null && absent_entry_student_net.equals("nothing")) {
+                        Toast.makeText(v.getContext(), db_absent_entry_student+"沒有須請假的課程", Toast.LENGTH_SHORT).show();
+                    }else{
+                        int i = 2;
+                        numberPicker(string_absent_entry_building, i - 1);
+                    }
+                }catch (Exception e){
 
-                if(string_absent_entry_building == null && absent_entry_student_net.equals("no"))
-                {
-                    Toast.makeText(v.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
-                    absent_entry_student.setText("請選擇");
-                }else if(string_absent_entry_building == null && absent_entry_student_net.equals("nothing")) {
-                    Toast.makeText(v.getContext(), db_absent_entry_student+"沒有須請假的課程", Toast.LENGTH_SHORT).show();
-                }else{
-                    int i = 2;
-                    numberPicker(string_absent_entry_building, i - 1);
-                }
+            }
+
             }
         });
         absent_entry_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int i = 3;
-                datePicker(i - 1);
+                try {
+                    if(absent_entry_building.getText().equals("請選擇") || absent_entry_student.getText().equals("請選擇"))
+                    {
+                        Toast.makeText(v.getContext(), "請先選擇前面選項", Toast.LENGTH_SHORT).show();
+                    }else {
+                        datePicker(i - 1);
+                    }
+                }catch (Exception e){
+
+                }
+
             }
         });
         absent_entry_class.setOnClickListener(new View.OnClickListener() {
@@ -185,14 +199,34 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
             @Override
             public void onClick(View v) {
                 int i = 5;
-                numberPicker(getResources().getStringArray(R.array.absentNoteEntryLeaveTypeStudent), i - 1);
+                try {
+                    if(absent_entry_building.getText().equals("請選擇") || absent_entry_student.getText().equals("請選擇") || absent_entry_class.getText().equals("請選擇") ||absent_entry_start.getText().equals("請選擇"))
+                    {
+                        Toast.makeText(v.getContext(), "請先選擇前面選項", Toast.LENGTH_SHORT).show();
+                    }else {
+                        numberPicker(getResources().getStringArray(R.array.absentNoteEntryLeaveTypeStudent), i - 1);
+                    }
+                }catch (Exception e){
+
+                }
+
             }
         });
         absent_entry_money.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int i = 6;
-                numberPicker(getResources().getStringArray(R.array.absentNoteRefund), i - 1);
+                try {
+                    if(absent_entry_building.getText().equals("請選擇") || absent_entry_student.getText().equals("請選擇") || absent_entry_class.getText().equals("請選擇") ||absent_entry_start.getText().equals("請選擇")||absent_entry_kind.getText().equals("請選擇"))
+                    {
+                        Toast.makeText(v.getContext(), "請先選擇前面選項", Toast.LENGTH_SHORT).show();
+                    }else {
+                        numberPicker(getResources().getStringArray(R.array.absentNoteRefund), i - 1);
+                    }
+                }catch (Exception e){
+
+                }
+
             }
         });
 
@@ -322,17 +356,17 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
                     string_absent_entry_building = null;
                     string_absent_entry_class = null;
                     absent_entry_building.setText("請選擇");
-                    db_absent_entry_building= null;
+                    db_absent_entry_building= "";
                     absent_entry_start.setText("請選擇");
-                    db_absent_entry_start= null;
+                    db_absent_entry_start= "";
                     absent_entry_class.setText("請選擇");
-                    db_absent_entry_class= null;
+                    db_absent_entry_class= "";
                     absent_entry_kind.setText("請選擇");
-                    db_absent_entry_kind= null;
+                    db_absent_entry_kind= "";
                     absent_entry_money.setText("請選擇");
-                    db_absent_entry_money= null;
+                    db_absent_entry_money= "";
                     absent_entry_reason.setText("");
-                    db_absent_entry_reason= null;
+                    db_absent_entry_reason= "";
                     GetAbsentNoteEntryFragmentBuilding getAbsentNoteEntryFragmentBuilding = new GetAbsentNoteEntryFragmentBuilding();
                     getAbsentNoteEntryFragmentBuilding.execute();
                 }else if(position == 1){
@@ -392,6 +426,7 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
                                 db_absent_entry_money = "1";
                                 break;
                             default:
+                                db_absent_entry_money = "0";
                                 break;
                         }
                         Log.e("55125",db_absent_entry_money);
@@ -435,7 +470,7 @@ public class AbsentNoteEntryFragment extends Fragment implements View.OnTouchLis
                     db_absent_entry_class= null;
                     absent_entry_kind.setText("請選擇");
                     db_absent_entry_kind=null;
-                    absent_entry_money= null;
+                    absent_entry_money.setText("請選擇");
                     db_absent_entry_money=null;
                     absent_entry_reason.setText("");
                     db_absent_entry_reason = null;
