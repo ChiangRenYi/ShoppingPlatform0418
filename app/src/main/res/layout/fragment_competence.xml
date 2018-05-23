@@ -1,17 +1,122 @@
-<com.yyydjk.library.DropDownMenu
-    android:id="@+id/dropDownMenu"
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:ddmenuTextSize="13sp"
-    app:ddtextUnselectedColor="@color/drop_down_unselected"
-    app:ddtextSelectedColor="@color/drop_down_selected"
-    app:dddividerColor="@color/gray"
-    app:ddunderlineColor="@color/gray"
-    app:ddmenuMenuHeightPercent="0.5"
-    app:ddmenuSelectedIcon="@mipmap/drop_down_selected_icon"
-    app:ddmaskColor="@color/mask_color"
-    app:ddmenuBackgroundColor="@color/white"
-    app:ddmenuUnselectedIcon="@mipmap/drop_down_unselected_icon"
-    />
+    android:background="#efedf2"
+    android:orientation="vertical"
+    android:stretchColumns="0">
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/common_google_signin_btn_text_light_pressed"
+            android:background="@color/colorPrimary"
+            android:text="請選擇欲申請權限之托育中心：" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_10sdp">
+
+        <CheckBox
+            android:button="@drawable/competence_chechbox"
+            android:id="@+id/checkBox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/common_google_signin_btn_text_light_pressed"
+            android:text="  三峽光明公共托育中心" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp">
+
+        <CheckBox
+            android:button="@drawable/competence_chechbox"
+            android:id="@+id/checkBox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/common_google_signin_btn_text_light_pressed"
+            android:text="  三峽中園公共托育中心"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp">
+
+        <CheckBox
+            android:id="@+id/checkBox3"
+            android:button="@drawable/competence_chechbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/common_google_signin_btn_text_light_pressed"
+            android:text="  樹林三多公共托育中心" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp">
+
+        <CheckBox
+            android:id="@+id/checkBox4"
+            android:button="@drawable/competence_chechbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/common_google_signin_btn_text_light_pressed"
+            android:text="  林口麗林公共托育中心" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp">
+
+        <CheckBox
+            android:id="@+id/checkBox5"
+            android:button="@drawable/competence_chechbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/common_google_signin_btn_text_light_pressed"
+            android:text="  樹林武林公共托育中心" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_20sdp">
+
+        <Button
+            android:id="@+id/button"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_31sdp"
+            android:textSize="@dimen/_15sdp"
+            android:text="確認" />
+    </TableRow>
+
+</TableLayout>

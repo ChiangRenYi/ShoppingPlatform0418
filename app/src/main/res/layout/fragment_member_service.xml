@@ -46,10 +46,10 @@
             android:background="@drawable/custom_opinion_edit_text"
             android:drawableLeft="@drawable/competence"
             android:padding="@dimen/_15sdp"
-            android:text="權限管理"
+            android:text="選擇托育中心"
             android:textColor="@android:color/black"
             android:textSize="@dimen/_20sdp"
-            android:visibility="invisible"/>
+            android:visibility="visible"/>
 
     </LinearLayout>
 
