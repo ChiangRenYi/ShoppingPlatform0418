@@ -21,7 +21,7 @@
 
         <CheckBox
             android:id="@+id/checkBox"
-            style="@style/CustomCheckboxTheme"
+            android:button="@drawable/shoppingcar_chechbox"
             android:layout_width="0dp"
             android:layout_height="@dimen/_30sdp"
             android:layout_gravity="center"
