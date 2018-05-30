@@ -537,7 +537,7 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                     @Override
                     public void run() {
                         try {
-                            Thread.sleep(1500);
+                            Thread.sleep(3000);
                             progressDoalog.dismiss();
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -550,7 +550,7 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                     public void run() {
                         shoppingAdapter.notifyDataSetChanged();
                     }
-                },1500);
+                },3000);
 
             }
         });

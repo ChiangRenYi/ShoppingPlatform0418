@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements
         //fragmentAdapter控制
         account = preferences.getString("PREFERENCE_ACCOUNT", "");
         tabLayout.addTab(tabLayout.newTab().setText("設定").setIcon(R.drawable.ic_settings));
-        tabLayout.addTab(tabLayout.newTab().setText("公告").setIcon(R.drawable.loupe));
+        tabLayout.addTab(tabLayout.newTab().setText("公告").setIcon(R.drawable.annoucement));
         tabLayout.addTab(tabLayout.newTab().setText("帳戶").setIcon(R.drawable.user));
         if(loginActivity.userPeople.equals("student")) {
             tabLayout.addTab(tabLayout.newTab().setText("購物車").setIcon(R.drawable.shoppingcart));
