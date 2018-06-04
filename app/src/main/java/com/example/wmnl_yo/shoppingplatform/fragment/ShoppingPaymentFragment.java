@@ -174,7 +174,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                         @Override
                         public void run() {
                             try {
-                                Thread.sleep(500);
+                                Thread.sleep(3000);
                                 progressDoalog.dismiss();
 
                             } catch (Exception e) {
@@ -622,7 +622,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                                 }
                             }
                         }
-                    },1500);
+                    },3000);
                 }catch (Exception e){
                     Toast.makeText(getContext(),"請檢查網路連線訊號",Toast.LENGTH_SHORT).show();
                 }
