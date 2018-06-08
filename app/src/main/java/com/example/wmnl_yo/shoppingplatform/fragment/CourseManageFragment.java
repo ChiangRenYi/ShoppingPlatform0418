@@ -44,6 +44,7 @@ public class CourseManageFragment extends Fragment {
                 CourseQueryFragment.cType="";
                 CourseQueryFragment.cTeacher="";
                 CourseQueryFragment.cMonth="";
+                CourseRecordFragment.checkCourseRecord="";
                 CourseQueryFragment.stringBuilding = null;
                 CourseQueryFragment.stringType= null;
                 CourseQueryFragment.stringMonth= null;

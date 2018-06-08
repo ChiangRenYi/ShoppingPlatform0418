@@ -119,7 +119,7 @@ public class CourseRecordFragment extends Fragment implements View.OnTouchListen
                 Log.d("55125",checkCourseRecord+"123");
                 if(checkCourseRecord.equals("") ){
                     Toast.makeText(getContext(),"請檢查網路連線訊號",Toast.LENGTH_SHORT).show();
-                }else if(checkCourseRecord.equals("nothing") || checkCourseRecord.equals("//THANKS")){
+                }else if(checkCourseRecord.equals("nothing")){
                     Toast.makeText(getContext(),"沒有購買課程的紀錄",Toast.LENGTH_SHORT).show();
                 }else {
                     rAdapter.notifyDataSetChanged();
