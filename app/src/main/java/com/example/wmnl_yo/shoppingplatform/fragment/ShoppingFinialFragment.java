@@ -160,6 +160,7 @@ public class ShoppingFinialFragment extends Fragment implements View.OnTouchList
                             @Override
                             public void run() {
                                 ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingListFragment.class, null);
+
                             }
                         },3000);
                         break;

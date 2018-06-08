@@ -106,6 +106,7 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -115,7 +116,6 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_shopping_list, container, false);
         v.setOnTouchListener(this);
-
         deleteitem = "";
         deleteitemcheck = "";
         goods = "";
@@ -372,119 +372,158 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
 
             holder.tvGoodsPrice.setText(String.valueOf(priceTotal).trim());
             holder.tvGoodWarehouse.setText(mShoppingCarObjectList.get(position).goodswarehouse.trim());
-            holder.btnplus.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int newgoodsnumber = Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber) + 1;
-                    if(newgoodsnumber > Integer.valueOf(mShoppingCarObjectList.get(position).goodswarehouse) && mShoppingCarObjectList.get(position).goodskind.equals("1")){
-                        newgoodsnumber = Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber);
-                        mShoppingCarObjectList.get(position).goodsnumber = String.valueOf(newgoodsnumber);
-                        int newgoodsprice = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice.trim()).intValue() * Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber.trim()).intValue();
-                        holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
-                        holder.tvGoodsPrice.setText(String.valueOf(newgoodsprice));
-                    }else if(mShoppingCarObjectList.get(position).goodskind.equals("0")){
-                        newgoodsnumber = 1;
-                        mShoppingCarObjectList.get(position).goodsnumber = String.valueOf(newgoodsnumber);
-                        int newgoodsprice = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice.trim()).intValue() * Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber.trim()).intValue();
-                        holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
-                        holder.tvGoodsPrice.setText(String.valueOf(newgoodsprice));
-                    }else if(newgoodsnumber <= Integer.valueOf(mShoppingCarObjectList.get(position).goodswarehouse) && mShoppingCarObjectList.get(position).goodskind.equals("1")) {
-                        mShoppingCarObjectList.get(position).goodsnumber = String.valueOf(newgoodsnumber);
-                        int newgoodsprice = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice.trim()).intValue() * Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber.trim()).intValue();
-                        holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
-                        holder.tvGoodsPrice.setText(String.valueOf(newgoodsprice));
-                    }
+            try {
+                holder.btnplus.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try {
+                            int newgoodsnumber = Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber) + 1;
+                            if (newgoodsnumber > Integer.valueOf(mShoppingCarObjectList.get(position).goodswarehouse) && mShoppingCarObjectList.get(position).goodskind.equals("1")) {
+                                newgoodsnumber = Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber);
+                                mShoppingCarObjectList.get(position).goodsnumber = String.valueOf(newgoodsnumber);
+                                int newgoodsprice = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice.trim()).intValue() * Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber.trim()).intValue();
+                                holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
+                                holder.tvGoodsPrice.setText(String.valueOf(newgoodsprice));
+                            } else if (mShoppingCarObjectList.get(position).goodskind.equals("0")) {
+                                newgoodsnumber = 1;
+                                mShoppingCarObjectList.get(position).goodsnumber = String.valueOf(newgoodsnumber);
+                                int newgoodsprice = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice.trim()).intValue() * Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber.trim()).intValue();
+                                holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
+                                holder.tvGoodsPrice.setText(String.valueOf(newgoodsprice));
+                            } else if (newgoodsnumber <= Integer.valueOf(mShoppingCarObjectList.get(position).goodswarehouse) && mShoppingCarObjectList.get(position).goodskind.equals("1")) {
+                                mShoppingCarObjectList.get(position).goodsnumber = String.valueOf(newgoodsnumber);
+                                int newgoodsprice = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice.trim()).intValue() * Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber.trim()).intValue();
+                                holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
+                                holder.tvGoodsPrice.setText(String.valueOf(newgoodsprice));
+                            }
+                        }catch (Exception e){
+                            shoppingAdapter.notifyDataSetChanged();
+                            Toast.makeText(getContext(), "重新整理，請稍後", Toast.LENGTH_SHORT).show();
+                        }
 //                    Toast.makeText(getContext(),position+"plus"+mShoppingCarObjectList.get(position).goodsnumber,Toast.LENGTH_LONG).show();
-                }
-            });
-
-            holder.btnminus.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int newgoodsnumber = Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber) - 1;
-                    if (newgoodsnumber <= 0) {
-                        newgoodsnumber = Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber);
-                        mShoppingCarObjectList.get(position).goodsnumber = String.valueOf(newgoodsnumber);
-                        holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
-                        int newgoodsprice = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice).intValue() * Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber).intValue();
-                        holder.tvGoodsPrice.setText(String.valueOf(newgoodsprice));
-                    } else {
-                        mShoppingCarObjectList.get(position).goodsnumber = String.valueOf(newgoodsnumber);
-                        int newgoodsprice = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice).intValue() * Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber).intValue();
-                        holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
-                        holder.tvGoodsPrice.setText(String.valueOf(newgoodsprice));
+                    }
+                });
+            }catch (Exception e){
+                shoppingAdapter.notifyDataSetChanged();
+                Toast.makeText(getContext(), "重新整理，請稍後", Toast.LENGTH_SHORT).show();
+            }
+            try {
+                holder.btnminus.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try {
+                            int newgoodsnumber = Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber) - 1;
+                            if (newgoodsnumber <= 0) {
+                                newgoodsnumber = Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber);
+                                mShoppingCarObjectList.get(position).goodsnumber = String.valueOf(newgoodsnumber);
+                                holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
+                                int newgoodsprice = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice).intValue() * Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber).intValue();
+                                holder.tvGoodsPrice.setText(String.valueOf(newgoodsprice));
+                            } else {
+                                mShoppingCarObjectList.get(position).goodsnumber = String.valueOf(newgoodsnumber);
+                                int newgoodsprice = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice).intValue() * Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber).intValue();
+                                holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
+                                holder.tvGoodsPrice.setText(String.valueOf(newgoodsprice));
 //                    Toast.makeText(getContext(),"minus"+mShoppingCarObjectList.get(position).goodsnumber,Toast.LENGTH_LONG).show();
+                            }
+                        }catch (Exception e){
+                            shoppingAdapter.notifyDataSetChanged();
+                            Toast.makeText(getContext(), "重新整理，請稍後", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
-            });
+                });
+            }catch (Exception e){
+                shoppingAdapter.notifyDataSetChanged();
+                Toast.makeText(getContext(), "重新整理，請稍後", Toast.LENGTH_SHORT).show();
+            }
             holder.checkBox.setChecked(false);
-            holder.checkBox.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (holder.checkBox.isChecked()) {
-                        goods = goods + mShoppingCarObjectList.get(position).goodsCount.toString() + ",";
-//                        Log.e("55125", goods);
-                    } else {
-                        String[] goodsarray = goods.split(",");
-                        goods = "";
-                        ArrayList goodsarraylist = new ArrayList();
-                        for (int t = 0; t < goodsarray.length; t++) {
-                            goodsarraylist.add(goodsarray[t]);
+            try{
+                holder.checkBox.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try {
+                            if (holder.checkBox.isChecked()) {
+                                goods = goods + mShoppingCarObjectList.get(position).goodsCount.toString() + ",";
+//                          Log.e("55125", goods);
+                            } else {
+                                String[] goodsarray = goods.split(",");
+                                goods = "";
+                                ArrayList goodsarraylist = new ArrayList();
+                                for (int t = 0; t < goodsarray.length; t++) {
+                                    goodsarraylist.add(goodsarray[t]);
+                                }
+                                goodsarraylist.remove(mShoppingCarObjectList.get(position).goodsCount.toString());
+                                for (int t = 0; t < goodsarraylist.size(); t++) {
+                                    goods = goods + goodsarraylist.get(t).toString() + ",";
+                                }
+                            }
+                        }catch (Exception e){
+                            shoppingAdapter.notifyDataSetChanged();
+                            Toast.makeText(getContext(), "重新整理，請稍後", Toast.LENGTH_SHORT).show();
                         }
-                        goodsarraylist.remove(mShoppingCarObjectList.get(position).goodsCount.toString());
-                        for (int t = 0; t < goodsarraylist.size(); t++) {
-                            goods = goods + goodsarraylist.get(t).toString() + ",";
+//
+                    }
+                });
+            }catch (Exception e){
+                shoppingAdapter.notifyDataSetChanged();
+                Toast.makeText(getContext(), "重新整理，請稍後", Toast.LENGTH_SHORT).show();
+            }
+            try {
+                holder.tvGoodsName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try {
+                            new AlertDialog.Builder(getActivity()).setTitle("是否刪除 " + mShoppingCarObjectList.get(position).goods.toString() + " 商品")
+                                    .setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                            deleteitem = mShoppingCarObjectList.get(position).goodsCount.toString().trim();
+
+                                            DeleteShoppingListObject deleteShoppingListObject = new DeleteShoppingListObject();
+                                            deleteShoppingListObject.execute();
+                                            Handler handler = new Handler();
+                                            handler.postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    switch (deleteitemcheck) {
+                                                        case "deletegoods":
+                                                            Log.d("55125-1", deleteitemcheck);
+                                                            Toast.makeText(getActivity(), "您刪除了" + mShoppingCarObjectList.get(position).goods.toString() + "商品", Toast.LENGTH_SHORT).show();
+                                                            ShoppingCarObject.ITEMS.remove(position);
+                                                            shoppingAdapter.notifyDataSetChanged();
+                                                            break;
+                                                        case "deletecourse":
+                                                            Log.d("55125-1", deleteitemcheck);
+                                                            Toast.makeText(getActivity(), "請至課程管理與查詢的已選課程取消", Toast.LENGTH_SHORT).show();
+                                                            break;
+                                                        default:
+                                                            break;
+                                                    }
+                                                }
+                                            }, 300);
+
+
+                                        }
+                                    })
+                                    .setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Toast.makeText(getContext(), R.string.cancel, Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).show();
+
+                        }catch (Exception e){
+                            shoppingAdapter.notifyDataSetChanged();
+                            Toast.makeText(getContext(), "重新整理，請稍後", Toast.LENGTH_SHORT).show();
                         }
                     }
-//
-                }
-            });
-            holder.tvGoodsName.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new AlertDialog.Builder(getActivity()).setTitle("是否刪除 " + mShoppingCarObjectList.get(position).goods.toString() + " 商品")
-                            .setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
+                });
+            }catch (Exception e){
+                shoppingAdapter.notifyDataSetChanged();
+                Toast.makeText(getContext(), "重新整理，請稍後", Toast.LENGTH_SHORT).show();
+            }
 
-                                    deleteitem = mShoppingCarObjectList.get(position).goodsCount.toString().trim();
-
-                                    DeleteShoppingListObject deleteShoppingListObject = new DeleteShoppingListObject();
-                                    deleteShoppingListObject.execute();
-                                    Handler handler = new Handler();
-                                    handler.postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            switch (deleteitemcheck) {
-                                                case "deletegoods":
-                                                    Log.d("55125-1", deleteitemcheck);
-                                                    Toast.makeText(getActivity(), "您刪除了" + mShoppingCarObjectList.get(position).goods.toString() + "商品", Toast.LENGTH_SHORT).show();
-                                                    ShoppingCarObject.ITEMS.remove(position);
-                                                    shoppingAdapter.notifyDataSetChanged();
-                                                    break;
-                                                case "deletecourse":
-                                                    Log.d("55125-1", deleteitemcheck);
-                                                    Toast.makeText(getActivity(), "請至課程管理與查詢的已選課程取消", Toast.LENGTH_SHORT).show();
-                                                    break;
-                                                default:
-                                                    break;
-                                            }
-                                        }
-                                    }, 300);
-
-
-                                }
-                            })
-                            .setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    Toast.makeText(getContext(), R.string.cancel, Toast.LENGTH_SHORT).show();
-                                }
-                            }).show();
-
-
-                }
-            });
             holder.tvGoodBuild.setText(mShoppingCarObjectList.get(position).goodsbuild.trim());
         }
 

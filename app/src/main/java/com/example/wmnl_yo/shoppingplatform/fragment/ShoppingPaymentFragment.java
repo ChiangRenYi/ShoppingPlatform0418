@@ -35,7 +35,6 @@ import java.util.Calendar;
 import java.util.List;
 
 import static android.support.v4.view.PagerAdapter.POSITION_NONE;
-
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
