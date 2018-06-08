@@ -269,7 +269,7 @@ public class CourseQueryDetailFragment extends Fragment implements View.OnTouchL
                                                                     break;
                                                                 case "you don't have permissions":
                                                                     Toast.makeText(getActivity(),
-                                                                            "請進會員資料勾選該親子館即可報名", Toast.LENGTH_SHORT).show();
+                                                                            "請從網頁版新增親子館權限即可報名", Toast.LENGTH_SHORT).show();
                                                                     break;
                                                                 case "alternate":
                                                                     Toast.makeText(getActivity(),
