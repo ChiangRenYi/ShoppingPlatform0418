@@ -46,6 +46,7 @@ public class Update_orderlist extends AsyncTask<String, Void, String> {
                     .appendQueryParameter("bod_allobject_id", ShoppingPaymentFragment.shoppingcar_goodscount)
                     .appendQueryParameter("bod_allobject_number", ShoppingPaymentFragment.shoppingcar_goodsnumber)
                     .appendQueryParameter("bod_allobject_price", ShoppingPaymentFragment.shoppingcar_goodsprice);
+            Log.d("55125", ShoppingPaymentFragment.bigorderlistnumber+","+Constants.ACCOUNT+","+ShoppingPaymentFragment.shoppingcar_goodscount+","+ShoppingPaymentFragment.shoppingcar_goodsnumber+","+ShoppingPaymentFragment.shoppingcar_goodsprice);
             String query = builder.build().getEncodedQuery();
 
             OutputStream os = connection.getOutputStream();

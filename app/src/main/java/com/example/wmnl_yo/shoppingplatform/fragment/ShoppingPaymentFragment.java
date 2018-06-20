@@ -173,7 +173,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                         @Override
                         public void run() {
                             try {
-                                Thread.sleep(3000);
+                                Thread.sleep(3900);
                                 progressDoalog.dismiss();
 
                             } catch (Exception e) {

@@ -357,6 +357,7 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
+
             try {
                 if(mShoppingCarObjectList.get(position).goodskind.equals("0")){
                     holder.tvGoodsName.setText(mShoppingCarObjectList.get(position).goodschildname.trim()+"："+mShoppingCarObjectList.get(position).goods.trim());
