@@ -248,28 +248,44 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                             });
 
                         } else {
+                            Log.d("55125-goods",","+goods+",");
+                            if(goods.equals(""))
+                            {
+                                Toast.makeText(getContext(), "請選擇商品", Toast.LENGTH_SHORT).show();
+                            }else {
+                                GetBuildingblnumber getBuildingblnumber = new GetBuildingblnumber();
+                                getBuildingblnumber.execute();
 
-                            GetBuildingblnumber getBuildingblnumber = new GetBuildingblnumber();
-                            getBuildingblnumber.execute();
+                                String[] deletegoods = goods.split(",");
+                                int count = deletegoods.length;
+                                for (int i = goodsnumber - 1; i >= 0; i--) {
+                                    int q = 0;
 
-                            String[] deletegoods = goods.split(",");
-                            int count = deletegoods.length;
-                            for (int i = goodsnumber - 1; i >= 0; i--) {
-                                int q = 0;
-
-                                for (int p = 0; p < count; p++) {
+                                    for (int p = 0; p < count; p++) {
 //                        Log.d("55125","#"+mShoppingCarObjectList.get(i).goodsCount.trim()+"&"+deletegoods[p].toString()+"#");
-                                    if (mShoppingCarObjectList.get(i).goodsCount.trim().equals(deletegoods[p].toString().trim())) {
-                                        q = 1;
-                                    }
+                                        try {
+                                            if (mShoppingCarObjectList.get(i).goodsCount.trim().equals(deletegoods[p].toString().trim())) {
+                                                q = 1;
+                                            }
+                                        } catch (Exception e) {
+
+                                        }
+
 //                        Log.d("55125",String.valueOf(q));
-                                }
-                                if (q == 0) {
+                                    }
+                                    try {
+                                        if (q == 0) {
 //                        Log.d("55125",String.valueOf(i));
-                                    ShoppingCarObject.ITEMS.remove(i);
+                                            ShoppingCarObject.ITEMS.remove(i);
+                                        }
+                                    } catch (Exception e) {
+
+                                    }
+
                                 }
+                                ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingPaymentFragment.class, null);
+
                             }
-                            ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingPaymentFragment.class, null);
                         }
                     }
                 }, 1500);
