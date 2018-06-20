@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
+import com.example.wmnl_yo.shoppingplatform.database.DeleteInsertBigorderlist;
 import com.example.wmnl_yo.shoppingplatform.database.GetShoppingListAll;
 import com.example.wmnl_yo.shoppingplatform.database.Insert_newbigorderlist;
 import com.example.wmnl_yo.shoppingplatform.database.Update_bigorderlist;
@@ -616,7 +617,12 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                                         }
                                         break;
                                     default:
+                                        DeleteInsertBigorderlist deleteInsertBigorderlist = new DeleteInsertBigorderlist();
+                                        deleteInsertBigorderlist.execute();
+
                                         Toast.makeText(getContext(),"請選擇付款方式",Toast.LENGTH_SHORT).show();
+
+
                                         break;
                                 }
                             }
