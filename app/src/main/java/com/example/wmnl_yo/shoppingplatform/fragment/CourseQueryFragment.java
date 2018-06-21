@@ -15,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -27,7 +26,6 @@ import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
 import com.example.wmnl_yo.shoppingplatform.database.GetCourseQueryFragmentBuilding;
 import com.example.wmnl_yo.shoppingplatform.database.GetCourseQueryFragmentMonth;
-import com.example.wmnl_yo.shoppingplatform.database.GetCourseQueryFragmentPrice;
 import com.example.wmnl_yo.shoppingplatform.database.GetCourseQueryFragmentResult;
 import com.example.wmnl_yo.shoppingplatform.database.GetCourseQueryFragmentTeacher;
 import com.example.wmnl_yo.shoppingplatform.database.GetCourseQueryFragmentType;
@@ -458,7 +456,7 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
                     tv[3].setText("請選擇");
                     tv[4].setText("請選擇");
                     tv[5].setText("請選擇");
-                    Log.e("55125", courseQueryCountry);
+                    Log.e("55125-a", courseQueryCountry);
                 } else if (choose == 2) {
                     cBuilding = "";
                     cType = "";
@@ -474,7 +472,7 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
                     CourseQueryFragment.stringTeacher= null;
                     courseQueryCity = numberPickerView.getContentByCurrValue();
                     cCity = courseQueryCity;
-                    Log.e("55125", cCity);
+                    Log.e("55125-a", cCity);
 
 
                     GetCourseQueryFragmentBuilding getCourseQueryFragmentBuilding = new GetCourseQueryFragmentBuilding();
@@ -504,7 +502,7 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
                     CourseQueryFragment.stringTeacher= null;
                     courseQueryType = numberPickerView.getContentByCurrValue();
                     cType = courseQueryType;
-                    Log.e("55125", cType);
+                    Log.e("55125-a", cType);
                     GetCourseQueryFragmentMonth getCourseQueryFragmentMonth = new GetCourseQueryFragmentMonth();
                     getCourseQueryFragmentMonth.execute();
 
@@ -513,15 +511,15 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
                     tv[5].setText("請選擇");
                     CourseQueryFragment.stringTeacher= null;
                     courseQueryMonth = numberPickerView.getContentByCurrValue();
-                    cTeacher = courseQueryMonth;
-                    Log.e("55125", courseQueryMonth);
+                    cMonth = courseQueryMonth;
+                    Log.e("55125-a", cMonth);
                     GetCourseQueryFragmentTeacher getCourseQueryFragmentTeacher = new GetCourseQueryFragmentTeacher();
                     getCourseQueryFragmentTeacher.execute();
 
                 } else if (choose == 6) {
                     courseQueryTeacher = numberPickerView.getContentByCurrValue();
                     cTeacher = courseQueryTeacher;
-                    Log.e("55125", cTeacher);
+                    Log.e("55125-a", cTeacher);
                 }
                 ad.dismiss();
                 tv[position].setText(numberPickerView.getContentByCurrValue().trim());
