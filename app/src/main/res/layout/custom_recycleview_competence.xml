@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_35sdp"
+    android:orientation="vertical"
+    android:id="@+id/ll_com">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:gravity="center" />
+
+        <CheckBox
+            android:id="@+id/com_checkBox"
+            android:button="@drawable/competence_chechbox"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_gravity="center"
+            android:layout_weight="1.2"
+            android:checked="false"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/com_name"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_gravity="center"
+            android:layout_weight="8"
+            android:textSize="@dimen/_18sdp"
+            android:textColor="@color/common_google_signin_btn_text_light_focused"
+            android:text="這裡是親子館名稱"
+           android:gravity="center_vertical" />
+
+    </LinearLayout>
+</LinearLayout>

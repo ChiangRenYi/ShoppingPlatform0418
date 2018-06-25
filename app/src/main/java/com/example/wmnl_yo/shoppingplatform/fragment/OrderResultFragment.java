@@ -53,7 +53,8 @@ public class OrderResultFragment extends Fragment implements View.OnTouchListene
     private  String payway,s_payway,state,s_state;
     private RecyclerView recyclerView;
     public static String NumForDB;
-    private MyAdapter myAdapter;
+    public static MyAdapter myAdapter;
+    public static List<OrderObject.OrderObjectItem> OrderObjectList;
 
     public OrderResultFragment() {
         // Required empty public constructor
@@ -176,7 +177,7 @@ public class OrderResultFragment extends Fragment implements View.OnTouchListene
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-        private List<OrderObject.OrderObjectItem> OrderObjectList;
+//         List<OrderObject.OrderObjectItem> OrderObjectList;
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public LinearLayout ll;

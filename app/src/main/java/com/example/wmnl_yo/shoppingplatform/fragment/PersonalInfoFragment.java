@@ -165,7 +165,7 @@ public class PersonalInfoFragment extends Fragment {
                 Toast.makeText(getActivity(), "請選擇大頭貼", Toast.LENGTH_LONG).show();
             }
 
-            layoutSetKinship.setOnClickListener(new View.OnClickListener() {
+        /*    layoutSetKinship.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Fragment fragment = null;
@@ -184,7 +184,7 @@ public class PersonalInfoFragment extends Fragment {
                             .addToBackStack(null)
                             .commit();
                 }
-            });
+            });*/
 
 
         }

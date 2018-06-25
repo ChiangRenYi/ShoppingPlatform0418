@@ -5,8 +5,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.wmnl_yo.shoppingplatform.Constants;
-import com.example.wmnl_yo.shoppingplatform.fragment.OrderResultFragment;
-import com.example.wmnl_yo.shoppingplatform.object.OrderObject;
+import com.example.wmnl_yo.shoppingplatform.object.CompetenceObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -18,17 +17,15 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static com.example.wmnl_yo.shoppingplatform.fragment.OrderResultFragment.OrderObjectList;
 /**
- * Created by WMNL-Jimmy on 2018/3/9.
+ * Created by WMNL-Jimmy on 2018/5/30.
  */
 
-public class GetOrderList extends AsyncTask<String,Void,String> {
-
+public class GetCompetenceState extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... strings) {
-        Log.d("55125", "getOrderList...");
-        String url = Constants.SERVER_URL + "getOrderList.php";
+        Log.d("55125", "getCompetence...");
+        String url = Constants.SERVER_URL + "getCompetence.php";
         HttpURLConnection connection = null;
         BufferedReader reader = null;
         String result = null;
@@ -100,8 +97,8 @@ public class GetOrderList extends AsyncTask<String,Void,String> {
         if (s != null) {
             Log.d("55125", s);
             int j = 0;
-            OrderObject.ITEMS.clear();
-            OrderObject dim = new OrderObject();
+            CompetenceObject.ITEMS.clear();
+            CompetenceObject dim = new CompetenceObject();
 
             String[] orderlistQuery = s.split("<br>");
             String T = String.valueOf(orderlistQuery.length - 1);
@@ -116,20 +113,10 @@ public class GetOrderList extends AsyncTask<String,Void,String> {
             for (int i = 0; i < orderlistQuery.length - 1; i++) {
 
                 orderlistQueryInf = orderlistQuery[i].split("@#");
-                dim.addItem(new OrderObject.OrderObjectItem(
+                dim.addItem(new CompetenceObject.CompetenceObjectItem(
                         orderlistQueryInf[2],
-                        "課程",
-                        "籃球",
-                        orderlistQueryInf[3],
-                        orderlistQueryInf[3],
-                        orderlistQueryInf[4],
-                        orderlistQueryInf[3],
-                        "無",
-                        10,
-                        10,
-                        100,
-                        orderlistQueryInf[5],
-                        orderlistQueryInf[1]));
+                        "課程"
+                        ));
 
                 orderlistQuery_date[j] = orderlistQueryInf[0];
                 orderlistQuery_num[j] = orderlistQueryInf[1];
@@ -139,11 +126,7 @@ public class GetOrderList extends AsyncTask<String,Void,String> {
 
                 Log.d("55125", j + ":" + orderlistQueryInf[1] + "," + orderlistQueryInf[2] + "," + orderlistQueryInf[3] + "," + orderlistQueryInf[4] + "," + orderlistQueryInf[5]);
             }
-        } else{
-            OrderObjectList.clear();
-            OrderResultFragment.myAdapter.notifyDataSetChanged();
         }
 
     }
-
 }

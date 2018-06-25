@@ -355,6 +355,7 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
             }
 
 
+
         }
 
         public MyAdapter(List<ShoppingCarObject.ShoppingCarObjectItem> ShoppingCarObjectList) {
