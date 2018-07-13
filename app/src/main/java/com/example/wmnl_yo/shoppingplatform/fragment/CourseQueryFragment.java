@@ -244,160 +244,166 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         // i = 0 是 header view
-        if (i == 1) {
-            numberPicker(getResources().getStringArray(R.array.courseFindTypeCountyCity), i - 1);
-            t = String.valueOf(i);
 
-        } else if (i == 2) {
-            if (cCountry == null) {
-                if(cCountry.equals("")){
-                    Toast.makeText(view.getContext(), "縣市沒選，請選擇", Toast.LENGTH_SHORT).show();
+        try {
+            if (i == 1) {
+                numberPicker(getResources().getStringArray(R.array.courseFindTypeCountyCity), i - 1);
+                t = String.valueOf(i);
 
-                }else {
-                    Toast.makeText(view.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                switch (courseQueryCountry) {
+            } else if (i == 2) {
+                if (cCountry == null) {
+                    if (cCountry.equals("")) {
+                        Toast.makeText(view.getContext(), "縣市沒選，請選擇", Toast.LENGTH_SHORT).show();
 
-                    case "不限":
-                        break;
-                    case "基隆市":
-                        numberPicker(getResources().getStringArray(R.array.基隆市), i - 1);
-                        break;
-                    case "臺北市":
-                        numberPicker(getResources().getStringArray(R.array.臺北市), i - 1);
-                        break;
-                    case "新北市":
-                        numberPicker(getResources().getStringArray(R.array.新北市), i - 1);
-                        break;
-                    case "桃園市":
-                        numberPicker(getResources().getStringArray(R.array.桃園市), i - 1);
-                        break;
-                    case "新竹市":
-                        numberPicker(getResources().getStringArray(R.array.新竹市), i - 1);
-                        break;
-                    case "新竹縣":
-                        numberPicker(getResources().getStringArray(R.array.新竹縣), i - 1);
-                        break;
-                    case "苗栗縣":
-                        numberPicker(getResources().getStringArray(R.array.苗栗縣), i - 1);
-                        break;
-                    case "臺中市":
-                        numberPicker(getResources().getStringArray(R.array.臺中市), i - 1);
-                        break;
-                    case "彰化縣":
-                        numberPicker(getResources().getStringArray(R.array.彰化縣), i - 1);
-                        break;
-                    case "南投縣":
-                        numberPicker(getResources().getStringArray(R.array.南投縣), i - 1);
-                        break;
-                    case "雲林縣":
-                        numberPicker(getResources().getStringArray(R.array.雲林縣), i - 1);
-                        break;
-                    case "嘉義市":
-                        numberPicker(getResources().getStringArray(R.array.嘉義市), i - 1);
-                        break;
-                    case "嘉義縣":
-                        numberPicker(getResources().getStringArray(R.array.嘉義縣), i - 1);
-                        break;
-                    case "臺南市":
-                        numberPicker(getResources().getStringArray(R.array.臺南市), i - 1);
-                        break;
-                    case "高雄市":
-                        numberPicker(getResources().getStringArray(R.array.高雄市), i - 1);
-                        break;
-                    case "屏東縣":
-                        numberPicker(getResources().getStringArray(R.array.屏東縣), i - 1);
-                        break;
-                    case "臺東縣":
-                        numberPicker(getResources().getStringArray(R.array.臺東縣), i - 1);
-                        break;
-                    case "花蓮縣":
-                        numberPicker(getResources().getStringArray(R.array.花蓮縣), i - 1);
-                        break;
-                    case "宜蘭縣":
-                        numberPicker(getResources().getStringArray(R.array.宜蘭縣), i - 1);
-                        break;
-                    case "澎湖縣":
-                        numberPicker(getResources().getStringArray(R.array.澎湖縣), i - 1);
-                        break;
-                    case "金門縣":
-                        numberPicker(getResources().getStringArray(R.array.金門縣), i - 1);
-                        break;
-                    case "連江縣":
-                        numberPicker(getResources().getStringArray(R.array.連江縣), i - 1);
-                        break;
-                    default:
-
-                        break;
-                }
-            }
-            Building_check = "";
-            t = String.valueOf(i);
-        } else if (i == 3) {
-
-            if (stringBuilding == null) {
-                if(cCountry.equals("") || cCity.equals("")){
-                    Toast.makeText(view.getContext(), "縣市或地區有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
-
-                }else{
-                    if(Building_check.equals("crycry"))
-                        Toast.makeText(view.getContext(), "此地區尚未有合作的親子館", Toast.LENGTH_SHORT).show();
-                    else {
-                        tv[1].setText("請選擇");
-                        cBuilding = "";
+                    } else {
                         Toast.makeText(view.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    switch (courseQueryCountry) {
+
+                        case "不限":
+                            break;
+                        case "基隆市":
+                            numberPicker(getResources().getStringArray(R.array.基隆市), i - 1);
+                            break;
+                        case "臺北市":
+                            numberPicker(getResources().getStringArray(R.array.臺北市), i - 1);
+                            break;
+                        case "新北市":
+                            numberPicker(getResources().getStringArray(R.array.新北市), i - 1);
+                            break;
+                        case "桃園市":
+                            numberPicker(getResources().getStringArray(R.array.桃園市), i - 1);
+                            break;
+                        case "新竹市":
+                            numberPicker(getResources().getStringArray(R.array.新竹市), i - 1);
+                            break;
+                        case "新竹縣":
+                            numberPicker(getResources().getStringArray(R.array.新竹縣), i - 1);
+                            break;
+                        case "苗栗縣":
+                            numberPicker(getResources().getStringArray(R.array.苗栗縣), i - 1);
+                            break;
+                        case "臺中市":
+                            numberPicker(getResources().getStringArray(R.array.臺中市), i - 1);
+                            break;
+                        case "彰化縣":
+                            numberPicker(getResources().getStringArray(R.array.彰化縣), i - 1);
+                            break;
+                        case "南投縣":
+                            numberPicker(getResources().getStringArray(R.array.南投縣), i - 1);
+                            break;
+                        case "雲林縣":
+                            numberPicker(getResources().getStringArray(R.array.雲林縣), i - 1);
+                            break;
+                        case "嘉義市":
+                            numberPicker(getResources().getStringArray(R.array.嘉義市), i - 1);
+                            break;
+                        case "嘉義縣":
+                            numberPicker(getResources().getStringArray(R.array.嘉義縣), i - 1);
+                            break;
+                        case "臺南市":
+                            numberPicker(getResources().getStringArray(R.array.臺南市), i - 1);
+                            break;
+                        case "高雄市":
+                            numberPicker(getResources().getStringArray(R.array.高雄市), i - 1);
+                            break;
+                        case "屏東縣":
+                            numberPicker(getResources().getStringArray(R.array.屏東縣), i - 1);
+                            break;
+                        case "臺東縣":
+                            numberPicker(getResources().getStringArray(R.array.臺東縣), i - 1);
+                            break;
+                        case "花蓮縣":
+                            numberPicker(getResources().getStringArray(R.array.花蓮縣), i - 1);
+                            break;
+                        case "宜蘭縣":
+                            numberPicker(getResources().getStringArray(R.array.宜蘭縣), i - 1);
+                            break;
+                        case "澎湖縣":
+                            numberPicker(getResources().getStringArray(R.array.澎湖縣), i - 1);
+                            break;
+                        case "金門縣":
+                            numberPicker(getResources().getStringArray(R.array.金門縣), i - 1);
+                            break;
+                        case "連江縣":
+                            numberPicker(getResources().getStringArray(R.array.連江縣), i - 1);
+                            break;
+                        default:
+
+                            break;
+                    }
                 }
-
-            } else if (stringBuilding != null) {
-                numberPicker(stringBuilding, i - 1);
+                Building_check = "";
                 t = String.valueOf(i);
-            }
-        } else if (i == 4) {
-            if (stringType == null) {
-                if(cCountry.equals("") || cCity.equals("") || cBuilding.equals("")){
-                    Toast.makeText(view.getContext(), "縣市或地區或托育中心有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
+            } else if (i == 3) {
 
-                }else {
-                    tv[2].setText("請選擇");
-                    cType = "";
-                    Toast.makeText(view.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                if (stringBuilding == null) {
+                    if (cCountry.equals("") || cCity.equals("")) {
+                        Toast.makeText(view.getContext(), "縣市或地區有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        if (Building_check.equals("crycry"))
+                            Toast.makeText(view.getContext(), "此地區尚未有合作的親子館", Toast.LENGTH_SHORT).show();
+                        else {
+                            tv[1].setText("請選擇");
+                            cBuilding = "";
+                            Toast.makeText(view.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                } else if (stringBuilding != null) {
+                    numberPicker(stringBuilding, i - 1);
+                    t = String.valueOf(i);
                 }
-            } else if (stringType != null) {
-                numberPicker(stringType, i - 1);
-                t = String.valueOf(i);
-            }
-        }else if (i == 5) {
+            } else if (i == 4) {
+                if (stringType == null) {
+                    if (cCountry.equals("") || cCity.equals("") || cBuilding.equals("")) {
+                        Toast.makeText(view.getContext(), "縣市或地區或托育中心有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
 
-            if (stringMonth == null) {
-                if(cCountry.equals("") || cCity.equals("") || cBuilding.equals("") || cType.equals("") ){
-                    Toast.makeText(view.getContext(), "縣市或地區或托育中心或課程類別有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
-
-                }else {
-                    tv[3].setText("請選擇");
-                    cMonth = "";
-                    Toast.makeText(view.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                    } else {
+                        tv[2].setText("請選擇");
+                        cType = "";
+                        Toast.makeText(view.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                    }
+                } else if (stringType != null) {
+                    numberPicker(stringType, i - 1);
+                    t = String.valueOf(i);
                 }
-            } else if (stringMonth != null) {
-                numberPicker(stringMonth, i - 1);
-                t = String.valueOf(i);
-            }
-        } else if (i == 6) {
+            } else if (i == 5) {
 
-            if (stringTeacher == null) {
-                if(cCountry.equals("") || cCity.equals("") || cBuilding.equals("") || cType.equals("") || cMonth.equals("")){
-                    Toast.makeText(view.getContext(), "縣市或地區或托育中心或課程類別或開課月份有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
+                if (stringMonth == null) {
+                    if (cCountry.equals("") || cCity.equals("") || cBuilding.equals("") || cType.equals("")) {
+                        Toast.makeText(view.getContext(), "縣市或地區或托育中心或課程類別有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
 
-                }else {
-                    tv[4].setText("請選擇");
-                    cTeacher = "";
-                    Toast.makeText(view.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                    } else {
+                        tv[3].setText("請選擇");
+                        cMonth = "";
+                        Toast.makeText(view.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                    }
+                } else if (stringMonth != null) {
+                    numberPicker(stringMonth, i - 1);
+                    t = String.valueOf(i);
                 }
-            } else if (stringTeacher != null) {
-                numberPicker(stringTeacher, i - 1);
-                t = String.valueOf(i);
+            } else if (i == 6) {
+
+                if (stringTeacher == null) {
+                    if (cCountry.equals("") || cCity.equals("") || cBuilding.equals("") || cType.equals("") || cMonth.equals("")) {
+                        Toast.makeText(view.getContext(), "縣市或地區或托育中心或課程類別或開課月份有選項沒選，請選擇", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        tv[4].setText("請選擇");
+                        cTeacher = "";
+                        Toast.makeText(view.getContext(), "請檢查網路連線訊號", Toast.LENGTH_SHORT).show();
+                    }
+                } else if (stringTeacher != null) {
+                    numberPicker(stringTeacher, i - 1);
+                    t = String.valueOf(i);
+                }
             }
+        }catch (Exception e){
+
+
         }
     }
 
