@@ -110,18 +110,20 @@ Log.d("55125",BuildingFragment.bcountry+BuildingFragment.bcity+BuildingFragment.
             String[] buildingPhone = new String[building.length - 1];
             String[] buildingTime = new String[building.length - 1];
             String[] buildingAddress = new String[building.length - 1];
+            String[] buildingUrl = new String[building.length - 1];
 
             for (int i = 0; i < building.length - 1; i++) {
                 String[] buildingInf = new String[4];
                 buildingInf = building[i].split("@#");
-                dim.addItem(new BuildingObject.BuildingObjectItem(String.valueOf(i + 1), buildingInf[1],buildingInf[2],buildingInf[3],buildingInf[4]));
+                dim.addItem(new BuildingObject.BuildingObjectItem(String.valueOf(i + 1), buildingInf[1],buildingInf[2],buildingInf[3],buildingInf[4],buildingInf[5]));
 
                 buildingName[j] = buildingInf[1];
                 buildingPhone[j] = buildingInf[2];
                 buildingTime[j] = buildingInf[3];
                 buildingAddress[j] = buildingInf[4];
+                buildingAddress[j] = buildingInf[5];
                 j++;
-                Log.d("55125", j + ":"  + buildingInf[1] + buildingInf[2] + buildingInf[3] + buildingInf[4]);
+                Log.d("55125", j + ":"  + buildingInf[1] + buildingInf[2] + buildingInf[3] + buildingInf[4]+ buildingInf[5]);
             }
 
             if(BuildingDetailFragment.buildadapter!=null) {

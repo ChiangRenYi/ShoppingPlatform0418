@@ -21,12 +21,14 @@ public class BuildingObject {
         public final String time;
         public final String address;
         public final String id;
-        public BuildingObjectItem(String id,String home, String phone, String time, String address) {
+        public final String url;
+        public BuildingObjectItem(String id,String home, String phone, String time, String address, String url) {
             this.id = id;
             this.home = home;
             this.phone = phone;
             this.time = time;
             this.address = address;
+            this.url = url;
         }
     }
 }

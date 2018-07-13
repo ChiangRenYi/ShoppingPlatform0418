@@ -1,5 +1,6 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.adapter.MyBuildAdapter;
@@ -82,6 +84,19 @@ public class BuildingDetailFragment extends Fragment implements View.OnTouchList
         buildadapter = new MyBuildAdapter(BuildingObject.ITEMS);
         rv.setLayoutManager(layoutManager);
         rv.setAdapter(buildadapter);
+        final Dialog alertDialog = new Dialog(getActivity());
+        alertDialog.setContentView(R.layout.choose_build_alert);
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
+//        Window window = alertDialog.getWindow();
+//        window.setContentView(R.layout.choose_course_alert);
+        Button btn_cancel=(Button) alertDialog.findViewById(R.id.check);//确定按钮
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
         return v;
     }
 

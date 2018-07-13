@@ -1,6 +1,9 @@
 package com.example.wmnl_yo.shoppingplatform.adapter;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,18 +23,30 @@ public class MyBuildAdapter extends RecyclerView.Adapter<MyBuildAdapter.ViewHold
 
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = mValues.get(position);
         holder.tvHome.setText(mValues.get(position).home);
+        holder.tvHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+
+            public void onClick(View v) {
+                Intent ie = new Intent(Intent.ACTION_VIEW, Uri.parse(mValues.get(position).url));
+
+                v.getContext().startActivity(ie);
+
+            }
+        });
         holder.tvPhone.setText(mValues.get(position).phone);
         holder.tvTime.setText(mValues.get(position).time);
         holder.tvAddress.setText(mValues.get(position).address);
+
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView tvHome, tvPhone, tvTime, tvAddress;
         public  View mView;
+        public RecyclerView Url;
         public BuildingObject.BuildingObjectItem mItem;
 
         public ViewHolder(View v) {
@@ -41,6 +56,7 @@ public class MyBuildAdapter extends RecyclerView.Adapter<MyBuildAdapter.ViewHold
             tvPhone = (TextView) v.findViewById(R.id.phone);
             tvTime = (TextView) v.findViewById(R.id.time);
             tvAddress = (TextView) v.findViewById(R.id.address);
+            tvHome.setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
 

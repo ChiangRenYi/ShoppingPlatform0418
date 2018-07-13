@@ -676,6 +676,8 @@
         <item>不限</item>
         <item>公立</item>
         <item>私立</item>
+        <item>托育聯盟</item>
+        <item>居家保姆</item>
     </string-array>
 
     <string-array name="announcementDetail">
