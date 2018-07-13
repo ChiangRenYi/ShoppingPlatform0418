@@ -100,8 +100,8 @@ public class GetCourseRecordFragmentResult extends AsyncTask<String, Void, Strin
                 CourseRecordFragment.checkCourseRecord = "nothing";
             }else {
                 int j = 0;
-                String[] net = s.split("nothing");
-                String[] courseRecord = net[0].split("<br>");
+                //String[] net = s.split("nothing");
+                String[] courseRecord = s.split("<br>");
                 CourseRecordFragment.checkCourseRecord = courseRecord[0].trim();
                 String[] courseRecord_photo = new String[courseRecord.length - 1];
                 String[] courseRecord_count = new String[courseRecord.length - 1];
@@ -124,8 +124,11 @@ public class GetCourseRecordFragmentResult extends AsyncTask<String, Void, Strin
                 String[] courseRecord_studentname = new String[courseRecord.length - 1];
                 CourseRecordObject.ITEMS.clear();
                 CourseRecordObject dim = new CourseRecordObject();
-                for (int i = 0; i < courseRecord.length - 1; i++) {
+
+                for (int i = 0 ; i < courseRecord.length - 1; i++) {
                     String[] courseRecordInf;
+                    Log.d("55125-2",String.valueOf(courseRecord.length-1));
+                    Log.d("55125-2",courseRecord[i]);
                     courseRecordInf = courseRecord[i].split("@#");
                     courseRecord_photo[j] = courseRecordInf[1];
                     courseRecord_count[j] = courseRecordInf[2];

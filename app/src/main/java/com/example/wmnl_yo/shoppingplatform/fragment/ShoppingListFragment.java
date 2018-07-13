@@ -249,7 +249,7 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
 
                         } else {
                             Log.d("55125-goods",","+goods+",");
-                            if(goods.equals(""))
+                            if(goods.equals(null))
                             {
                                 Toast.makeText(getContext(), "請選擇商品", Toast.LENGTH_SHORT).show();
                             }else {
