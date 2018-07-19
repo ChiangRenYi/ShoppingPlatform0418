@@ -36,6 +36,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 /**
@@ -191,6 +194,24 @@ public class CourseQueryDetailFragment extends Fragment implements View.OnTouchL
 
         }else if(loginActivity.userPeople.equals("student")){
             btnCourseCancel.setText("報名上課");
+            String[] classtime = tmp[6].split("~");
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+            String nowDate = df.format(new Date());
+            Log.e("55125",classtime[0]+nowDate);
+            try {
+                Date nd = df.parse(nowDate);
+                Date d = df.parse(classtime[0]);
+                if(nd.before(d)){
+                    btnCourseCancel.setEnabled(true);
+                }else{
+                    btnCourseCancel.getBackground().setColorFilter(0xFF888888,android.graphics.PorterDuff.Mode.MULTIPLY );
+                    btnCourseCancel.setEnabled(false);
+                }
+            }catch (Exception e){
+
+            }
+
             final Handler handler2 = new Handler();
             btnCourseCancel.setOnClickListener(new View.OnClickListener() {
                 @Override

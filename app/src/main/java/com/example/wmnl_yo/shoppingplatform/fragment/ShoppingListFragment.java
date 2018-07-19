@@ -255,7 +255,6 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                             }else {
                                 GetBuildingblnumber getBuildingblnumber = new GetBuildingblnumber();
                                 getBuildingblnumber.execute();
-
                                 String[] deletegoods = goods.split(",");
                                 int count = deletegoods.length;
                                 for (int i = goodsnumber - 1; i >= 0; i--) {
@@ -454,26 +453,43 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
                 shoppingAdapter.notifyDataSetChanged();
                 Toast.makeText(getContext(), "重新整理，請稍後", Toast.LENGTH_SHORT).show();
             }
-            holder.checkBox.setChecked(false);
+            try {
+                if(mShoppingCarObjectList.get(position).goodscheck.equals("1")){
+                    holder.checkBox.setChecked(true);
+                    Log.e("55125","1+"+mShoppingCarObjectList.get(position).goods+mShoppingCarObjectList.get(position).goodscheck);
+                }
+
+                else{
+                    holder.checkBox.setChecked(false);
+                    Log.e("55125","0"+mShoppingCarObjectList.get(position).goods+mShoppingCarObjectList.get(position).goodscheck);
+                }
+            } catch (Exception e){}
             try{
                 holder.checkBox.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         try {
-                            if (holder.checkBox.isChecked()) {
-                                goods = goods + mShoppingCarObjectList.get(position).goodsCount.toString() + ",";
-//                          Log.e("55125", goods);
-                            } else {
-                                String[] goodsarray = goods.split(",");
-                                goods = "";
-                                ArrayList goodsarraylist = new ArrayList();
-                                for (int t = 0; t < goodsarray.length; t++) {
-                                    goodsarraylist.add(goodsarray[t]);
-                                }
-                                goodsarraylist.remove(mShoppingCarObjectList.get(position).goodsCount.toString());
-                                for (int t = 0; t < goodsarraylist.size(); t++) {
-                                    goods = goods + goodsarraylist.get(t).toString() + ",";
-                                }
+                                switch (mShoppingCarObjectList.get(position).goodscheck)
+                                {
+                                    case "1":
+                                        String[] goodsarray = goods.split(",");
+                                        goods = "";
+                                        ArrayList goodsarraylist = new ArrayList();
+                                        for (int t = 0; t < goodsarray.length; t++) {
+                                            goodsarraylist.add(goodsarray[t]);
+                                        }
+                                        goodsarraylist.remove(mShoppingCarObjectList.get(position).goodsCount.toString());
+                                        for (int t = 0; t < goodsarraylist.size(); t++) {
+                                            goods = goods + goodsarraylist.get(t).toString() + ",";
+                                        }
+                                        mShoppingCarObjectList.get(position).goodscheck = "0";
+                                        Log.e("55125","1->"+mShoppingCarObjectList.get(position).goods+mShoppingCarObjectList.get(position).goodscheck);
+                                        break;
+                                    case "0":
+                                        goods = goods + mShoppingCarObjectList.get(position).goodsCount.toString() + ",";
+                                        mShoppingCarObjectList.get(position).goodscheck = "1";
+                                        Log.e("55125","0->"+mShoppingCarObjectList.get(position).goods+mShoppingCarObjectList.get(position).goodscheck);
+                                        break;
                             }
                         }catch (Exception e){
                             shoppingAdapter.notifyDataSetChanged();

@@ -25,8 +25,9 @@ public class ShoppingCarObject implements Serializable {
         public final String goodswarehouse;
         public final String goodschildname;
         public final String goodsbuild;
+        public String goodscheck;
 
-        public ShoppingCarObjectItem(String goodsCount,String goodskind, String goods, String goodsnumber, String goodsprice,String goodswarehouse,String goodschildname,String goodsbuild) {
+        public ShoppingCarObjectItem(String goodsCount,String goodskind, String goods, String goodsnumber, String goodsprice,String goodswarehouse,String goodschildname,String goodsbuild,String goodscheck) {
             this.goodsCount = goodsCount;
             this.goodskind =goodskind;
             this.goods = goods;
@@ -35,6 +36,7 @@ public class ShoppingCarObject implements Serializable {
             this.goodswarehouse = goodswarehouse;
             this.goodschildname = goodschildname;
             this.goodsbuild = goodsbuild;
+            this.goodscheck = goodscheck;
         }
     }
 

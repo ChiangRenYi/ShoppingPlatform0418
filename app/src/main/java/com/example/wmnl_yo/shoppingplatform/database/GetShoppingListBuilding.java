@@ -126,10 +126,10 @@ public class GetShoppingListBuilding extends AsyncTask<String, Void, String> {
 
 
                 dim.addItem(new ShoppingCarObject.ShoppingCarObjectItem(
-                        shoppingMallAllInf[1],shoppingMallAllInf[2],shoppingMallAllInf[3],shoppingMallAllInf[4],shoppingMallAllInf[5],shoppingMallAllInf[7],shoppingMallAllInf[6],shoppingMallAllInf[8]));
+                        shoppingMallAllInf[1],shoppingMallAllInf[2],shoppingMallAllInf[3],shoppingMallAllInf[4],shoppingMallAllInf[5],shoppingMallAllInf[7],shoppingMallAllInf[6],shoppingMallAllInf[8],"0"));
 
                 j++;
-                Log.d("55125", j + ":"  + shoppingMallAllInf[1]+","+shoppingMallAllInf[2]+","+shoppingMallAllInf[3]+","+shoppingMallAllInf[4]+","+shoppingMallAllInf[5]+","+shoppingMallAllInf[7]+","+shoppingMallAllInf[6]+","+shoppingMallAllInf[8]);
+                Log.d("55125", j + ":"  + shoppingMallAllInf[1]+","+shoppingMallAllInf[2]+","+shoppingMallAllInf[3]+","+shoppingMallAllInf[4]+","+shoppingMallAllInf[5]+","+shoppingMallAllInf[7]+","+shoppingMallAllInf[6]+","+shoppingMallAllInf[8]+",0");
             }
             ShoppingListFragment.goodsnumber = j;
         }

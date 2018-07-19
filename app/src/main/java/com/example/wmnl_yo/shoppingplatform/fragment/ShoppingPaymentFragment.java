@@ -748,16 +748,25 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
         @Override
         public void onBindViewHolder(ViewHolder holder, final int position) {
 
-            holder.tvGoodsName.setText(mShoppingCarObjectList.get(position).goods);
-            holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
-            holder.tvGoodsChild.setText(mShoppingCarObjectList.get(position).goodschildname);
-            holder.tvGoodsBuild.setText(mShoppingCarObjectList.get(position).goodsbuild);
-            priceTotal = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice).intValue()*Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber).intValue();
-            holder.tvGoodsPrice.setText(String.valueOf(priceTotal));
-            shoppingcar_goodscount = mShoppingCarObjectList.get(position).goodsCount+"@#"+shoppingcar_goodscount;
-            shoppingcar_goodsnumber = mShoppingCarObjectList.get(position).goodsnumber+"@#"+shoppingcar_goodsnumber;
-            shoppingcar_goodsprice = priceTotal+"@#"+priceTotal;
-            priceTotal_all = priceTotal_all + priceTotal;
+            if(mShoppingCarObjectList.get(position).goodscheck.equals("1")) {
+                holder.tvGoodsName.setText(mShoppingCarObjectList.get(position).goods);
+                holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
+                holder.tvGoodsChild.setText(mShoppingCarObjectList.get(position).goodschildname);
+                holder.tvGoodsBuild.setText(mShoppingCarObjectList.get(position).goodsbuild);
+                priceTotal = Integer.valueOf(mShoppingCarObjectList.get(position).goodsprice).intValue() * Integer.valueOf(mShoppingCarObjectList.get(position).goodsnumber).intValue();
+                holder.tvGoodsPrice.setText(String.valueOf(priceTotal));
+                shoppingcar_goodscount = mShoppingCarObjectList.get(position).goodsCount + "@#" + shoppingcar_goodscount;
+                shoppingcar_goodsnumber = mShoppingCarObjectList.get(position).goodsnumber + "@#" + shoppingcar_goodsnumber;
+                shoppingcar_goodsprice = priceTotal + "@#" + priceTotal;
+                priceTotal_all = priceTotal_all + priceTotal;
+            }else{
+                holder.tvGoodsName.setText(mShoppingCarObjectList.get(position).goods);
+                holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
+                holder.tvGoodsChild.setText(mShoppingCarObjectList.get(position).goodschildname);
+                holder.tvGoodsBuild.setText(mShoppingCarObjectList.get(position).goodsbuild);
+                holder.tvGoodsPrice.setText(String.valueOf(priceTotal));
+
+            }
 
         }
 

@@ -189,7 +189,7 @@ public class CourseRecordDetailFragment extends Fragment implements View.OnTouch
         lvCourseDetail.addFooterView(footerView);
         if(courseRecordObject.rPayment.equals("正取，請盡速繳費")){
             btnCourseCancel.setEnabled(false);
-            btnCourseCancel.getBackground().setColorFilter(0xFF888888,android.graphics.PorterDuff.Mode.MULTIPLY );;
+            btnCourseCancel.getBackground().setColorFilter(0xFF888888,android.graphics.PorterDuff.Mode.MULTIPLY );
         }else{
             btnCourseCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
