@@ -18,6 +18,7 @@ import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.R;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
 import com.example.wmnl_yo.shoppingplatform.database.GetShoppingFinialFragmentAtm;
+import com.example.wmnl_yo.shoppingplatform.object.ShoppingCarObject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -136,6 +137,8 @@ public class ShoppingCarATMFragment extends Fragment implements View.OnTouchList
                         handler1.postDelayed(new Runnable() {
                             @Override
                             public void run() {
+                                ShoppingCarObject.ITEMS.clear();
+                                ShoppingListFragment.shoppingAdapter.notifyDataSetChanged();
                                 ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingListFragment.class, null);
                             }
                         },3000);
