@@ -99,12 +99,15 @@ public class ShoppingCarATMFragment extends Fragment implements View.OnTouchList
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                try {
+                    sp_money_text.setText(sp_ATM_money_text);
+                    sp_account.setText(sp_ATM_account.substring(sp_ATM_account.length() - 13, sp_ATM_account.length()));
+                    sp_data.setText(sp_ATM_data);
+                    sp_ATM_person_text.setText(Constants.ACCOUNT);
+                    sp_ATM_number.setText(String.format("%06d", Long.parseLong(sp_atm_number_data)));
+                }catch (Exception e){
 
-                sp_money_text.setText(sp_ATM_money_text);
-                sp_account.setText(sp_ATM_account.substring(sp_ATM_account.length()-13,sp_ATM_account.length()));
-                sp_data.setText(sp_ATM_data);
-                sp_ATM_person_text.setText(Constants.ACCOUNT);
-                sp_ATM_number.setText(String.format("%06d", Long.parseLong(sp_atm_number_data)));
+                }
 
             }
         },500);

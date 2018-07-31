@@ -43,7 +43,7 @@ public class GetBuildingDetail extends AsyncTask<String, Void, String> {
                     .appendQueryParameter("country", BuildingFragment.bcountry.trim())
                     .appendQueryParameter("city", BuildingFragment.bcity.trim())
                     .appendQueryParameter("type", BuildingFragment.btype.trim());
-Log.d("55125",BuildingFragment.bcountry+BuildingFragment.bcity+BuildingFragment.buildingType);
+Log.d("55125",BuildingFragment.bcountry+BuildingFragment.bcity+BuildingFragment.btype);
             String query = builder.build().getEncodedQuery();
 
             OutputStream os = connection.getOutputStream();

@@ -359,8 +359,14 @@ public class BuildingFragment extends Fragment implements View.OnTouchListener, 
                         case "私立":
                             btype = "1";
                             break;
-                        case "不限":
+                        case "托育聯盟":
                             btype = "2";
+                            break;
+                        case "居家保姆":
+                            btype = "3";
+                            break;
+                        case "不限":
+                            btype = "4";
                             break;
                         default:
                             break;

@@ -308,6 +308,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                                                             switch (pay) {
                                                                 case "success": {
                                                                     Log.d("55125", shoppingcar_goodscount + "," + shoppingcar_goodsnumber + "," + shoppingcar_goodsprice);
+                                                                    Toast.makeText(getContext(),"訂單完成",Toast.LENGTH_SHORT).show();
                                                                     ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingFinialFragment.class, null);
                                                                     break;
                                                                 }
@@ -447,6 +448,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                                                             switch (pay) {
                                                                 case "success": {
                                                                     Log.d("55125", shoppingcar_goodscount + "," + shoppingcar_goodsnumber + "," + shoppingcar_goodsprice);
+                                                                    Toast.makeText(getContext(),"訂單完成",Toast.LENGTH_SHORT).show();
                                                                     ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingCarATMFragment.class, null);
                                                                     break;
                                                                 }
@@ -590,6 +592,7 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                                                                             switch (pay) {
                                                                                 case "success": {
                                                                                     Log.d("55125", shoppingcar_goodscount + "," + shoppingcar_goodsnumber + "," + shoppingcar_goodsprice);
+                                                                                    Toast.makeText(getContext(),"訂單完成",Toast.LENGTH_SHORT).show();
                                                                                     ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingListFragment.class, null);
                                                                                     break;
                                                                                 }

@@ -96,6 +96,12 @@ public class CourseQueryFragment extends Fragment implements View.OnTouchListene
         }
         tv = new TextView[getResources().getStringArray(R.array.courseFindType).length];
         tmp = new String[]{"請選擇", "請選擇", "請選擇", "請選擇", "請選擇", "請選擇"};
+        cCountry =null;
+        cCity =null;
+        cBuilding = null;
+        cType = null;
+        cTeacher = null;
+        cMonth = null;
         Building_check="crycry";
         final Dialog alertDialog = new Dialog(getActivity());
         alertDialog.setContentView(R.layout.choose_course_alert);
