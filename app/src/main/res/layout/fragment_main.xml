@@ -257,7 +257,7 @@
                             android:layout_below="@+id/imageView8"
                             android:layout_gravity="center_horizontal"
                             android:paddingBottom="@dimen/_2sdp"
-                            app:srcCompat="@drawable/ic_shopping_mall" />
+                            app:srcCompat="@drawable/shoppingmarket" />
 
                         <TextView
                             android:id="@+id/textView27"
@@ -271,7 +271,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/layout_interactive_button"
+                        android:id="@+id/layout_shoppingcar_button"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -279,7 +279,7 @@
                         android:paddingLeft="@dimen/_2sdp">
 
                         <ImageView
-                            android:id="@+id/imageView11"
+                            android:id="@+id/imageView30"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="@dimen/_70sdp"
                             android:layout_alignTop="@+id/imageView9"
@@ -287,17 +287,18 @@
                             android:layout_toEndOf="@+id/imageView2"
                             android:layout_toRightOf="@+id/imageView2"
                             android:paddingBottom="@dimen/_2sdp"
-                            app:srcCompat="@drawable/message" />
+                            app:srcCompat="@drawable/ic_shopping_mall" />
 
                         <TextView
-                            android:id="@+id/textView20"
+                            android:id="@+id/textView60"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
-                            android:text="互動訊息"
+                            android:text="購物車"
                             android:textColor="#000000"
                             android:textSize="@dimen/_12sdp" />
                     </LinearLayout>
+
 
 
 
@@ -331,37 +332,36 @@
                     </LinearLayout>
 
                 </TableRow>
-                <!--
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:id="@+id/layout_opinion_button"
+                        android:id="@+id/layout_interactive_button"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:orientation="vertical"
-                        android:paddingLeft="@dimen/_2sdp"
-                        android:visibility="invisible">
+                        android:paddingLeft="@dimen/_2sdp">
 
                         <ImageView
-                            android:id="@+id/imageView12"
+                            android:id="@+id/imageView11"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="@dimen/_70sdp"
-                            android:layout_alignLeft="@+id/imageView8"
-                            android:layout_alignStart="@+id/imageView8"
-                            android:layout_below="@+id/imageView8"
+                            android:layout_alignTop="@+id/imageView9"
                             android:layout_gravity="center_horizontal"
+                            android:layout_toEndOf="@+id/imageView2"
+                            android:layout_toRightOf="@+id/imageView2"
                             android:paddingBottom="@dimen/_2sdp"
-                            app:srcCompat="@drawable/b8" />
+                            app:srcCompat="@drawable/message" />
 
                         <TextView
-                            android:id="@+id/textView21"
+                            android:id="@+id/textView20"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
-                            android:text="上課點名"
+                            android:text="互動訊息"
                             android:textColor="#000000"
                             android:textSize="@dimen/_12sdp" />
                     </LinearLayout>

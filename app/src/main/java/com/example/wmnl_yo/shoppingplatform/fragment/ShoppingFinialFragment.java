@@ -162,7 +162,7 @@ public class ShoppingFinialFragment extends Fragment implements View.OnTouchList
                             public void run() {
                                 ShoppingCarObject.ITEMS.clear();
                                 ShoppingListFragment.shoppingAdapter.notifyDataSetChanged();
-                                ((MainActivity) getContext()).replaceFragment_for_ShoppingCar(ShoppingListFragment.class, null);
+                                ((MainActivity) getContext()).replaceFragment(MainFragmentStudent.class, null);
 
                             }
                         },3000);

@@ -143,6 +143,7 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
 
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_shopping_object, container, false);
+        ((MainActivity) getActivity()).setSubTitle(" > 購物商場");
         v.setOnTouchListener(this);
         type = "list";
         mRecyclerView = (RecyclerView) v.findViewById(R.id.sp_object_rv);

@@ -1,18 +1,13 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.R;
@@ -23,7 +18,7 @@ import com.example.wmnl_yo.shoppingplatform.database.GetShoppingMallAll;
 
 public class MainFragmentStudent extends Fragment implements View.OnClickListener {
     private View view;
-    LinearLayout btnMemberService, btnCourseManage, btnBuilding,btnShoppingmall, btnOrderManage, btnAttendenceManage, btnHealthManage, btnInteractive, btnOpinion, btnChat,btnSatisfaction;
+    LinearLayout btnMemberService, btnCourseManage, btnBuilding,btnShoppingmall, btnOrderManage, btnAttendenceManage, btnHealthManage, btnInteractive, btnOpinion, btnChat,btnSatisfaction,btnShoppingcar;
     TextView tvName;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,7 +38,7 @@ public class MainFragmentStudent extends Fragment implements View.OnClickListene
         btnInteractive = (LinearLayout) view.findViewById(R.id.layout_interactive_button);
 //        btnOpinion = (LinearLayout) view.findViewById(R.id.layout_opinion_button);
         btnSatisfaction=(LinearLayout) view.findViewById(R.id.layout_satisfaction_button);
-
+        btnShoppingcar=(LinearLayout) view.findViewById(R.id.layout_shoppingcar_button);
         btnMemberService.setOnClickListener(this);
         btnCourseManage.setOnClickListener(this);
         btnOrderManage.setOnClickListener(this);
@@ -55,7 +50,7 @@ public class MainFragmentStudent extends Fragment implements View.OnClickListene
         btnBuilding.setOnClickListener(this);
         tvName.setText(Constants.ACCOUNT);
         btnSatisfaction.setOnClickListener(this);
-
+        btnShoppingcar.setOnClickListener(this);
         return view;
     }
 
@@ -118,6 +113,10 @@ public class MainFragmentStudent extends Fragment implements View.OnClickListene
             case R.id.layout_order_manage_button:
 
                 fragmentClass = OrderResultFragment.class;
+                break;
+            case R.id.layout_shoppingcar_button:
+
+                fragmentClass = ShoppingListFragment.class;
                 break;
             default:
                 break;

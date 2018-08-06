@@ -115,6 +115,7 @@ public class ShoppingListFragment extends Fragment implements View.OnTouchListen
 
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_shopping_list, container, false);
+        ((MainActivity) getActivity()).setSubTitle(" > 購物車");
         v.setOnTouchListener(this);
         deleteitem = "";
         deleteitemcheck = "";

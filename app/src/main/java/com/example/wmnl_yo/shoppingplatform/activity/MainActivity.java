@@ -154,9 +154,9 @@ public class MainActivity extends AppCompatActivity implements
         tabLayout.addTab(tabLayout.newTab().setText("設定").setIcon(R.drawable.ic_settings));
         tabLayout.addTab(tabLayout.newTab().setText("公告").setIcon(R.drawable.annoucement));
         tabLayout.addTab(tabLayout.newTab().setText("帳戶").setIcon(R.drawable.user));
-        if(loginActivity.userPeople.equals("student")) {
-            tabLayout.addTab(tabLayout.newTab().setText("購物車").setIcon(R.drawable.shoppingcart));
-        }
+//        if(loginActivity.userPeople.equals("student")) {
+//            tabLayout.addTab(tabLayout.newTab().setText("購物車").setIcon(R.drawable.shoppingcart));
+//        }
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
