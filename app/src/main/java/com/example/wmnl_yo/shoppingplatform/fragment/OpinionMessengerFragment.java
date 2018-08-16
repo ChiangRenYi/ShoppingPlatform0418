@@ -89,15 +89,23 @@ public class OpinionMessengerFragment extends Fragment implements View.OnTouchLi
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        //接收打包資料進行拆解
-        Bundle bundle = getArguments();
+        ConnectivityManager connManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info=connManager.getActiveNetworkInfo();
 
-        AUId = bundle.getString("AUId");
-        ERId = bundle.getString("ERId");
+        if (info == null || !info.isConnected())
+        {
+            Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_LONG).show();
+        }else {
+            //接收打包資料進行拆解
+            Bundle bundle = getArguments();
 
-        Log.d("55125", AUId+","+ERId);
+            AUId = bundle.getString("AUId");
+            ERId = bundle.getString("ERId");
 
-        fragmentList.add(OpinionMessageAddFragment.newInstance("",""));
+            Log.d("55125", AUId + "," + ERId);
+
+            fragmentList.add(OpinionMessageAddFragment.newInstance("", ""));
+        }
     }
 
     @Override
