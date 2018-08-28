@@ -1,6 +1,7 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -19,6 +20,7 @@ import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
 import com.example.wmnl_yo.shoppingplatform.activity.loginActivity;
 import com.example.wmnl_yo.shoppingplatform.R;
+import com.example.wmnl_yo.shoppingplatform.database.GetCompetenceState;
 import com.example.wmnl_yo.shoppingplatform.database.GetEmployInfo;
 import com.example.wmnl_yo.shoppingplatform.database.GetPersonalInfo;
 
@@ -33,6 +35,7 @@ public class MemberServiceFragment extends Fragment {
     private SharedPreferences preferences;
     private View view;
     private Button btnPersonalInfo,btnPasswordReset,btnCompetence;
+    ProgressDialog progressDoalog;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if(view==null){
@@ -141,7 +144,30 @@ public class MemberServiceFragment extends Fragment {
                 {
                     Toast.makeText(getActivity(),"請檢查網路",Toast.LENGTH_LONG).show();
                 }else{
-                    ((MainActivity)getContext()).replaceFragment( CompetenceFragment.class, null);
+
+                    progressDoalog = new ProgressDialog(getActivity());
+                    progressDoalog.setMessage("載入中，請稍後...");
+                    progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    progressDoalog.setCancelable(false);
+                    progressDoalog.show();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                GetCompetenceState getCompetenceState = new GetCompetenceState();
+                                getCompetenceState.execute();
+
+                                Thread.sleep(3000);
+                                progressDoalog.dismiss();
+
+                                ((MainActivity)getContext()).replaceFragment( CompetenceFragment.class, null);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }).start();
+
+
                 }
             }
         });

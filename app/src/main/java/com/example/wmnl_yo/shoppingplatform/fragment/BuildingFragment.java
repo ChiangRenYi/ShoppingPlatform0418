@@ -345,10 +345,13 @@ public class BuildingFragment extends Fragment implements View.OnTouchListener, 
                 {
                     buildingcountry = numberPickerView.getContentByCurrValue();
                     bcountry = buildingcountry;
+                    tv[1].setText("請選擇");
+                    tv[2].setText("請選擇");
                     Log.e("55125",bcountry);
                 }else if(choose == 2) {
                     buildingcity = numberPickerView.getContentByCurrValue();
                     bcity = buildingcity;
+                    tv[2].setText("請選擇");
                     Log.e("55125",bcity);
                 }else if(choose == 3) {
                     buildingType = numberPickerView.getContentByCurrValue();

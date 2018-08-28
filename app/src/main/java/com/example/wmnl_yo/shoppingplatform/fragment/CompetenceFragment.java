@@ -1,126 +1,131 @@
 package com.example.wmnl_yo.shoppingplatform.fragment;
 
-import android.content.Context;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.R;
-import com.example.wmnl_yo.shoppingplatform.adapter.ListDropDownAdapter;
+import com.example.wmnl_yo.shoppingplatform.activity.MainActivity;
+import com.example.wmnl_yo.shoppingplatform.database.GetCompetenceState;
+import com.example.wmnl_yo.shoppingplatform.database.Update_Competence;
 import com.example.wmnl_yo.shoppingplatform.object.CompetenceObject;
-import com.yyydjk.library.DropDownMenu;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by WMNL-Jimmy on 2018/5/5.
  */
 
 public class CompetenceFragment extends Fragment implements View.OnTouchListener{
-    private String com1,com2,com3,com4,com5;
-    private Button submit;
     private RecyclerView mRecyclerView;
+    private Button submit;
     public static MyAdapter competenceAdapter;
+    public static String SendCom ="" ;
+    public static String[] Building;
+    public static String[] comBuilding;
+    ProgressDialog progressDoalog;
     private List<CompetenceObject.CompetenceObjectItem> mCompetenceObjectList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
 
-        CompetenceObject.ITEMS.clear();
-        CompetenceObject dim = new CompetenceObject();
 
-        dim.addItem(new CompetenceObject.CompetenceObjectItem(
-                "三峽光明公共托育中心",
-                "1"
-        ));
-        dim.addItem(new CompetenceObject.CompetenceObjectItem(
-                "三峽中園公共托育中心",
-                "1"
-        ));
-        dim.addItem(new CompetenceObject.CompetenceObjectItem(
-                "樹林三多公共托育中心",
-                "0"
-        ));
-        dim.addItem(new CompetenceObject.CompetenceObjectItem(
-                "林口麗林公共托育中心",
-                "0"
-        ));
-        dim.addItem(new CompetenceObject.CompetenceObjectItem(
-                "樹林武林公共托育中心",
-                "1"
-        ));
+//
+//        CompetenceObject.ITEMS.clear();
+//        CompetenceObject dim = new CompetenceObject();
+//
+//        dim.addItem(new CompetenceObject.CompetenceObjectItem(
+//                "三峽光明公共托育中心",
+//                true
+//        ));
+//        dim.addItem(new CompetenceObject.CompetenceObjectItem(
+//                "三峽中園公共托育中心",
+//                true
+//        ));
+//        dim.addItem(new CompetenceObject.CompetenceObjectItem(
+//                "樹林三多公共托育中心",
+//                false
+//        ));
+//        dim.addItem(new CompetenceObject.CompetenceObjectItem(
+//                "林口麗林公共托育中心",
+//                false
+//        ));
+//        dim.addItem(new CompetenceObject.CompetenceObjectItem(
+//                "樹林武林公共托育中心",
+//                true
+//        ));
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        if (view == null) {
-//            view = inflater.inflate(R.layout.fragment_competence, container, false);
-//        }
+
         View v = inflater.inflate(R.layout.fragment_competence, container, false);
         v.setOnTouchListener(this);
         mRecyclerView = (RecyclerView)v.findViewById(R.id.com_recyclerview);
+        submit = (Button) v.findViewById(R.id.com_submit);
         competenceAdapter = new MyAdapter(CompetenceObject.ITEMS);
-        submit = (Button)v.findViewById(R.id.button);
-//
 
-//        if(cb2.isChecked()){
-//            com2 = "1";
-//        }else{
-//            com2 = "0";
-//        }
-//
-//        if(cb3.isChecked()){
-//            com3 = "1";
-//        }else{
-//            com3 = "0";
-//        }
-//
-//        if(cb4.isChecked()){
-//            com4 = "1";
-//        }else{
-//            com4 = "0";
-//        }
-//
-//        if(cb5.isChecked()){
-//            com5 = "1";
-//        }else{
-//            com5 = "0";
-//        }
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-//        submit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getActivity(),com1+com2+com3+com4+com5,Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        view.setOnTouchListener(this);
+                for (int a = 0; a< mCompetenceObjectList.size(); a++){
+
+                    if(mCompetenceObjectList.get(a).competenceState == true){
+                        SendCom = SendCom.concat("@#"+mCompetenceObjectList.get(a).competenceName);
+                    }
+                }
+
+                Log.d("55123-1",mCompetenceObjectList.size()+"");
+//                Log.d("55123-2",mCompetenceObjectList.get(0).competenceState.toString());
+//                Log.d("55123-3",mCompetenceObjectList.get(1).competenceState.toString());
+//                Log.d("55123-4",mCompetenceObjectList.get(2).competenceState.toString());
+//                Log.d("55123-5",mCompetenceObjectList.get(3).competenceState.toString());
+//                Log.d("55123-6",mCompetenceObjectList.get(4).competenceState.toString());
+                Log.d("55123-10",SendCom);
+
+                progressDoalog = new ProgressDialog(getActivity());
+                progressDoalog.setMessage("權限修改中，請稍後...");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.setCancelable(false);
+                progressDoalog.show();
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Update_Competence update_competence = new Update_Competence();
+                            update_competence.execute();
+
+                            Thread.sleep(5000);
+                            progressDoalog.dismiss();
+
+
+                            SendCom = "";
+                            ((MainActivity)getContext()).replaceFragment( MemberServiceFragment.class, null);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+            }
+        });
 
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -146,7 +151,6 @@ public class CompetenceFragment extends Fragment implements View.OnTouchListener
             public RecyclerView ll;
             public CheckBox checkBox;
             public TextView tvName;
-//            public Button btnplus, btnminus;
             public CompetenceObject.CompetenceObjectItem mItem;
 
             public ViewHolder(View v) {
@@ -168,6 +172,14 @@ public class CompetenceFragment extends Fragment implements View.OnTouchListener
 
         ViewHolder vh = new ViewHolder(v);
 
+        for(int i = 1; i < comBuilding.length ; i++){
+            for(int n = 1; n < Building.length ; n++){
+                if(Arrays.asList(Building[n]).contains(comBuilding[i].trim())){
+                    mCompetenceObjectList.get(n-1).competenceState = true;
+                }
+            }
+        }
+
         return vh;
     }
 
@@ -175,30 +187,29 @@ public class CompetenceFragment extends Fragment implements View.OnTouchListener
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         holder.tvName.setText(mCompetenceObjectList.get(position).competenceName.trim());
+        holder.checkBox.setChecked(mCompetenceObjectList.get(position).competenceState);
 
+        holder.checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (mCompetenceObjectList.get(position).competenceState.toString())
+                {
+                    case "true":
+                        //mCompetenceObjectList.get(position).competenceState = false;
+                        Toast.makeText(getActivity(),"欲刪除親子館權限，請洽行政!",Toast.LENGTH_SHORT).show();
+                        holder.checkBox.setChecked(true);
+                        break;
 
-//        holder.checkBox.setChecked(false);
-//        holder.checkBox.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (holder.checkBox.isChecked()) {
-//                    goods = goods + mShoppingCarObjectList.get(position).goodsCount.toString() + ",";
-////                        Log.e("55125", goods);
-//                } else {
-//                    String[] goodsarray = goods.split(",");
-//                    goods = "";
-//                    ArrayList goodsarraylist = new ArrayList();
-//                    for (int t = 0; t < goodsarray.length; t++) {
-//                        goodsarraylist.add(goodsarray[t]);
-//                    }
-//                    goodsarraylist.remove(mShoppingCarObjectList.get(position).goodsCount.toString());
-//                    for (int t = 0; t < goodsarraylist.size(); t++) {
-//                        goods = goods + goodsarraylist.get(t).toString() + ",";
-//                    }
-//                }
-////
-//            }
-//        });
+                    case "false" :
+                        mCompetenceObjectList.get(position).competenceState = true;
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        });
+        Log.d("55123",mCompetenceObjectList.get(position).competenceName + "權限:" + mCompetenceObjectList.get(position).competenceState);
 
     }
 

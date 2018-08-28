@@ -2,6 +2,7 @@ package com.example.wmnl_yo.shoppingplatform.object;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -14,15 +15,21 @@ public class CompetenceObject {
         ITEMS.add(item);
     }
 
+
     public static class CompetenceObjectItem implements Serializable {
 
-        public final String competenceName, competenceState;
+        public  String competenceName;
+        public  Boolean competenceState;
 
 
-        public CompetenceObjectItem(String competenceName,String competenceState) {
+        public CompetenceObjectItem(String competenceName,Boolean competenceState) {
             this.competenceName = competenceName;
             this.competenceState = competenceState;
 
+        }
+
+        public void setCompetenceState(Boolean state){
+            this.competenceState = state;
         }
     }
 }

@@ -218,7 +218,7 @@ public class RegisterActivity extends Activity {
 
     private String setDateFormat(int year, int monthOfYear, int dayOfMonth) {
 
-        if(monthOfYear < 10){
+        if(monthOfYear < 9){
             return String.valueOf(year) + "-"
                     + "0"+ String.valueOf(monthOfYear + 1) + "-"
                     + String.valueOf(dayOfMonth);
