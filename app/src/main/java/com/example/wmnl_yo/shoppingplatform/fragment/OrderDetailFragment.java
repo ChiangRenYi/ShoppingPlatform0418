@@ -198,13 +198,18 @@ public class OrderDetailFragment extends Fragment implements View.OnTouchListene
                 btnGoPay.getBackground().setColorFilter(0xFF888888,android.graphics.PorterDuff.Mode.MULTIPLY );
                 btnCancelOrder.getBackground().setColorFilter(0xFF888888,android.graphics.PorterDuff.Mode.MULTIPLY );
                 btnCancelOrder.setEnabled(false);
-            }else {
+            }else if(orderState.equals("未付款")){
                 btnGoPay.setEnabled(true);
+                btnCancelOrder.setEnabled(true);
+            }else{
+                btnGoPay.setEnabled(false);
+                btnGoPay.getBackground().setColorFilter(0xFF888888,android.graphics.PorterDuff.Mode.MULTIPLY );
+                btnCancelOrder.getBackground().setColorFilter(0xFF888888,android.graphics.PorterDuff.Mode.MULTIPLY );
                 btnCancelOrder.setEnabled(true);
             }
 
         }catch (Exception e){
-            Toast.makeText(getActivity(),"123",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"訂單資訊有誤，請洽行政處理。",Toast.LENGTH_SHORT).show();
             Log.d("55125-error",e.getMessage());
 
         }

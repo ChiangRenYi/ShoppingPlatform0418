@@ -6,7 +6,6 @@ import android.util.Log;
 
 import com.example.wmnl_yo.shoppingplatform.Constants;
 import com.example.wmnl_yo.shoppingplatform.fragment.CompetenceFragment;
-import com.example.wmnl_yo.shoppingplatform.object.CompetenceObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,18 +16,16 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by WMNL-Jimmy on 2018/5/30.
  */
 
-public class GetCompetenceState extends AsyncTask<String,Void,String> {
+public class Update_Competence  extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... strings) {
-        Log.d("55125", "getCompetence...");
-        String url = Constants.SERVER_URL + "getCompetence.php";
+        Log.d("55125", "updateCompetence...");
+        String url = Constants.SERVER_URL + "UpdateCompetence.php";
         HttpURLConnection connection = null;
         BufferedReader reader = null;
         String result = null;
@@ -40,9 +37,8 @@ public class GetCompetenceState extends AsyncTask<String,Void,String> {
             connection.setDoInput(true);
             connection.setConnectTimeout(20000);
 
-            Uri.Builder builder = new Uri.Builder().appendQueryParameter("account", Constants.ACCOUNT);
-
-
+            Uri.Builder builder = new Uri.Builder().appendQueryParameter("account", Constants.ACCOUNT)
+                                                   .appendQueryParameter("comdata", CompetenceFragment.SendCom);
             String query = builder.build().getEncodedQuery();
 
             OutputStream os = connection.getOutputStream();
@@ -94,66 +90,5 @@ public class GetCompetenceState extends AsyncTask<String,Void,String> {
             return result;
 
         }
-    }
-
-    protected void onPostExecute(String s) {
-        if (s != null) {
-            Log.d("55125", s);
-            int j = 0;
-            CompetenceObject.ITEMS.clear();
-            CompetenceObject dim = new CompetenceObject();
-
-//            List<CompetenceObject.CompetenceObjectItem> mList;
-
-            String[] competenceSplit = s.split("<br>");
-            String[] competenceBuilding = competenceSplit[0].split("@#");
-            String[] competenceRegeist = competenceSplit[1].split("@#");
-
-            CompetenceFragment.Building = competenceBuilding;
-            CompetenceFragment.comBuilding = competenceRegeist;
-            String T = String.valueOf(competenceBuilding.length - 1);
-            Log.e("55125", T);
-
-            for(int k = 1; k <competenceBuilding.length ; k++){
-                dim.addItem(new CompetenceObject.CompetenceObjectItem(
-                        competenceBuilding[k],
-                        false
-                ));
-
-            }
-//            for(int i = 1; i < competenceRegeist.length ; i++){
-//
-//            }
-//
-            for(int i =1; i < competenceRegeist.length ; i++){
-                for(int n = 1; n < competenceBuilding.length ; n++){
-                    if(Arrays.asList(competenceBuilding[n]).contains(competenceRegeist[i].trim())){
-
-                    }
-                }
-            }
-
-//
-//            for (int i = 1; i < competenceBuilding.length  ; i++) {
-//                Log.e("55123-1",competenceRegeist[i]);
-//                if(Arrays.asList(competenceBuilding).contains(competenceRegeist[i].trim())){
-//                    Log.e("55123",competenceRegeist[i]);
-//                    dim.addItem(new CompetenceObject.CompetenceObjectItem(
-//                            competenceBuilding[i],
-//                            true
-//                    ));
-//                }else{
-//                    Log.e("55123-2",competenceRegeist[i]);
-//                    dim.addItem(new CompetenceObject.CompetenceObjectItem(
-//                            competenceBuilding[i],
-//                            false
-//                    ));
-//                }
-//                j++;
-//
-//                Log.d("55125", j + ":" + competenceBuilding[i]);
-//            }
-        }
-
     }
 }
