@@ -763,11 +763,11 @@ public class ShoppingPaymentFragment extends Fragment implements View.OnTouchLis
                 shoppingcar_goodsprice = priceTotal + "@#" + priceTotal;
                 priceTotal_all = priceTotal_all + priceTotal;
             }else{
-                holder.tvGoodsName.setText(mShoppingCarObjectList.get(position).goods);
-                holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
-                holder.tvGoodsChild.setText(mShoppingCarObjectList.get(position).goodschildname);
-                holder.tvGoodsBuild.setText(mShoppingCarObjectList.get(position).goodsbuild);
-                holder.tvGoodsPrice.setText(String.valueOf(priceTotal));
+//                holder.tvGoodsName.setText(mShoppingCarObjectList.get(position).goods);
+//                holder.tvGoodsNumber.setText(mShoppingCarObjectList.get(position).goodsnumber);
+//                holder.tvGoodsChild.setText(mShoppingCarObjectList.get(position).goodschildname);
+//                holder.tvGoodsBuild.setText(mShoppingCarObjectList.get(position).goodsbuild);
+//                holder.tvGoodsPrice.setText(String.valueOf(priceTotal));
 
             }
 

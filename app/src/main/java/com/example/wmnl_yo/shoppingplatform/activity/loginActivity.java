@@ -102,19 +102,19 @@ public class loginActivity extends Activity {
                                                 Toast.makeText(loginActivity.this, "查無此帳號，請重新輸入", Toast.LENGTH_SHORT).show();
                                                 AccountEditText.setText("");
                                                 PasswordEditText.setText("");
-                                                Log.e("55886L", "查無此帳號");
+                                                Log.e("55125", "查無此帳號");
                                                 break;
 
                                             case "wrongPassword":
                                                 Toast.makeText(loginActivity.this, "密碼錯誤，請重新輸入", Toast.LENGTH_SHORT).show();
                                                 PasswordEditText.setText("");
 
-                                                Log.e("55886L", "密碼錯誤");
+                                                Log.e("55125", "密碼錯誤");
                                                 break;
 
                                             case "success":
                                                 Toast.makeText(loginActivity.this, "登入成功", Toast.LENGTH_SHORT).show();
-                                                Log.e("55886L", "登入成功");
+                                                Log.e("55125", "登入成功");
                                                 Constants.ACCOUNT = account;
                                                 Intent intent = new Intent();
                                                 intent.setClass(loginActivity.this, MainActivity.class);

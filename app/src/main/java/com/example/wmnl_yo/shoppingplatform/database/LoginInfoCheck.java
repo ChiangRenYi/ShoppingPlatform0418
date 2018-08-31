@@ -102,16 +102,16 @@ public class LoginInfoCheck extends AsyncTask<String,Void,String>{
 
     protected void onPostExecute(String s) {
         if(s.equals("noAccount")){
-            Log.e("55886","查無帳號");
-            Log.e("55886",s);
+            Log.e("55125","查無帳號");
+            Log.e("55125",s);
             loginActivity.loginResult = "noAccount";
         }else  if(s.equals("wrongPassword")){
-            Log.e("55886","密碼錯誤");
-            Log.e("55886",s);
+            Log.e("55125","密碼錯誤");
+            Log.e("55125",s);
             loginActivity.loginResult = "wrongPassword";
         }else if(s.equals("success")){
-            Log.e("55886","登入成功");
-            Log.e("55886",s);
+            Log.e("55125","登入成功");
+            Log.e("55125",s);
             loginActivity.loginResult = "success";
         }
     }

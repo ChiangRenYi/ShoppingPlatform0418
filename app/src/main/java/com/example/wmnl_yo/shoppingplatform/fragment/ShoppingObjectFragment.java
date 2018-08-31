@@ -510,14 +510,19 @@ public class ShoppingObjectFragment extends Fragment implements View.OnTouchList
             }.execute("圖片連結網址路徑");
             holder.Shoppingmall_name.setText(mshoppingmallList.get(position).Shoppingmall_name);
             holder.Shoppingmall_price.setText(mshoppingmallList.get(position).Shoppingmall_price);
-            if(Integer.valueOf(mshoppingmallList.get(position).Shoppingmall_amount) <= 5)
-            {
-                holder.Shoppingmall_amount.setTextColor(Color.RED);
-                holder.Shoppingmall_amount.setText(mshoppingmallList.get(position).Shoppingmall_amount);
-            }else{
-                holder.Shoppingmall_amount.setTextColor(Color.BLUE);
-                holder.Shoppingmall_amount.setText(mshoppingmallList.get(position).Shoppingmall_amount);
+            try {
+                if(Integer.valueOf(mshoppingmallList.get(position).Shoppingmall_amount) <= 5)
+                {
+                    holder.Shoppingmall_amount.setTextColor(Color.RED);
+                    holder.Shoppingmall_amount.setText(mshoppingmallList.get(position).Shoppingmall_amount);
+                }else{
+                    holder.Shoppingmall_amount.setTextColor(Color.BLUE);
+                    holder.Shoppingmall_amount.setText(mshoppingmallList.get(position).Shoppingmall_amount);
+                }
+            }catch (Exception e){
+
             }
+
         }
 
         @Override
